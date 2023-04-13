@@ -148,14 +148,19 @@ class _HomePageState extends State<HomePage> {
           width: _getContentWidth(),
           selectedDate: uiModel.selectedDate,
         ),
-        const SizedBox(height: 20),
-        _buildAreaChartCards(uiModel),
-        const SizedBox(height: 20),
-        SectorsOverviewCard(
-          width: _getContentWidth(),
-          models: uiModel.sectorsOverviewData?[uiModel.selectedDate] ?? [],
-        ),
-        const SizedBox(height: 20),
+        if (uiModel.tornadoData?[uiModel.selectedDate] != null)
+          const SizedBox(height: 20),
+        if (uiModel.areasData?[uiModel.selectedDate] != null)
+          _buildAreaChartCards(uiModel),
+        if (uiModel.areasData?[uiModel.selectedDate] != null)
+          const SizedBox(height: 20),
+        if (uiModel.sectorsOverviewData?[uiModel.selectedDate] != null)
+          SectorsOverviewCard(
+            width: _getContentWidth(),
+            models: uiModel.sectorsOverviewData?[uiModel.selectedDate] ?? [],
+          ),
+        if (uiModel.sectorsOverviewData?[uiModel.selectedDate] != null)
+          const SizedBox(height: 20),
         _buildIndexChartCards(uiModel),
       ],
     );
@@ -172,11 +177,13 @@ class _HomePageState extends State<HomePage> {
               selectedDate: uiModel.selectedDate,
             ),
             SizedBox(width: _betweenPadding),
-            SectorsOverviewCard(
-              height: _getBenchmarkCardHeight(uiModel),
-              width: _getContentWidth(),
-              models: uiModel.sectorsOverviewData?[uiModel.selectedDate] ?? [],
-            ),
+            if (uiModel.sectorsOverviewData?[uiModel.selectedDate] != null)
+              SectorsOverviewCard(
+                height: _getBenchmarkCardHeight(uiModel),
+                width: _getContentWidth(),
+                models:
+                    uiModel.sectorsOverviewData?[uiModel.selectedDate] ?? [],
+              ),
           ],
         ),
         const SizedBox(height: 20),
@@ -336,16 +343,18 @@ class _HomePageState extends State<HomePage> {
 
   double _getBenchmarkCardHeight(HomeUIModel model) {
     const double minHeight = 49;
+    const double barHeight = 40;
     if (model.tornadoData?[model.selectedDate]?.isEmpty ?? true) {
       return minHeight;
     }
     final models = model.tornadoData?[model.selectedDate];
-    final double result = minHeight + (models?.length ?? 0) * 40;
+    final double result = minHeight + (models?.length ?? 0) * barHeight;
     return result;
   }
 
   double _getIndexCardHeight(HomeUIModel model) {
     const double minHeight = 129;
+    const double barHeight = 35;
     if (model.sectorsIndexData?[model.selectedDate]?.isEmpty ?? true) {
       return minHeight;
     }
@@ -355,7 +364,7 @@ class _HomePageState extends State<HomePage> {
     });
 
     final max = modelsBarsValuesLengths.max;
-    final double result = minHeight + max * 35;
+    final double result = minHeight + max * barHeight;
     return result;
   }
 }

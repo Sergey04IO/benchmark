@@ -21,7 +21,7 @@ class IndexCard extends StatefulWidget {
 class _IndexCardState extends State<IndexCard>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
-  late CurvedAnimation _curvedAnimation;
+  late CurvedAnimation _animation;
 
   late Tween<double> _maxValueTween;
   late Tween<double> _diffValueTween;
@@ -50,7 +50,7 @@ class _IndexCardState extends State<IndexCard>
   @override
   void dispose() {
     _controller.dispose();
-    _curvedAnimation.dispose();
+    _animation.dispose();
     super.dispose();
   }
 
@@ -75,7 +75,7 @@ class _IndexCardState extends State<IndexCard>
         15,
       ),
       child: AnimatedBuilder(
-        animation: _curvedAnimation,
+        animation: _animation,
         builder: (context, child) {
           return _buildBody();
         },
@@ -162,7 +162,7 @@ class _IndexCardState extends State<IndexCard>
       vsync: this,
       duration: CommonConstants.primaryAnimDuration,
     );
-    _curvedAnimation = CurvedAnimation(
+    _animation = CurvedAnimation(
       parent: _controller,
       curve: Curves.decelerate,
     );
@@ -174,8 +174,8 @@ class _IndexCardState extends State<IndexCard>
       begin: 0.0,
       end: _getDiffValue(),
     );
-    _maxValueAnimation = _maxValueTween.animate(_curvedAnimation);
-    _diffValueAnimation = _diffValueTween.animate(_curvedAnimation);
+    _maxValueAnimation = _maxValueTween.animate(_animation);
+    _diffValueAnimation = _diffValueTween.animate(_animation);
   }
 
   void _updateValues() {

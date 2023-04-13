@@ -23,7 +23,7 @@ class IndexChart extends StatefulWidget {
 class _IndexChartState extends State<IndexChart>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
-  late CurvedAnimation _curvedAnimation;
+  late CurvedAnimation _animation;
 
   late Tween<double> _valueTween;
   late Tween<double> _barTween;
@@ -53,14 +53,14 @@ class _IndexChartState extends State<IndexChart>
   @override
   void dispose() {
     _controller.dispose();
-    _curvedAnimation.dispose();
+    _animation.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
-        animation: _curvedAnimation,
+        animation: _animation,
         builder: (context, child) {
           return Row(
             children: [
@@ -154,13 +154,13 @@ class _IndexChartState extends State<IndexChart>
       vsync: this,
       duration: CommonConstants.primaryAnimDuration,
     );
-    _curvedAnimation = CurvedAnimation(
+    _animation = CurvedAnimation(
       parent: _controller,
       curve: Curves.decelerate,
     );
     _assignBarAnimation();
     _valueTween = Tween(begin: 0, end: widget.value.toDouble());
-    _valueAnimation = _valueTween.animate(_curvedAnimation);
+    _valueAnimation = _valueTween.animate(_animation);
   }
 
   void _updateValues() {
@@ -187,7 +187,7 @@ class _IndexChartState extends State<IndexChart>
         value: widget.value,
       ),
     );
-    _barAnimation = _barTween.animate(_curvedAnimation);
+    _barAnimation = _barTween.animate(_animation);
   }
 
   bool _isAnimating(Animation<double>? animation) {

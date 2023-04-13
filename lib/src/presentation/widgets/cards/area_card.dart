@@ -31,7 +31,7 @@ class AreaCard extends StatefulWidget {
 class _AreaCardState extends State<AreaCard>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
-  late CurvedAnimation _curvedAnimation;
+  late CurvedAnimation _animation;
   late Tween<double> _valueTween;
   late Tween<double> _differenceTween;
   late Animation<double> _valueAnimation;
@@ -53,7 +53,7 @@ class _AreaCardState extends State<AreaCard>
       vsync: this,
       duration: CommonConstants.primaryAnimDuration,
     );
-    _curvedAnimation = CurvedAnimation(
+    _animation = CurvedAnimation(
       parent: _controller,
       curve: Curves.decelerate,
     );
@@ -64,8 +64,8 @@ class _AreaCardState extends State<AreaCard>
           : 0.0,
     );
     _differenceTween = Tween(begin: 0.0, end: _getDifference());
-    _valueAnimation = _valueTween.animate(_curvedAnimation);
-    _differenceAnimation = _differenceTween.animate(_curvedAnimation);
+    _valueAnimation = _valueTween.animate(_animation);
+    _differenceAnimation = _differenceTween.animate(_animation);
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       _controller.forward();
     });
@@ -84,7 +84,7 @@ class _AreaCardState extends State<AreaCard>
   @override
   void dispose() {
     _controller.dispose();
-    _curvedAnimation.dispose();
+    _animation.dispose();
     super.dispose();
   }
 
