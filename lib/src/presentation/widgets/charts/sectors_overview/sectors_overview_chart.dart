@@ -1,6 +1,6 @@
 import 'package:benchmark/src/app/core/constants/app_colors.dart';
 import 'package:benchmark/src/app/core/constants/common.dart';
-import 'package:benchmark/src/domain/entities/sector_overview/sector_overview_entity.dart';
+import 'package:benchmark/src/domain/entities/sector_overview/entity/sector_overview_entity.dart';
 import 'package:benchmark/src/presentation/widgets/charts/sectors_overview/single_sector_overview.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';

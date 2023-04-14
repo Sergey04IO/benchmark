@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element
 
-import 'package:benchmark/src/domain/entities/sector_overview/sector_overview_entity.dart';
+import 'package:benchmark/src/domain/entities/sector_overview/entity/sector_overview_entity.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'sector_overview_model.freezed.dart';
@@ -12,6 +12,7 @@ class SectorOverviewModel with _$SectorOverviewModel {
     String? date,
     String? title,
     String? value,
+    String? average,
   }) = _SectorOverviewModel;
 
   const SectorOverviewModel._();

@@ -23,6 +23,7 @@ mixin _$SectorOverviewModel {
   String? get date => throw _privateConstructorUsedError;
   String? get title => throw _privateConstructorUsedError;
   String? get value => throw _privateConstructorUsedError;
+  String? get average => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,7 +37,7 @@ abstract class $SectorOverviewModelCopyWith<$Res> {
           SectorOverviewModel value, $Res Function(SectorOverviewModel) then) =
       _$SectorOverviewModelCopyWithImpl<$Res, SectorOverviewModel>;
   @useResult
-  $Res call({String? date, String? title, String? value});
+  $Res call({String? date, String? title, String? value, String? average});
 }
 
 /// @nodoc
@@ -55,6 +56,7 @@ class _$SectorOverviewModelCopyWithImpl<$Res, $Val extends SectorOverviewModel>
     Object? date = freezed,
     Object? title = freezed,
     Object? value = freezed,
+    Object? average = freezed,
   }) {
     return _then(_value.copyWith(
       date: freezed == date
@@ -69,6 +71,10 @@ class _$SectorOverviewModelCopyWithImpl<$Res, $Val extends SectorOverviewModel>
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
               as String?,
+      average: freezed == average
+          ? _value.average
+          : average // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -81,7 +87,7 @@ abstract class _$$_SectorOverviewModelCopyWith<$Res>
       __$$_SectorOverviewModelCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? date, String? title, String? value});
+  $Res call({String? date, String? title, String? value, String? average});
 }
 
 /// @nodoc
@@ -98,6 +104,7 @@ class __$$_SectorOverviewModelCopyWithImpl<$Res>
     Object? date = freezed,
     Object? title = freezed,
     Object? value = freezed,
+    Object? average = freezed,
   }) {
     return _then(_$_SectorOverviewModel(
       date: freezed == date
@@ -112,6 +119,10 @@ class __$$_SectorOverviewModelCopyWithImpl<$Res>
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
               as String?,
+      average: freezed == average
+          ? _value.average
+          : average // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -119,7 +130,9 @@ class __$$_SectorOverviewModelCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_SectorOverviewModel extends _SectorOverviewModel {
-  const _$_SectorOverviewModel({this.date, this.title, this.value}) : super._();
+  const _$_SectorOverviewModel(
+      {this.date, this.title, this.value, this.average})
+      : super._();
 
   factory _$_SectorOverviewModel.fromJson(Map<String, dynamic> json) =>
       _$$_SectorOverviewModelFromJson(json);
@@ -130,10 +143,12 @@ class _$_SectorOverviewModel extends _SectorOverviewModel {
   final String? title;
   @override
   final String? value;
+  @override
+  final String? average;
 
   @override
   String toString() {
-    return 'SectorOverviewModel(date: $date, title: $title, value: $value)';
+    return 'SectorOverviewModel(date: $date, title: $title, value: $value, average: $average)';
   }
 
   @override
@@ -143,12 +158,13 @@ class _$_SectorOverviewModel extends _SectorOverviewModel {
             other is _$_SectorOverviewModel &&
             (identical(other.date, date) || other.date == date) &&
             (identical(other.title, title) || other.title == title) &&
-            (identical(other.value, value) || other.value == value));
+            (identical(other.value, value) || other.value == value) &&
+            (identical(other.average, average) || other.average == average));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, date, title, value);
+  int get hashCode => Object.hash(runtimeType, date, title, value, average);
 
   @JsonKey(ignore: true)
   @override
@@ -169,7 +185,8 @@ abstract class _SectorOverviewModel extends SectorOverviewModel {
   const factory _SectorOverviewModel(
       {final String? date,
       final String? title,
-      final String? value}) = _$_SectorOverviewModel;
+      final String? value,
+      final String? average}) = _$_SectorOverviewModel;
   const _SectorOverviewModel._() : super._();
 
   factory _SectorOverviewModel.fromJson(Map<String, dynamic> json) =
@@ -181,6 +198,8 @@ abstract class _SectorOverviewModel extends SectorOverviewModel {
   String? get title;
   @override
   String? get value;
+  @override
+  String? get average;
   @override
   @JsonKey(ignore: true)
   _$$_SectorOverviewModelCopyWith<_$_SectorOverviewModel> get copyWith =>

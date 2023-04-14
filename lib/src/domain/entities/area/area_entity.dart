@@ -8,5 +8,7 @@ class AreaEntity with _$AreaEntity {
     String? title,
     @Default([]) List<num> values,
     String? unit,
+    num? difference,
+    num? ytdValue,
   }) = _AreaEntity;
 }

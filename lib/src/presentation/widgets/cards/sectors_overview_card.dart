@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:benchmark/src/app/core/constants/app_colors.dart';
-import 'package:benchmark/src/domain/entities/sector_overview/sector_overview_entity.dart';
+import 'package:benchmark/src/domain/entities/sector_overview/entity/sector_overview_entity.dart';
 import 'package:benchmark/src/presentation/widgets/cards/generic/app_common_card.dart';
 import 'package:benchmark/src/presentation/widgets/charts/sectors_overview/sectors_overview_chart.dart';
 import 'package:collection/collection.dart';
@@ -12,11 +12,13 @@ class SectorsOverviewCard extends StatefulWidget {
     super.key,
     this.width,
     this.height = 400,
+    this.average,
     this.models = const [],
   });
 
   final double? width;
   final double height;
+  final num? average;
   final List<SectorOverviewEntity> models;
 
   @override
@@ -50,17 +52,13 @@ class _SectorsOverviewCardState extends State<SectorsOverviewCard> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    final values = widget.models.map((e) => e.value?.toInt() ?? 0).toList();
-    max = Random().nextInt((values.max * 0.3).toInt()) + values.max;
-    average = values.average;
+    _initValues();
   }
 
   @override
   void didUpdateWidget(covariant SectorsOverviewCard oldWidget) {
     super.didUpdateWidget(oldWidget);
-    final values = widget.models.map((e) => e.value?.toInt() ?? 0).toList();
-    max = Random().nextInt((values.max * 0.3).toInt()) + values.max;
-    average = values.average;
+    _initValues();
     height = widget.height < cardMinHeight ? cardMinHeight : widget.height;
   }
 
@@ -94,5 +92,15 @@ class _SectorsOverviewCardState extends State<SectorsOverviewCard> {
         color: AppColors.primaryColor,
       ),
     );
+  }
+
+  void _initValues() {
+    final values = widget.models.map((e) => e.value?.toInt() ?? 0).toList();
+    max = Random().nextInt((values.max * 0.3).toInt()) + values.max;
+    if (widget.average != null) {
+      average = widget.average!;
+    } else {
+      average = values.average;
+    }
   }
 }

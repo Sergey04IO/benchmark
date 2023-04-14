@@ -11,6 +11,8 @@ _$_AreaModel _$$_AreaModelFromJson(Map<String, dynamic> json) => _$_AreaModel(
       title: json['title'] as String?,
       values: json['values'] as String?,
       unit: json['unit'] as String?,
+      difference: json['difference'] as String?,
+      ytdValue: json['year to date'] as String?,
     );
 
 Map<String, dynamic> _$$_AreaModelToJson(_$_AreaModel instance) =>
@@ -19,4 +21,6 @@ Map<String, dynamic> _$$_AreaModelToJson(_$_AreaModel instance) =>
       'title': instance.title,
       'values': instance.values,
       'unit': instance.unit,
+      'difference': instance.difference,
+      'year to date': instance.ytdValue,
     };

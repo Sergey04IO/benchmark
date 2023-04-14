@@ -157,7 +157,11 @@ class _HomePageState extends State<HomePage> {
         if (uiModel.sectorsOverviewData?[uiModel.selectedDate] != null)
           SectorsOverviewCard(
             width: _getContentWidth(),
-            models: uiModel.sectorsOverviewData?[uiModel.selectedDate] ?? [],
+            models:
+                uiModel.sectorsOverviewData?[uiModel.selectedDate]?.entities ??
+                    [],
+            average: uiModel
+                .sectorsOverviewData?[uiModel.selectedDate]?.averageValue,
           ),
         if (uiModel.sectorsOverviewData?[uiModel.selectedDate] != null)
           const SizedBox(height: 20),
@@ -181,8 +185,11 @@ class _HomePageState extends State<HomePage> {
               SectorsOverviewCard(
                 height: _getBenchmarkCardHeight(uiModel),
                 width: _getContentWidth(),
-                models:
-                    uiModel.sectorsOverviewData?[uiModel.selectedDate] ?? [],
+                models: uiModel
+                        .sectorsOverviewData?[uiModel.selectedDate]?.entities ??
+                    [],
+                average: uiModel
+                    .sectorsOverviewData?[uiModel.selectedDate]?.averageValue,
               ),
           ],
         ),

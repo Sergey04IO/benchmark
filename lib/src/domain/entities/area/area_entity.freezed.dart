@@ -19,6 +19,8 @@ mixin _$AreaEntity {
   String? get title => throw _privateConstructorUsedError;
   List<num> get values => throw _privateConstructorUsedError;
   String? get unit => throw _privateConstructorUsedError;
+  num? get difference => throw _privateConstructorUsedError;
+  num? get ytdValue => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AreaEntityCopyWith<AreaEntity> get copyWith =>
@@ -31,7 +33,12 @@ abstract class $AreaEntityCopyWith<$Res> {
           AreaEntity value, $Res Function(AreaEntity) then) =
       _$AreaEntityCopyWithImpl<$Res, AreaEntity>;
   @useResult
-  $Res call({String? title, List<num> values, String? unit});
+  $Res call(
+      {String? title,
+      List<num> values,
+      String? unit,
+      num? difference,
+      num? ytdValue});
 }
 
 /// @nodoc
@@ -50,6 +57,8 @@ class _$AreaEntityCopyWithImpl<$Res, $Val extends AreaEntity>
     Object? title = freezed,
     Object? values = null,
     Object? unit = freezed,
+    Object? difference = freezed,
+    Object? ytdValue = freezed,
   }) {
     return _then(_value.copyWith(
       title: freezed == title
@@ -64,6 +73,14 @@ class _$AreaEntityCopyWithImpl<$Res, $Val extends AreaEntity>
           ? _value.unit
           : unit // ignore: cast_nullable_to_non_nullable
               as String?,
+      difference: freezed == difference
+          ? _value.difference
+          : difference // ignore: cast_nullable_to_non_nullable
+              as num?,
+      ytdValue: freezed == ytdValue
+          ? _value.ytdValue
+          : ytdValue // ignore: cast_nullable_to_non_nullable
+              as num?,
     ) as $Val);
   }
 }
@@ -76,7 +93,12 @@ abstract class _$$_AreaEntityCopyWith<$Res>
       __$$_AreaEntityCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? title, List<num> values, String? unit});
+  $Res call(
+      {String? title,
+      List<num> values,
+      String? unit,
+      num? difference,
+      num? ytdValue});
 }
 
 /// @nodoc
@@ -93,6 +115,8 @@ class __$$_AreaEntityCopyWithImpl<$Res>
     Object? title = freezed,
     Object? values = null,
     Object? unit = freezed,
+    Object? difference = freezed,
+    Object? ytdValue = freezed,
   }) {
     return _then(_$_AreaEntity(
       title: freezed == title
@@ -107,6 +131,14 @@ class __$$_AreaEntityCopyWithImpl<$Res>
           ? _value.unit
           : unit // ignore: cast_nullable_to_non_nullable
               as String?,
+      difference: freezed == difference
+          ? _value.difference
+          : difference // ignore: cast_nullable_to_non_nullable
+              as num?,
+      ytdValue: freezed == ytdValue
+          ? _value.ytdValue
+          : ytdValue // ignore: cast_nullable_to_non_nullable
+              as num?,
     ));
   }
 }
@@ -115,7 +147,11 @@ class __$$_AreaEntityCopyWithImpl<$Res>
 
 class _$_AreaEntity implements _AreaEntity {
   const _$_AreaEntity(
-      {this.title, final List<num> values = const [], this.unit})
+      {this.title,
+      final List<num> values = const [],
+      this.unit,
+      this.difference,
+      this.ytdValue})
       : _values = values;
 
   @override
@@ -131,10 +167,14 @@ class _$_AreaEntity implements _AreaEntity {
 
   @override
   final String? unit;
+  @override
+  final num? difference;
+  @override
+  final num? ytdValue;
 
   @override
   String toString() {
-    return 'AreaEntity(title: $title, values: $values, unit: $unit)';
+    return 'AreaEntity(title: $title, values: $values, unit: $unit, difference: $difference, ytdValue: $ytdValue)';
   }
 
   @override
@@ -144,12 +184,16 @@ class _$_AreaEntity implements _AreaEntity {
             other is _$_AreaEntity &&
             (identical(other.title, title) || other.title == title) &&
             const DeepCollectionEquality().equals(other._values, _values) &&
-            (identical(other.unit, unit) || other.unit == unit));
+            (identical(other.unit, unit) || other.unit == unit) &&
+            (identical(other.difference, difference) ||
+                other.difference == difference) &&
+            (identical(other.ytdValue, ytdValue) ||
+                other.ytdValue == ytdValue));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, title, const DeepCollectionEquality().hash(_values), unit);
+  int get hashCode => Object.hash(runtimeType, title,
+      const DeepCollectionEquality().hash(_values), unit, difference, ytdValue);
 
   @JsonKey(ignore: true)
   @override
@@ -162,7 +206,9 @@ abstract class _AreaEntity implements AreaEntity {
   const factory _AreaEntity(
       {final String? title,
       final List<num> values,
-      final String? unit}) = _$_AreaEntity;
+      final String? unit,
+      final num? difference,
+      final num? ytdValue}) = _$_AreaEntity;
 
   @override
   String? get title;
@@ -170,6 +216,10 @@ abstract class _AreaEntity implements AreaEntity {
   List<num> get values;
   @override
   String? get unit;
+  @override
+  num? get difference;
+  @override
+  num? get ytdValue;
   @override
   @JsonKey(ignore: true)
   _$$_AreaEntityCopyWith<_$_AreaEntity> get copyWith =>

@@ -14,6 +14,8 @@ class AreaModel with _$AreaModel {
     String? title,
     String? values,
     String? unit,
+    String? difference,
+    @JsonKey(name: 'year to date') String? ytdValue,
   }) = _AreaModel;
 
   const AreaModel._();
@@ -26,6 +28,8 @@ class AreaModel with _$AreaModel {
       title: title,
       unit: unit,
       values: _getValues(),
+      ytdValue: num.tryParse(ytdValue ?? ''),
+      difference: num.tryParse(difference ?? ''),
     );
   }
 

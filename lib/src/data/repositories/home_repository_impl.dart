@@ -7,7 +7,7 @@ import 'package:benchmark/src/data/services/excel_data/excel_data_service.dart';
 import 'package:benchmark/src/data/services/gsheets/gsheets_service.dart';
 import 'package:benchmark/src/domain/entities/area/area_entity.dart';
 import 'package:benchmark/src/domain/entities/sector_index/sector_index_entity.dart';
-import 'package:benchmark/src/domain/entities/sector_overview/sector_overview_entity.dart';
+import 'package:benchmark/src/domain/entities/sector_overview/cluster/sector_overview_cluster.dart';
 import 'package:benchmark/src/domain/entities/tornado/tornado_entity.dart';
 import 'package:benchmark/src/domain/repositories/home_repository.dart';
 import 'package:benchmark/src/domain/services/data_source_service.dart';
@@ -45,7 +45,7 @@ class HomeRepositoryImpl implements HomeRepository {
     try {
       final rows = await _service?.getTornadoRows();
       if (rows == null) return null;
-      final grouped = _groupByDates(rows);
+      final grouped = _groupBy(rows);
       if (grouped == null) return null;
       final entities = grouped.map<String, List<TornadoEntity>>(
         (key, value) {
@@ -67,7 +67,7 @@ class HomeRepositoryImpl implements HomeRepository {
     try {
       final rows = await _service?.getAreasRows();
       if (rows == null) return null;
-      final grouped = _groupByDates(rows);
+      final grouped = _groupBy(rows);
       if (grouped == null) return null;
       final entities = grouped.map<String, List<AreaEntity>>(
         (key, value) {
@@ -85,23 +85,29 @@ class HomeRepositoryImpl implements HomeRepository {
   }
 
   @override
-  Future<Map<String, List<SectorOverviewEntity>>?>
-      getSectorsOverviewData() async {
+  Future<Map<String, SectorOverviewCluster>?> getSectorsOverviewData() async {
     try {
       final rows = await _service?.getSectorsOverviewRows();
       if (rows == null) return null;
-      final grouped = _groupByDates(rows);
+      final grouped = _groupBy(rows);
       if (grouped == null) return null;
-      final entities = grouped.map<String, List<SectorOverviewEntity>>(
+      final models = grouped.map<String, SectorOverviewCluster>(
         (key, value) {
           final entities = value
               .map(SectorOverviewModel.fromJson)
               .map((model) => model.toEntity())
               .toList();
-          return MapEntry(key, entities);
+          final avgValue = value.firstWhereOrNull(
+            (element) => element.containsKey('average'),
+          )?['average'];
+          final cluster = SectorOverviewCluster(
+            entities: entities,
+            averageValue: num.tryParse(avgValue ?? ''),
+          );
+          return MapEntry(key, cluster);
         },
       );
-      return entities;
+      return models;
     } catch (e) {
       rethrow;
     }
@@ -112,7 +118,7 @@ class HomeRepositoryImpl implements HomeRepository {
     try {
       final rows = await _service?.getSectorsIndexRows();
       if (rows == null) return null;
-      final grouped = _groupByDates(rows);
+      final grouped = _groupBy(rows);
       if (grouped == null) return null;
       final entities = grouped.map<String, List<SectorIndexEntity>>(
         (key, value) {
@@ -129,22 +135,22 @@ class HomeRepositoryImpl implements HomeRepository {
     }
   }
 
-  Map<String, List<Map<String, String>>>? _groupByDates(
-    List<Map<String, String>> rows,
-  ) {
-    const dateKey = 'date';
+  Map<String, List<Map<String, String>>>? _groupBy(
+    List<Map<String, String>> rows, {
+    String key = 'date',
+  }) {
     final List<Map<String, String>> mappedRows = [];
     String prevDate = '';
     for (final row in rows) {
-      if (!row.containsKey(dateKey)) return null;
-      if (row[dateKey] == '') {
-        row[dateKey] = prevDate;
+      if (!row.containsKey(key)) return null;
+      if (row[key] == '') {
+        row[key] = prevDate;
       }
-      prevDate = row[dateKey] ?? '';
+      prevDate = row[key] ?? '';
       mappedRows.add(row);
     }
     final grouped =
-        mappedRows.groupListsBy<String>((element) => element[dateKey] ?? '');
+        mappedRows.groupListsBy<String>((element) => element[key] ?? '');
     return grouped;
   }
 }

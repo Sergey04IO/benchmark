@@ -20,7 +20,7 @@ mixin _$HomeUIModel {
       throw _privateConstructorUsedError;
   Map<String, List<AreaEntity>>? get areasData =>
       throw _privateConstructorUsedError;
-  Map<String, List<SectorOverviewEntity>>? get sectorsOverviewData =>
+  Map<String, SectorOverviewCluster>? get sectorsOverviewData =>
       throw _privateConstructorUsedError;
   Map<String, List<SectorIndexEntity>>? get sectorsIndexData =>
       throw _privateConstructorUsedError;
@@ -41,7 +41,7 @@ abstract class $HomeUIModelCopyWith<$Res> {
   $Res call(
       {Map<String, List<TornadoEntity>>? tornadoData,
       Map<String, List<AreaEntity>>? areasData,
-      Map<String, List<SectorOverviewEntity>>? sectorsOverviewData,
+      Map<String, SectorOverviewCluster>? sectorsOverviewData,
       Map<String, List<SectorIndexEntity>>? sectorsIndexData,
       String? selectedDate,
       List<String> dates});
@@ -79,7 +79,7 @@ class _$HomeUIModelCopyWithImpl<$Res, $Val extends HomeUIModel>
       sectorsOverviewData: freezed == sectorsOverviewData
           ? _value.sectorsOverviewData
           : sectorsOverviewData // ignore: cast_nullable_to_non_nullable
-              as Map<String, List<SectorOverviewEntity>>?,
+              as Map<String, SectorOverviewCluster>?,
       sectorsIndexData: freezed == sectorsIndexData
           ? _value.sectorsIndexData
           : sectorsIndexData // ignore: cast_nullable_to_non_nullable
@@ -107,7 +107,7 @@ abstract class _$$_HomeUIModelCopyWith<$Res>
   $Res call(
       {Map<String, List<TornadoEntity>>? tornadoData,
       Map<String, List<AreaEntity>>? areasData,
-      Map<String, List<SectorOverviewEntity>>? sectorsOverviewData,
+      Map<String, SectorOverviewCluster>? sectorsOverviewData,
       Map<String, List<SectorIndexEntity>>? sectorsIndexData,
       String? selectedDate,
       List<String> dates});
@@ -143,7 +143,7 @@ class __$$_HomeUIModelCopyWithImpl<$Res>
       sectorsOverviewData: freezed == sectorsOverviewData
           ? _value._sectorsOverviewData
           : sectorsOverviewData // ignore: cast_nullable_to_non_nullable
-              as Map<String, List<SectorOverviewEntity>>?,
+              as Map<String, SectorOverviewCluster>?,
       sectorsIndexData: freezed == sectorsIndexData
           ? _value._sectorsIndexData
           : sectorsIndexData // ignore: cast_nullable_to_non_nullable
@@ -166,7 +166,7 @@ class _$_HomeUIModel implements _HomeUIModel {
   const _$_HomeUIModel(
       {final Map<String, List<TornadoEntity>>? tornadoData,
       final Map<String, List<AreaEntity>>? areasData,
-      final Map<String, List<SectorOverviewEntity>>? sectorsOverviewData,
+      final Map<String, SectorOverviewCluster>? sectorsOverviewData,
       final Map<String, List<SectorIndexEntity>>? sectorsIndexData,
       this.selectedDate,
       final List<String> dates = const []})
@@ -196,9 +196,9 @@ class _$_HomeUIModel implements _HomeUIModel {
     return EqualUnmodifiableMapView(value);
   }
 
-  final Map<String, List<SectorOverviewEntity>>? _sectorsOverviewData;
+  final Map<String, SectorOverviewCluster>? _sectorsOverviewData;
   @override
-  Map<String, List<SectorOverviewEntity>>? get sectorsOverviewData {
+  Map<String, SectorOverviewCluster>? get sectorsOverviewData {
     final value = _sectorsOverviewData;
     if (value == null) return null;
     if (_sectorsOverviewData is EqualUnmodifiableMapView)
@@ -272,7 +272,7 @@ abstract class _HomeUIModel implements HomeUIModel {
   const factory _HomeUIModel(
       {final Map<String, List<TornadoEntity>>? tornadoData,
       final Map<String, List<AreaEntity>>? areasData,
-      final Map<String, List<SectorOverviewEntity>>? sectorsOverviewData,
+      final Map<String, SectorOverviewCluster>? sectorsOverviewData,
       final Map<String, List<SectorIndexEntity>>? sectorsIndexData,
       final String? selectedDate,
       final List<String> dates}) = _$_HomeUIModel;
@@ -282,7 +282,7 @@ abstract class _HomeUIModel implements HomeUIModel {
   @override
   Map<String, List<AreaEntity>>? get areasData;
   @override
-  Map<String, List<SectorOverviewEntity>>? get sectorsOverviewData;
+  Map<String, SectorOverviewCluster>? get sectorsOverviewData;
   @override
   Map<String, List<SectorIndexEntity>>? get sectorsIndexData;
   @override

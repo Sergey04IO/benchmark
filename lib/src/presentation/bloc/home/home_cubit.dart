@@ -1,7 +1,7 @@
 import 'package:benchmark/src/app/core/enums/config_data_source.dart';
 import 'package:benchmark/src/domain/entities/area/area_entity.dart';
 import 'package:benchmark/src/domain/entities/sector_index/sector_index_entity.dart';
-import 'package:benchmark/src/domain/entities/sector_overview/sector_overview_entity.dart';
+import 'package:benchmark/src/domain/entities/sector_overview/cluster/sector_overview_cluster.dart';
 import 'package:benchmark/src/domain/entities/tornado/tornado_entity.dart';
 import 'package:benchmark/src/domain/repositories/home_repository.dart';
 import 'package:benchmark/src/presentation/models/ui_models/home/home_ui_model.dart';
@@ -22,7 +22,7 @@ class HomeCubit extends Cubit<HomeState> {
 
   Map<String, List<TornadoEntity>>? _tornadoData;
   Map<String, List<AreaEntity>>? _areasData;
-  Map<String, List<SectorOverviewEntity>>? _sectorsOverviewData;
+  Map<String, SectorOverviewCluster>? _sectorsOverviewData;
   Map<String, List<SectorIndexEntity>>? _sectorsIndexData;
 
   final List<String> _dates = [];

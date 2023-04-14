@@ -12,6 +12,7 @@ _$_SectorOverviewModel _$$_SectorOverviewModelFromJson(
       date: json['date'] as String?,
       title: json['title'] as String?,
       value: json['value'] as String?,
+      average: json['average'] as String?,
     );
 
 Map<String, dynamic> _$$_SectorOverviewModelToJson(
@@ -20,4 +21,5 @@ Map<String, dynamic> _$$_SectorOverviewModelToJson(
       'date': instance.date,
       'title': instance.title,
       'value': instance.value,
+      'average': instance.average,
     };

@@ -24,6 +24,9 @@ mixin _$AreaModel {
   String? get title => throw _privateConstructorUsedError;
   String? get values => throw _privateConstructorUsedError;
   String? get unit => throw _privateConstructorUsedError;
+  String? get difference => throw _privateConstructorUsedError;
+  @JsonKey(name: 'year to date')
+  String? get ytdValue => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,7 +39,13 @@ abstract class $AreaModelCopyWith<$Res> {
   factory $AreaModelCopyWith(AreaModel value, $Res Function(AreaModel) then) =
       _$AreaModelCopyWithImpl<$Res, AreaModel>;
   @useResult
-  $Res call({String? date, String? title, String? values, String? unit});
+  $Res call(
+      {String? date,
+      String? title,
+      String? values,
+      String? unit,
+      String? difference,
+      @JsonKey(name: 'year to date') String? ytdValue});
 }
 
 /// @nodoc
@@ -56,6 +65,8 @@ class _$AreaModelCopyWithImpl<$Res, $Val extends AreaModel>
     Object? title = freezed,
     Object? values = freezed,
     Object? unit = freezed,
+    Object? difference = freezed,
+    Object? ytdValue = freezed,
   }) {
     return _then(_value.copyWith(
       date: freezed == date
@@ -74,6 +85,14 @@ class _$AreaModelCopyWithImpl<$Res, $Val extends AreaModel>
           ? _value.unit
           : unit // ignore: cast_nullable_to_non_nullable
               as String?,
+      difference: freezed == difference
+          ? _value.difference
+          : difference // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ytdValue: freezed == ytdValue
+          ? _value.ytdValue
+          : ytdValue // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -85,7 +104,13 @@ abstract class _$$_AreaModelCopyWith<$Res> implements $AreaModelCopyWith<$Res> {
       __$$_AreaModelCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? date, String? title, String? values, String? unit});
+  $Res call(
+      {String? date,
+      String? title,
+      String? values,
+      String? unit,
+      String? difference,
+      @JsonKey(name: 'year to date') String? ytdValue});
 }
 
 /// @nodoc
@@ -103,6 +128,8 @@ class __$$_AreaModelCopyWithImpl<$Res>
     Object? title = freezed,
     Object? values = freezed,
     Object? unit = freezed,
+    Object? difference = freezed,
+    Object? ytdValue = freezed,
   }) {
     return _then(_$_AreaModel(
       date: freezed == date
@@ -121,6 +148,14 @@ class __$$_AreaModelCopyWithImpl<$Res>
           ? _value.unit
           : unit // ignore: cast_nullable_to_non_nullable
               as String?,
+      difference: freezed == difference
+          ? _value.difference
+          : difference // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ytdValue: freezed == ytdValue
+          ? _value.ytdValue
+          : ytdValue // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -128,7 +163,13 @@ class __$$_AreaModelCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_AreaModel extends _AreaModel {
-  const _$_AreaModel({this.date, this.title, this.values, this.unit})
+  const _$_AreaModel(
+      {this.date,
+      this.title,
+      this.values,
+      this.unit,
+      this.difference,
+      @JsonKey(name: 'year to date') this.ytdValue})
       : super._();
 
   factory _$_AreaModel.fromJson(Map<String, dynamic> json) =>
@@ -142,10 +183,15 @@ class _$_AreaModel extends _AreaModel {
   final String? values;
   @override
   final String? unit;
+  @override
+  final String? difference;
+  @override
+  @JsonKey(name: 'year to date')
+  final String? ytdValue;
 
   @override
   String toString() {
-    return 'AreaModel(date: $date, title: $title, values: $values, unit: $unit)';
+    return 'AreaModel(date: $date, title: $title, values: $values, unit: $unit, difference: $difference, ytdValue: $ytdValue)';
   }
 
   @override
@@ -156,12 +202,17 @@ class _$_AreaModel extends _AreaModel {
             (identical(other.date, date) || other.date == date) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.values, values) || other.values == values) &&
-            (identical(other.unit, unit) || other.unit == unit));
+            (identical(other.unit, unit) || other.unit == unit) &&
+            (identical(other.difference, difference) ||
+                other.difference == difference) &&
+            (identical(other.ytdValue, ytdValue) ||
+                other.ytdValue == ytdValue));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, date, title, values, unit);
+  int get hashCode =>
+      Object.hash(runtimeType, date, title, values, unit, difference, ytdValue);
 
   @JsonKey(ignore: true)
   @override
@@ -182,7 +233,9 @@ abstract class _AreaModel extends AreaModel {
       {final String? date,
       final String? title,
       final String? values,
-      final String? unit}) = _$_AreaModel;
+      final String? unit,
+      final String? difference,
+      @JsonKey(name: 'year to date') final String? ytdValue}) = _$_AreaModel;
   const _AreaModel._() : super._();
 
   factory _AreaModel.fromJson(Map<String, dynamic> json) =
@@ -196,6 +249,11 @@ abstract class _AreaModel extends AreaModel {
   String? get values;
   @override
   String? get unit;
+  @override
+  String? get difference;
+  @override
+  @JsonKey(name: 'year to date')
+  String? get ytdValue;
   @override
   @JsonKey(ignore: true)
   _$$_AreaModelCopyWith<_$_AreaModel> get copyWith =>
