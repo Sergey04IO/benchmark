@@ -23,9 +23,9 @@ class _IndexCardState extends State<IndexCard>
   late AnimationController _controller;
   late CurvedAnimation _animation;
 
-  late Tween<double> _maxValueTween;
+  late Tween<double> _totalValueTween;
   late Tween<double> _diffValueTween;
-  late Animation<double> _maxValueAnimation;
+  late Animation<double> _totalValueAnimation;
   late Animation<double> _diffValueAnimation;
 
   @override
@@ -69,7 +69,7 @@ class _IndexCardState extends State<IndexCard>
   Widget _buildContent() {
     return Padding(
       padding: const EdgeInsets.fromLTRB(
-        10,
+        0,
         10,
         10,
         15,
@@ -89,15 +89,18 @@ class _IndexCardState extends State<IndexCard>
       children: [
         _buildTitle(),
         const SizedBox(height: 20),
-        _buildMainValue(),
-        const SizedBox(height: 8),
+        _buildTotalValue(),
+        const SizedBox(height: 2),
         _buildDifferenceValue(),
         const SizedBox(height: 20),
         ...widget.model.values.mapIndexed((index, element) {
           final max =
               widget.model.values.isNotEmpty ? widget.model.values.max : 0;
           return Padding(
-            padding: const EdgeInsets.only(bottom: 10),
+            padding: const EdgeInsets.only(
+              bottom: 10,
+              left: 10,
+            ),
             child: IndexChart(
               serial: index + 1,
               isLast: index + 1 == widget.model.values.length,
@@ -111,49 +114,63 @@ class _IndexCardState extends State<IndexCard>
   }
 
   Widget _buildTitle() {
-    return Text(
-      widget.model.title ?? '',
-      style: const TextStyle(
-        fontSize: 14,
-        color: AppColors.deepGreen,
-        fontWeight: FontWeight.bold,
+    return Padding(
+      padding: const EdgeInsets.only(left: 10),
+      child: Text(
+        widget.model.title ?? '',
+        style: const TextStyle(
+          fontSize: 14,
+          color: AppColors.deepGreen,
+          fontWeight: FontWeight.bold,
+        ),
+        softWrap: false,
+        maxLines: 1,
       ),
-      softWrap: false,
-      maxLines: 1,
     );
   }
 
-  Widget _buildMainValue() {
-    final max = _maxValueAnimation.value.toInt();
-    return Text(
-      '$max%',
-      style: const TextStyle(
-        fontSize: 24,
-        color: AppColors.primaryColor,
-        fontWeight: FontWeight.bold,
-        height: 1,
+  Widget _buildTotalValue() {
+    final total = _totalValueAnimation.value.toInt();
+    return Padding(
+      padding: const EdgeInsets.only(left: 10),
+      child: Text(
+        '$total%',
+        style: const TextStyle(
+          fontSize: 24,
+          color: AppColors.primaryColor,
+          fontWeight: FontWeight.bold,
+          height: 1,
+        ),
+        softWrap: false,
+        maxLines: 1,
       ),
-      softWrap: false,
-      maxLines: 1,
     );
   }
 
   Widget _buildDifferenceValue() {
     final diff = _diffValueAnimation.value.toInt();
-    return Row(
-      children: [
-        Text(
-          '-$diff%',
-          style: const TextStyle(
-            fontSize: 16,
+    return Padding(
+      padding: const EdgeInsets.only(left: 5),
+      child: Row(
+        children: [
+          Icon(
             color: AppColors.secondaryColor,
-            fontWeight: FontWeight.bold,
-            height: 1,
+            size: 25,
+            diff > 0 ? Icons.arrow_drop_up : Icons.arrow_drop_down,
           ),
-          softWrap: false,
-          maxLines: 1,
-        ),
-      ],
+          Text(
+            '$diff%',
+            style: const TextStyle(
+              fontSize: 16,
+              color: AppColors.secondaryColor,
+              fontWeight: FontWeight.bold,
+              height: 1,
+            ),
+            softWrap: false,
+            maxLines: 1,
+          ),
+        ],
+      ),
     );
   }
 
@@ -166,27 +183,27 @@ class _IndexCardState extends State<IndexCard>
       parent: _controller,
       curve: Curves.decelerate,
     );
-    _maxValueTween = Tween(
+    _totalValueTween = Tween(
       begin: 0,
-      end: _getMaxValue(),
+      end: _getTotalValue(),
     );
     _diffValueTween = Tween(
       begin: 0.0,
       end: _getDiffValue(),
     );
-    _maxValueAnimation = _maxValueTween.animate(_animation);
+    _totalValueAnimation = _totalValueTween.animate(_animation);
     _diffValueAnimation = _diffValueTween.animate(_animation);
   }
 
   void _updateValues() {
-    _maxValueTween.begin = _isAnimating(_maxValueAnimation)
-        ? _maxValueAnimation.value
-        : _maxValueTween.end;
+    _totalValueTween.begin = _isAnimating(_totalValueAnimation)
+        ? _totalValueAnimation.value
+        : _totalValueTween.end;
     _diffValueTween.begin = _isAnimating(_diffValueAnimation)
         ? _diffValueAnimation.value
         : _diffValueTween.end;
     _controller.reset();
-    _maxValueTween.end = _getMaxValue();
+    _totalValueTween.end = _getTotalValue();
     _diffValueTween.end = _getDiffValue();
     _controller.forward();
   }
@@ -195,7 +212,11 @@ class _IndexCardState extends State<IndexCard>
     return animation?.status == AnimationStatus.forward;
   }
 
-  double _getMaxValue() {
+  double _getTotalValue() {
+    if (widget.model.total != null) {
+      final value = widget.model.total!.toDouble();
+      return value;
+    }
     if (widget.model.values.isEmpty) {
       return 0;
     }
@@ -203,6 +224,10 @@ class _IndexCardState extends State<IndexCard>
   }
 
   double _getDiffValue() {
+    if (widget.model.difference != null) {
+      final value = widget.model.difference!.toDouble();
+      return value;
+    }
     if (widget.model.values.isEmpty) {
       return 0;
     }

@@ -11,6 +11,8 @@ class SectorIndexModel with _$SectorIndexModel {
     String? date,
     String? title,
     String? values,
+    String? total,
+    String? difference,
   }) = _SectorIndexModel;
 
   const SectorIndexModel._();
@@ -22,6 +24,8 @@ class SectorIndexModel with _$SectorIndexModel {
     return SectorIndexEntity(
       title: title,
       values: _getValues(),
+      total: num.tryParse(total ?? ''),
+      difference: num.tryParse(difference ?? ''),
     );
   }
 

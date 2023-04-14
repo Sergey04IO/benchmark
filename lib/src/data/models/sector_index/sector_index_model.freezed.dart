@@ -23,6 +23,8 @@ mixin _$SectorIndexModel {
   String? get date => throw _privateConstructorUsedError;
   String? get title => throw _privateConstructorUsedError;
   String? get values => throw _privateConstructorUsedError;
+  String? get total => throw _privateConstructorUsedError;
+  String? get difference => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,7 +38,12 @@ abstract class $SectorIndexModelCopyWith<$Res> {
           SectorIndexModel value, $Res Function(SectorIndexModel) then) =
       _$SectorIndexModelCopyWithImpl<$Res, SectorIndexModel>;
   @useResult
-  $Res call({String? date, String? title, String? values});
+  $Res call(
+      {String? date,
+      String? title,
+      String? values,
+      String? total,
+      String? difference});
 }
 
 /// @nodoc
@@ -55,6 +62,8 @@ class _$SectorIndexModelCopyWithImpl<$Res, $Val extends SectorIndexModel>
     Object? date = freezed,
     Object? title = freezed,
     Object? values = freezed,
+    Object? total = freezed,
+    Object? difference = freezed,
   }) {
     return _then(_value.copyWith(
       date: freezed == date
@@ -69,6 +78,14 @@ class _$SectorIndexModelCopyWithImpl<$Res, $Val extends SectorIndexModel>
           ? _value.values
           : values // ignore: cast_nullable_to_non_nullable
               as String?,
+      total: freezed == total
+          ? _value.total
+          : total // ignore: cast_nullable_to_non_nullable
+              as String?,
+      difference: freezed == difference
+          ? _value.difference
+          : difference // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -81,7 +98,12 @@ abstract class _$$_SectorIndexModelCopyWith<$Res>
       __$$_SectorIndexModelCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? date, String? title, String? values});
+  $Res call(
+      {String? date,
+      String? title,
+      String? values,
+      String? total,
+      String? difference});
 }
 
 /// @nodoc
@@ -98,6 +120,8 @@ class __$$_SectorIndexModelCopyWithImpl<$Res>
     Object? date = freezed,
     Object? title = freezed,
     Object? values = freezed,
+    Object? total = freezed,
+    Object? difference = freezed,
   }) {
     return _then(_$_SectorIndexModel(
       date: freezed == date
@@ -112,6 +136,14 @@ class __$$_SectorIndexModelCopyWithImpl<$Res>
           ? _value.values
           : values // ignore: cast_nullable_to_non_nullable
               as String?,
+      total: freezed == total
+          ? _value.total
+          : total // ignore: cast_nullable_to_non_nullable
+              as String?,
+      difference: freezed == difference
+          ? _value.difference
+          : difference // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -119,7 +151,9 @@ class __$$_SectorIndexModelCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_SectorIndexModel extends _SectorIndexModel {
-  const _$_SectorIndexModel({this.date, this.title, this.values}) : super._();
+  const _$_SectorIndexModel(
+      {this.date, this.title, this.values, this.total, this.difference})
+      : super._();
 
   factory _$_SectorIndexModel.fromJson(Map<String, dynamic> json) =>
       _$$_SectorIndexModelFromJson(json);
@@ -130,10 +164,14 @@ class _$_SectorIndexModel extends _SectorIndexModel {
   final String? title;
   @override
   final String? values;
+  @override
+  final String? total;
+  @override
+  final String? difference;
 
   @override
   String toString() {
-    return 'SectorIndexModel(date: $date, title: $title, values: $values)';
+    return 'SectorIndexModel(date: $date, title: $title, values: $values, total: $total, difference: $difference)';
   }
 
   @override
@@ -143,12 +181,16 @@ class _$_SectorIndexModel extends _SectorIndexModel {
             other is _$_SectorIndexModel &&
             (identical(other.date, date) || other.date == date) &&
             (identical(other.title, title) || other.title == title) &&
-            (identical(other.values, values) || other.values == values));
+            (identical(other.values, values) || other.values == values) &&
+            (identical(other.total, total) || other.total == total) &&
+            (identical(other.difference, difference) ||
+                other.difference == difference));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, date, title, values);
+  int get hashCode =>
+      Object.hash(runtimeType, date, title, values, total, difference);
 
   @JsonKey(ignore: true)
   @override
@@ -168,7 +210,9 @@ abstract class _SectorIndexModel extends SectorIndexModel {
   const factory _SectorIndexModel(
       {final String? date,
       final String? title,
-      final String? values}) = _$_SectorIndexModel;
+      final String? values,
+      final String? total,
+      final String? difference}) = _$_SectorIndexModel;
   const _SectorIndexModel._() : super._();
 
   factory _SectorIndexModel.fromJson(Map<String, dynamic> json) =
@@ -180,6 +224,10 @@ abstract class _SectorIndexModel extends SectorIndexModel {
   String? get title;
   @override
   String? get values;
+  @override
+  String? get total;
+  @override
+  String? get difference;
   @override
   @JsonKey(ignore: true)
   _$$_SectorIndexModelCopyWith<_$_SectorIndexModel> get copyWith =>

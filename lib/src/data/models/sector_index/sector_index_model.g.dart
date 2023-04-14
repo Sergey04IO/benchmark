@@ -11,6 +11,8 @@ _$_SectorIndexModel _$$_SectorIndexModelFromJson(Map<String, dynamic> json) =>
       date: json['date'] as String?,
       title: json['title'] as String?,
       values: json['values'] as String?,
+      total: json['total'] as String?,
+      difference: json['difference'] as String?,
     );
 
 Map<String, dynamic> _$$_SectorIndexModelToJson(_$_SectorIndexModel instance) =>
@@ -18,4 +20,6 @@ Map<String, dynamic> _$$_SectorIndexModelToJson(_$_SectorIndexModel instance) =>
       'date': instance.date,
       'title': instance.title,
       'values': instance.values,
+      'total': instance.total,
+      'difference': instance.difference,
     };

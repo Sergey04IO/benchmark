@@ -7,5 +7,7 @@ class SectorIndexEntity with _$SectorIndexEntity {
   const factory SectorIndexEntity({
     String? title,
     @Default([]) List<num> values,
+    num? total,
+    num? difference,
   }) = _SectorIndexEntity;
 }

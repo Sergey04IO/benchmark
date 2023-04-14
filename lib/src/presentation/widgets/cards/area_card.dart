@@ -32,9 +32,9 @@ class _AreaCardState extends State<AreaCard>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late CurvedAnimation _animation;
-  late Tween<double> _valueTween;
+  late Tween<double> _valueYTDTween;
   late Tween<double> _differenceTween;
-  late Animation<double> _valueAnimation;
+  late Animation<double> _valueYTDAnimation;
   late Animation<double> _differenceAnimation;
 
   final double cardMinHeight = 200;
@@ -57,14 +57,12 @@ class _AreaCardState extends State<AreaCard>
       parent: _controller,
       curve: Curves.decelerate,
     );
-    _valueTween = Tween(
+    _valueYTDTween = Tween(
       begin: 0.0,
-      end: widget.model.values.isNotEmpty
-          ? widget.model.values.last.toDouble()
-          : 0.0,
+      end: _getYTDValue(),
     );
     _differenceTween = Tween(begin: 0.0, end: _getDifference());
-    _valueAnimation = _valueTween.animate(_animation);
+    _valueYTDAnimation = _valueYTDTween.animate(_animation);
     _differenceAnimation = _differenceTween.animate(_animation);
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       _controller.forward();
@@ -160,7 +158,7 @@ class _AreaCardState extends State<AreaCard>
     final formatter = (model.values.isNotEmpty ? model.values.last : 0) < 100
         ? NumberFormat('#,###,##0.0')
         : NumberFormat('#,###,###');
-    String value = formatter.format(_valueAnimation.value);
+    String value = formatter.format(_valueYTDAnimation.value);
 
     if (!isEur) {
       value = '$value%';
@@ -242,7 +240,7 @@ class _AreaCardState extends State<AreaCard>
         }
       }
     }
-    if (difference == 0) text = '$text =';
+    if (difference == 0) text = '0';
 
     return Row(
       children: [
@@ -269,6 +267,10 @@ class _AreaCardState extends State<AreaCard>
   }
 
   double _getDifference() {
+    if (widget.model.difference != null) {
+      final value = widget.model.difference!.toDouble();
+      return value;
+    }
     double difference = 0;
     final points = widget.model.values;
     if (points.length > 1) {
@@ -279,16 +281,26 @@ class _AreaCardState extends State<AreaCard>
     return difference;
   }
 
+  double _getYTDValue() {
+    if (widget.model.ytdValue != null) {
+      final value = widget.model.ytdValue!.toDouble();
+      return value;
+    }
+    final value = widget.model.values.isNotEmpty
+        ? widget.model.values.last.toDouble()
+        : 0.0;
+    return value;
+  }
+
   void _updateValues() {
-    _valueTween.begin =
-        isAnimating(_valueAnimation) ? _valueAnimation.value : _valueTween.end;
+    _valueYTDTween.begin = isAnimating(_valueYTDAnimation)
+        ? _valueYTDAnimation.value
+        : _valueYTDTween.end;
     _differenceTween.begin = isAnimating(_differenceAnimation)
         ? _differenceAnimation.value
         : _differenceTween.end;
     _controller.reset();
-    _valueTween.end = widget.model.values.isNotEmpty
-        ? widget.model.values.last.toDouble()
-        : 0.0;
+    _valueYTDTween.end = _getYTDValue();
     _differenceTween.end = _getDifference();
     _controller.forward();
   }

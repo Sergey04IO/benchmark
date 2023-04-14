@@ -18,6 +18,8 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$SectorIndexEntity {
   String? get title => throw _privateConstructorUsedError;
   List<num> get values => throw _privateConstructorUsedError;
+  num? get total => throw _privateConstructorUsedError;
+  num? get difference => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SectorIndexEntityCopyWith<SectorIndexEntity> get copyWith =>
@@ -30,7 +32,7 @@ abstract class $SectorIndexEntityCopyWith<$Res> {
           SectorIndexEntity value, $Res Function(SectorIndexEntity) then) =
       _$SectorIndexEntityCopyWithImpl<$Res, SectorIndexEntity>;
   @useResult
-  $Res call({String? title, List<num> values});
+  $Res call({String? title, List<num> values, num? total, num? difference});
 }
 
 /// @nodoc
@@ -48,6 +50,8 @@ class _$SectorIndexEntityCopyWithImpl<$Res, $Val extends SectorIndexEntity>
   $Res call({
     Object? title = freezed,
     Object? values = null,
+    Object? total = freezed,
+    Object? difference = freezed,
   }) {
     return _then(_value.copyWith(
       title: freezed == title
@@ -58,6 +62,14 @@ class _$SectorIndexEntityCopyWithImpl<$Res, $Val extends SectorIndexEntity>
           ? _value.values
           : values // ignore: cast_nullable_to_non_nullable
               as List<num>,
+      total: freezed == total
+          ? _value.total
+          : total // ignore: cast_nullable_to_non_nullable
+              as num?,
+      difference: freezed == difference
+          ? _value.difference
+          : difference // ignore: cast_nullable_to_non_nullable
+              as num?,
     ) as $Val);
   }
 }
@@ -70,7 +82,7 @@ abstract class _$$_SectorIndexEntityCopyWith<$Res>
       __$$_SectorIndexEntityCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? title, List<num> values});
+  $Res call({String? title, List<num> values, num? total, num? difference});
 }
 
 /// @nodoc
@@ -86,6 +98,8 @@ class __$$_SectorIndexEntityCopyWithImpl<$Res>
   $Res call({
     Object? title = freezed,
     Object? values = null,
+    Object? total = freezed,
+    Object? difference = freezed,
   }) {
     return _then(_$_SectorIndexEntity(
       title: freezed == title
@@ -96,6 +110,14 @@ class __$$_SectorIndexEntityCopyWithImpl<$Res>
           ? _value._values
           : values // ignore: cast_nullable_to_non_nullable
               as List<num>,
+      total: freezed == total
+          ? _value.total
+          : total // ignore: cast_nullable_to_non_nullable
+              as num?,
+      difference: freezed == difference
+          ? _value.difference
+          : difference // ignore: cast_nullable_to_non_nullable
+              as num?,
     ));
   }
 }
@@ -103,7 +125,11 @@ class __$$_SectorIndexEntityCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_SectorIndexEntity implements _SectorIndexEntity {
-  const _$_SectorIndexEntity({this.title, final List<num> values = const []})
+  const _$_SectorIndexEntity(
+      {this.title,
+      final List<num> values = const [],
+      this.total,
+      this.difference})
       : _values = values;
 
   @override
@@ -118,8 +144,13 @@ class _$_SectorIndexEntity implements _SectorIndexEntity {
   }
 
   @override
+  final num? total;
+  @override
+  final num? difference;
+
+  @override
   String toString() {
-    return 'SectorIndexEntity(title: $title, values: $values)';
+    return 'SectorIndexEntity(title: $title, values: $values, total: $total, difference: $difference)';
   }
 
   @override
@@ -128,12 +159,15 @@ class _$_SectorIndexEntity implements _SectorIndexEntity {
         (other.runtimeType == runtimeType &&
             other is _$_SectorIndexEntity &&
             (identical(other.title, title) || other.title == title) &&
-            const DeepCollectionEquality().equals(other._values, _values));
+            const DeepCollectionEquality().equals(other._values, _values) &&
+            (identical(other.total, total) || other.total == total) &&
+            (identical(other.difference, difference) ||
+                other.difference == difference));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, title, const DeepCollectionEquality().hash(_values));
+  int get hashCode => Object.hash(runtimeType, title,
+      const DeepCollectionEquality().hash(_values), total, difference);
 
   @JsonKey(ignore: true)
   @override
@@ -145,12 +179,19 @@ class _$_SectorIndexEntity implements _SectorIndexEntity {
 
 abstract class _SectorIndexEntity implements SectorIndexEntity {
   const factory _SectorIndexEntity(
-      {final String? title, final List<num> values}) = _$_SectorIndexEntity;
+      {final String? title,
+      final List<num> values,
+      final num? total,
+      final num? difference}) = _$_SectorIndexEntity;
 
   @override
   String? get title;
   @override
   List<num> get values;
+  @override
+  num? get total;
+  @override
+  num? get difference;
   @override
   @JsonKey(ignore: true)
   _$$_SectorIndexEntityCopyWith<_$_SectorIndexEntity> get copyWith =>
