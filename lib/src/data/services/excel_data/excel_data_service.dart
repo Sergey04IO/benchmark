@@ -4,21 +4,13 @@ import 'package:collection/collection.dart';
 import 'package:excel/excel.dart';
 import 'package:injectable/injectable.dart';
 
-// abstract class ExcelDataService {
-//   Future<void> init({Excel? file});
-//   Future<List<Map<String, String>>?> getTornadoRows();
-//   Future<List<Map<String, String>>?> getAreasRows();
-//   Future<List<Map<String, String>>?> getSectorsOverviewRows();
-//   Future<List<Map<String, String>>?> getSectorsIndexRows();
-// }
-
 @Named('ExcelDataService')
 @LazySingleton(as: DataSourceService, env: [Environment.prod])
 class ExcelDataService implements DataSourceService {
-  final tornadoSheetName = 'tornado';
-  final areasSheetName = 'areas';
-  final sectorsOverviewSheetName = 'sectors overview';
-  final sectorsIndexSheetName = 'sectors index';
+  final _tornadoSheetName = 'tornado';
+  final _areasSheetName = 'areas';
+  final _sectorsOverviewSheetName = 'sectors overview';
+  final _sectorsIndexSheetName = 'sectors index';
 
   Excel? _excelFile;
 
@@ -30,7 +22,7 @@ class ExcelDataService implements DataSourceService {
   @override
   Future<List<Map<String, String>>?> getTornadoRows() async {
     try {
-      final data = getAllRows(worksheetName: tornadoSheetName);
+      final data = getAllRows(worksheetName: _tornadoSheetName);
       return data;
     } catch (e) {
       rethrow;
@@ -40,7 +32,7 @@ class ExcelDataService implements DataSourceService {
   @override
   Future<List<Map<String, String>>?> getAreasRows() {
     try {
-      final data = getAllRows(worksheetName: areasSheetName);
+      final data = getAllRows(worksheetName: _areasSheetName);
       return data;
     } catch (e) {
       rethrow;
@@ -50,7 +42,7 @@ class ExcelDataService implements DataSourceService {
   @override
   Future<List<Map<String, String>>?> getSectorsOverviewRows() {
     try {
-      final data = getAllRows(worksheetName: sectorsOverviewSheetName);
+      final data = getAllRows(worksheetName: _sectorsOverviewSheetName);
       return data;
     } catch (e) {
       rethrow;
@@ -60,7 +52,7 @@ class ExcelDataService implements DataSourceService {
   @override
   Future<List<Map<String, String>>?> getSectorsIndexRows() {
     try {
-      final data = getAllRows(worksheetName: sectorsIndexSheetName);
+      final data = getAllRows(worksheetName: _sectorsIndexSheetName);
       return data;
     } catch (e) {
       rethrow;

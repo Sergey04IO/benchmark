@@ -1,13 +1,6 @@
+import 'package:benchmark/src/domain/services/local_storage_service.dart';
 import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-abstract class LocalStorageService {
-  Future<bool> saveFile(String key, List<int> bytes);
-  Future<List<int>?> getFile(String key);
-  Future<bool> saveString(String key, String value);
-  Future<String?> getString(String key);
-  Future<bool> removeKey(String key);
-}
 
 @LazySingleton(as: LocalStorageService, env: [Environment.prod])
 class SharedPrefsService implements LocalStorageService {

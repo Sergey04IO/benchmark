@@ -47,4 +47,4 @@ app.*.map.json
 /.vscode/
 
 # Api keys
-/lib/src/app/core/api_keys/gsheets_api_keys.dart
+/lib/src/app/core/keys/api_keys/

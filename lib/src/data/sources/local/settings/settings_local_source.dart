@@ -1,8 +1,8 @@
 import 'dart:convert';
 
-import 'package:benchmark/src/app/core/api_keys/shared_prefs_keys.dart';
 import 'package:benchmark/src/app/core/errors/exceptions.dart';
-import 'package:benchmark/src/data/services/local_storage/local_storage_service.dart';
+import 'package:benchmark/src/app/core/keys/local_keys/shared_prefs_keys.dart';
+import 'package:benchmark/src/domain/services/local_storage_service.dart';
 import 'package:benchmark/src/presentation/models/helper_models/config_file/config_excel_file_model.dart';
 import 'package:injectable/injectable.dart';
 
@@ -21,21 +21,6 @@ class SettingsLocalSourceImpl implements SettingsLocalSource {
 
   final LocalStorageService _storageService;
 
-  // @override
-  // Future<bool> saveConfigFile(ConfigExcelFileModel file) async {
-  //   try {
-  //     final bytes = file.excelFile?.encode();
-  //     if (bytes == null) return false;
-
-  //     final result = await _storageService.saveFile(
-  //       SharedPrefsKeys.configFileKey,
-  //       bytes,
-  //     );
-  //     return result;
-  //   } catch (e) {
-  //     throw CacheException(error: '$e');
-  //   }
-  // }
   @override
   Future<bool> saveConfigFile(ConfigExcelFileModel file) async {
     try {
@@ -53,20 +38,6 @@ class SettingsLocalSourceImpl implements SettingsLocalSource {
     }
   }
 
-  // @override
-  // Future<Excel?> getConfigFile() async {
-  //   try {
-  //     final result = await _storageService.getFile(
-  //       SharedPrefsKeys.configFileKey,
-  //     );
-  //     if (result == null) return null;
-
-  //     final file = Excel.decodeBytes(result);
-  //     return file;
-  //   } catch (e) {
-  //     throw CacheException(error: '$e');
-  //   }
-  // }
   @override
   Future<ConfigExcelFileModel?> getConfigFile() async {
     try {

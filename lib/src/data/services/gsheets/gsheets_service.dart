@@ -1,5 +1,5 @@
-import 'package:benchmark/src/app/core/api_keys/gsheets_api_keys.dart';
 import 'package:benchmark/src/app/core/errors/exceptions.dart';
+import 'package:benchmark/src/app/core/keys/api_keys/gsheets_api_keys.dart';
 import 'package:benchmark/src/data/services/connectivity/connectivity_service.dart';
 import 'package:benchmark/src/domain/services/data_source_service.dart';
 import 'package:collection/collection.dart';
@@ -7,14 +7,6 @@ import 'package:excel/excel.dart';
 import 'package:flutter/material.dart';
 import 'package:gsheets/gsheets.dart';
 import 'package:injectable/injectable.dart';
-
-// abstract class GsheetsService {
-//   Future<void> init();
-//   Future<List<Map<String, String>>?> getTornadoRows();
-//   Future<List<Map<String, String>>?> getAreasRows();
-//   Future<List<Map<String, String>>?> getSectorsOverviewRows();
-//   Future<List<Map<String, String>>?> getSectorsIndexRows();
-// }
 
 @Named('GsheetsService')
 @LazySingleton(as: DataSourceService, env: [Environment.prod])
@@ -29,18 +21,18 @@ class GsheetsService implements DataSourceService {
   Spreadsheet? _spreadsheet;
   final List<Worksheet> _worksheets = [];
 
-  bool isInitialized = false;
+  bool _isInitialized = false;
 
   @override
   Future<void> init({Excel? file}) async {
     try {
       final hasInternet = await _connectivityService.hasInternet();
-      if (isInitialized || !hasInternet) return;
+      if (_isInitialized || !hasInternet) return;
       _gsheets = GSheets(_credentials);
       _spreadsheet = await _gsheets?.spreadsheet(_spreadsheetId);
       final worksheets = _getWorksheets();
       _worksheets.addAll(worksheets);
-      isInitialized = true;
+      _isInitialized = true;
     } catch (e) {
       debugPrint('$this Exception.\nInitialization error!\n$e');
     }

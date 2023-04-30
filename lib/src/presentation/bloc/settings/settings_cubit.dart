@@ -29,15 +29,19 @@ class SettingsCubit extends Cubit<SettingsState> {
       await _settingsRepository.saveConfigDataSource(dataSource);
       await _settingsRepository.saveConfigFile(model);
       if (model?.excel == null) {
+        emit(const SettingsState.clearState());
         emit(const SettingsState.gsheetsData());
         return;
       }
       if (dataSource == null || dataSource.isGsheets) {
+        emit(const SettingsState.clearState());
         emit(const SettingsState.gsheetsData());
       } else {
+        emit(const SettingsState.clearState());
         emit(SettingsState.excelData(model));
       }
     } catch (e) {
+      emit(const SettingsState.clearState());
       emit(const SettingsState.settingsError('Data source getting error!'));
     }
   }
@@ -49,17 +53,21 @@ class SettingsCubit extends Cubit<SettingsState> {
       configDataSource = dataSource;
       fileModel = file;
       if (dataSource == null || file?.excel == null) {
+        emit(const SettingsState.clearState());
         emit(const SettingsState.gsheetsData());
         return ConfigDataSource.gsheets;
       }
       if (dataSource.isExcel) {
+        emit(const SettingsState.clearState());
         emit(SettingsState.excelData(file));
         return ConfigDataSource.excel;
       } else {
+        emit(const SettingsState.clearState());
         emit(const SettingsState.gsheetsData());
         return ConfigDataSource.gsheets;
       }
     } catch (e) {
+      emit(const SettingsState.clearState());
       emit(const SettingsState.settingsError('Data source getting error!'));
       return null;
     }
