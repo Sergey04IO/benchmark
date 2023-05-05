@@ -78,18 +78,6 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _buildContent(HomeUIModel model) {
-    return _buildScaffold(
-      title: RadioButtons(
-        values: model.dates,
-        onSelected: (value) {
-          _cubit.onSelectedDate(value);
-        },
-      ),
-      child: _buildBody(model),
-    );
-  }
-
   Widget _buildLoading() {
     return _buildScaffold(
       child: const CommonLoadingIndicator(),
@@ -101,6 +89,18 @@ class _HomePageState extends State<HomePage> {
       child: Center(
         child: Text(error),
       ),
+    );
+  }
+
+  Widget _buildContent(HomeUIModel model) {
+    return _buildScaffold(
+      title: RadioButtons(
+        values: model.dates,
+        onSelected: (value) {
+          _cubit.onSelectedDate(value);
+        },
+      ),
+      child: _buildBody(model),
     );
   }
 

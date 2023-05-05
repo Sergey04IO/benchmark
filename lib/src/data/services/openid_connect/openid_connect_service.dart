@@ -3,6 +3,7 @@ import 'package:benchmark/src/app/core/keys/api_keys/openid_connect_keys.dart';
 import 'package:benchmark/src/domain/services/sso_service.dart';
 import 'package:injectable/injectable.dart';
 import 'package:openid_client/openid_client_browser.dart';
+import 'package:universal_html/html.dart' as html;
 
 @LazySingleton(as: SSOService, env: [Environment.prod])
 class OpenIdConnectService implements SSOService {
@@ -33,8 +34,26 @@ class OpenIdConnectService implements SSOService {
   @override
   Future<void> authorize() async {
     try {
-      if (_authenticator == null) return;
       _authenticator?.authorize();
+    } catch (e) {
+      throw const ApiException(error: 'Open Id Connect authorization error!');
+    }
+  }
+
+  @override
+  Future<void> logout() async {
+    try {
+      _authenticator?.logout();
+    } catch (e) {
+      throw const ApiException(error: 'Open Id Connect authorization error!');
+    }
+  }
+
+  @override
+  Future<void> retryAuthorizeAfterError() async {
+    try {
+      const link = OpenIdConnectKeys.retryAuthLink;
+      html.window.location.href = link.toString();
     } catch (e) {
       throw const ApiException(error: 'Open Id Connect authorization error!');
     }

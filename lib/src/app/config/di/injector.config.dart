@@ -9,7 +9,7 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:benchmark/src/app/config/di/app_module.dart' as _i22;
+import 'package:benchmark/src/app/config/di/app_module.dart' as _i24;
 import 'package:benchmark/src/data/repositories/home_repository_impl.dart'
     as _i8;
 import 'package:benchmark/src/data/repositories/openid_connect_repository_impl.dart.dart'
@@ -18,6 +18,8 @@ import 'package:benchmark/src/data/repositories/settings_repository_impl.dart'
     as _i19;
 import 'package:benchmark/src/data/services/connectivity/connectivity_service.dart'
     as _i3;
+import 'package:benchmark/src/data/services/deeplinks/deeplinks_service_impl.dart'
+    as _i22;
 import 'package:benchmark/src/data/services/excel_data/excel_data_service.dart'
     as _i5;
 import 'package:benchmark/src/data/services/gsheets/gsheets_service.dart'
@@ -34,13 +36,14 @@ import 'package:benchmark/src/domain/repositories/openid_connect_repository.dart
 import 'package:benchmark/src/domain/repositories/settings_repository.dart'
     as _i18;
 import 'package:benchmark/src/domain/services/data_source_service.dart' as _i4;
+import 'package:benchmark/src/domain/services/deeplinks_service.dart' as _i21;
 import 'package:benchmark/src/domain/services/local_storage_service.dart'
     as _i13;
 import 'package:benchmark/src/domain/services/sso_service.dart' as _i9;
 import 'package:benchmark/src/presentation/bloc/auth/auth_cubit.dart' as _i20;
 import 'package:benchmark/src/presentation/bloc/home/home_cubit.dart' as _i12;
 import 'package:benchmark/src/presentation/bloc/settings/settings_cubit.dart'
-    as _i21;
+    as _i23;
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 import 'package:shared_preferences/shared_preferences.dart' as _i11;
@@ -104,10 +107,14 @@ extension GetItInjectableX on _i1.GetIt {
     );
     gh.factory<_i20.AuthCubit>(
         () => _i20.AuthCubit(gh<_i15.OpenIdConnectRepository>()));
-    gh.lazySingleton<_i21.SettingsCubit>(
-        () => _i21.SettingsCubit(gh<_i18.SettingsRepository>()));
+    gh.singleton<_i21.DeeplinksService>(
+      _i22.DeeplinksServiceImpl(gh<_i15.OpenIdConnectRepository>()),
+      registerFor: {_prod},
+    );
+    gh.lazySingleton<_i23.SettingsCubit>(
+        () => _i23.SettingsCubit(gh<_i18.SettingsRepository>()));
     return this;
   }
 }
 
-class _$AppModule extends _i22.AppModule {}
+class _$AppModule extends _i24.AppModule {}

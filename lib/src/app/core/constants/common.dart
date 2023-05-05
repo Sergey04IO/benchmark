@@ -4,4 +4,6 @@ class CommonConstants {
 
   static const appName = 'Benchmark';
   static const appTitle = 'Benchmark Demo';
+
+  static const isUsedSSO = true;
 }

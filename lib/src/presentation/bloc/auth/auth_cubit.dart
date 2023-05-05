@@ -24,12 +24,17 @@ class AuthCubit extends Cubit<AuthState> {
 
   Future<void> authorize() async {
     try {
-      final redirectUrl =
-          _openIdConnectRepository.authenticator?.flow.redirectUri;
-      print('redirectUrl: $redirectUrl');
       await _openIdConnectRepository.authorize();
     } catch (e) {
       debugPrint('authorize OpenId Connect error!');
+    }
+  }
+
+  Future<void> logout() async {
+    try {
+      await _openIdConnectRepository.logout();
+    } catch (e) {
+      debugPrint('logout OpenId Connect error!');
     }
   }
 
@@ -49,6 +54,15 @@ class AuthCubit extends Cubit<AuthState> {
     try {
       final credential = _openIdConnectRepository.credential;
       return credential != null;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  bool isAccessDenied() {
+    try {
+      final isDenied = _openIdConnectRepository.isAccessDenied;
+      return isDenied;
     } catch (e) {
       return false;
     }

@@ -4,6 +4,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:benchmark/src/app/config/di/injector.dart';
 import 'package:benchmark/src/app/config/navigation/app_router/app_router.dart';
 import 'package:benchmark/src/app/config/navigation/observers/main_router_observer.dart';
+import 'package:benchmark/src/app/config/navigation/routes_data/routes_paths.dart';
 import 'package:benchmark/src/app/core/constants/common.dart';
 import 'package:benchmark/src/app/core/theme/theme_data/theme.data.dart';
 import 'package:benchmark/src/presentation/bloc/auth/auth_cubit.dart';
@@ -36,15 +37,21 @@ class App extends StatelessWidget {
           return [MainRouterObserver(context)];
         },
         neglectWhen: (location) {
-          print('location: $location');
-          return location == '/splash';
+          return location == RoutesPaths.splashRoutePath;
         },
         deepLinkBuilder: (deepLink) async {
+          if (!CommonConstants.isUsedSSO) return deepLink;
+
           final isAuthorized = _authCubit.isAuthorized();
-          print('isAuthorized: $isAuthorized');
-          if (!isAuthorized) {
+          final isAccessDenied = _authCubit.isAccessDenied();
+          if (!isAuthorized && !isAccessDenied) {
             await _authCubit.authorize();
             return const DeepLink([SplashRoute()]);
+          }
+          if (!isAuthorized && isAccessDenied) {
+            return DeepLink(
+              [AccessDeniedRoute(title: 'Access Denied!')],
+            );
           }
 
           return deepLink;
