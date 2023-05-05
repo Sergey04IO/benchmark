@@ -4,7 +4,7 @@ import 'package:benchmark/src/domain/repositories/openid_connect_repository.dart
 import 'package:benchmark/src/domain/services/deeplinks_service.dart';
 import 'package:flutter/services.dart';
 import 'package:injectable/injectable.dart';
-import 'package:uni_links/uni_links.dart';
+import 'package:universal_html/html.dart' as html;
 
 @Singleton(as: DeeplinksService, env: [Environment.prod])
 class DeeplinksServiceImpl implements DeeplinksService {
@@ -18,7 +18,7 @@ class DeeplinksServiceImpl implements DeeplinksService {
   Future<bool> initDeeplinks() async {
     String? initialLink;
     try {
-      initialLink = await getInitialLink();
+      initialLink = html.window.location.href;
     } on PlatformException {
       // No-op
     }
