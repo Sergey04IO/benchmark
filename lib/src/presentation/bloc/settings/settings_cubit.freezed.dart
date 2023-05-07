@@ -109,12 +109,18 @@ class __$$_InitialCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
+class _$_Initial with DiagnosticableTreeMixin implements _Initial {
   const _$_Initial();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'SettingsState.initial()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'SettingsState.initial'));
   }
 
   @override
@@ -229,12 +235,18 @@ class __$$GsheetsDataCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$GsheetsData implements GsheetsData {
+class _$GsheetsData with DiagnosticableTreeMixin implements GsheetsData {
   const _$GsheetsData();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'SettingsState.gsheetsData()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'SettingsState.gsheetsData'));
   }
 
   @override
@@ -364,15 +376,23 @@ class __$$ExcelDataCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ExcelData implements ExcelData {
+class _$ExcelData with DiagnosticableTreeMixin implements ExcelData {
   const _$ExcelData(this.file);
 
   @override
   final ConfigExcelFileModel? file;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'SettingsState.excelData(file: $file)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'SettingsState.excelData'))
+      ..add(DiagnosticsProperty('file', file));
   }
 
   @override
@@ -515,15 +535,23 @@ class __$$SettingsErrorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SettingsError implements SettingsError {
+class _$SettingsError with DiagnosticableTreeMixin implements SettingsError {
   const _$SettingsError(this.message);
 
   @override
   final String message;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'SettingsState.settingsError(message: $message)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'SettingsState.settingsError'))
+      ..add(DiagnosticsProperty('message', message));
   }
 
   @override
@@ -651,12 +679,18 @@ class __$$_ClearStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ClearState implements _ClearState {
+class _$_ClearState with DiagnosticableTreeMixin implements _ClearState {
   const _$_ClearState();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'SettingsState.clearState()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'SettingsState.clearState'));
   }
 
   @override

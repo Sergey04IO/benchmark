@@ -1,6 +1,8 @@
+import 'package:benchmark/src/app/core/constants/common.dart';
 import 'package:benchmark/src/app/core/enums/config_data_source.dart';
 import 'package:benchmark/src/domain/repositories/settings_repository.dart';
 import 'package:benchmark/src/presentation/models/helper_models/config_file/config_excel_file_model.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -70,6 +72,24 @@ class SettingsCubit extends Cubit<SettingsState> {
       emit(const SettingsState.clearState());
       emit(const SettingsState.settingsError('Data source getting error!'));
       return null;
+    }
+  }
+
+  Future<void> firebaseRemoteConfigInit() async {
+    try {
+      await _settingsRepository.firebaseRemoteConfigInit();
+    } catch (e) {
+      debugPrint('Firebase remote config init error');
+    }
+  }
+
+  bool isUsedSSO() {
+    try {
+      final settings = _settingsRepository.getAppSettings();
+      return settings?.isUsedSSO ?? CommonConstants.isUsedSSO;
+    } catch (e) {
+      debugPrint('Firebase remote config init error');
+      return CommonConstants.isUsedSSO;
     }
   }
 }

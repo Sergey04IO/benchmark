@@ -8,6 +8,7 @@ import 'package:benchmark/src/app/config/navigation/routes_data/routes_paths.dar
 import 'package:benchmark/src/app/core/constants/common.dart';
 import 'package:benchmark/src/app/core/theme/theme_data/theme.data.dart';
 import 'package:benchmark/src/presentation/bloc/auth/auth_cubit.dart';
+import 'package:benchmark/src/presentation/bloc/settings/settings_cubit.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +19,7 @@ class App extends StatelessWidget {
   final _appRouter = AppRouter();
 
   final _authCubit = getIt<AuthCubit>();
+  final _settingsCubit = getIt<SettingsCubit>();
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +42,8 @@ class App extends StatelessWidget {
           return location == RoutesPaths.splashRoutePath;
         },
         deepLinkBuilder: (deepLink) async {
-          if (!CommonConstants.isUsedSSO) return deepLink;
+          final isUsedSSO = _settingsCubit.isUsedSSO();
+          if (!isUsedSSO) return deepLink;
 
           final isAuthorized = _authCubit.isAuthorized();
           final isAccessDenied = _authCubit.isAccessDenied();

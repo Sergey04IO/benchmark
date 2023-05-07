@@ -1,6 +1,6 @@
 import 'package:benchmark/src/app/core/errors/exceptions.dart';
 import 'package:benchmark/src/app/core/keys/api_keys/gsheets_api_keys.dart';
-import 'package:benchmark/src/data/services/connectivity/connectivity_service.dart';
+import 'package:benchmark/src/data/services/connectivity_service.dart';
 import 'package:benchmark/src/domain/services/data_source_service.dart';
 import 'package:collection/collection.dart';
 import 'package:excel/excel.dart';

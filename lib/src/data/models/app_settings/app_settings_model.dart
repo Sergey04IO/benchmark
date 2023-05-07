@@ -1,0 +1,23 @@
+import 'package:benchmark/src/domain/entities/app_settings/app_settings_entity.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+part 'app_settings_model.freezed.dart';
+part 'app_settings_model.g.dart';
+
+@freezed
+class AppSettingsModel with _$AppSettingsModel {
+  const factory AppSettingsModel({
+    @Default(false) bool isUsedSSO,
+  }) = _AppSettingsModel;
+
+  factory AppSettingsModel.fromJson(Map<String, dynamic> json) =>
+      _$AppSettingsModelFromJson(json);
+
+  const AppSettingsModel._();
+
+  AppSettingsEntity toEntity() {
+    return AppSettingsEntity(
+      isUsedSSO: isUsedSSO,
+    );
+  }
+}

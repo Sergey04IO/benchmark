@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "625385837276",
+    "project_id": "benchmark-a5adb",
+    "storage_bucket": "benchmark-a5adb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:625385837276:android:8eeb0957a2b284f2525a19",
+        "android_client_info": {
+          "package_name": "com.example.benchmark"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "625385837276-abgt41dqu5fdb0gq9q9crn2pt3naju33.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDmqJdyZ2PVlob6nYok0rWR15APuLjFhT0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "625385837276-abgt41dqu5fdb0gq9q9crn2pt3naju33.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
