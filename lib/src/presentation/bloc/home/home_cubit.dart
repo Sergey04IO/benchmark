@@ -40,15 +40,14 @@ class HomeCubit extends Cubit<HomeState> {
 
       emit(const HomeState.loading());
       await _init(excelFile: excelFile);
-      _tornadoData = await _homeRepository.getTornadoData();
-      _areasData = await _homeRepository.getAreasData();
-      _sectorsOverviewData = await _homeRepository.getSectorsOverviewData();
-      _sectorsIndexData = await _homeRepository.getSectorsIndexData();
+      _tornadoData = await _getTornadoData();
+      _areasData = await _getAreasData();
+      _sectorsOverviewData = await _getSectorsOverviewData();
+      _sectorsIndexData = await _getSectorsIndexData();
       _getDates();
       _handleData();
     } catch (e) {
       _handleError();
-      debugPrint('Error! $this');
     }
   }
 
@@ -58,6 +57,42 @@ class HomeCubit extends Cubit<HomeState> {
     } else {
       await _homeRepository.init(ConfigDataSource.gsheets);
     }
+  }
+
+  Future<Map<String, List<TornadoEntity>>?> _getTornadoData() async {
+    final dataOrFailure = await _homeRepository.getTornadoData();
+    final result = dataOrFailure.fold(
+      (failure) => null,
+      (data) => data,
+    );
+    return result;
+  }
+
+  Future<Map<String, List<AreaEntity>>?> _getAreasData() async {
+    final dataOrFailure = await _homeRepository.getAreasData();
+    final result = dataOrFailure.fold(
+      (failure) => null,
+      (data) => data,
+    );
+    return result;
+  }
+
+  Future<Map<String, SectorOverviewCluster>?> _getSectorsOverviewData() async {
+    final dataOrFailure = await _homeRepository.getSectorsOverviewData();
+    final result = dataOrFailure.fold(
+      (failure) => null,
+      (data) => data,
+    );
+    return result;
+  }
+
+  Future<Map<String, List<SectorIndexEntity>>?> _getSectorsIndexData() async {
+    final dataOrFailure = await _homeRepository.getSectorsIndexData();
+    final result = dataOrFailure.fold(
+      (failure) => null,
+      (data) => data,
+    );
+    return result;
   }
 
   void onSelectedDate(String date) {

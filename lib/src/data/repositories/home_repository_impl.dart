@@ -1,4 +1,5 @@
 import 'package:benchmark/src/app/core/enums/config_data_source.dart';
+import 'package:benchmark/src/app/core/errors/failures.dart';
 import 'package:benchmark/src/data/models/area/area_model.dart';
 import 'package:benchmark/src/data/models/sector_index/sector_index_model.dart';
 import 'package:benchmark/src/data/models/sector_overview/sector_overview_model.dart';
@@ -9,14 +10,16 @@ import 'package:benchmark/src/domain/entities/area/area_entity.dart';
 import 'package:benchmark/src/domain/entities/sector_index/sector_index_entity.dart';
 import 'package:benchmark/src/domain/entities/sector_overview/cluster/sector_overview_cluster.dart';
 import 'package:benchmark/src/domain/entities/tornado/tornado_entity.dart';
+import 'package:benchmark/src/domain/repositories/base/base_repository.dart';
 import 'package:benchmark/src/domain/repositories/home_repository.dart';
 import 'package:benchmark/src/domain/services/data_source_service.dart';
 import 'package:collection/collection.dart';
+import 'package:dartz/dartz.dart';
 import 'package:excel/excel.dart';
 import 'package:injectable/injectable.dart';
 
 @LazySingleton(as: HomeRepository, env: [Environment.prod])
-class HomeRepositoryImpl implements HomeRepository {
+class HomeRepositoryImpl extends BaseRepository implements HomeRepository {
   HomeRepositoryImpl(
     @Named.from(GsheetsService) this._gsheetsService,
     @Named.from(ExcelDataService) this._excelDataService,
@@ -41,12 +44,18 @@ class HomeRepositoryImpl implements HomeRepository {
   }
 
   @override
-  Future<Map<String, List<TornadoEntity>>?> getTornadoData() async {
+  Future<Either<Failure, Map<String, List<TornadoEntity>>>>
+      getTornadoData() async {
     try {
+      const emptyDataFailure =
+          EmptyDataFailure(message: 'Tornado data is Empty');
+
       final rows = await _service?.getTornadoRows();
-      if (rows == null) return null;
+      if (rows == null) return const Left(emptyDataFailure);
+
       final grouped = _groupBy(rows);
-      if (grouped == null) return null;
+      if (grouped == null) return const Left(emptyDataFailure);
+
       final entities = grouped.map<String, List<TornadoEntity>>(
         (key, value) {
           final entities = value
@@ -56,19 +65,23 @@ class HomeRepositoryImpl implements HomeRepository {
           return MapEntry(key, entities);
         },
       );
-      return entities;
+      return Right(entities);
     } catch (e) {
-      rethrow;
+      return Left(await super.catchError(e));
     }
   }
 
   @override
-  Future<Map<String, List<AreaEntity>>?> getAreasData() async {
+  Future<Either<Failure, Map<String, List<AreaEntity>>>> getAreasData() async {
     try {
+      const emptyDataFailure = EmptyDataFailure(message: 'Areas data is Empty');
+
       final rows = await _service?.getAreasRows();
-      if (rows == null) return null;
+      if (rows == null) return const Left(emptyDataFailure);
+
       final grouped = _groupBy(rows);
-      if (grouped == null) return null;
+      if (grouped == null) return const Left(emptyDataFailure);
+
       final entities = grouped.map<String, List<AreaEntity>>(
         (key, value) {
           final entities = value
@@ -78,19 +91,25 @@ class HomeRepositoryImpl implements HomeRepository {
           return MapEntry(key, entities);
         },
       );
-      return entities;
+      return Right(entities);
     } catch (e) {
-      rethrow;
+      return Left(await super.catchError(e));
     }
   }
 
   @override
-  Future<Map<String, SectorOverviewCluster>?> getSectorsOverviewData() async {
+  Future<Either<Failure, Map<String, SectorOverviewCluster>>>
+      getSectorsOverviewData() async {
     try {
+      const emptyDataFailure =
+          EmptyDataFailure(message: 'Sectors overview data is Empty');
+
       final rows = await _service?.getSectorsOverviewRows();
-      if (rows == null) return null;
+      if (rows == null) return const Left(emptyDataFailure);
+
       final grouped = _groupBy(rows);
-      if (grouped == null) return null;
+      if (grouped == null) return const Left(emptyDataFailure);
+
       final models = grouped.map<String, SectorOverviewCluster>(
         (key, value) {
           final entities = value
@@ -107,19 +126,25 @@ class HomeRepositoryImpl implements HomeRepository {
           return MapEntry(key, cluster);
         },
       );
-      return models;
+      return Right(models);
     } catch (e) {
-      rethrow;
+      return Left(await super.catchError(e));
     }
   }
 
   @override
-  Future<Map<String, List<SectorIndexEntity>>?> getSectorsIndexData() async {
+  Future<Either<Failure, Map<String, List<SectorIndexEntity>>>>
+      getSectorsIndexData() async {
     try {
+      const emptyDataFailure =
+          EmptyDataFailure(message: 'Sectors overview data is Empty');
+
       final rows = await _service?.getSectorsIndexRows();
-      if (rows == null) return null;
+      if (rows == null) return const Left(emptyDataFailure);
+
       final grouped = _groupBy(rows);
-      if (grouped == null) return null;
+      if (grouped == null) return const Left(emptyDataFailure);
+
       final entities = grouped.map<String, List<SectorIndexEntity>>(
         (key, value) {
           final entities = value
@@ -129,9 +154,9 @@ class HomeRepositoryImpl implements HomeRepository {
           return MapEntry(key, entities);
         },
       );
-      return entities;
+      return Right(entities);
     } catch (e) {
-      rethrow;
+      return Left(await super.catchError(e));
     }
   }
 
