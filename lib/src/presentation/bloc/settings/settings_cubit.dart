@@ -1,5 +1,6 @@
 import 'package:benchmark/src/app/core/constants/common.dart';
 import 'package:benchmark/src/app/core/enums/config_data_source.dart';
+import 'package:benchmark/src/app/core/enums/initial_page.dart';
 import 'package:benchmark/src/domain/repositories/settings_repository.dart';
 import 'package:benchmark/src/presentation/models/helper_models/config_file/config_excel_file_model.dart';
 import 'package:flutter/foundation.dart';
@@ -90,6 +91,16 @@ class SettingsCubit extends Cubit<SettingsState> {
     } catch (e) {
       debugPrint('Firebase remote config init error');
       return CommonConstants.isUsedSSO;
+    }
+  }
+
+  InitialPage getInitialPage() {
+    try {
+      final settings = _settingsRepository.getAppSettings();
+      return settings?.initialPage ?? InitialPage.home;
+    } catch (e) {
+      debugPrint('Firebase remote config init error');
+      return InitialPage.home;
     }
   }
 }

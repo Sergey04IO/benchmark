@@ -38,6 +38,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const HomePage(),
       );
     },
+    CommandCenterDashboardRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const CommandCenterDashboardPage(),
+      );
+    },
   };
 }
 
@@ -103,6 +109,20 @@ class HomeRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'HomeRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [CommandCenterDashboardPage]
+class CommandCenterDashboardRoute extends PageRouteInfo<void> {
+  const CommandCenterDashboardRoute({List<PageRouteInfo>? children})
+      : super(
+          CommandCenterDashboardRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'CommandCenterDashboardRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

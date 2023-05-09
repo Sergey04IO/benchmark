@@ -21,6 +21,7 @@ AppSettingsModel _$AppSettingsModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$AppSettingsModel {
   bool get isUsedSSO => throw _privateConstructorUsedError;
+  InitialPage get initialPage => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +35,7 @@ abstract class $AppSettingsModelCopyWith<$Res> {
           AppSettingsModel value, $Res Function(AppSettingsModel) then) =
       _$AppSettingsModelCopyWithImpl<$Res, AppSettingsModel>;
   @useResult
-  $Res call({bool isUsedSSO});
+  $Res call({bool isUsedSSO, InitialPage initialPage});
 }
 
 /// @nodoc
@@ -51,12 +52,17 @@ class _$AppSettingsModelCopyWithImpl<$Res, $Val extends AppSettingsModel>
   @override
   $Res call({
     Object? isUsedSSO = null,
+    Object? initialPage = null,
   }) {
     return _then(_value.copyWith(
       isUsedSSO: null == isUsedSSO
           ? _value.isUsedSSO
           : isUsedSSO // ignore: cast_nullable_to_non_nullable
               as bool,
+      initialPage: null == initialPage
+          ? _value.initialPage
+          : initialPage // ignore: cast_nullable_to_non_nullable
+              as InitialPage,
     ) as $Val);
   }
 }
@@ -69,7 +75,7 @@ abstract class _$$_AppSettingsModelCopyWith<$Res>
       __$$_AppSettingsModelCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool isUsedSSO});
+  $Res call({bool isUsedSSO, InitialPage initialPage});
 }
 
 /// @nodoc
@@ -84,12 +90,17 @@ class __$$_AppSettingsModelCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isUsedSSO = null,
+    Object? initialPage = null,
   }) {
     return _then(_$_AppSettingsModel(
       isUsedSSO: null == isUsedSSO
           ? _value.isUsedSSO
           : isUsedSSO // ignore: cast_nullable_to_non_nullable
               as bool,
+      initialPage: null == initialPage
+          ? _value.initialPage
+          : initialPage // ignore: cast_nullable_to_non_nullable
+              as InitialPage,
     ));
   }
 }
@@ -97,7 +108,9 @@ class __$$_AppSettingsModelCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_AppSettingsModel extends _AppSettingsModel {
-  const _$_AppSettingsModel({this.isUsedSSO = false}) : super._();
+  const _$_AppSettingsModel(
+      {this.isUsedSSO = false, this.initialPage = InitialPage.home})
+      : super._();
 
   factory _$_AppSettingsModel.fromJson(Map<String, dynamic> json) =>
       _$$_AppSettingsModelFromJson(json);
@@ -105,10 +118,13 @@ class _$_AppSettingsModel extends _AppSettingsModel {
   @override
   @JsonKey()
   final bool isUsedSSO;
+  @override
+  @JsonKey()
+  final InitialPage initialPage;
 
   @override
   String toString() {
-    return 'AppSettingsModel(isUsedSSO: $isUsedSSO)';
+    return 'AppSettingsModel(isUsedSSO: $isUsedSSO, initialPage: $initialPage)';
   }
 
   @override
@@ -117,12 +133,14 @@ class _$_AppSettingsModel extends _AppSettingsModel {
         (other.runtimeType == runtimeType &&
             other is _$_AppSettingsModel &&
             (identical(other.isUsedSSO, isUsedSSO) ||
-                other.isUsedSSO == isUsedSSO));
+                other.isUsedSSO == isUsedSSO) &&
+            (identical(other.initialPage, initialPage) ||
+                other.initialPage == initialPage));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, isUsedSSO);
+  int get hashCode => Object.hash(runtimeType, isUsedSSO, initialPage);
 
   @JsonKey(ignore: true)
   @override
@@ -139,7 +157,9 @@ class _$_AppSettingsModel extends _AppSettingsModel {
 }
 
 abstract class _AppSettingsModel extends AppSettingsModel {
-  const factory _AppSettingsModel({final bool isUsedSSO}) = _$_AppSettingsModel;
+  const factory _AppSettingsModel(
+      {final bool isUsedSSO,
+      final InitialPage initialPage}) = _$_AppSettingsModel;
   const _AppSettingsModel._() : super._();
 
   factory _AppSettingsModel.fromJson(Map<String, dynamic> json) =
@@ -147,6 +167,8 @@ abstract class _AppSettingsModel extends AppSettingsModel {
 
   @override
   bool get isUsedSSO;
+  @override
+  InitialPage get initialPage;
   @override
   @JsonKey(ignore: true)
   _$$_AppSettingsModelCopyWith<_$_AppSettingsModel> get copyWith =>

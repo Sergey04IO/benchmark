@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$AppSettingsEntity {
   bool get isUsedSSO => throw _privateConstructorUsedError;
+  InitialPage get initialPage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AppSettingsEntityCopyWith<AppSettingsEntity> get copyWith =>
@@ -29,7 +30,7 @@ abstract class $AppSettingsEntityCopyWith<$Res> {
           AppSettingsEntity value, $Res Function(AppSettingsEntity) then) =
       _$AppSettingsEntityCopyWithImpl<$Res, AppSettingsEntity>;
   @useResult
-  $Res call({bool isUsedSSO});
+  $Res call({bool isUsedSSO, InitialPage initialPage});
 }
 
 /// @nodoc
@@ -46,12 +47,17 @@ class _$AppSettingsEntityCopyWithImpl<$Res, $Val extends AppSettingsEntity>
   @override
   $Res call({
     Object? isUsedSSO = null,
+    Object? initialPage = null,
   }) {
     return _then(_value.copyWith(
       isUsedSSO: null == isUsedSSO
           ? _value.isUsedSSO
           : isUsedSSO // ignore: cast_nullable_to_non_nullable
               as bool,
+      initialPage: null == initialPage
+          ? _value.initialPage
+          : initialPage // ignore: cast_nullable_to_non_nullable
+              as InitialPage,
     ) as $Val);
   }
 }
@@ -64,7 +70,7 @@ abstract class _$$_AppSettingsEntityCopyWith<$Res>
       __$$_AppSettingsEntityCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool isUsedSSO});
+  $Res call({bool isUsedSSO, InitialPage initialPage});
 }
 
 /// @nodoc
@@ -79,12 +85,17 @@ class __$$_AppSettingsEntityCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isUsedSSO = null,
+    Object? initialPage = null,
   }) {
     return _then(_$_AppSettingsEntity(
       isUsedSSO: null == isUsedSSO
           ? _value.isUsedSSO
           : isUsedSSO // ignore: cast_nullable_to_non_nullable
               as bool,
+      initialPage: null == initialPage
+          ? _value.initialPage
+          : initialPage // ignore: cast_nullable_to_non_nullable
+              as InitialPage,
     ));
   }
 }
@@ -92,15 +103,19 @@ class __$$_AppSettingsEntityCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_AppSettingsEntity implements _AppSettingsEntity {
-  const _$_AppSettingsEntity({this.isUsedSSO = false});
+  const _$_AppSettingsEntity(
+      {this.isUsedSSO = false, this.initialPage = InitialPage.home});
 
   @override
   @JsonKey()
   final bool isUsedSSO;
+  @override
+  @JsonKey()
+  final InitialPage initialPage;
 
   @override
   String toString() {
-    return 'AppSettingsEntity(isUsedSSO: $isUsedSSO)';
+    return 'AppSettingsEntity(isUsedSSO: $isUsedSSO, initialPage: $initialPage)';
   }
 
   @override
@@ -109,11 +124,13 @@ class _$_AppSettingsEntity implements _AppSettingsEntity {
         (other.runtimeType == runtimeType &&
             other is _$_AppSettingsEntity &&
             (identical(other.isUsedSSO, isUsedSSO) ||
-                other.isUsedSSO == isUsedSSO));
+                other.isUsedSSO == isUsedSSO) &&
+            (identical(other.initialPage, initialPage) ||
+                other.initialPage == initialPage));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isUsedSSO);
+  int get hashCode => Object.hash(runtimeType, isUsedSSO, initialPage);
 
   @JsonKey(ignore: true)
   @override
@@ -124,11 +141,14 @@ class _$_AppSettingsEntity implements _AppSettingsEntity {
 }
 
 abstract class _AppSettingsEntity implements AppSettingsEntity {
-  const factory _AppSettingsEntity({final bool isUsedSSO}) =
-      _$_AppSettingsEntity;
+  const factory _AppSettingsEntity(
+      {final bool isUsedSSO,
+      final InitialPage initialPage}) = _$_AppSettingsEntity;
 
   @override
   bool get isUsedSSO;
+  @override
+  InitialPage get initialPage;
   @override
   @JsonKey(ignore: true)
   _$$_AppSettingsEntityCopyWith<_$_AppSettingsEntity> get copyWith =>

@@ -15,6 +15,7 @@ import 'package:benchmark/src/presentation/widgets/cards/index_card.dart';
 import 'package:benchmark/src/presentation/widgets/cards/sectors_overview_card.dart';
 import 'package:benchmark/src/presentation/widgets/indicators/common_loading_indicator.dart';
 import 'package:benchmark/src/presentation/widgets/navigation/app_drawer.dart';
+import 'package:benchmark/src/presentation/widgets/scaffold/common_scaffold.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -108,18 +109,9 @@ class _HomePageState extends State<HomePage> {
     required Widget child,
     Widget? title,
   }) {
-    return Scaffold(
-      backgroundColor: AppColors.grey2F3,
-      appBar: AppBar(
-        backgroundColor: const Color.fromRGBO(243, 243, 243, 1),
-        titleSpacing: 0,
-        title: title,
-        iconTheme: const IconThemeData(color: AppColors.primaryColor),
-      ),
-      drawer: Drawer(
-        child: AppDrawer(),
-      ),
-      body: SizedBox(
+    return CommonScaffold(
+      title: title,
+      child: SizedBox(
         width: double.infinity,
         child: child,
       ),
