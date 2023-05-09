@@ -1,4 +1,4 @@
-import 'package:benchmark/src/app/core/constants/app_colors.dart';
+import 'package:benchmark/src/app/core/theme/colors/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class AppCommonCard extends StatelessWidget {

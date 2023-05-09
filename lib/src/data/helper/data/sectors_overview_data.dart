@@ -1,4 +1,4 @@
-import 'package:benchmark/src/app/core/constants/app_colors.dart';
+import 'package:benchmark/src/app/core/theme/colors/app_colors.dart';
 import 'package:benchmark/src/presentation/models/ui_models/sectors_overview/sectors_overview_ui_model.dart';
 
 class SectorsOverviewData {

@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:benchmark/src/app/config/di/injector.dart';
-import 'package:benchmark/src/app/core/constants/app_colors.dart';
+import 'package:benchmark/src/app/core/theme/colors/app_colors.dart';
 import 'package:benchmark/src/presentation/bloc/auth/auth_cubit.dart';
 import 'package:flutter/material.dart';
 

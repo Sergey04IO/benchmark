@@ -73,12 +73,12 @@ class App extends StatelessWidget {
     final initialPage = _settingsCubit.getInitialPage();
     if (initialPage.isDashboard) {
       return const DeepLink(
-        [CommandCenterDashboardRoute()],
+        [CommandCenterRoute()],
       );
     }
-    if (initialPage.isHome) {
+    if (initialPage.isAnalytics) {
       return const DeepLink(
-        [HomeRoute()],
+        [AnalyticsRoute()],
       );
     }
     return deepLink;

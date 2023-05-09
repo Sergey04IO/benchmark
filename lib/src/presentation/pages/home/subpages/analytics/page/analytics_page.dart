@@ -2,34 +2,34 @@ import 'dart:async';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:benchmark/src/app/config/di/injector.dart';
-import 'package:benchmark/src/app/core/constants/app_colors.dart';
 import 'package:benchmark/src/domain/entities/area/area_entity.dart';
 import 'package:benchmark/src/domain/entities/sector_index/sector_index_entity.dart';
+import 'package:benchmark/src/presentation/bloc/analytics/analytics_cubit.dart';
 import 'package:benchmark/src/presentation/bloc/home/home_cubit.dart';
 import 'package:benchmark/src/presentation/bloc/settings/settings_cubit.dart';
-import 'package:benchmark/src/presentation/models/ui_models/home/home_ui_model.dart';
+import 'package:benchmark/src/presentation/models/ui_models/analytics/analytics_ui_model.dart';
+import 'package:benchmark/src/presentation/models/ui_models/home/home_ui_model/home_ui_model.dart';
 import 'package:benchmark/src/presentation/widgets/buttons/radio_buttons.dart';
 import 'package:benchmark/src/presentation/widgets/cards/area_card.dart';
 import 'package:benchmark/src/presentation/widgets/cards/benchmark_card.dart';
 import 'package:benchmark/src/presentation/widgets/cards/index_card.dart';
 import 'package:benchmark/src/presentation/widgets/cards/sectors_overview_card.dart';
 import 'package:benchmark/src/presentation/widgets/indicators/common_loading_indicator.dart';
-import 'package:benchmark/src/presentation/widgets/navigation/app_drawer.dart';
-import 'package:benchmark/src/presentation/widgets/scaffold/common_scaffold.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 @RoutePage()
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class AnalyticsPage extends StatefulWidget {
+  const AnalyticsPage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<AnalyticsPage> createState() => _AnalyticsPageState();
 }
 
-class _HomePageState extends State<HomePage> {
-  final HomeCubit _cubit = getIt<HomeCubit>();
+class _AnalyticsPageState extends State<AnalyticsPage> {
+  final AnalyticsCubit _cubit = getIt<AnalyticsCubit>();
+  final HomeCubit _homeCubit = getIt<HomeCubit>();
   final SettingsCubit _settingsCubit = getIt<SettingsCubit>();
   final double _horizontalPadding = 30;
   final double _betweenPadding = 20;
@@ -65,9 +65,20 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _buildConsumer() {
-    return BlocConsumer<HomeCubit, HomeState>(
+    return BlocConsumer<AnalyticsCubit, AnalyticsState>(
       bloc: _cubit,
-      listener: (context, state) {},
+      listener: (context, state) {
+        state.maybeWhen(
+          data: (model) {
+            _homeCubit.useAppBarTitle(
+              HomeUIModel(
+                appBarTitle: _appBarTitle(model),
+              ),
+            );
+          },
+          orElse: () {},
+        );
+      },
       builder: (context, state) {
         return state.maybeWhen(
           loading: _buildLoading,
@@ -80,45 +91,29 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _buildLoading() {
-    return _buildScaffold(
-      child: const CommonLoadingIndicator(),
-    );
+    return const CommonLoadingIndicator();
   }
 
   Widget _buildError(String error) {
-    return _buildScaffold(
-      child: Center(
-        child: Text(error),
-      ),
+    return Center(
+      child: Text(error),
     );
   }
 
-  Widget _buildContent(HomeUIModel model) {
-    return _buildScaffold(
-      title: RadioButtons(
-        values: model.dates,
-        onSelected: (value) {
-          _cubit.onSelectedDate(value);
-        },
-      ),
-      child: _buildBody(model),
+  Widget _buildContent(AnalyticsUIModel model) {
+    return _buildBody(model);
+  }
+
+  Widget _appBarTitle(AnalyticsUIModel model) {
+    return RadioButtons(
+      values: model.dates,
+      onSelected: (value) {
+        _cubit.onSelectedDate(value);
+      },
     );
   }
 
-  Widget _buildScaffold({
-    required Widget child,
-    Widget? title,
-  }) {
-    return CommonScaffold(
-      title: title,
-      child: SizedBox(
-        width: double.infinity,
-        child: child,
-      ),
-    );
-  }
-
-  Widget _buildBody(HomeUIModel uiModel) {
+  Widget _buildBody(AnalyticsUIModel uiModel) {
     final width = MediaQuery.of(context).size.width;
     return SingleChildScrollView(
       physics: const BouncingScrollPhysics(),
@@ -134,7 +129,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _buildOneRowContent(HomeUIModel uiModel) {
+  Widget _buildOneRowContent(AnalyticsUIModel uiModel) {
     return Column(
       children: [
         BenchmarkCard(
@@ -164,7 +159,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _buildTwoRowsContent(HomeUIModel uiModel) {
+  Widget _buildTwoRowsContent(AnalyticsUIModel uiModel) {
     return Column(
       children: [
         Row(
@@ -199,14 +194,14 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _buildAreaChartCards(HomeUIModel model) {
+  Widget _buildAreaChartCards(AnalyticsUIModel model) {
     return SizedBox(
       width: _getContentWidth(),
       child: _buildOneRowOfAreaCards(model),
     );
   }
 
-  Widget _buildOneRowOfAreaCards(HomeUIModel uiModel) {
+  Widget _buildOneRowOfAreaCards(AnalyticsUIModel uiModel) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -234,7 +229,7 @@ class _HomePageState extends State<HomePage> {
   Widget _buildAreaCard({
     int index = 0,
     required AreaEntity model,
-    required HomeUIModel uiModel,
+    required AnalyticsUIModel uiModel,
     required int length,
   }) {
     final width = MediaQuery.of(context).size.width;
@@ -263,14 +258,14 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _buildIndexChartCards(HomeUIModel model) {
+  Widget _buildIndexChartCards(AnalyticsUIModel model) {
     return SizedBox(
       width: _getContentWidth(),
       child: _buildRowOfIndexCards(model),
     );
   }
 
-  Widget _buildRowOfIndexCards(HomeUIModel uiModel) {
+  Widget _buildRowOfIndexCards(AnalyticsUIModel uiModel) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -342,7 +337,7 @@ class _HomePageState extends State<HomePage> {
     return value;
   }
 
-  double _getBenchmarkCardHeight(HomeUIModel model) {
+  double _getBenchmarkCardHeight(AnalyticsUIModel model) {
     const double minHeight = 49;
     const double barHeight = 40;
     if (model.tornadoData?[model.selectedDate]?.isEmpty ?? true) {
@@ -353,7 +348,7 @@ class _HomePageState extends State<HomePage> {
     return result;
   }
 
-  double _getIndexCardHeight(HomeUIModel model) {
+  double _getIndexCardHeight(AnalyticsUIModel model) {
     const double minHeight = 129;
     const double barHeight = 35;
     if (model.sectorsIndexData?[model.selectedDate]?.isEmpty ?? true) {

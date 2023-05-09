@@ -33,15 +33,23 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     HomeRoute.name: (routeData) {
+      final args =
+          routeData.argsAs<HomeRouteArgs>(orElse: () => const HomeRouteArgs());
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const HomePage(),
+        child: HomePage(key: args.key),
       );
     },
-    CommandCenterDashboardRoute.name: (routeData) {
+    CommandCenterRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const CommandCenterDashboardPage(),
+        child: const CommandCenterPage(),
+      );
+    },
+    AnalyticsRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const AnalyticsPage(),
       );
     },
   };
@@ -101,28 +109,56 @@ class AccessDeniedRouteArgs {
 
 /// generated route for
 /// [HomePage]
-class HomeRoute extends PageRouteInfo<void> {
-  const HomeRoute({List<PageRouteInfo>? children})
-      : super(
+class HomeRoute extends PageRouteInfo<HomeRouteArgs> {
+  HomeRoute({
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
           HomeRoute.name,
+          args: HomeRouteArgs(key: key),
           initialChildren: children,
         );
 
   static const String name = 'HomeRoute';
 
+  static const PageInfo<HomeRouteArgs> page = PageInfo<HomeRouteArgs>(name);
+}
+
+class HomeRouteArgs {
+  const HomeRouteArgs({this.key});
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'HomeRouteArgs{key: $key}';
+  }
+}
+
+/// generated route for
+/// [CommandCenterPage]
+class CommandCenterRoute extends PageRouteInfo<void> {
+  const CommandCenterRoute({List<PageRouteInfo>? children})
+      : super(
+          CommandCenterRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'CommandCenterRoute';
+
   static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for
-/// [CommandCenterDashboardPage]
-class CommandCenterDashboardRoute extends PageRouteInfo<void> {
-  const CommandCenterDashboardRoute({List<PageRouteInfo>? children})
+/// [AnalyticsPage]
+class AnalyticsRoute extends PageRouteInfo<void> {
+  const AnalyticsRoute({List<PageRouteInfo>? children})
       : super(
-          CommandCenterDashboardRoute.name,
+          AnalyticsRoute.name,
           initialChildren: children,
         );
 
-  static const String name = 'CommandCenterDashboardRoute';
+  static const String name = 'AnalyticsRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

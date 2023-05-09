@@ -1,8 +1,8 @@
 import 'dart:math';
 
-import 'package:benchmark/src/app/core/constants/app_colors.dart';
 import 'package:benchmark/src/app/core/constants/common.dart';
 import 'package:benchmark/src/app/core/extensions/random_extensions.dart';
+import 'package:benchmark/src/app/core/theme/colors/app_colors.dart';
 import 'package:benchmark/src/domain/entities/area/area_entity.dart';
 import 'package:benchmark/src/presentation/widgets/cards/generic/app_common_card.dart';
 import 'package:benchmark/src/presentation/widgets/charts/area/area_chart.dart';

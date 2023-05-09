@@ -7,6 +7,6 @@ part 'app_settings_entity.freezed.dart';
 class AppSettingsEntity with _$AppSettingsEntity {
   const factory AppSettingsEntity({
     @Default(false) bool isUsedSSO,
-    @Default(InitialPage.home) InitialPage initialPage,
+    @Default(InitialPage.analytics) InitialPage initialPage,
   }) = _AppSettingsEntity;
 }

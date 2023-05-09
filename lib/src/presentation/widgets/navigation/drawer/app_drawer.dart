@@ -1,9 +1,12 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:benchmark/src/app/config/di/injector.dart';
+import 'package:benchmark/src/app/config/navigation/routes_data/routes_paths.dart';
 import 'package:benchmark/src/app/core/enums/config_data_source.dart';
 import 'package:benchmark/src/app/core/generated/assets/assets.gen.dart';
 import 'package:benchmark/src/presentation/bloc/settings/settings_cubit.dart';
 import 'package:benchmark/src/presentation/models/helper_models/config_file/config_excel_file_model.dart';
 import 'package:benchmark/src/presentation/widgets/dialogs/config_dialog.dart';
+import 'package:benchmark/src/presentation/widgets/navigation/drawer/drawer_item.dart';
 import 'package:flutter/material.dart';
 
 class AppDrawer extends StatelessWidget {
@@ -12,6 +15,9 @@ class AppDrawer extends StatelessWidget {
   });
 
   final SettingsCubit _settingsCubit = getIt<SettingsCubit>();
+
+  final int analyticsPageIndex = 0;
+  final int commandCenterPageIndex = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -41,16 +47,42 @@ class AppDrawer extends StatelessWidget {
   Widget _buildItems(BuildContext context) {
     return Column(
       children: [
-        ListTile(
-          leading: const Icon(Icons.settings),
-          title: const Text('Configuration'),
-          onTap: () {
-            Navigator.of(context).pop();
-            _openPopUpConfig(context);
-          },
+        DrawerItem(
+          leading: const Icon(Icons.home),
+          title: const Text('Analytics'),
+          onTap: () => _openAnalytics(context),
         ),
+        DrawerItem(
+          leading: const Icon(Icons.dashboard),
+          title: const Text('Command Center'),
+          onTap: () => _openCommandCenter(context),
+        ),
+        if (_showConfig(context)) const Divider(),
+        if (_showConfig(context))
+          DrawerItem(
+            leading: const Icon(Icons.settings),
+            title: const Text('Configuration'),
+            onTap: () => _openPopUpConfig(context),
+          ),
       ],
     );
+  }
+
+  void _openAnalytics(BuildContext context) {
+    _openPage(context, index: 0);
+  }
+
+  void _openCommandCenter(BuildContext context) {
+    _openPage(context, index: 1);
+  }
+
+  void _openPage(
+    BuildContext context, {
+    required int index,
+  }) {
+    final isOpened = AutoTabsRouter.of(context).activeIndex == index;
+    if (isOpened) return;
+    AutoTabsRouter.of(context).setActiveIndex(index);
   }
 
   void _openPopUpConfig(BuildContext context) {
@@ -80,10 +112,15 @@ class AppDrawer extends StatelessWidget {
     ConfigDataSource dataSource,
     ConfigExcelFileModel? model,
   ) async {
-    // await Future.delayed(Duration(milliseconds: 100));
     await _settingsCubit.saveDataSource(
       dataSource: dataSource,
       model: model,
     );
+  }
+
+  bool _showConfig(BuildContext context) {
+    final currentPath = AutoTabsRouter.of(context).currentPath;
+    final isShown = currentPath == RoutesPaths.analyticsRoutePath;
+    return isShown;
   }
 }

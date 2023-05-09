@@ -1,9 +1,9 @@
 import 'dart:math';
 
-import 'package:benchmark/src/app/core/constants/app_colors.dart';
 import 'package:benchmark/src/app/core/constants/common.dart';
 import 'package:benchmark/src/app/core/enums/value_bigger.dart';
 import 'package:benchmark/src/app/core/extensions/random_extensions.dart';
+import 'package:benchmark/src/app/core/theme/colors/app_colors.dart';
 import 'package:benchmark/src/domain/entities/tornado/tornado_entity.dart';
 import 'package:benchmark/src/presentation/models/helper_models/bars_width/bars_width_ui_model.dart';
 import 'package:flutter/material.dart';

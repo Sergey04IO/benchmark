@@ -1,5 +1,5 @@
-import 'package:benchmark/src/app/core/constants/app_colors.dart';
 import 'package:benchmark/src/app/core/constants/common.dart';
+import 'package:benchmark/src/app/core/theme/colors/app_colors.dart';
 import 'package:benchmark/src/domain/entities/sector_overview/entity/sector_overview_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';

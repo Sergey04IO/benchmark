@@ -1,4 +1,4 @@
-import 'package:benchmark/src/app/core/constants/app_colors.dart';
+import 'package:benchmark/src/app/core/theme/colors/app_colors.dart';
 import 'package:benchmark/src/domain/entities/tornado/tornado_entity.dart';
 import 'package:benchmark/src/presentation/widgets/cards/generic/app_common_card.dart';
 import 'package:benchmark/src/presentation/widgets/charts/tornado/tornado_chart.dart';

@@ -104,7 +104,7 @@ class __$$_AppSettingsEntityCopyWithImpl<$Res>
 
 class _$_AppSettingsEntity implements _AppSettingsEntity {
   const _$_AppSettingsEntity(
-      {this.isUsedSSO = false, this.initialPage = InitialPage.home});
+      {this.isUsedSSO = false, this.initialPage = InitialPage.analytics});
 
   @override
   @JsonKey()
