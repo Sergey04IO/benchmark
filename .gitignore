@@ -44,7 +44,7 @@ app.*.map.json
 /android/app/release
 
 # launch
-/.vscode/
+.vscode/
 
 # Api keys
 /lib/src/app/core/keys/api_keys/
