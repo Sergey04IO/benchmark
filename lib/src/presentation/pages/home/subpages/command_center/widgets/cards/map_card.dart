@@ -1,6 +1,8 @@
+import 'package:benchmark/src/app/core/generated/translations/locale_keys.g.dart';
 import 'package:benchmark/src/app/core/theme/colors/app_colors.dart';
 import 'package:benchmark/src/presentation/pages/home/subpages/command_center/widgets/charts/map_chart.dart';
 import 'package:benchmark/src/presentation/widgets/cards/generic/command_center_card.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class MapCard extends StatefulWidget {
@@ -19,7 +21,7 @@ class _MapCardState extends State<MapCard> {
         minWidth: 350,
       ),
       child: CommandCenterCard(
-        title: 'Salesforse Accounts by country',
+        title: LocaleKeys.commandCenter_mapCardHeader.tr(),
         width: MediaQuery.of(context).size.width / 3,
         height: MediaQuery.of(context).size.width / 4,
         child: Expanded(
@@ -38,11 +40,13 @@ class _MapCardState extends State<MapCard> {
   }
 
   Widget _buildFooter() {
-    return const Align(
+    return Align(
       alignment: Alignment.centerRight,
       child: Text(
-        'Invalid state information provided fo 646 of 13124 accounts',
-        style: TextStyle(
+        LocaleKeys.commandCenter_mapCardFooter.tr(
+          args: ['646', '13124'],
+        ),
+        style: const TextStyle(
           fontSize: 12,
           color: AppColors.greyE6E,
         ),
