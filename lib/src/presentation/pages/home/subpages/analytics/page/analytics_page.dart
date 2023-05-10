@@ -8,7 +8,6 @@ import 'package:benchmark/src/presentation/bloc/analytics/analytics_cubit.dart';
 import 'package:benchmark/src/presentation/bloc/home/home_cubit.dart';
 import 'package:benchmark/src/presentation/bloc/settings/settings_cubit.dart';
 import 'package:benchmark/src/presentation/models/ui_models/analytics/analytics_ui_model.dart';
-import 'package:benchmark/src/presentation/models/ui_models/home/home_ui_model/home_ui_model.dart';
 import 'package:benchmark/src/presentation/widgets/buttons/radio_buttons.dart';
 import 'package:benchmark/src/presentation/widgets/cards/area_card.dart';
 import 'package:benchmark/src/presentation/widgets/cards/benchmark_card.dart';
@@ -70,10 +69,9 @@ class _AnalyticsPageState extends State<AnalyticsPage> {
       listener: (context, state) {
         state.maybeWhen(
           data: (model) {
-            _homeCubit.useHomeUI(
-              HomeUIModel(
-                appBarTitle: _appBarTitle(model),
-              ),
+            _homeCubit.setAnalyticsTheme(
+              context,
+              title: _appBarTitle(model),
             );
           },
           orElse: () {},

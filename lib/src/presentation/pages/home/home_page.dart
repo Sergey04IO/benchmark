@@ -53,9 +53,9 @@ class HomePage extends StatelessWidget {
   }) {
     return CommonScaffold(
       title: model?.appBarTitle,
-      appBarBackgroundColor: model?.appBarBackgroundColor,
+      appBarColor: model?.appBarColor,
       backgroundColor: model?.backgroundColor,
-      iconsColor: model?.iconsColor,
+      iconColor: model?.iconColor,
       child: child,
     );
   }

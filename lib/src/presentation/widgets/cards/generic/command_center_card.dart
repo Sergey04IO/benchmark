@@ -1,4 +1,5 @@
 import 'package:benchmark/src/app/core/theme/colors/app_colors.dart';
+import 'package:benchmark/src/app/core/theme/custom_theme/text/command_center_text_theme.dart';
 import 'package:flutter/material.dart';
 
 class CommandCenterCard extends StatelessWidget {
@@ -28,7 +29,7 @@ class CommandCenterCard extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          _buildHeader(),
+          _buildHeader(context),
           const SizedBox(height: 20),
           child,
         ],
@@ -36,16 +37,12 @@ class CommandCenterCard extends StatelessWidget {
     );
   }
 
-  Widget _buildHeader() {
+  Widget _buildHeader(BuildContext context) {
     return Align(
       alignment: Alignment.centerLeft,
       child: Text(
         title ?? '',
-        style: const TextStyle(
-          color: AppColors.whiteFFF,
-          fontSize: 16,
-          fontWeight: FontWeight.bold,
-        ),
+        style: CommandCenterTextTheme.of(context)?.cardHeaderTextStyle,
       ),
     );
   }

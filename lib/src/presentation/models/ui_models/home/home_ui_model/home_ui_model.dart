@@ -8,7 +8,7 @@ class HomeUIModel with _$HomeUIModel {
   const factory HomeUIModel({
     Widget? appBarTitle,
     Color? backgroundColor,
-    Color? iconsColor,
-    Color? appBarBackgroundColor,
+    Color? iconColor,
+    Color? appBarColor,
   }) = _HomeUIModel;
 }
