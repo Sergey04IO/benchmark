@@ -1,9 +1,12 @@
 import 'package:benchmark/src/app/config/di/injector.dart';
 import 'package:benchmark/src/app/config/firebase/firebase_options.dart';
+import 'package:benchmark/src/app/core/constants/locales/app_locales.dart';
+import 'package:benchmark/src/app/core/generated/translations/codegen_loader.g.dart';
 import 'package:benchmark/src/domain/services/deeplinks_service.dart';
 import 'package:benchmark/src/presentation/app.dart';
 import 'package:benchmark/src/presentation/bloc/auth/auth_cubit.dart';
 import 'package:benchmark/src/presentation/bloc/settings/settings_cubit.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +15,7 @@ import 'package:injectable/injectable.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
   await Firebase.initializeApp(
     name: _getFirebaseAppName(),
     options: DefaultFirebaseOptions.currentPlatform,
@@ -19,7 +23,16 @@ void main() async {
   setUrlStrategy(PathUrlStrategy());
   await configureInjection(Environment.prod);
   await _initData();
-  runApp(App());
+
+  runApp(
+    EasyLocalization(
+      supportedLocales: AppLocales.appLocales,
+      path: 'assets/translations',
+      fallbackLocale: AppLocales.enLocale,
+      assetLoader: const CodegenLoader(),
+      child: App(),
+    ),
+  );
 }
 
 Future<void> _initData() async {
