@@ -20,7 +20,8 @@ AppSettingsModel _$AppSettingsModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$AppSettingsModel {
-  bool get isUsedSSO => throw _privateConstructorUsedError;
+  SettingsEnvironment get prod => throw _privateConstructorUsedError;
+  SettingsEnvironment get dev => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +35,10 @@ abstract class $AppSettingsModelCopyWith<$Res> {
           AppSettingsModel value, $Res Function(AppSettingsModel) then) =
       _$AppSettingsModelCopyWithImpl<$Res, AppSettingsModel>;
   @useResult
-  $Res call({bool isUsedSSO});
+  $Res call({SettingsEnvironment prod, SettingsEnvironment dev});
+
+  $SettingsEnvironmentCopyWith<$Res> get prod;
+  $SettingsEnvironmentCopyWith<$Res> get dev;
 }
 
 /// @nodoc
@@ -50,14 +54,35 @@ class _$AppSettingsModelCopyWithImpl<$Res, $Val extends AppSettingsModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? isUsedSSO = null,
+    Object? prod = null,
+    Object? dev = null,
   }) {
     return _then(_value.copyWith(
-      isUsedSSO: null == isUsedSSO
-          ? _value.isUsedSSO
-          : isUsedSSO // ignore: cast_nullable_to_non_nullable
-              as bool,
+      prod: null == prod
+          ? _value.prod
+          : prod // ignore: cast_nullable_to_non_nullable
+              as SettingsEnvironment,
+      dev: null == dev
+          ? _value.dev
+          : dev // ignore: cast_nullable_to_non_nullable
+              as SettingsEnvironment,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $SettingsEnvironmentCopyWith<$Res> get prod {
+    return $SettingsEnvironmentCopyWith<$Res>(_value.prod, (value) {
+      return _then(_value.copyWith(prod: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $SettingsEnvironmentCopyWith<$Res> get dev {
+    return $SettingsEnvironmentCopyWith<$Res>(_value.dev, (value) {
+      return _then(_value.copyWith(dev: value) as $Val);
+    });
   }
 }
 
@@ -69,7 +94,12 @@ abstract class _$$_AppSettingsModelCopyWith<$Res>
       __$$_AppSettingsModelCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool isUsedSSO});
+  $Res call({SettingsEnvironment prod, SettingsEnvironment dev});
+
+  @override
+  $SettingsEnvironmentCopyWith<$Res> get prod;
+  @override
+  $SettingsEnvironmentCopyWith<$Res> get dev;
 }
 
 /// @nodoc
@@ -83,32 +113,53 @@ class __$$_AppSettingsModelCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? isUsedSSO = null,
+    Object? prod = null,
+    Object? dev = null,
   }) {
     return _then(_$_AppSettingsModel(
-      isUsedSSO: null == isUsedSSO
-          ? _value.isUsedSSO
-          : isUsedSSO // ignore: cast_nullable_to_non_nullable
-              as bool,
+      prod: null == prod
+          ? _value.prod
+          : prod // ignore: cast_nullable_to_non_nullable
+              as SettingsEnvironment,
+      dev: null == dev
+          ? _value.dev
+          : dev // ignore: cast_nullable_to_non_nullable
+              as SettingsEnvironment,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_AppSettingsModel extends _AppSettingsModel {
-  const _$_AppSettingsModel({this.isUsedSSO = false}) : super._();
+class _$_AppSettingsModel extends _AppSettingsModel
+    with DiagnosticableTreeMixin {
+  const _$_AppSettingsModel(
+      {this.prod = const SettingsEnvironment(),
+      this.dev = const SettingsEnvironment()})
+      : super._();
 
   factory _$_AppSettingsModel.fromJson(Map<String, dynamic> json) =>
       _$$_AppSettingsModelFromJson(json);
 
   @override
   @JsonKey()
-  final bool isUsedSSO;
+  final SettingsEnvironment prod;
+  @override
+  @JsonKey()
+  final SettingsEnvironment dev;
 
   @override
-  String toString() {
-    return 'AppSettingsModel(isUsedSSO: $isUsedSSO)';
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'AppSettingsModel(prod: $prod, dev: $dev)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'AppSettingsModel'))
+      ..add(DiagnosticsProperty('prod', prod))
+      ..add(DiagnosticsProperty('dev', dev));
   }
 
   @override
@@ -116,13 +167,13 @@ class _$_AppSettingsModel extends _AppSettingsModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_AppSettingsModel &&
-            (identical(other.isUsedSSO, isUsedSSO) ||
-                other.isUsedSSO == isUsedSSO));
+            (identical(other.prod, prod) || other.prod == prod) &&
+            (identical(other.dev, dev) || other.dev == dev));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, isUsedSSO);
+  int get hashCode => Object.hash(runtimeType, prod, dev);
 
   @JsonKey(ignore: true)
   @override
@@ -139,16 +190,191 @@ class _$_AppSettingsModel extends _AppSettingsModel {
 }
 
 abstract class _AppSettingsModel extends AppSettingsModel {
-  const factory _AppSettingsModel({final bool isUsedSSO}) = _$_AppSettingsModel;
+  const factory _AppSettingsModel(
+      {final SettingsEnvironment prod,
+      final SettingsEnvironment dev}) = _$_AppSettingsModel;
   const _AppSettingsModel._() : super._();
 
   factory _AppSettingsModel.fromJson(Map<String, dynamic> json) =
       _$_AppSettingsModel.fromJson;
 
   @override
-  bool get isUsedSSO;
+  SettingsEnvironment get prod;
+  @override
+  SettingsEnvironment get dev;
   @override
   @JsonKey(ignore: true)
   _$$_AppSettingsModelCopyWith<_$_AppSettingsModel> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+SettingsEnvironment _$SettingsEnvironmentFromJson(Map<String, dynamic> json) {
+  return _SettingsEnvironment.fromJson(json);
+}
+
+/// @nodoc
+mixin _$SettingsEnvironment {
+  bool get isUsedSSO => throw _privateConstructorUsedError;
+  InitialPage get initialPage => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $SettingsEnvironmentCopyWith<SettingsEnvironment> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $SettingsEnvironmentCopyWith<$Res> {
+  factory $SettingsEnvironmentCopyWith(
+          SettingsEnvironment value, $Res Function(SettingsEnvironment) then) =
+      _$SettingsEnvironmentCopyWithImpl<$Res, SettingsEnvironment>;
+  @useResult
+  $Res call({bool isUsedSSO, InitialPage initialPage});
+}
+
+/// @nodoc
+class _$SettingsEnvironmentCopyWithImpl<$Res, $Val extends SettingsEnvironment>
+    implements $SettingsEnvironmentCopyWith<$Res> {
+  _$SettingsEnvironmentCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isUsedSSO = null,
+    Object? initialPage = null,
+  }) {
+    return _then(_value.copyWith(
+      isUsedSSO: null == isUsedSSO
+          ? _value.isUsedSSO
+          : isUsedSSO // ignore: cast_nullable_to_non_nullable
+              as bool,
+      initialPage: null == initialPage
+          ? _value.initialPage
+          : initialPage // ignore: cast_nullable_to_non_nullable
+              as InitialPage,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_SettingsEnvironmentCopyWith<$Res>
+    implements $SettingsEnvironmentCopyWith<$Res> {
+  factory _$$_SettingsEnvironmentCopyWith(_$_SettingsEnvironment value,
+          $Res Function(_$_SettingsEnvironment) then) =
+      __$$_SettingsEnvironmentCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({bool isUsedSSO, InitialPage initialPage});
+}
+
+/// @nodoc
+class __$$_SettingsEnvironmentCopyWithImpl<$Res>
+    extends _$SettingsEnvironmentCopyWithImpl<$Res, _$_SettingsEnvironment>
+    implements _$$_SettingsEnvironmentCopyWith<$Res> {
+  __$$_SettingsEnvironmentCopyWithImpl(_$_SettingsEnvironment _value,
+      $Res Function(_$_SettingsEnvironment) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isUsedSSO = null,
+    Object? initialPage = null,
+  }) {
+    return _then(_$_SettingsEnvironment(
+      isUsedSSO: null == isUsedSSO
+          ? _value.isUsedSSO
+          : isUsedSSO // ignore: cast_nullable_to_non_nullable
+              as bool,
+      initialPage: null == initialPage
+          ? _value.initialPage
+          : initialPage // ignore: cast_nullable_to_non_nullable
+              as InitialPage,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_SettingsEnvironment
+    with DiagnosticableTreeMixin
+    implements _SettingsEnvironment {
+  const _$_SettingsEnvironment(
+      {this.isUsedSSO = false, this.initialPage = InitialPage.analytics});
+
+  factory _$_SettingsEnvironment.fromJson(Map<String, dynamic> json) =>
+      _$$_SettingsEnvironmentFromJson(json);
+
+  @override
+  @JsonKey()
+  final bool isUsedSSO;
+  @override
+  @JsonKey()
+  final InitialPage initialPage;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'SettingsEnvironment(isUsedSSO: $isUsedSSO, initialPage: $initialPage)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'SettingsEnvironment'))
+      ..add(DiagnosticsProperty('isUsedSSO', isUsedSSO))
+      ..add(DiagnosticsProperty('initialPage', initialPage));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_SettingsEnvironment &&
+            (identical(other.isUsedSSO, isUsedSSO) ||
+                other.isUsedSSO == isUsedSSO) &&
+            (identical(other.initialPage, initialPage) ||
+                other.initialPage == initialPage));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, isUsedSSO, initialPage);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_SettingsEnvironmentCopyWith<_$_SettingsEnvironment> get copyWith =>
+      __$$_SettingsEnvironmentCopyWithImpl<_$_SettingsEnvironment>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_SettingsEnvironmentToJson(
+      this,
+    );
+  }
+}
+
+abstract class _SettingsEnvironment implements SettingsEnvironment {
+  const factory _SettingsEnvironment(
+      {final bool isUsedSSO,
+      final InitialPage initialPage}) = _$_SettingsEnvironment;
+
+  factory _SettingsEnvironment.fromJson(Map<String, dynamic> json) =
+      _$_SettingsEnvironment.fromJson;
+
+  @override
+  bool get isUsedSSO;
+  @override
+  InitialPage get initialPage;
+  @override
+  @JsonKey(ignore: true)
+  _$$_SettingsEnvironmentCopyWith<_$_SettingsEnvironment> get copyWith =>
       throw _privateConstructorUsedError;
 }

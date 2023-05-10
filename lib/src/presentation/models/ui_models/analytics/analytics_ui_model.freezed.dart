@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'home_ui_model.dart';
+part of 'analytics_ui_model.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$HomeUIModel {
+mixin _$AnalyticsUIModel {
   Map<String, List<TornadoEntity>>? get tornadoData =>
       throw _privateConstructorUsedError;
   Map<String, List<AreaEntity>>? get areasData =>
@@ -28,15 +28,15 @@ mixin _$HomeUIModel {
   List<String> get dates => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $HomeUIModelCopyWith<HomeUIModel> get copyWith =>
+  $AnalyticsUIModelCopyWith<AnalyticsUIModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $HomeUIModelCopyWith<$Res> {
-  factory $HomeUIModelCopyWith(
-          HomeUIModel value, $Res Function(HomeUIModel) then) =
-      _$HomeUIModelCopyWithImpl<$Res, HomeUIModel>;
+abstract class $AnalyticsUIModelCopyWith<$Res> {
+  factory $AnalyticsUIModelCopyWith(
+          AnalyticsUIModel value, $Res Function(AnalyticsUIModel) then) =
+      _$AnalyticsUIModelCopyWithImpl<$Res, AnalyticsUIModel>;
   @useResult
   $Res call(
       {Map<String, List<TornadoEntity>>? tornadoData,
@@ -48,9 +48,9 @@ abstract class $HomeUIModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$HomeUIModelCopyWithImpl<$Res, $Val extends HomeUIModel>
-    implements $HomeUIModelCopyWith<$Res> {
-  _$HomeUIModelCopyWithImpl(this._value, this._then);
+class _$AnalyticsUIModelCopyWithImpl<$Res, $Val extends AnalyticsUIModel>
+    implements $AnalyticsUIModelCopyWith<$Res> {
+  _$AnalyticsUIModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -97,11 +97,11 @@ class _$HomeUIModelCopyWithImpl<$Res, $Val extends HomeUIModel>
 }
 
 /// @nodoc
-abstract class _$$_HomeUIModelCopyWith<$Res>
-    implements $HomeUIModelCopyWith<$Res> {
-  factory _$$_HomeUIModelCopyWith(
-          _$_HomeUIModel value, $Res Function(_$_HomeUIModel) then) =
-      __$$_HomeUIModelCopyWithImpl<$Res>;
+abstract class _$$_AnalyticsUIModelCopyWith<$Res>
+    implements $AnalyticsUIModelCopyWith<$Res> {
+  factory _$$_AnalyticsUIModelCopyWith(
+          _$_AnalyticsUIModel value, $Res Function(_$_AnalyticsUIModel) then) =
+      __$$_AnalyticsUIModelCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -114,11 +114,11 @@ abstract class _$$_HomeUIModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_HomeUIModelCopyWithImpl<$Res>
-    extends _$HomeUIModelCopyWithImpl<$Res, _$_HomeUIModel>
-    implements _$$_HomeUIModelCopyWith<$Res> {
-  __$$_HomeUIModelCopyWithImpl(
-      _$_HomeUIModel _value, $Res Function(_$_HomeUIModel) _then)
+class __$$_AnalyticsUIModelCopyWithImpl<$Res>
+    extends _$AnalyticsUIModelCopyWithImpl<$Res, _$_AnalyticsUIModel>
+    implements _$$_AnalyticsUIModelCopyWith<$Res> {
+  __$$_AnalyticsUIModelCopyWithImpl(
+      _$_AnalyticsUIModel _value, $Res Function(_$_AnalyticsUIModel) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -131,7 +131,7 @@ class __$$_HomeUIModelCopyWithImpl<$Res>
     Object? selectedDate = freezed,
     Object? dates = null,
   }) {
-    return _then(_$_HomeUIModel(
+    return _then(_$_AnalyticsUIModel(
       tornadoData: freezed == tornadoData
           ? _value._tornadoData
           : tornadoData // ignore: cast_nullable_to_non_nullable
@@ -162,8 +162,8 @@ class __$$_HomeUIModelCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_HomeUIModel implements _HomeUIModel {
-  const _$_HomeUIModel(
+class _$_AnalyticsUIModel implements _AnalyticsUIModel {
+  const _$_AnalyticsUIModel(
       {final Map<String, List<TornadoEntity>>? tornadoData,
       final Map<String, List<AreaEntity>>? areasData,
       final Map<String, SectorOverviewCluster>? sectorsOverviewData,
@@ -230,14 +230,14 @@ class _$_HomeUIModel implements _HomeUIModel {
 
   @override
   String toString() {
-    return 'HomeUIModel(tornadoData: $tornadoData, areasData: $areasData, sectorsOverviewData: $sectorsOverviewData, sectorsIndexData: $sectorsIndexData, selectedDate: $selectedDate, dates: $dates)';
+    return 'AnalyticsUIModel(tornadoData: $tornadoData, areasData: $areasData, sectorsOverviewData: $sectorsOverviewData, sectorsIndexData: $sectorsIndexData, selectedDate: $selectedDate, dates: $dates)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_HomeUIModel &&
+            other is _$_AnalyticsUIModel &&
             const DeepCollectionEquality()
                 .equals(other._tornadoData, _tornadoData) &&
             const DeepCollectionEquality()
@@ -264,18 +264,18 @@ class _$_HomeUIModel implements _HomeUIModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_HomeUIModelCopyWith<_$_HomeUIModel> get copyWith =>
-      __$$_HomeUIModelCopyWithImpl<_$_HomeUIModel>(this, _$identity);
+  _$$_AnalyticsUIModelCopyWith<_$_AnalyticsUIModel> get copyWith =>
+      __$$_AnalyticsUIModelCopyWithImpl<_$_AnalyticsUIModel>(this, _$identity);
 }
 
-abstract class _HomeUIModel implements HomeUIModel {
-  const factory _HomeUIModel(
+abstract class _AnalyticsUIModel implements AnalyticsUIModel {
+  const factory _AnalyticsUIModel(
       {final Map<String, List<TornadoEntity>>? tornadoData,
       final Map<String, List<AreaEntity>>? areasData,
       final Map<String, SectorOverviewCluster>? sectorsOverviewData,
       final Map<String, List<SectorIndexEntity>>? sectorsIndexData,
       final String? selectedDate,
-      final List<String> dates}) = _$_HomeUIModel;
+      final List<String> dates}) = _$_AnalyticsUIModel;
 
   @override
   Map<String, List<TornadoEntity>>? get tornadoData;
@@ -291,6 +291,6 @@ abstract class _HomeUIModel implements HomeUIModel {
   List<String> get dates;
   @override
   @JsonKey(ignore: true)
-  _$$_HomeUIModelCopyWith<_$_HomeUIModel> get copyWith =>
+  _$$_AnalyticsUIModelCopyWith<_$_AnalyticsUIModel> get copyWith =>
       throw _privateConstructorUsedError;
 }

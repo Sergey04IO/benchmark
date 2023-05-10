@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:benchmark/src/app/core/constants/app_colors.dart';
+import 'package:benchmark/src/app/core/theme/colors/app_colors.dart';
 import 'package:benchmark/src/domain/entities/sector_overview/entity/sector_overview_entity.dart';
 import 'package:benchmark/src/presentation/widgets/cards/generic/app_common_card.dart';
 import 'package:benchmark/src/presentation/widgets/charts/sectors_overview/sectors_overview_chart.dart';

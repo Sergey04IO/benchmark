@@ -9,45 +9,48 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:benchmark/src/app/config/di/app_module.dart' as _i27;
-import 'package:benchmark/src/data/repositories/home_repository_impl.dart'
-    as _i11;
+import 'package:benchmark/src/app/config/di/app_module.dart' as _i28;
+import 'package:benchmark/src/data/repositories/analytics_repository_impl.dart'
+    as _i15;
 import 'package:benchmark/src/data/repositories/openid_connect_repository_impl.dart.dart'
     as _i19;
 import 'package:benchmark/src/data/repositories/settings_repository_impl.dart'
     as _i22;
 import 'package:benchmark/src/data/services/connectivity_service.dart' as _i3;
 import 'package:benchmark/src/data/services/deeplinks_service_impl.dart'
-    as _i25;
+    as _i26;
 import 'package:benchmark/src/data/services/excel_data_service.dart' as _i6;
 import 'package:benchmark/src/data/services/firebase_remote_config_service_impl.dart'
     as _i9;
 import 'package:benchmark/src/data/services/gsheets_service.dart' as _i5;
 import 'package:benchmark/src/data/services/openid_connect_service.dart'
-    as _i13;
+    as _i12;
 import 'package:benchmark/src/data/services/shared_prefs_service.dart' as _i17;
 import 'package:benchmark/src/data/sources/local/settings/settings_local_source.dart'
     as _i20;
-import 'package:benchmark/src/domain/repositories/home_repository.dart' as _i10;
+import 'package:benchmark/src/domain/repositories/analytics_repository.dart'
+    as _i14;
 import 'package:benchmark/src/domain/repositories/openid_connect_repository.dart'
     as _i18;
 import 'package:benchmark/src/domain/repositories/settings_repository.dart'
     as _i21;
 import 'package:benchmark/src/domain/services/data_source_service.dart' as _i4;
-import 'package:benchmark/src/domain/services/deeplinks_service.dart' as _i24;
+import 'package:benchmark/src/domain/services/deeplinks_service.dart' as _i25;
 import 'package:benchmark/src/domain/services/firebase_remote_config_service.dart'
     as _i8;
 import 'package:benchmark/src/domain/services/local_storage_service.dart'
     as _i16;
-import 'package:benchmark/src/domain/services/sso_service.dart' as _i12;
-import 'package:benchmark/src/presentation/bloc/auth/auth_cubit.dart' as _i23;
-import 'package:benchmark/src/presentation/bloc/home/home_cubit.dart' as _i15;
+import 'package:benchmark/src/domain/services/sso_service.dart' as _i11;
+import 'package:benchmark/src/presentation/bloc/analytics/analytics_cubit.dart'
+    as _i23;
+import 'package:benchmark/src/presentation/bloc/auth/auth_cubit.dart' as _i24;
+import 'package:benchmark/src/presentation/bloc/home/home_cubit.dart' as _i10;
 import 'package:benchmark/src/presentation/bloc/settings/settings_cubit.dart'
-    as _i26;
+    as _i27;
 import 'package:firebase_remote_config/firebase_remote_config.dart' as _i7;
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
-import 'package:shared_preferences/shared_preferences.dart' as _i14;
+import 'package:shared_preferences/shared_preferences.dart' as _i13;
 
 const String _prod = 'prod';
 
@@ -79,28 +82,28 @@ extension GetItInjectableX on _i1.GetIt {
       _i9.FirebaseRemoteConfigServiceImpl(gh<_i7.FirebaseRemoteConfig>()),
       registerFor: {_prod},
     );
-    gh.lazySingleton<_i10.HomeRepository>(
-      () => _i11.HomeRepositoryImpl(
+    gh.lazySingleton<_i10.HomeCubit>(() => _i10.HomeCubit());
+    gh.lazySingleton<_i11.SSOService>(
+      () => _i12.OpenIdConnectService(),
+      registerFor: {_prod},
+    );
+    await gh.factoryAsync<_i13.SharedPreferences>(
+      () => appModule.prefs,
+      preResolve: true,
+    );
+    gh.lazySingleton<_i14.AnalyticsRepository>(
+      () => _i15.AnalyticsRepositoryImpl(
         gh<_i4.DataSourceService>(instanceName: 'GsheetsService'),
         gh<_i4.DataSourceService>(instanceName: 'ExcelDataService'),
       ),
       registerFor: {_prod},
     );
-    gh.lazySingleton<_i12.SSOService>(
-      () => _i13.OpenIdConnectService(),
-      registerFor: {_prod},
-    );
-    await gh.factoryAsync<_i14.SharedPreferences>(
-      () => appModule.prefs,
-      preResolve: true,
-    );
-    gh.factory<_i15.HomeCubit>(() => _i15.HomeCubit(gh<_i10.HomeRepository>()));
     gh.lazySingleton<_i16.LocalStorageService>(
-      () => _i17.SharedPrefsService(gh<_i14.SharedPreferences>()),
+      () => _i17.SharedPrefsService(gh<_i13.SharedPreferences>()),
       registerFor: {_prod},
     );
     gh.lazySingleton<_i18.OpenIdConnectRepository>(
-      () => _i19.OpenIdConnectRepositoryImpl(gh<_i12.SSOService>()),
+      () => _i19.OpenIdConnectRepositoryImpl(gh<_i11.SSOService>()),
       registerFor: {_prod},
     );
     gh.lazySingleton<_i20.SettingsLocalSource>(
@@ -114,16 +117,20 @@ extension GetItInjectableX on _i1.GetIt {
       ),
       registerFor: {_prod},
     );
-    gh.factory<_i23.AuthCubit>(
-        () => _i23.AuthCubit(gh<_i18.OpenIdConnectRepository>()));
-    gh.singleton<_i24.DeeplinksService>(
-      _i25.DeeplinksServiceImpl(gh<_i18.OpenIdConnectRepository>()),
+    gh.factory<_i23.AnalyticsCubit>(
+        () => _i23.AnalyticsCubit(gh<_i14.AnalyticsRepository>()));
+    gh.factory<_i24.AuthCubit>(
+        () => _i24.AuthCubit(gh<_i18.OpenIdConnectRepository>()));
+    gh.singleton<_i25.DeeplinksService>(
+      _i26.DeeplinksServiceImpl(gh<_i18.OpenIdConnectRepository>()),
       registerFor: {_prod},
     );
-    gh.lazySingleton<_i26.SettingsCubit>(
-        () => _i26.SettingsCubit(gh<_i21.SettingsRepository>()));
+    gh.lazySingleton<_i27.SettingsCubit>(() => _i27.SettingsCubit(
+          gh<_i21.SettingsRepository>(),
+          gh<_i14.AnalyticsRepository>(),
+        ));
     return this;
   }
 }
 
-class _$AppModule extends _i27.AppModule {}
+class _$AppModule extends _i28.AppModule {}

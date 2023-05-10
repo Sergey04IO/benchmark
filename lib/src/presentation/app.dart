@@ -41,25 +41,46 @@ class App extends StatelessWidget {
         neglectWhen: (location) {
           return location == RoutesPaths.splashRoutePath;
         },
-        deepLinkBuilder: (deepLink) async {
-          final isUsedSSO = _settingsCubit.isUsedSSO();
-          if (!isUsedSSO) return deepLink;
-
-          final isAuthorized = _authCubit.isAuthorized();
-          final isAccessDenied = _authCubit.isAccessDenied();
-          if (!isAuthorized && !isAccessDenied) {
-            await _authCubit.authorize();
-            return const DeepLink([SplashRoute()]);
-          }
-          if (!isAuthorized && isAccessDenied) {
-            return DeepLink(
-              [AccessDeniedRoute(title: 'Access Denied!')],
-            );
-          }
-
-          return deepLink;
-        },
+        deepLinkBuilder: _handeDeeplinkBuilder,
       ),
     );
+  }
+
+  Future<DeepLink> _handeDeeplinkBuilder(PlatformDeepLink deepLink) async {
+    final isUsedSSO = _settingsCubit.isUsedSSO();
+    if (!isUsedSSO) {
+      final link = _getInitialPage(deepLink);
+      return link;
+    }
+
+    final isAuthorized = _authCubit.isAuthorized();
+    final isAccessDenied = _authCubit.isAccessDenied();
+    if (!isAuthorized && !isAccessDenied) {
+      await _authCubit.authorize();
+      return const DeepLink([SplashRoute()]);
+    }
+    if (!isAuthorized && isAccessDenied) {
+      return DeepLink(
+        [AccessDeniedRoute(title: 'Access Denied!')],
+      );
+    }
+
+    final link = _getInitialPage(deepLink);
+    return link;
+  }
+
+  DeepLink _getInitialPage(PlatformDeepLink deepLink) {
+    final initialPage = _settingsCubit.getInitialPage();
+    if (initialPage.isDashboard) {
+      return const DeepLink(
+        [CommandCenterRoute()],
+      );
+    }
+    if (initialPage.isAnalytics) {
+      return const DeepLink(
+        [AnalyticsRoute()],
+      );
+    }
+    return deepLink;
   }
 }

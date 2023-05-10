@@ -1,9 +1,11 @@
 import 'package:benchmark/src/app/core/constants/common.dart';
 import 'package:benchmark/src/app/core/enums/config_data_source.dart';
+import 'package:benchmark/src/app/core/enums/initial_page.dart';
+import 'package:benchmark/src/domain/repositories/analytics_repository.dart';
 import 'package:benchmark/src/domain/repositories/settings_repository.dart';
+import 'package:benchmark/src/presentation/bloc/base/base_cubit.dart';
 import 'package:benchmark/src/presentation/models/helper_models/config_file/config_excel_file_model.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
@@ -11,12 +13,14 @@ part 'settings_state.dart';
 part 'settings_cubit.freezed.dart';
 
 @lazySingleton
-class SettingsCubit extends Cubit<SettingsState> {
+class SettingsCubit extends BaseCubit<SettingsState> {
   SettingsCubit(
     this._settingsRepository,
+    this._analyticsRepository,
   ) : super(const SettingsState.initial());
 
   final SettingsRepository _settingsRepository;
+  final AnalyticsRepository _analyticsRepository;
 
   ConfigExcelFileModel? fileModel;
   ConfigDataSource? configDataSource;
@@ -75,6 +79,14 @@ class SettingsCubit extends Cubit<SettingsState> {
     }
   }
 
+  Future<void> initAnalyticsSource() async {
+    await getDataSource();
+    await _analyticsRepository.init(
+      configDataSource ?? ConfigDataSource.gsheets,
+      excelFile: fileModel?.excel,
+    );
+  }
+
   Future<void> firebaseRemoteConfigInit() async {
     try {
       await _settingsRepository.firebaseRemoteConfigInit();
@@ -90,6 +102,16 @@ class SettingsCubit extends Cubit<SettingsState> {
     } catch (e) {
       debugPrint('Firebase remote config init error');
       return CommonConstants.isUsedSSO;
+    }
+  }
+
+  InitialPage getInitialPage() {
+    try {
+      final settings = _settingsRepository.getAppSettings();
+      return settings?.initialPage ?? InitialPage.analytics;
+    } catch (e) {
+      debugPrint('Firebase remote config init error');
+      return InitialPage.analytics;
     }
   }
 }

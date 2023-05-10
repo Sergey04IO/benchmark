@@ -10,17 +10,18 @@ import 'package:benchmark/src/domain/entities/area/area_entity.dart';
 import 'package:benchmark/src/domain/entities/sector_index/sector_index_entity.dart';
 import 'package:benchmark/src/domain/entities/sector_overview/cluster/sector_overview_cluster.dart';
 import 'package:benchmark/src/domain/entities/tornado/tornado_entity.dart';
+import 'package:benchmark/src/domain/repositories/analytics_repository.dart';
 import 'package:benchmark/src/domain/repositories/base/base_repository.dart';
-import 'package:benchmark/src/domain/repositories/home_repository.dart';
 import 'package:benchmark/src/domain/services/data_source_service.dart';
 import 'package:collection/collection.dart';
 import 'package:dartz/dartz.dart';
 import 'package:excel/excel.dart';
 import 'package:injectable/injectable.dart';
 
-@LazySingleton(as: HomeRepository, env: [Environment.prod])
-class HomeRepositoryImpl extends BaseRepository implements HomeRepository {
-  HomeRepositoryImpl(
+@LazySingleton(as: AnalyticsRepository, env: [Environment.prod])
+class AnalyticsRepositoryImpl extends BaseRepository
+    implements AnalyticsRepository {
+  AnalyticsRepositoryImpl(
     @Named.from(GsheetsService) this._gsheetsService,
     @Named.from(ExcelDataService) this._excelDataService,
   );

@@ -1,6 +1,6 @@
 import 'package:benchmark/src/domain/repositories/openid_connect_repository.dart';
+import 'package:benchmark/src/presentation/bloc/base/base_cubit.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:openid_client/openid_client_browser.dart';
@@ -9,7 +9,7 @@ part 'auth_state.dart';
 part 'auth_cubit.freezed.dart';
 
 @injectable
-class AuthCubit extends Cubit<AuthState> {
+class AuthCubit extends BaseCubit<AuthState> {
   AuthCubit(this._openIdConnectRepository) : super(const AuthState.initial());
 
   final OpenIdConnectRepository _openIdConnectRepository;

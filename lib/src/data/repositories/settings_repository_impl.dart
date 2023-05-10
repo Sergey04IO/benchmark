@@ -17,6 +17,7 @@ class SettingsRepositoryImpl implements SettingsRepository {
 
   final SettingsLocalSource _localSource;
   final FirebaseRemoteConfigService _firebaseRemoteConfigService;
+  AppSettingsEntity? _appSettings;
 
   @override
   Future<void> saveConfigFile(ConfigExcelFileModel? file) async {
@@ -84,10 +85,12 @@ class SettingsRepositoryImpl implements SettingsRepository {
   @override
   AppSettingsEntity? getAppSettings() {
     try {
+      if (_appSettings != null) return _appSettings;
       final data = _firebaseRemoteConfigService.getSettings();
       if (data == null) return null;
       final settings = AppSettingsModel.fromJson(data);
-      return settings.toEntity();
+      _appSettings = settings.toEntity();
+      return _appSettings;
     } catch (e) {
       rethrow;
     }

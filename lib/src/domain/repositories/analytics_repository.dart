@@ -7,7 +7,7 @@ import 'package:benchmark/src/domain/entities/tornado/tornado_entity.dart';
 import 'package:dartz/dartz.dart';
 import 'package:excel/excel.dart';
 
-abstract class HomeRepository {
+abstract class AnalyticsRepository {
   Future<void> init(ConfigDataSource dataSource, {Excel? excelFile});
   Future<Either<Failure, Map<String, List<TornadoEntity>>>> getTornadoData();
   Future<Either<Failure, Map<String, List<AreaEntity>>>> getAreasData();
