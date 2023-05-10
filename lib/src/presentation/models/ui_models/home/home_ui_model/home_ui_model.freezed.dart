@@ -18,8 +18,8 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$HomeUIModel {
   Widget? get appBarTitle => throw _privateConstructorUsedError;
   Color? get backgroundColor => throw _privateConstructorUsedError;
-  Color? get iconsColor => throw _privateConstructorUsedError;
-  Color? get appBarBackgroundColor => throw _privateConstructorUsedError;
+  Color? get iconColor => throw _privateConstructorUsedError;
+  Color? get appBarColor => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $HomeUIModelCopyWith<HomeUIModel> get copyWith =>
@@ -35,8 +35,8 @@ abstract class $HomeUIModelCopyWith<$Res> {
   $Res call(
       {Widget? appBarTitle,
       Color? backgroundColor,
-      Color? iconsColor,
-      Color? appBarBackgroundColor});
+      Color? iconColor,
+      Color? appBarColor});
 }
 
 /// @nodoc
@@ -54,8 +54,8 @@ class _$HomeUIModelCopyWithImpl<$Res, $Val extends HomeUIModel>
   $Res call({
     Object? appBarTitle = freezed,
     Object? backgroundColor = freezed,
-    Object? iconsColor = freezed,
-    Object? appBarBackgroundColor = freezed,
+    Object? iconColor = freezed,
+    Object? appBarColor = freezed,
   }) {
     return _then(_value.copyWith(
       appBarTitle: freezed == appBarTitle
@@ -66,13 +66,13 @@ class _$HomeUIModelCopyWithImpl<$Res, $Val extends HomeUIModel>
           ? _value.backgroundColor
           : backgroundColor // ignore: cast_nullable_to_non_nullable
               as Color?,
-      iconsColor: freezed == iconsColor
-          ? _value.iconsColor
-          : iconsColor // ignore: cast_nullable_to_non_nullable
+      iconColor: freezed == iconColor
+          ? _value.iconColor
+          : iconColor // ignore: cast_nullable_to_non_nullable
               as Color?,
-      appBarBackgroundColor: freezed == appBarBackgroundColor
-          ? _value.appBarBackgroundColor
-          : appBarBackgroundColor // ignore: cast_nullable_to_non_nullable
+      appBarColor: freezed == appBarColor
+          ? _value.appBarColor
+          : appBarColor // ignore: cast_nullable_to_non_nullable
               as Color?,
     ) as $Val);
   }
@@ -89,8 +89,8 @@ abstract class _$$_HomeUIModelCopyWith<$Res>
   $Res call(
       {Widget? appBarTitle,
       Color? backgroundColor,
-      Color? iconsColor,
-      Color? appBarBackgroundColor});
+      Color? iconColor,
+      Color? appBarColor});
 }
 
 /// @nodoc
@@ -106,8 +106,8 @@ class __$$_HomeUIModelCopyWithImpl<$Res>
   $Res call({
     Object? appBarTitle = freezed,
     Object? backgroundColor = freezed,
-    Object? iconsColor = freezed,
-    Object? appBarBackgroundColor = freezed,
+    Object? iconColor = freezed,
+    Object? appBarColor = freezed,
   }) {
     return _then(_$_HomeUIModel(
       appBarTitle: freezed == appBarTitle
@@ -118,13 +118,13 @@ class __$$_HomeUIModelCopyWithImpl<$Res>
           ? _value.backgroundColor
           : backgroundColor // ignore: cast_nullable_to_non_nullable
               as Color?,
-      iconsColor: freezed == iconsColor
-          ? _value.iconsColor
-          : iconsColor // ignore: cast_nullable_to_non_nullable
+      iconColor: freezed == iconColor
+          ? _value.iconColor
+          : iconColor // ignore: cast_nullable_to_non_nullable
               as Color?,
-      appBarBackgroundColor: freezed == appBarBackgroundColor
-          ? _value.appBarBackgroundColor
-          : appBarBackgroundColor // ignore: cast_nullable_to_non_nullable
+      appBarColor: freezed == appBarColor
+          ? _value.appBarColor
+          : appBarColor // ignore: cast_nullable_to_non_nullable
               as Color?,
     ));
   }
@@ -136,21 +136,21 @@ class _$_HomeUIModel implements _HomeUIModel {
   const _$_HomeUIModel(
       {this.appBarTitle,
       this.backgroundColor,
-      this.iconsColor,
-      this.appBarBackgroundColor});
+      this.iconColor,
+      this.appBarColor});
 
   @override
   final Widget? appBarTitle;
   @override
   final Color? backgroundColor;
   @override
-  final Color? iconsColor;
+  final Color? iconColor;
   @override
-  final Color? appBarBackgroundColor;
+  final Color? appBarColor;
 
   @override
   String toString() {
-    return 'HomeUIModel(appBarTitle: $appBarTitle, backgroundColor: $backgroundColor, iconsColor: $iconsColor, appBarBackgroundColor: $appBarBackgroundColor)';
+    return 'HomeUIModel(appBarTitle: $appBarTitle, backgroundColor: $backgroundColor, iconColor: $iconColor, appBarColor: $appBarColor)';
   }
 
   @override
@@ -162,15 +162,15 @@ class _$_HomeUIModel implements _HomeUIModel {
                 other.appBarTitle == appBarTitle) &&
             (identical(other.backgroundColor, backgroundColor) ||
                 other.backgroundColor == backgroundColor) &&
-            (identical(other.iconsColor, iconsColor) ||
-                other.iconsColor == iconsColor) &&
-            (identical(other.appBarBackgroundColor, appBarBackgroundColor) ||
-                other.appBarBackgroundColor == appBarBackgroundColor));
+            (identical(other.iconColor, iconColor) ||
+                other.iconColor == iconColor) &&
+            (identical(other.appBarColor, appBarColor) ||
+                other.appBarColor == appBarColor));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, appBarTitle, backgroundColor,
-      iconsColor, appBarBackgroundColor);
+  int get hashCode => Object.hash(
+      runtimeType, appBarTitle, backgroundColor, iconColor, appBarColor);
 
   @JsonKey(ignore: true)
   @override
@@ -183,17 +183,17 @@ abstract class _HomeUIModel implements HomeUIModel {
   const factory _HomeUIModel(
       {final Widget? appBarTitle,
       final Color? backgroundColor,
-      final Color? iconsColor,
-      final Color? appBarBackgroundColor}) = _$_HomeUIModel;
+      final Color? iconColor,
+      final Color? appBarColor}) = _$_HomeUIModel;
 
   @override
   Widget? get appBarTitle;
   @override
   Color? get backgroundColor;
   @override
-  Color? get iconsColor;
+  Color? get iconColor;
   @override
-  Color? get appBarBackgroundColor;
+  Color? get appBarColor;
   @override
   @JsonKey(ignore: true)
   _$$_HomeUIModelCopyWith<_$_HomeUIModel> get copyWith =>

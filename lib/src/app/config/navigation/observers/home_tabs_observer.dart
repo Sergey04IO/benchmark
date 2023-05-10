@@ -2,10 +2,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:benchmark/src/app/config/di/injector.dart';
 import 'package:benchmark/src/app/config/navigation/app_router/app_router.dart';
 import 'package:benchmark/src/app/config/navigation/observers/router_observer_mixin.dart';
-import 'package:benchmark/src/app/core/theme/colors/app_colors.dart';
 import 'package:benchmark/src/presentation/bloc/home/home_cubit.dart';
 import 'package:benchmark/src/presentation/bloc/settings/settings_cubit.dart';
-import 'package:benchmark/src/presentation/models/ui_models/home/home_ui_model/home_ui_model.dart';
 import 'package:flutter/material.dart';
 
 class HomeTabsObserver extends AutoRouterObserver with RouterObserverMixin {
@@ -18,7 +16,7 @@ class HomeTabsObserver extends AutoRouterObserver with RouterObserverMixin {
   @override
   void didChangeTabRoute(TabPageRoute route, TabPageRoute previousRoute) {
     _setPageTitle(route);
-    _useHomeUI(route: route);
+    _setHomeTheme(route: route);
     if (route.name == AnalyticsRoute.name) {
       _settingsCubit.getDataSource();
     }
@@ -28,7 +26,7 @@ class HomeTabsObserver extends AutoRouterObserver with RouterObserverMixin {
   @override
   void didInitTabRoute(TabPageRoute route, TabPageRoute? previousRoute) {
     _setPageTitle(route);
-    _useHomeUI(route: route);
+    _setHomeTheme(route: route);
     if (route.name != AnalyticsRoute.name) {
       _settingsCubit.initAnalyticsSource();
     }
@@ -41,23 +39,16 @@ class HomeTabsObserver extends AutoRouterObserver with RouterObserverMixin {
     setPageTitle(title: title);
   }
 
-  void _useHomeUI({
+  void _setHomeTheme({
     required TabPageRoute route,
   }) {
-    HomeUIModel? model;
     switch (route.name) {
       case CommandCenterRoute.name:
-        model = const HomeUIModel(
-          backgroundColor: AppColors.greyC1F,
-          appBarBackgroundColor: AppColors.greyE31,
-          iconsColor: AppColors.grey396,
-        );
+        _homeCubit.setCommandCenterTheme(context);
         break;
       default:
-        _homeCubit.clearHomeUI();
+        _homeCubit.setAnalyticsTheme(context);
         break;
     }
-    if (model == null) return;
-    _homeCubit.useHomeUI(model);
   }
 }

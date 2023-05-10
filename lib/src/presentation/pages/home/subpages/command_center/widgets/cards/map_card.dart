@@ -1,5 +1,5 @@
 import 'package:benchmark/src/app/core/generated/translations/locale_keys.g.dart';
-import 'package:benchmark/src/app/core/theme/colors/app_colors.dart';
+import 'package:benchmark/src/app/core/theme/custom_theme/text/command_center_text_theme.dart';
 import 'package:benchmark/src/presentation/pages/home/subpages/command_center/widgets/charts/map_chart.dart';
 import 'package:benchmark/src/presentation/widgets/cards/generic/command_center_card.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -46,10 +46,7 @@ class _MapCardState extends State<MapCard> {
         LocaleKeys.commandCenter_mapCardFooter.tr(
           args: ['646', '13124'],
         ),
-        style: const TextStyle(
-          fontSize: 12,
-          color: AppColors.greyE6E,
-        ),
+        style: CommandCenterTextTheme.of(context)?.cardFooterTextStyle,
       ),
     );
   }

@@ -8,26 +8,26 @@ class CommonScaffold extends StatelessWidget {
     required this.child,
     this.title,
     this.backgroundColor = AppColors.grey2F3,
-    this.iconsColor = AppColors.primaryColor,
-    this.appBarBackgroundColor = AppColors.grey3F3,
+    this.iconColor = AppColors.primaryColor,
+    this.appBarColor = AppColors.grey3F3,
   });
 
   final Widget? title;
   final Widget child;
   final Color? backgroundColor;
-  final Color? iconsColor;
-  final Color? appBarBackgroundColor;
+  final Color? iconColor;
+  final Color? appBarColor;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backgroundColor ?? AppColors.grey2F3,
       appBar: AppBar(
-        backgroundColor: appBarBackgroundColor ?? AppColors.grey3F3,
+        backgroundColor: appBarColor ?? AppColors.grey3F3,
         titleSpacing: 0,
         title: title,
         iconTheme: IconThemeData(
-          color: iconsColor ?? AppColors.primaryColor,
+          color: iconColor ?? AppColors.primaryColor,
         ),
       ),
       drawer: Drawer(
