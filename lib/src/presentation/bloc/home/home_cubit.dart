@@ -10,12 +10,12 @@ part 'home_state.dart';
 class HomeCubit extends BaseCubit<HomeState> {
   HomeCubit() : super(const HomeState.initial());
 
-  Future<void> useAppBarTitle(HomeUIModel model) async {
+  Future<void> useHomeUI(HomeUIModel model) async {
     emit(const HomeState.clearState());
     emit(HomeState.commonState(model));
   }
 
-  Future<void> clearAppBarTitle() async {
+  Future<void> clearHomeUI() async {
     emit(const HomeState.clearState());
     emit(const HomeState.commonState(HomeUIModel()));
   }

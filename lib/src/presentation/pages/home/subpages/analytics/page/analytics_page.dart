@@ -70,7 +70,7 @@ class _AnalyticsPageState extends State<AnalyticsPage> {
       listener: (context, state) {
         state.maybeWhen(
           data: (model) {
-            _homeCubit.useAppBarTitle(
+            _homeCubit.useHomeUI(
               HomeUIModel(
                 appBarTitle: _appBarTitle(model),
               ),

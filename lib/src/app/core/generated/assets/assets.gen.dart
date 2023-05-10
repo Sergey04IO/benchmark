@@ -9,6 +9,16 @@
 
 import 'package:flutter/widgets.dart';
 
+class $AssetsFilesGen {
+  const $AssetsFilesGen();
+
+  /// File path: assets/files/world_map.json
+  String get worldMap => 'assets/files/world_map.json';
+
+  /// List of all assets
+  List<String> get values => [worldMap];
+}
+
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
@@ -22,6 +32,7 @@ class $AssetsImagesGen {
 class Assets {
   Assets._();
 
+  static const $AssetsFilesGen files = $AssetsFilesGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
 }
 
