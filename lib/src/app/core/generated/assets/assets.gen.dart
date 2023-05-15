@@ -22,9 +22,25 @@ class $AssetsFilesGen {
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/facebook_logo.png
+  AssetGenImage get facebookLogo =>
+      const AssetGenImage('assets/icons/facebook_logo.png');
+
   /// File path: assets/icons/google_analytics_logo.webp
   AssetGenImage get googleAnalyticsLogo =>
       const AssetGenImage('assets/icons/google_analytics_logo.webp');
+
+  /// File path: assets/icons/google_plus_logo.png
+  AssetGenImage get googlePlusLogo =>
+      const AssetGenImage('assets/icons/google_plus_logo.png');
+
+  /// File path: assets/icons/instagram_logo.png
+  AssetGenImage get instagramLogo =>
+      const AssetGenImage('assets/icons/instagram_logo.png');
+
+  /// File path: assets/icons/linkedin_logo.png
+  AssetGenImage get linkedinLogo =>
+      const AssetGenImage('assets/icons/linkedin_logo.png');
 
   /// File path: assets/icons/pingdom_logo.png
   AssetGenImage get pingdomLogo =>
@@ -34,9 +50,26 @@ class $AssetsIconsGen {
   AssetGenImage get quickbooksLogo =>
       const AssetGenImage('assets/icons/quickbooks_logo.png');
 
+  /// File path: assets/icons/twitter_logo.png
+  AssetGenImage get twitterLogo =>
+      const AssetGenImage('assets/icons/twitter_logo.png');
+
+  /// File path: assets/icons/youtube_logo.png
+  AssetGenImage get youtubeLogo =>
+      const AssetGenImage('assets/icons/youtube_logo.png');
+
   /// List of all assets
-  List<AssetGenImage> get values =>
-      [googleAnalyticsLogo, pingdomLogo, quickbooksLogo];
+  List<AssetGenImage> get values => [
+        facebookLogo,
+        googleAnalyticsLogo,
+        googlePlusLogo,
+        instagramLogo,
+        linkedinLogo,
+        pingdomLogo,
+        quickbooksLogo,
+        twitterLogo,
+        youtubeLogo
+      ];
 }
 
 class $AssetsImagesGen {

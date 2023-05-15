@@ -25,7 +25,12 @@ class CodegenLoader extends AssetLoader{
     "multiChartRedirectionTime": "Redirection Time {}",
     "multiChartServerResponseTime": "Server Response Time {}",
     "multiChartResponseTime": "Response Time {}",
-    "multiChartWebSite": "Web Site"
+    "multiChartWebSite": "Web Site",
+    "followersHeader": "Social Media Followers",
+    "likes": "Likes",
+    "followers": "Followers",
+    "subscribers": "Subscribers",
+    "circledBy": "Circled By"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": en};

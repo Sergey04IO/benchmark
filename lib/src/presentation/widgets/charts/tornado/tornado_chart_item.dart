@@ -1,9 +1,11 @@
 import 'dart:math';
 
 import 'package:benchmark/src/app/core/constants/common.dart';
+import 'package:benchmark/src/app/core/enums/number_format_type.dart';
 import 'package:benchmark/src/app/core/enums/value_bigger.dart';
 import 'package:benchmark/src/app/core/extensions/random_extensions.dart';
 import 'package:benchmark/src/app/core/theme/colors/app_colors.dart';
+import 'package:benchmark/src/app/core/utils/format_util.dart';
 import 'package:benchmark/src/domain/entities/tornado/tornado_entity.dart';
 import 'package:benchmark/src/presentation/models/helper_models/bars_width/bars_width_model.dart';
 import 'package:flutter/material.dart';
@@ -458,8 +460,8 @@ class _TornadoChartItemState extends State<TornadoChartItem>
   void _assignFormatter() {
     _formatter = widget.model.benchmarkValue! < valueFormatEdge ||
             widget.model.dateValue! < valueFormatEdge
-        ? NumberFormat('#,###,##0.00')
-        : NumberFormat('#,###,###');
+        ? FormatUtil.getNumberFormat(type: NumberFormatType.doublePrecTwo)
+        : FormatUtil.getNumberFormat();
   }
 
   void _updateValues() {

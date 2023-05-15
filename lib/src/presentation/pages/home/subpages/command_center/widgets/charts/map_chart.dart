@@ -1,4 +1,5 @@
 import 'package:benchmark/src/app/core/generated/assets/assets.gen.dart';
+import 'package:benchmark/src/app/core/utils/format_util.dart';
 import 'package:benchmark/src/data/helper/data/command_center/map_data.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -14,7 +15,7 @@ class MapChart extends StatefulWidget {
 
 class _MapChartState extends State<MapChart> {
   late MapShapeSource _mapShapeSource;
-  final NumberFormat _numberFormat = NumberFormat('#,###,###');
+  final NumberFormat _numberFormat = FormatUtil.getNumberFormat();
 
   @override
   void initState() {

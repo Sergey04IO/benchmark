@@ -1,14 +1,15 @@
 import 'dart:math';
 
 import 'package:benchmark/src/app/core/constants/common.dart';
+import 'package:benchmark/src/app/core/enums/number_format_type.dart';
 import 'package:benchmark/src/app/core/extensions/random_extensions.dart';
 import 'package:benchmark/src/app/core/theme/colors/app_colors.dart';
+import 'package:benchmark/src/app/core/utils/format_util.dart';
 import 'package:benchmark/src/domain/entities/area/area_entity.dart';
 import 'package:benchmark/src/presentation/widgets/cards/generic/app_common_card.dart';
 import 'package:benchmark/src/presentation/widgets/charts/area/area_chart.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 class AreaCard extends StatefulWidget {
   const AreaCard({
@@ -156,8 +157,8 @@ class _AreaCardState extends State<AreaCard>
     final model = widget.model;
     final isEur = _isEurCard();
     final formatter = (model.values.isNotEmpty ? model.values.last : 0) < 100
-        ? NumberFormat('#,###,##0.0')
-        : NumberFormat('#,###,###');
+        ? FormatUtil.getNumberFormat(type: NumberFormatType.doublePrecOne)
+        : FormatUtil.getNumberFormat();
     String value = formatter.format(_valueYTDAnimation.value);
 
     if (!isEur) {
@@ -222,8 +223,8 @@ class _AreaCardState extends State<AreaCard>
 
   Widget _buildDifferenceValue() {
     final formatter = _getDifference() < 100 && !_isEurCard()
-        ? NumberFormat('#,###,##0.00')
-        : NumberFormat('#,###,###');
+        ? FormatUtil.getNumberFormat(type: NumberFormatType.doublePrecTwo)
+        : FormatUtil.getNumberFormat();
 
     String text = '';
     final difference = _differenceAnimation.value;

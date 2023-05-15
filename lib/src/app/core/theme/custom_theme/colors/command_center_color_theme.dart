@@ -7,12 +7,14 @@ class CommandCenterColorTheme extends ThemeExtension<CommandCenterColorTheme> {
     required this.appBarColor,
     required this.cardColor,
     required this.iconColor,
+    required this.dividerColor,
   });
 
   final Color? backgroundColor;
   final Color? appBarColor;
   final Color? cardColor;
   final Color? iconColor;
+  final Color? dividerColor;
 
   static CommandCenterColorTheme? of(BuildContext context) {
     return Theme.of(context).extension<CommandCenterColorTheme>();
@@ -24,12 +26,14 @@ class CommandCenterColorTheme extends ThemeExtension<CommandCenterColorTheme> {
     Color? appBarColor,
     Color? cardColor,
     Color? iconColor,
+    Color? dividerColor,
   }) {
     return CommandCenterColorTheme(
       backgroundColor: backgroundColor ?? this.backgroundColor,
       appBarColor: appBarColor ?? this.appBarColor,
       cardColor: cardColor ?? this.cardColor,
       iconColor: iconColor ?? this.iconColor,
+      dividerColor: dividerColor ?? this.dividerColor,
     );
   }
 
@@ -46,6 +50,7 @@ class CommandCenterColorTheme extends ThemeExtension<CommandCenterColorTheme> {
       appBarColor: Color.lerp(appBarColor, other.appBarColor, t),
       cardColor: Color.lerp(cardColor, other.cardColor, t),
       iconColor: Color.lerp(iconColor, other.iconColor, t),
+      dividerColor: Color.lerp(dividerColor, other.dividerColor, t),
     );
   }
 
@@ -55,6 +60,7 @@ class CommandCenterColorTheme extends ThemeExtension<CommandCenterColorTheme> {
     appBarColor: AppColors.greyE31,
     iconColor: AppColors.grey396,
     cardColor: AppColors.greyA2A,
+    dividerColor: AppColors.grey242,
   );
   // the dark theme
   // static const dark = CustomColorsTheme();

@@ -12,8 +12,11 @@ class AppColors {
   static const grey3F3 = Color(0xFFF3F3F3);
   static const grey2D2 = Color(0xFFD2D2D2);
 
+  // Divider
+  static const grey242 = Color(0xFF424242);
+
   /// Command Center
-  // background
+  // Background
   // Body
   static const greyC1F = Color(0xFF1B1C1F);
   // App Bar

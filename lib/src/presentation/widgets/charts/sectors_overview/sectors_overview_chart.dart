@@ -1,5 +1,7 @@
 import 'package:benchmark/src/app/core/constants/common.dart';
+import 'package:benchmark/src/app/core/enums/number_format_type.dart';
 import 'package:benchmark/src/app/core/theme/colors/app_colors.dart';
+import 'package:benchmark/src/app/core/utils/format_util.dart';
 import 'package:benchmark/src/domain/entities/sector_overview/entity/sector_overview_entity.dart';
 import 'package:benchmark/src/presentation/widgets/charts/sectors_overview/single_sector_overview.dart';
 import 'package:collection/collection.dart';
@@ -202,7 +204,7 @@ class _SectorsOverviewChartState extends State<SectorsOverviewChart>
   void _init() {
     _barMaxHeight =
         widget.height == null ? _barMaxHeight : height - _notBarsContentHeight;
-    _formatter = NumberFormat.compact();
+    _formatter = FormatUtil.getNumberFormat(type: NumberFormatType.compact);
 
     _controller = AnimationController(
       vsync: this,

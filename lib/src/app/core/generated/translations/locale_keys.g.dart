@@ -11,6 +11,11 @@ abstract class  LocaleKeys {
   static const commandCenter_multiChartServerResponseTime = 'commandCenter.multiChartServerResponseTime';
   static const commandCenter_multiChartResponseTime = 'commandCenter.multiChartResponseTime';
   static const commandCenter_multiChartWebSite = 'commandCenter.multiChartWebSite';
+  static const commandCenter_followersHeader = 'commandCenter.followersHeader';
+  static const commandCenter_likes = 'commandCenter.likes';
+  static const commandCenter_followers = 'commandCenter.followers';
+  static const commandCenter_subscribers = 'commandCenter.subscribers';
+  static const commandCenter_circledBy = 'commandCenter.circledBy';
   static const commandCenter = 'commandCenter';
 
 }
