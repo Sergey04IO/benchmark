@@ -10,6 +10,7 @@ class AppColors {
   static const grey0A4 = Color(0xFFA0A0A4);
   static const grey948 = Color(0xFF4A4948);
   static const grey3F3 = Color(0xFFF3F3F3);
+  static const grey2D2 = Color(0xFFD2D2D2);
 
   /// Command Center
   // background
@@ -25,4 +26,10 @@ class AppColors {
 
   // Text
   static const greyE6E = Color(0xFF6E6E6E);
+
+  // Graphs
+  static const blue2BB = Color(0xFF3862BB);
+  static const redC4C = Color(0xFFB93C4C);
+  static const green528 = Color(0xFF07A528);
+  static const orangeE2A = Color(0xFFDE7E2A);
 }

@@ -19,6 +19,26 @@ class $AssetsFilesGen {
   List<String> get values => [worldMap];
 }
 
+class $AssetsIconsGen {
+  const $AssetsIconsGen();
+
+  /// File path: assets/icons/google_analytics_logo.webp
+  AssetGenImage get googleAnalyticsLogo =>
+      const AssetGenImage('assets/icons/google_analytics_logo.webp');
+
+  /// File path: assets/icons/pingdom_logo.png
+  AssetGenImage get pingdomLogo =>
+      const AssetGenImage('assets/icons/pingdom_logo.png');
+
+  /// File path: assets/icons/quickbooks_logo.png
+  AssetGenImage get quickbooksLogo =>
+      const AssetGenImage('assets/icons/quickbooks_logo.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values =>
+      [googleAnalyticsLogo, pingdomLogo, quickbooksLogo];
+}
+
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
@@ -43,6 +63,7 @@ class Assets {
   Assets._();
 
   static const $AssetsFilesGen files = $AssetsFilesGen();
+  static const $AssetsIconsGen icons = $AssetsIconsGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
   static const $AssetsTranslationsGen translations = $AssetsTranslationsGen();
 }

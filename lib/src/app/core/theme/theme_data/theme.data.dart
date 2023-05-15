@@ -16,10 +16,12 @@ class AppTheme {
   }
 
   static ThemeData get light {
-    return baseTheme.copyWith(extensions: [
-      CommandCenterTextTheme.light,
-      CommandCenterColorTheme.light,
-    ]);
+    return baseTheme.copyWith(
+      extensions: [
+        CommandCenterTextTheme.light,
+        CommandCenterColorTheme.light,
+      ],
+    );
   }
 
   static ThemeData get dark {

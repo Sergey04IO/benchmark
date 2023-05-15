@@ -1,4 +1,4 @@
-import 'package:benchmark/src/presentation/models/helper_models/map_item/map_item_ui_model.dart';
+import 'package:benchmark/src/presentation/models/helper_models/command_center/map_item/map_item_ui_model.dart';
 
 class MapData {
   static const List<MapItemUIModel> worldAccountsNumbers = [

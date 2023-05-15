@@ -21,7 +21,7 @@ class CommandCenterCard extends StatelessWidget {
     return Container(
       width: width,
       height: height,
-      padding: const EdgeInsets.fromLTRB(12, 12, 12, 16),
+      padding: const EdgeInsets.fromLTRB(16, 12, 16, 16),
       decoration: BoxDecoration(
         color: AppColors.greyA2A,
         borderRadius: BorderRadius.circular(4),
@@ -42,7 +42,7 @@ class CommandCenterCard extends StatelessWidget {
       alignment: Alignment.centerLeft,
       child: Text(
         title ?? '',
-        style: CommandCenterTextTheme.of(context)?.cardHeaderTextStyle,
+        style: CommandCenterTextTheme.of(context)?.headerSmallTextStyle,
       ),
     );
   }

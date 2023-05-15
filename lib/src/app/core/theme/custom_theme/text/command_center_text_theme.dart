@@ -4,12 +4,18 @@ import 'package:flutter/material.dart';
 
 class CommandCenterTextTheme extends ThemeExtension<CommandCenterTextTheme> {
   const CommandCenterTextTheme({
-    required this.cardHeaderTextStyle,
-    required this.cardFooterTextStyle,
+    required this.headerMediumTextStyle,
+    required this.headerSmallTextStyle,
+    required this.subtitleTextStyle,
+    required this.bodyMediumTextStyle,
+    required this.bodySmallTextStyle,
   });
 
-  final TextStyle? cardHeaderTextStyle;
-  final TextStyle? cardFooterTextStyle;
+  final TextStyle? headerMediumTextStyle;
+  final TextStyle? headerSmallTextStyle;
+  final TextStyle? subtitleTextStyle;
+  final TextStyle? bodyMediumTextStyle;
+  final TextStyle? bodySmallTextStyle;
 
   static CommandCenterTextTheme? of(BuildContext context) {
     return Theme.of(context).extension<CommandCenterTextTheme>();
@@ -17,12 +23,19 @@ class CommandCenterTextTheme extends ThemeExtension<CommandCenterTextTheme> {
 
   @override
   ThemeExtension<CommandCenterTextTheme> copyWith({
-    TextStyle? cardHeaderTextStyle,
-    TextStyle? cardFooterTextStyle,
+    TextStyle? headerMediumTextStyle,
+    TextStyle? headerSmallTextStyle,
+    TextStyle? subtitleTextStyle,
+    TextStyle? bodyMediumTextStyle,
+    TextStyle? bodySmallTextStyle,
   }) {
     return CommandCenterTextTheme(
-      cardHeaderTextStyle: cardHeaderTextStyle ?? this.cardHeaderTextStyle,
-      cardFooterTextStyle: cardFooterTextStyle ?? this.cardFooterTextStyle,
+      headerMediumTextStyle:
+          headerMediumTextStyle ?? this.headerMediumTextStyle,
+      headerSmallTextStyle: headerSmallTextStyle ?? this.headerSmallTextStyle,
+      subtitleTextStyle: subtitleTextStyle ?? this.subtitleTextStyle,
+      bodyMediumTextStyle: bodyMediumTextStyle ?? this.bodyMediumTextStyle,
+      bodySmallTextStyle: bodySmallTextStyle ?? this.bodySmallTextStyle,
     );
   }
 
@@ -35,14 +48,29 @@ class CommandCenterTextTheme extends ThemeExtension<CommandCenterTextTheme> {
       return this;
     }
     return CommandCenterTextTheme(
-      cardHeaderTextStyle: TextStyle.lerp(
-        cardHeaderTextStyle,
-        other.cardHeaderTextStyle,
+      headerMediumTextStyle: TextStyle.lerp(
+        headerMediumTextStyle,
+        other.headerMediumTextStyle,
         t,
       ),
-      cardFooterTextStyle: TextStyle.lerp(
-        cardFooterTextStyle,
-        other.cardFooterTextStyle,
+      headerSmallTextStyle: TextStyle.lerp(
+        headerSmallTextStyle,
+        other.headerSmallTextStyle,
+        t,
+      ),
+      subtitleTextStyle: TextStyle.lerp(
+        subtitleTextStyle,
+        other.subtitleTextStyle,
+        t,
+      ),
+      bodyMediumTextStyle: TextStyle.lerp(
+        bodyMediumTextStyle,
+        other.bodyMediumTextStyle,
+        t,
+      ),
+      bodySmallTextStyle: TextStyle.lerp(
+        bodySmallTextStyle,
+        other.bodySmallTextStyle,
         t,
       ),
     );
@@ -50,8 +78,26 @@ class CommandCenterTextTheme extends ThemeExtension<CommandCenterTextTheme> {
 
   // the light theme
   static final light = CommandCenterTextTheme(
-    cardHeaderTextStyle: AppTextStyles.s16fw700(color: AppColors.whiteFFF),
-    cardFooterTextStyle: AppTextStyles.s12fw400(color: AppColors.greyE6E),
+    headerMediumTextStyle: AppTextStyles.s22fw700(
+      color: AppColors.whiteFFF,
+      height: 1.3,
+    ),
+    headerSmallTextStyle: AppTextStyles.s16fw700(
+      color: AppColors.whiteFFF,
+      height: 1.3,
+    ),
+    subtitleTextStyle: AppTextStyles.s14fw700(
+      color: AppColors.whiteFFF,
+      height: 1.3,
+    ),
+    bodyMediumTextStyle: AppTextStyles.s14fw400(
+      color: AppColors.whiteFFF,
+      height: 1.3,
+    ),
+    bodySmallTextStyle: AppTextStyles.s12fw400(
+      color: AppColors.whiteFFF,
+      height: 1.3,
+    ),
   );
 
   // the dark theme

@@ -17,7 +17,15 @@ class CodegenLoader extends AssetLoader{
   static const Map<String,dynamic> en = {
   "commandCenter": {
     "mapCardHeader": "Salesforse Accounts by country",
-    "mapCardFooter": "Invalid state information provided fo {} of {} accounts"
+    "mapCardFooter": "Invalid state information provided fo {} of {} accounts",
+    "multiChartHeader": "{} Analytics: Load Time vs Response Time",
+    "multiChartYTitle": "Load Time",
+    "multiChartYOppositeTitle": "Avg Response Time",
+    "multiChartPageLoadTime": "Page Load Time {}",
+    "multiChartRedirectionTime": "Redirection Time {}",
+    "multiChartServerResponseTime": "Server Response Time {}",
+    "multiChartResponseTime": "Response Time {}",
+    "multiChartWebSite": "Web Site"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": en};
