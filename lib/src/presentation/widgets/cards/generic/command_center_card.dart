@@ -9,30 +9,35 @@ class CommandCenterCard extends StatelessWidget {
     this.title,
     this.height,
     this.width,
+    this.minWidth,
   });
 
   final Widget child;
   final String? title;
   final double? width;
+  final double? minWidth;
   final double? height;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: width,
-      height: height,
-      padding: const EdgeInsets.fromLTRB(16, 12, 16, 16),
-      decoration: BoxDecoration(
-        color: AppColors.greyA2A,
-        borderRadius: BorderRadius.circular(4),
-      ),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          _buildHeader(context),
-          const SizedBox(height: 20),
-          child,
-        ],
+    return ConstrainedBox(
+      constraints: BoxConstraints(minWidth: minWidth ?? 0.0),
+      child: Container(
+        width: width,
+        height: height,
+        padding: const EdgeInsets.fromLTRB(16, 12, 16, 16),
+        decoration: BoxDecoration(
+          color: AppColors.greyA2A,
+          borderRadius: BorderRadius.circular(4),
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            _buildHeader(context),
+            const SizedBox(height: 20),
+            child,
+          ],
+        ),
       ),
     );
   }

@@ -30,7 +30,12 @@ class CodegenLoader extends AssetLoader{
     "likes": "Likes",
     "followers": "Followers",
     "subscribers": "Subscribers",
-    "circledBy": "Circled By"
+    "circledBy": "Circled By",
+    "videoStats": "{} Video Stats",
+    "videoStatsImageSubtitle": "Metrics Driven Change Management",
+    "playCount": "Play Count",
+    "engagement": "Engagement",
+    "playRate": "Play Rate"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": en};

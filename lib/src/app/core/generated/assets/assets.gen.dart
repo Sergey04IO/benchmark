@@ -75,11 +75,15 @@ class $AssetsIconsGen {
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/metric_management.jpg
+  AssetGenImage get metricManagement =>
+      const AssetGenImage('assets/images/metric_management.jpg');
+
   /// File path: assets/images/stock.jpeg
   AssetGenImage get stock => const AssetGenImage('assets/images/stock.jpeg');
 
   /// List of all assets
-  List<AssetGenImage> get values => [stock];
+  List<AssetGenImage> get values => [metricManagement, stock];
 }
 
 class $AssetsTranslationsGen {

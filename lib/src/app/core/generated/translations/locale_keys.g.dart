@@ -16,6 +16,11 @@ abstract class  LocaleKeys {
   static const commandCenter_followers = 'commandCenter.followers';
   static const commandCenter_subscribers = 'commandCenter.subscribers';
   static const commandCenter_circledBy = 'commandCenter.circledBy';
+  static const commandCenter_videoStats = 'commandCenter.videoStats';
+  static const commandCenter_videoStatsImageSubtitle = 'commandCenter.videoStatsImageSubtitle';
+  static const commandCenter_playCount = 'commandCenter.playCount';
+  static const commandCenter_engagement = 'commandCenter.engagement';
+  static const commandCenter_playRate = 'commandCenter.playRate';
   static const commandCenter = 'commandCenter';
 
 }

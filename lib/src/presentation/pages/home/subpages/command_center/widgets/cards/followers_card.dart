@@ -1,9 +1,9 @@
 import 'package:benchmark/src/app/core/extensions/text_style_extension.dart';
 import 'package:benchmark/src/app/core/generated/assets/assets.gen.dart';
 import 'package:benchmark/src/app/core/generated/translations/locale_keys.g.dart';
-import 'package:benchmark/src/app/core/theme/custom_theme/colors/command_center_color_theme.dart';
 import 'package:benchmark/src/app/core/theme/custom_theme/text/command_center_text_theme.dart';
 import 'package:benchmark/src/app/core/utils/format_util.dart';
+import 'package:benchmark/src/presentation/pages/home/subpages/command_center/widgets/containers/divider_gradient_container.dart';
 import 'package:benchmark/src/presentation/widgets/cards/generic/command_center_card.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +14,7 @@ class FollowersCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CommandCenterCard(
+      minWidth: 250,
       width: MediaQuery.of(context).size.width / 3,
       title: LocaleKeys.commandCenter_followersHeader.tr(),
       child: _buildContent(context),
@@ -26,7 +27,7 @@ class FollowersCard extends StatelessWidget {
       children: [
         _buildFirstRow(context),
         const SizedBox(height: 20),
-        _buildDivider(context),
+        const DividerGradientContainer(),
         const SizedBox(height: 20),
         _buildSecondRow(context),
       ],
@@ -145,46 +146,5 @@ class FollowersCard extends StatelessWidget {
                 0.75,
               ),
     );
-  }
-
-  Widget _buildDivider(BuildContext context) {
-    return Container(
-      height: 1,
-      decoration: BoxDecoration(
-        color: CommandCenterColorTheme.of(context)?.dividerColor,
-        gradient: LinearGradient(
-          colors: _getDividerGradientColors(context),
-          stops: _getDividerGradientStops(),
-        ),
-      ),
-    );
-  }
-
-  List<Color> _getDividerGradientColors(BuildContext context) {
-    final list = List.generate(
-      20,
-      (index) {
-        final isOdd = (index % 2) == 0;
-        if (isOdd) {
-          return CommandCenterColorTheme.of(context)!.dividerColor!;
-        }
-
-        return CommandCenterColorTheme.of(context)!
-            .dividerColor!
-            .withOpacity(0.25);
-      },
-    );
-    return list;
-  }
-
-  List<double> _getDividerGradientStops() {
-    final list = List.generate(
-      20,
-      (index) {
-        final value = index / 20;
-        return value;
-      },
-    );
-    return list;
   }
 }

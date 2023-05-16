@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:benchmark/src/presentation/pages/home/subpages/command_center/widgets/cards/followers_card.dart';
 import 'package:benchmark/src/presentation/pages/home/subpages/command_center/widgets/cards/map_card.dart';
 import 'package:benchmark/src/presentation/pages/home/subpages/command_center/widgets/cards/multi_chart_card.dart';
+import 'package:benchmark/src/presentation/pages/home/subpages/command_center/widgets/cards/video_stats_card.dart';
 import 'package:flutter/material.dart';
 
 @RoutePage()
@@ -21,7 +22,8 @@ class _CommandCenterPageState extends State<CommandCenterPage> {
       // child: MultiChartCard(
       //   useAnimations: useAnimations,
       // ),
-      child: FollowersCard(),
+      // child: FollowersCard(),
+      child: VideoStatsCard(),
     );
   }
 }
