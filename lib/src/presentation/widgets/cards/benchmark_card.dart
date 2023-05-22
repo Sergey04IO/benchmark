@@ -69,9 +69,9 @@ class _BenchmarkCardState extends State<BenchmarkCard> {
           ),
         ),
         SizedBox(width: space),
-        Expanded(
+        const Expanded(
           child: Row(
-            children: const [
+            children: [
               Text(
                 'Benchmark-2022',
                 style: TextStyle(

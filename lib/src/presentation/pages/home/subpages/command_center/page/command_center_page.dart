@@ -17,7 +17,7 @@ class _CommandCenterPageState extends State<CommandCenterPage> {
   bool useAnimations = false;
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return const Center(
       // child: MapCard(),
       // child: MultiChartCard(
       //   useAnimations: useAnimations,
