@@ -10,7 +10,7 @@ class CodegenLoader extends AssetLoader{
   const CodegenLoader();
 
   @override
-  Future<Map<String, dynamic>> load(String fullPath, Locale locale ) {
+  Future<Map<String, dynamic>?> load(String path, Locale locale) {
     return Future.value(mapLocales[locale.toString()]);
   }
 
@@ -35,7 +35,10 @@ class CodegenLoader extends AssetLoader{
     "videoStatsImageSubtitle": "Metrics Driven Change Management",
     "playCount": "Play Count",
     "engagement": "Engagement",
-    "playRate": "Play Rate"
+    "playRate": "Play Rate",
+    "callDurationTitle": "{} Today's Average Call Duration",
+    "companyName": "Company: {}",
+    "basedOnCalls": "Based on {} calls"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": en};

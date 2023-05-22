@@ -32,6 +32,7 @@ class AppColors {
 
   // Graphs
   static const blue2BB = Color(0xFF3862BB);
+  static const blue0F3 = Color(0xFF5390F3);
   static const redC4C = Color(0xFFB93C4C);
   static const green528 = Color(0xFF07A528);
   static const orangeE2A = Color(0xFFDE7E2A);

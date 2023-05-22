@@ -34,7 +34,7 @@ class CommandCenterCard extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             _buildHeader(context),
-            const SizedBox(height: 20),
+            const SizedBox(height: 15),
             child,
           ],
         ),

@@ -19,6 +19,9 @@
         "videoStatsImageSubtitle": "Metrics Driven Change Management",
         "playCount": "Play Count",
         "engagement": "Engagement",
-        "playRate": "Play Rate"
+        "playRate": "Play Rate",
+        "callDurationTitle": "{} Today's Average Call Duration",
+        "companyName": "Company: {}",
+        "basedOnCalls": "Based on {} calls"
     }
 }

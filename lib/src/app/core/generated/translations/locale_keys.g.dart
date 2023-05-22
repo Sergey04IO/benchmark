@@ -21,6 +21,9 @@ abstract class  LocaleKeys {
   static const commandCenter_playCount = 'commandCenter.playCount';
   static const commandCenter_engagement = 'commandCenter.engagement';
   static const commandCenter_playRate = 'commandCenter.playRate';
+  static const commandCenter_callDurationTitle = 'commandCenter.callDurationTitle';
+  static const commandCenter_companyName = 'commandCenter.companyName';
+  static const commandCenter_basedOnCalls = 'commandCenter.basedOnCalls';
   static const commandCenter = 'commandCenter';
 
 }

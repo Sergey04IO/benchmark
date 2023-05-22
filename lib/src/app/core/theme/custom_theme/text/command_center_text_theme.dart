@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 class CommandCenterTextTheme extends ThemeExtension<CommandCenterTextTheme> {
   const CommandCenterTextTheme({
+    required this.headerLargeTextStyle,
     required this.headerMediumTextStyle,
     required this.headerSmallTextStyle,
     required this.subtitleTextStyle,
@@ -11,6 +12,7 @@ class CommandCenterTextTheme extends ThemeExtension<CommandCenterTextTheme> {
     required this.bodySmallTextStyle,
   });
 
+  final TextStyle? headerLargeTextStyle;
   final TextStyle? headerMediumTextStyle;
   final TextStyle? headerSmallTextStyle;
   final TextStyle? subtitleTextStyle;
@@ -23,6 +25,7 @@ class CommandCenterTextTheme extends ThemeExtension<CommandCenterTextTheme> {
 
   @override
   ThemeExtension<CommandCenterTextTheme> copyWith({
+    TextStyle? headerLargeTextStyle,
     TextStyle? headerMediumTextStyle,
     TextStyle? headerSmallTextStyle,
     TextStyle? subtitleTextStyle,
@@ -30,6 +33,7 @@ class CommandCenterTextTheme extends ThemeExtension<CommandCenterTextTheme> {
     TextStyle? bodySmallTextStyle,
   }) {
     return CommandCenterTextTheme(
+      headerLargeTextStyle: headerLargeTextStyle ?? this.headerLargeTextStyle,
       headerMediumTextStyle:
           headerMediumTextStyle ?? this.headerMediumTextStyle,
       headerSmallTextStyle: headerSmallTextStyle ?? this.headerSmallTextStyle,
@@ -48,6 +52,11 @@ class CommandCenterTextTheme extends ThemeExtension<CommandCenterTextTheme> {
       return this;
     }
     return CommandCenterTextTheme(
+      headerLargeTextStyle: TextStyle.lerp(
+        headerLargeTextStyle,
+        other.headerLargeTextStyle,
+        t,
+      ),
       headerMediumTextStyle: TextStyle.lerp(
         headerMediumTextStyle,
         other.headerMediumTextStyle,
@@ -78,6 +87,10 @@ class CommandCenterTextTheme extends ThemeExtension<CommandCenterTextTheme> {
 
   // the light theme
   static final light = CommandCenterTextTheme(
+    headerLargeTextStyle: AppTextStyles.s32fw700(
+      color: AppColors.whiteFFF,
+      height: 1.3,
+    ),
     headerMediumTextStyle: AppTextStyles.s22fw700(
       color: AppColors.whiteFFF,
       height: 1.3,

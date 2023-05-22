@@ -9,10 +9,12 @@ class AreaChart extends StatefulWidget {
     super.key,
     this.values = const [],
     this.maxValue,
+    this.isCommandCenter = false,
   });
 
   final List<num> values;
   final double? maxValue;
+  final bool isCommandCenter;
 
   @override
   State<AreaChart> createState() => _AreaChartState();
@@ -37,9 +39,9 @@ class _AreaChartState extends State<AreaChart> {
       swapAnimationCurve: Curves.decelerate,
       LineChartData(
         clipData: FlClipData(
-          right: true,
+          right: !widget.isCommandCenter,
           top: false,
-          left: true,
+          left: !widget.isCommandCenter,
           bottom: false,
         ),
         minY: 0,
@@ -60,19 +62,15 @@ class _AreaChartState extends State<AreaChart> {
                   return FlSpot(index.toDouble(), value.toDouble());
                 }),
             ],
-            color: Colors.transparent,
-            belowBarData: BarAreaData(
-              show: true,
-              gradient: const LinearGradient(
-                colors: [
-                  AppColors.primaryColor,
-                  Color.fromRGBO(60, 60, 60, 1),
-                ],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-              ),
-            ),
-            dotData: FlDotData(show: false),
+            color:
+                widget.isCommandCenter ? AppColors.blue0F3 : Colors.transparent,
+            barWidth: widget.isCommandCenter ? 2 : null,
+            belowBarData: widget.isCommandCenter
+                ? _commandCenterBelowBarAreaData()
+                : _analyticsBelowBarAreaData(),
+            dotData:
+                widget.isCommandCenter ? _commandCenterDot() : _analyticsDot(),
+            isStrokeCapRound: true,
           ),
         ],
       ),
@@ -81,9 +79,50 @@ class _AreaChartState extends State<AreaChart> {
 
   List<FlSpot> _initialValues() {
     final initial = List.generate(
-      5,
+      widget.values.length,
       (index) => const FlSpot(0, 0),
     );
     return initial;
+  }
+
+  BarAreaData _analyticsBelowBarAreaData() {
+    return BarAreaData(
+      show: true,
+      gradient: const LinearGradient(
+        colors: [
+          AppColors.primaryColor,
+          Color.fromRGBO(60, 60, 60, 1),
+        ],
+        begin: Alignment.topCenter,
+        end: Alignment.bottomCenter,
+      ),
+    );
+  }
+
+  FlDotData _analyticsDot() {
+    return FlDotData(show: false);
+  }
+
+  BarAreaData _commandCenterBelowBarAreaData() {
+    return BarAreaData(
+      show: true,
+      color: AppColors.blue0F3.withOpacity(0.35),
+    );
+  }
+
+  FlDotData _commandCenterDot() {
+    return FlDotData(
+      show: true,
+      checkToShowDot: (spot, barData) {
+        return barData.mostRightSpot == spot;
+      },
+      getDotPainter: (spot, percentage, barData, index) {
+        return FlDotCirclePainter(
+          color: AppColors.blue0F3,
+          radius: 4,
+          strokeWidth: 0,
+        );
+      },
+    );
   }
 }

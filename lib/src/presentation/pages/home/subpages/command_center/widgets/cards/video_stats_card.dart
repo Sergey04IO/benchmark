@@ -126,9 +126,7 @@ class VideoStatsCard extends StatelessWidget {
       result,
       style: CommandCenterTextTheme.of(context)
           ?.headerMediumTextStyle
-          ?.withOpacity(
-            0.75,
-          ),
+          ?.withOpacity(0.75),
       textAlign: TextAlign.center,
     );
   }
@@ -139,10 +137,9 @@ class VideoStatsCard extends StatelessWidget {
   }) {
     return Text(
       text ?? '',
-      style:
-          CommandCenterTextTheme.of(context)?.bodySmallTextStyle?.withOpacity(
-                0.75,
-              ),
+      style: CommandCenterTextTheme.of(context)
+          ?.bodySmallTextStyle
+          ?.withOpacity(0.75),
       textAlign: TextAlign.center,
       maxLines: 4,
     );
