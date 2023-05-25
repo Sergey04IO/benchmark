@@ -1,10 +1,8 @@
-import 'dart:math';
-
 import 'package:benchmark/src/app/core/constants/common.dart';
 import 'package:benchmark/src/app/core/enums/number_format_type.dart';
-import 'package:benchmark/src/app/core/extensions/random_extensions.dart';
 import 'package:benchmark/src/app/core/theme/colors/app_colors.dart';
 import 'package:benchmark/src/app/core/utils/format_util.dart';
+import 'package:benchmark/src/app/core/utils/numbers_util.dart';
 import 'package:benchmark/src/domain/entities/area/area_entity.dart';
 import 'package:benchmark/src/presentation/widgets/cards/generic/app_common_card.dart';
 import 'package:benchmark/src/presentation/widgets/charts/area/area_chart.dart';
@@ -132,7 +130,7 @@ class _AreaCardState extends State<AreaCard>
           Expanded(
             child: AreaChart(
               values: widget.model.values,
-              maxValue: _maxValue,
+              maxExtent: _maxValue,
             ),
           ),
         ],
@@ -319,7 +317,7 @@ class _AreaCardState extends State<AreaCard>
     final value =
         widget.model.values.isNotEmpty ? widget.model.values.max : null;
     if (value != null) {
-      final random = Random().doubleInRange(start: value, end: value * 1.3);
+      final random = NumbersUtil.getRandomFrom(value);
       _maxValue = random;
     }
   }

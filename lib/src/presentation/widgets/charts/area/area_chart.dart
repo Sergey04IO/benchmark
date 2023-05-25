@@ -8,12 +8,12 @@ class AreaChart extends StatefulWidget {
   const AreaChart({
     super.key,
     this.values = const [],
-    this.maxValue,
+    this.maxExtent,
     this.isCommandCenter = false,
   });
 
   final List<num> values;
-  final double? maxValue;
+  final double? maxExtent;
   final bool isCommandCenter;
 
   @override
@@ -45,7 +45,7 @@ class _AreaChartState extends State<AreaChart> {
           bottom: false,
         ),
         minY: 0,
-        maxY: widget.maxValue,
+        maxY: widget.maxExtent,
         borderData: FlBorderData(show: false),
         gridData: FlGridData(show: false),
         titlesData: FlTitlesData(

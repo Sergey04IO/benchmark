@@ -1,4 +1,3 @@
-
 import 'package:benchmark/src/app/core/theme/colors/app_colors.dart';
 import 'package:flutter/material.dart';
 
@@ -15,6 +14,14 @@ extension TextStyleExtensions on TextStyle {
 
   TextStyle withFontWeight(FontWeight fontWeight) {
     return copyWith(fontWeight: fontWeight);
+  }
+
+  TextStyle withCommonFontWeight() {
+    return copyWith(fontWeight: FontWeight.w400);
+  }
+
+  TextStyle withBoldFontWeight() {
+    return copyWith(fontWeight: FontWeight.w700);
   }
 
   TextStyle fontWeight400() => withFontWeight(FontWeight.w400);

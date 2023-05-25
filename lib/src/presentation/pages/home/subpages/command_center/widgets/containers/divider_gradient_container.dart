@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class DividerGradientContainer extends StatelessWidget {
   const DividerGradientContainer({
     super.key,
-    this.gradientStops = 20,
+    this.gradientStops = 30,
     this.orientation = Axis.horizontal,
   });
 

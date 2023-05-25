@@ -16,6 +16,19 @@ class AppTextStyles {
     );
   }
 
+  static TextStyle s28fw700({
+    Color? color,
+    double height = 1.0,
+  }) {
+    return TextStyle(
+      color: color,
+      height: height,
+      fontSize: 28.0,
+      fontWeight: FontWeight.w700,
+      fontStyle: FontStyle.normal,
+    );
+  }
+
   static TextStyle s22fw700({
     Color? color,
     double height = 1.0,

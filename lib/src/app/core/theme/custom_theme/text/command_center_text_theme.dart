@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 class CommandCenterTextTheme extends ThemeExtension<CommandCenterTextTheme> {
   const CommandCenterTextTheme({
+    required this.headerGiganticTextStyle,
     required this.headerLargeTextStyle,
     required this.headerMediumTextStyle,
     required this.headerSmallTextStyle,
@@ -12,6 +13,7 @@ class CommandCenterTextTheme extends ThemeExtension<CommandCenterTextTheme> {
     required this.bodySmallTextStyle,
   });
 
+  final TextStyle? headerGiganticTextStyle;
   final TextStyle? headerLargeTextStyle;
   final TextStyle? headerMediumTextStyle;
   final TextStyle? headerSmallTextStyle;
@@ -25,6 +27,7 @@ class CommandCenterTextTheme extends ThemeExtension<CommandCenterTextTheme> {
 
   @override
   ThemeExtension<CommandCenterTextTheme> copyWith({
+    TextStyle? headerGiganticTextStyle,
     TextStyle? headerLargeTextStyle,
     TextStyle? headerMediumTextStyle,
     TextStyle? headerSmallTextStyle,
@@ -33,6 +36,8 @@ class CommandCenterTextTheme extends ThemeExtension<CommandCenterTextTheme> {
     TextStyle? bodySmallTextStyle,
   }) {
     return CommandCenterTextTheme(
+      headerGiganticTextStyle:
+          headerGiganticTextStyle ?? this.headerGiganticTextStyle,
       headerLargeTextStyle: headerLargeTextStyle ?? this.headerLargeTextStyle,
       headerMediumTextStyle:
           headerMediumTextStyle ?? this.headerMediumTextStyle,
@@ -52,6 +57,11 @@ class CommandCenterTextTheme extends ThemeExtension<CommandCenterTextTheme> {
       return this;
     }
     return CommandCenterTextTheme(
+      headerGiganticTextStyle: TextStyle.lerp(
+        headerGiganticTextStyle,
+        other.headerGiganticTextStyle,
+        t,
+      ),
       headerLargeTextStyle: TextStyle.lerp(
         headerLargeTextStyle,
         other.headerLargeTextStyle,
@@ -87,7 +97,11 @@ class CommandCenterTextTheme extends ThemeExtension<CommandCenterTextTheme> {
 
   // the light theme
   static final light = CommandCenterTextTheme(
-    headerLargeTextStyle: AppTextStyles.s32fw700(
+    headerGiganticTextStyle: AppTextStyles.s32fw700(
+      color: AppColors.whiteFFF,
+      height: 1.3,
+    ),
+    headerLargeTextStyle: AppTextStyles.s28fw700(
       color: AppColors.whiteFFF,
       height: 1.3,
     ),

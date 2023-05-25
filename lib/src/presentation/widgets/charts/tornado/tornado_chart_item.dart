@@ -1,11 +1,9 @@
-import 'dart:math';
-
 import 'package:benchmark/src/app/core/constants/common.dart';
 import 'package:benchmark/src/app/core/enums/number_format_type.dart';
 import 'package:benchmark/src/app/core/enums/value_bigger.dart';
-import 'package:benchmark/src/app/core/extensions/random_extensions.dart';
 import 'package:benchmark/src/app/core/theme/colors/app_colors.dart';
 import 'package:benchmark/src/app/core/utils/format_util.dart';
+import 'package:benchmark/src/app/core/utils/numbers_util.dart';
 import 'package:benchmark/src/domain/entities/tornado/tornado_entity.dart';
 import 'package:benchmark/src/presentation/models/helper_models/bars_width/bars_width_model.dart';
 import 'package:flutter/material.dart';
@@ -565,7 +563,7 @@ class _TornadoChartItemState extends State<TornadoChartItem>
       if (value == 0) {
         _barMaxValueCoef = 0.5;
       } else {
-        final random = Random().doubleInRange(start: value, end: value * 1.3);
+        final random = NumbersUtil.getRandomFrom(value);
         _barMaxValueCoef = value / random;
       }
     }

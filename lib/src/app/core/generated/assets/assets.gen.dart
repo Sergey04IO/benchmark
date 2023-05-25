@@ -50,6 +50,10 @@ class $AssetsIconsGen {
   AssetGenImage get quickbooksLogo =>
       const AssetGenImage('assets/icons/quickbooks_logo.png');
 
+  /// File path: assets/icons/salesforce_logo.png
+  AssetGenImage get salesforceLogo =>
+      const AssetGenImage('assets/icons/salesforce_logo.png');
+
   /// File path: assets/icons/twitter_logo.png
   AssetGenImage get twitterLogo =>
       const AssetGenImage('assets/icons/twitter_logo.png');
@@ -67,6 +71,7 @@ class $AssetsIconsGen {
         linkedinLogo,
         pingdomLogo,
         quickbooksLogo,
+        salesforceLogo,
         twitterLogo,
         youtubeLogo
       ];

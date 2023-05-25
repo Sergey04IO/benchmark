@@ -21,9 +21,16 @@ abstract class  LocaleKeys {
   static const commandCenter_playCount = 'commandCenter.playCount';
   static const commandCenter_engagement = 'commandCenter.engagement';
   static const commandCenter_playRate = 'commandCenter.playRate';
-  static const commandCenter_callDurationTitle = 'commandCenter.callDurationTitle';
+  static const commandCenter_callDurationHeader = 'commandCenter.callDurationHeader';
   static const commandCenter_companyName = 'commandCenter.companyName';
   static const commandCenter_basedOnCalls = 'commandCenter.basedOnCalls';
+  static const commandCenter_trafficHeader = 'commandCenter.trafficHeader';
+  static const commandCenter_advertisingAndPromotion = 'commandCenter.advertisingAndPromotion';
+  static const commandCenter_sessionTraffic = 'commandCenter.sessionTraffic';
+  static const commandCenter_prev = 'commandCenter.prev';
+  static const commandCenter_cacCardTitle = 'commandCenter.cacCardTitle';
+  static const commandCenter_cacValue = 'commandCenter.cacValue';
+  static const commandCenter_somedays = 'commandCenter.somedays';
   static const commandCenter = 'commandCenter';
 
 }

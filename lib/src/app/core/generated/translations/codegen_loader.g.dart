@@ -36,9 +36,16 @@ class CodegenLoader extends AssetLoader{
     "playCount": "Play Count",
     "engagement": "Engagement",
     "playRate": "Play Rate",
-    "callDurationTitle": "{} Today's Average Call Duration",
+    "callDurationHeader": "{} Today's Average Call Duration",
     "companyName": "Company: {}",
-    "basedOnCalls": "Based on {} calls"
+    "basedOnCalls": "Based on {} calls",
+    "trafficHeader": "{} Marketing Exposes/Traffic",
+    "advertisingAndPromotion": "Advertising & Promotion",
+    "sessionTraffic": "Session Traffic",
+    "prev": "prev.",
+    "cacCardTitle": "{} CAC (Last {} Days)",
+    "cacValue": "CAC Value",
+    "somedays": "{} days"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": en};
