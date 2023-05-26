@@ -31,6 +31,8 @@ abstract class  LocaleKeys {
   static const commandCenter_cacCardTitle = 'commandCenter.cacCardTitle';
   static const commandCenter_cacValue = 'commandCenter.cacValue';
   static const commandCenter_somedays = 'commandCenter.somedays';
+  static const commandCenter_leadsThisMonth = 'commandCenter.leadsThisMonth';
+  static const commandCenter_lastMonth = 'commandCenter.lastMonth';
   static const commandCenter = 'commandCenter';
 
 }

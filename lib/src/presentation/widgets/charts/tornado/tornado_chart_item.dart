@@ -1,5 +1,4 @@
 import 'package:benchmark/src/app/core/constants/common.dart';
-import 'package:benchmark/src/app/core/enums/number_format_type.dart';
 import 'package:benchmark/src/app/core/enums/value_bigger.dart';
 import 'package:benchmark/src/app/core/theme/colors/app_colors.dart';
 import 'package:benchmark/src/app/core/utils/format_util.dart';
@@ -92,10 +91,10 @@ class _TornadoChartItemState extends State<TornadoChartItem>
     final nameTextWidth = _getNameTextSize(model.title ?? '').width;
 
     final leftBarValueWidth = _getNameTextSize(
-            _formatter.format(model.dateValue ?? '') + (model.unit ?? ''))
+            _formatter.format(model.dateValue ?? 0) + (model.unit ?? ''))
         .width;
     final rightBarValueWidth = _getNameTextSize(
-            _formatter.format(model.benchmarkValue ?? '') + (model.unit ?? ''))
+            _formatter.format(model.benchmarkValue ?? 0) + (model.unit ?? ''))
         .width;
 
     return Padding(
@@ -458,8 +457,8 @@ class _TornadoChartItemState extends State<TornadoChartItem>
   void _assignFormatter() {
     _formatter = widget.model.benchmarkValue! < valueFormatEdge ||
             widget.model.dateValue! < valueFormatEdge
-        ? FormatUtil.getNumberFormat(type: NumberFormatType.doublePrecTwo)
-        : FormatUtil.getNumberFormat();
+        ? FormatUtil.doublePrecTwo
+        : FormatUtil.int;
   }
 
   void _updateValues() {

@@ -1,6 +1,5 @@
 import 'dart:math';
 
-import 'package:benchmark/src/app/core/enums/number_format_type.dart';
 import 'package:benchmark/src/app/core/extensions/text_style_extension.dart';
 import 'package:benchmark/src/app/core/generated/assets/assets.gen.dart';
 import 'package:benchmark/src/app/core/generated/translations/locale_keys.g.dart';
@@ -77,7 +76,7 @@ class _CacCardState extends State<CacCard> {
   }
 
   Widget _buildMainSection() {
-    final value = FormatUtil.getNumberFormat().format(data.value);
+    final value = FormatUtil.int.format(data.value ?? 0);
     return Row(
       mainAxisAlignment: MainAxisAlignment.end,
       crossAxisAlignment: CrossAxisAlignment.end,
@@ -115,9 +114,7 @@ class _CacCardState extends State<CacCard> {
   }
 
   Widget _buildSecondarySection() {
-    final percent = FormatUtil.getNumberFormat(
-      type: NumberFormatType.doublePrecTwo,
-    ).format(data.getPercent());
+    final percent = FormatUtil.doublePrecTwo.format(data.getPercent());
     final columnLeftPadding = sectionPadding - sectionPadding / 3;
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -156,7 +153,7 @@ class _CacCardState extends State<CacCard> {
     final prevTr = LocaleKeys.commandCenter_prev.tr();
     final daysTr =
         LocaleKeys.commandCenter_somedays.tr(args: ['${data.duration}']);
-    final formattedValue = FormatUtil.getNumberFormat().format(21548);
+    final formattedValue = FormatUtil.int.format(data.prevValue ?? 0);
     final text = 'vs \$$formattedValue $prevTr $daysTr';
     return Text(
       text,

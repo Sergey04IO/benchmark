@@ -15,7 +15,7 @@ class MapChart extends StatefulWidget {
 
 class _MapChartState extends State<MapChart> {
   late MapShapeSource _mapShapeSource;
-  final NumberFormat _numberFormat = FormatUtil.getNumberFormat();
+  final NumberFormat _numberFormat = FormatUtil.int;
 
   @override
   void initState() {

@@ -1,5 +1,4 @@
 import 'package:benchmark/src/app/core/constants/common.dart';
-import 'package:benchmark/src/app/core/enums/number_format_type.dart';
 import 'package:benchmark/src/app/core/theme/colors/app_colors.dart';
 import 'package:benchmark/src/app/core/utils/format_util.dart';
 import 'package:benchmark/src/app/core/utils/numbers_util.dart';
@@ -155,8 +154,8 @@ class _AreaCardState extends State<AreaCard>
     final model = widget.model;
     final isEur = _isEurCard();
     final formatter = (model.values.isNotEmpty ? model.values.last : 0) < 100
-        ? FormatUtil.getNumberFormat(type: NumberFormatType.doublePrecOne)
-        : FormatUtil.getNumberFormat();
+        ? FormatUtil.doublePrecOne
+        : FormatUtil.int;
     String value = formatter.format(_valueYTDAnimation.value);
 
     if (!isEur) {
@@ -221,8 +220,8 @@ class _AreaCardState extends State<AreaCard>
 
   Widget _buildDifferenceValue() {
     final formatter = _getDifference() < 100 && !_isEurCard()
-        ? FormatUtil.getNumberFormat(type: NumberFormatType.doublePrecTwo)
-        : FormatUtil.getNumberFormat();
+        ? FormatUtil.doublePrecTwo
+        : FormatUtil.int;
 
     String text = '';
     final difference = _differenceAnimation.value;

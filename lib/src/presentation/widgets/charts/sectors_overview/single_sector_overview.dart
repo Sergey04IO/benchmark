@@ -1,5 +1,4 @@
 import 'package:benchmark/src/app/core/constants/common.dart';
-import 'package:benchmark/src/app/core/enums/number_format_type.dart';
 import 'package:benchmark/src/app/core/theme/colors/app_colors.dart';
 import 'package:benchmark/src/app/core/utils/format_util.dart';
 import 'package:benchmark/src/domain/entities/sector_overview/entity/sector_overview_entity.dart';
@@ -173,7 +172,7 @@ class _SingleSectorOverviewState extends State<SingleSectorOverview>
   }
 
   void _init() {
-    _formatter = FormatUtil.getNumberFormat(type: NumberFormatType.compact);
+    _formatter = FormatUtil.compact;
     _controller = AnimationController(
       vsync: this,
       duration: CommonConstants.primaryAnimDuration,

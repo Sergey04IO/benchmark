@@ -123,8 +123,8 @@ class FollowersCard extends StatelessWidget {
     BuildContext context, {
     int? amount,
   }) {
-    final formatter = FormatUtil.getNumberFormat();
-    final value = formatter.format(amount);
+    final formatter = FormatUtil.int;
+    final value = formatter.format(amount ?? 0);
     return Text(
       value,
       style: CommandCenterTextTheme.of(context)

@@ -11,6 +11,7 @@ class AppColors {
   static const grey948 = Color(0xFF4A4948);
   static const grey3F3 = Color(0xFFF3F3F3);
   static const grey2D2 = Color(0xFFD2D2D2);
+  static const grey050 = Color(0xFF505050);
 
   // Divider
   static const grey242 = Color(0xFF424242);

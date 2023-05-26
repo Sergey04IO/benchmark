@@ -1,7 +1,6 @@
 import 'dart:math';
 
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
-import 'package:benchmark/src/app/core/enums/number_format_type.dart';
 import 'package:benchmark/src/app/core/extensions/text_style_extension.dart';
 import 'package:benchmark/src/app/core/generated/assets/assets.gen.dart';
 import 'package:benchmark/src/app/core/generated/translations/locale_keys.g.dart';
@@ -24,10 +23,8 @@ class TrafficCard extends StatefulWidget {
 }
 
 class _TrafficCardState extends State<TrafficCard> {
-  final numberFormat = FormatUtil.getNumberFormat();
-  final doubleFormat = FormatUtil.getNumberFormat(
-    type: NumberFormatType.doublePrecTwo,
-  );
+  final numberFormat = FormatUtil.int;
+  final doubleFormat = FormatUtil.doublePrecTwo;
 
   @override
   Widget build(BuildContext context) {

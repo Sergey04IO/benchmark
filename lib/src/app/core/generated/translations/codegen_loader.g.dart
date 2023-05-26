@@ -45,7 +45,9 @@ class CodegenLoader extends AssetLoader{
     "prev": "prev.",
     "cacCardTitle": "{} CAC (Last {} Days)",
     "cacValue": "CAC Value",
-    "somedays": "{} days"
+    "somedays": "{} days",
+    "leadsThisMonth": "Leads (This Month)",
+    "lastMonth": "Last Month"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": en};

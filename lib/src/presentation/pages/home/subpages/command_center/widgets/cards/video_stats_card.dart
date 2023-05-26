@@ -119,8 +119,8 @@ class VideoStatsCard extends StatelessWidget {
     int? amount,
     String? trailing,
   }) {
-    final formatter = FormatUtil.getNumberFormat();
-    final value = formatter.format(amount);
+    final formatter = FormatUtil.int;
+    final value = formatter.format(amount ?? 0);
     final result = trailing != null ? '$value$trailing' : value;
     return Text(
       result,
