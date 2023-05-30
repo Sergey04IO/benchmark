@@ -29,10 +29,18 @@ abstract class  LocaleKeys {
   static const commandCenter_sessionTraffic = 'commandCenter.sessionTraffic';
   static const commandCenter_prev = 'commandCenter.prev';
   static const commandCenter_cacCardTitle = 'commandCenter.cacCardTitle';
+  static const commandCenter_lastDays = 'commandCenter.lastDays';
   static const commandCenter_cacValue = 'commandCenter.cacValue';
   static const commandCenter_somedays = 'commandCenter.somedays';
   static const commandCenter_leadsThisMonth = 'commandCenter.leadsThisMonth';
   static const commandCenter_lastMonth = 'commandCenter.lastMonth';
+  static const commandCenter_viewsPerUserCardTitle = 'commandCenter.viewsPerUserCardTitle';
+  static const commandCenter_demographics = 'commandCenter.demographics';
+  static const commandCenter_Female = 'commandCenter.Female';
+  static const commandCenter_maleMale = 'commandCenter.maleMale';
+  static const commandCenter_unspecified = 'commandCenter.unspecified';
+  static const commandCenter_people = 'commandCenter.people';
+  static const commandCenter_ageRange = 'commandCenter.ageRange';
   static const commandCenter = 'commandCenter';
 
 }

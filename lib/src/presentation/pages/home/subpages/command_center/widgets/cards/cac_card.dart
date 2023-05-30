@@ -30,11 +30,14 @@ class _CacCardState extends State<CacCard> {
     cardWidth = MediaQuery.of(context).size.width / 3;
     sectionPadding = cardWidth / 30;
     sectionPadding = sectionPadding + sectionPadding / 2;
+    final durationPartTitle =
+        LocaleKeys.commandCenter_lastDays.tr(args: ['${data.duration}']);
+    final title = LocaleKeys.commandCenter_cacCardTitle
+        .tr(args: ['Quickbooks & Saleforce: ', durationPartTitle]);
     return CommandCenterCard(
       width: cardWidth,
       minWidth: 300,
-      title: LocaleKeys.commandCenter_cacCardTitle
-          .tr(args: ['Quickbooks & Saleforce: ', '${data.duration}']),
+      title: title,
       child: _buildContent(),
     );
   }

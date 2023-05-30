@@ -44,10 +44,18 @@ class CodegenLoader extends AssetLoader{
     "sessionTraffic": "Session Traffic",
     "prev": "prev.",
     "cacCardTitle": "{} CAC (Last {} Days)",
+    "lastDays": "Last {} Days",
     "cacValue": "CAC Value",
     "somedays": "{} days",
     "leadsThisMonth": "Leads (This Month)",
-    "lastMonth": "Last Month"
+    "lastMonth": "Last Month",
+    "viewsPerUserCardTitle": "{} Page Views per User ({})",
+    "demographics": "{} Demographics",
+    "Female": "Female",
+    "maleMale": "Male",
+    "unspecified": "Unspecified",
+    "people": "People",
+    "ageRange": "Age Range"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": en};

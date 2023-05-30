@@ -10,18 +10,23 @@ class CommandCenterCard extends StatelessWidget {
     this.height,
     this.width,
     this.minWidth,
+    this.minHeight,
   });
 
   final Widget child;
   final String? title;
+  final double? height;
   final double? width;
   final double? minWidth;
-  final double? height;
+  final double? minHeight;
 
   @override
   Widget build(BuildContext context) {
     return ConstrainedBox(
-      constraints: BoxConstraints(minWidth: minWidth ?? 0.0),
+      constraints: BoxConstraints(
+        minWidth: minWidth ?? 0.0,
+        minHeight: minHeight ?? 0.0,
+      ),
       child: Container(
         width: width,
         height: height,

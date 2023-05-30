@@ -59,33 +59,29 @@ class _MultiChartCardState extends State<MultiChartCard>
 
   @override
   Widget build(BuildContext context) {
-    return ConstrainedBox(
-      constraints: const BoxConstraints(
-        minHeight: 200,
-        minWidth: 350,
-      ),
-      child: CommandCenterCard(
-        title: LocaleKeys.commandCenter_multiChartHeader
-            .tr(args: ['Pingdom & Google']),
-        width: MediaQuery.of(context).size.width / 3,
-        height: MediaQuery.of(context).size.width / 4,
-        child: Expanded(
-          child: Column(
-            children: [
-              SlideFadeAnimatable(
-                listenable: _animation,
-                useAnimation: widget.useAnimations,
-                child: _buildSubtitleAndLegend(),
+    return CommandCenterCard(
+      title: LocaleKeys.commandCenter_multiChartHeader
+          .tr(args: ['Pingdom & Google']),
+      width: MediaQuery.of(context).size.width / 3,
+      height: MediaQuery.of(context).size.width / 4,
+      minWidth: 350,
+      minHeight: 200,
+      child: Expanded(
+        child: Column(
+          children: [
+            SlideFadeAnimatable(
+              listenable: _animation,
+              useAnimation: widget.useAnimations,
+              child: _buildSubtitleAndLegend(),
+            ),
+            const SizedBox(height: 10),
+            Expanded(
+              child: MultiChart(
+                useAnimations: widget.useAnimations,
               ),
-              const SizedBox(height: 10),
-              Expanded(
-                child: MultiChart(
-                  useAnimations: widget.useAnimations,
-                ),
-              ),
-              _buildFooter(),
-            ],
-          ),
+            ),
+            _buildFooter(),
+          ],
         ),
       ),
     );
