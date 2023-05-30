@@ -1,14 +1,10 @@
-import 'package:benchmark/src/app/core/extensions/text_style_extension.dart';
 import 'package:benchmark/src/app/core/generated/translations/locale_keys.g.dart';
 import 'package:benchmark/src/app/core/theme/colors/app_colors.dart';
 import 'package:benchmark/src/app/core/theme/custom_theme/text/command_center_text_theme.dart';
-import 'package:benchmark/src/data/helper/data/command_center/demographics_help_data.dart';
-import 'package:benchmark/src/data/helper/models/command_center/demographics/demographics_help_model.dart';
 import 'package:benchmark/src/presentation/pages/home/subpages/command_center/widgets/charts/demographics_chart.dart';
 import 'package:benchmark/src/presentation/widgets/cards/generic/command_center_card.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:syncfusion_flutter_charts/charts.dart';
 
 class DemographicsCard extends StatefulWidget {
   const DemographicsCard({super.key});

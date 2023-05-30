@@ -22,8 +22,7 @@ void main() async {
   );
   setUrlStrategy(PathUrlStrategy());
   await configureInjection(Environment.prod);
-  // TODO: uncomment
-  // await _initData();
+  await _initData();
 
   runApp(
     EasyLocalization(

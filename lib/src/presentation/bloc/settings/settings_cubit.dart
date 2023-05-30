@@ -106,10 +106,9 @@ class SettingsCubit extends BaseCubit<SettingsState> {
   }
 
   InitialPage getInitialPage() {
-    // TODO: raplace dashboard with analytics
     try {
       final settings = _settingsRepository.getAppSettings();
-      return settings?.initialPage ?? InitialPage.dashboard;
+      return settings?.initialPage ?? InitialPage.analytics;
     } catch (e) {
       debugPrint('Firebase remote config init error');
       return InitialPage.analytics;
