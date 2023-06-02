@@ -13,7 +13,12 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class CacCard extends StatefulWidget {
-  const CacCard({super.key});
+  const CacCard({
+    super.key,
+    this.width,
+  });
+
+  final double? width;
 
   @override
   State<CacCard> createState() => _CacCardState();
@@ -27,19 +32,21 @@ class _CacCardState extends State<CacCard> {
 
   @override
   Widget build(BuildContext context) {
-    cardWidth = MediaQuery.of(context).size.width / 3;
-    sectionPadding = cardWidth / 30;
-    sectionPadding = sectionPadding + sectionPadding / 2;
     final durationPartTitle =
         LocaleKeys.commandCenter_lastDays.tr(args: ['${data.duration}']);
     final title = LocaleKeys.commandCenter_cacCardTitle
-        .tr(args: ['Quickbooks & Saleforce: ', durationPartTitle]);
-    return CommandCenterCard(
-      width: cardWidth,
-      minWidth: 300,
-      title: title,
-      child: _buildContent(),
-    );
+        .tr(args: ['Quickbooks & Saleforce:', durationPartTitle]);
+    return LayoutBuilder(builder: (context, constraints) {
+      cardWidth = widget.width ?? constraints.maxWidth;
+      sectionPadding = cardWidth / 30;
+      sectionPadding = sectionPadding + sectionPadding / 2;
+      return CommandCenterCard(
+        width: cardWidth,
+        minWidth: 300,
+        title: title,
+        child: _buildContent(),
+      );
+    });
   }
 
   Widget _buildContent() {
@@ -73,6 +80,7 @@ class _CacCardState extends State<CacCard> {
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
         Expanded(child: _buildMainSection()),
+        _buildDivider(),
         Expanded(child: _buildSecondarySection()),
       ],
     );
@@ -80,7 +88,7 @@ class _CacCardState extends State<CacCard> {
 
   Widget _buildMainSection() {
     final value = FormatUtil.int.format(data.value ?? 0);
-    return Row(
+    return Column(
       mainAxisAlignment: MainAxisAlignment.end,
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
@@ -94,6 +102,8 @@ class _CacCardState extends State<CacCard> {
                 style: CommandCenterTextTheme.of(context)
                     ?.headerGiganticTextStyle
                     ?.withOpacity(0.75),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
               ),
               Text(
                 LocaleKeys.commandCenter_cacValue.tr(),
@@ -101,20 +111,46 @@ class _CacCardState extends State<CacCard> {
                     ?.bodySmallTextStyle
                     ?.withBoldFontWeight()
                     .withOpacity(0.75),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
               ),
             ],
           ),
         ),
-        const SizedBox(
-          height: 60,
-          child: DividerGradientContainer(
-            orientation: Axis.vertical,
-            gradientStops: 5,
-          ),
-        )
       ],
     );
   }
+
+  // Widget _buildMainSection() {
+  //   final value = FormatUtil.int.format(data.value ?? 0);
+  //   return Row(
+  //     mainAxisAlignment: MainAxisAlignment.end,
+  //     crossAxisAlignment: CrossAxisAlignment.end,
+  //     children: [
+  //       Padding(
+  //         padding: EdgeInsets.only(right: sectionPadding),
+  //         child: Column(
+  //           crossAxisAlignment: CrossAxisAlignment.end,
+  //           children: [
+  //             Text(
+  //               '\$$value',
+  //               style: CommandCenterTextTheme.of(context)
+  //                   ?.headerGiganticTextStyle
+  //                   ?.withOpacity(0.75),
+  //             ),
+  //             Text(
+  //               LocaleKeys.commandCenter_cacValue.tr(),
+  //               style: CommandCenterTextTheme.of(context)
+  //                   ?.bodySmallTextStyle
+  //                   ?.withBoldFontWeight()
+  //                   .withOpacity(0.75),
+  //             ),
+  //           ],
+  //         ),
+  //       ),
+  //     ],
+  //   );
+  // }
 
   Widget _buildSecondarySection() {
     final percent = FormatUtil.doublePrecTwo.format(data.getPercent());
@@ -132,11 +168,15 @@ class _CacCardState extends State<CacCard> {
               _buildPercentIcon(
                 iconColor: AppColors.primaryColor,
               ),
-              Text(
-                '$percent%',
-                style: CommandCenterTextTheme.of(context)
-                    ?.headerMediumTextStyle
-                    ?.withOpacity(0.75),
+              Expanded(
+                child: Text(
+                  '$percent%',
+                  style: CommandCenterTextTheme.of(context)
+                      ?.headerMediumTextStyle
+                      ?.withOpacity(0.75),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
               ),
             ],
           ),
@@ -167,6 +207,16 @@ class _CacCardState extends State<CacCard> {
           .withOpacity(0.5),
       textAlign: TextAlign.start,
       overflow: TextOverflow.ellipsis,
+    );
+  }
+
+  Widget _buildDivider() {
+    return const SizedBox(
+      height: 60,
+      child: DividerGradientContainer(
+        orientation: Axis.vertical,
+        gradientStops: 5,
+      ),
     );
   }
 

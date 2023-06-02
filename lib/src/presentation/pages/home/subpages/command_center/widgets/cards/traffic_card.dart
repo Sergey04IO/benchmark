@@ -16,7 +16,12 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class TrafficCard extends StatefulWidget {
-  const TrafficCard({super.key});
+  const TrafficCard({
+    super.key,
+    this.width,
+  });
+
+  final double? width;
 
   @override
   State<TrafficCard> createState() => _TrafficCardState();
@@ -29,8 +34,8 @@ class _TrafficCardState extends State<TrafficCard> {
   @override
   Widget build(BuildContext context) {
     return CommandCenterCard(
-      width: MediaQuery.of(context).size.width / 3,
       minWidth: 246,
+      width: widget.width,
       title: LocaleKeys.commandCenter_trafficHeader
           .tr(args: ['QuickBooks & Google Analytics:']),
       child: _buildContent(),
@@ -48,9 +53,9 @@ class _TrafficCardState extends State<TrafficCard> {
           title: LocaleKeys.commandCenter_advertisingAndPromotion.tr(),
           percentIconColor: AppColors.redC4C,
         ),
-        const SizedBox(height: 20),
+        const SizedBox(height: 15),
         const DividerGradientContainer(),
-        const SizedBox(height: 20),
+        const SizedBox(height: 15),
         _buildSection(
           data: data.session,
           iconPath: Assets.icons.googleAnalyticsLogo.path,
@@ -76,7 +81,7 @@ class _TrafficCardState extends State<TrafficCard> {
           title: title,
           value: usePrefix ? '\$$value' : value,
         ),
-        const SizedBox(height: 15),
+        const SizedBox(height: 10),
         _buildSectionSecondRow(
           data: data,
           percentIconColor: percentIconColor,
@@ -96,7 +101,6 @@ class _TrafficCardState extends State<TrafficCard> {
         _buildIcon(iconPath),
         const SizedBox(width: 10),
         Expanded(child: _buildSectionTitle(text: title)),
-        // const Spacer(),
         const SizedBox(width: 10),
         _buildMainValue(text: value),
       ],
@@ -104,13 +108,12 @@ class _TrafficCardState extends State<TrafficCard> {
   }
 
   Widget _buildIcon(
-    String iconPath, {
-    double size = 30,
-  }) {
+    String iconPath,
+  ) {
     return Image.asset(
       iconPath,
-      width: size,
-      height: size,
+      width: 25,
+      height: 25,
     );
   }
 
@@ -142,34 +145,33 @@ class _TrafficCardState extends State<TrafficCard> {
     bool usePrefix = false,
     Color? percentIconColor,
   }) {
-    return SizedBox(
-      height: 50,
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: [
-          Expanded(
-            flex: 2,
-            child: _buildGraph(data),
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: [
+        Expanded(
+          flex: 2,
+          child: _buildGraph(data),
+        ),
+        const SizedBox(width: 10),
+        Expanded(
+          child: _buildSecondRowTrailing(
+            data: data,
+            usePrefix: usePrefix,
+            iconColor: percentIconColor,
           ),
-          const SizedBox(width: 10),
-          // const Spacer(),
-          Expanded(
-            child: _buildSecondRowTrailing(
-              data: data,
-              usePrefix: usePrefix,
-              iconColor: percentIconColor,
-            ),
-          )
-        ],
-      ),
+        )
+      ],
     );
   }
 
   Widget _buildGraph(TrafficDataHelpModel? data) {
-    return AreaChart(
-      values: data?.chartValues ?? [],
-      maxExtent: data?.getChartMaxExtent(),
-      isCommandCenter: true,
+    return SizedBox(
+      height: 50,
+      child: AreaChart(
+        values: data?.chartValues ?? [],
+        maxExtent: data?.getChartMaxExtent(),
+        isCommandCenter: true,
+      ),
     );
   }
 

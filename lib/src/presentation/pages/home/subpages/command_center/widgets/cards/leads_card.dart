@@ -13,7 +13,14 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class LeadsCard extends StatefulWidget {
-  const LeadsCard({super.key});
+  const LeadsCard({
+    super.key,
+    this.height = 164,
+    this.width,
+  });
+
+  final double height;
+  final double? width;
 
   @override
   State<LeadsCard> createState() => _LeadsCardState();
@@ -43,11 +50,16 @@ class _LeadsCardState extends State<LeadsCard> {
   Widget build(BuildContext context) {
     _cardWidth = MediaQuery.of(context).size.width / 3;
     _contentWidth = _cardWidth - 32;
-    return CommandCenterCard(
-      width: _cardWidth,
-      title: LocaleKeys.commandCenter_leadsThisMonth.tr(),
-      child: _buildContent(),
-    );
+    return LayoutBuilder(builder: (contex, constraints) {
+      _cardWidth = widget.width ?? constraints.maxWidth;
+      _contentWidth = _cardWidth - 32;
+      return CommandCenterCard(
+        width: _cardWidth,
+        height: widget.height,
+        title: LocaleKeys.commandCenter_leadsThisMonth.tr(),
+        child: _buildContent(),
+      );
+    });
   }
 
   Widget _buildContent() {

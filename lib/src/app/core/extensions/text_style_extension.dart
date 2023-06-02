@@ -1,4 +1,3 @@
-import 'package:benchmark/src/app/core/theme/colors/app_colors.dart';
 import 'package:flutter/material.dart';
 
 extension TextStyleExtensions on TextStyle {
@@ -9,8 +8,6 @@ extension TextStyleExtensions on TextStyle {
   TextStyle withOpacity(double opacity) {
     return copyWith(color: color?.withOpacity(opacity));
   }
-
-  TextStyle grey0A4() => withColor(AppColors.grey0A4);
 
   TextStyle withFontWeight(FontWeight fontWeight) {
     return copyWith(fontWeight: fontWeight);
@@ -24,5 +21,7 @@ extension TextStyleExtensions on TextStyle {
     return copyWith(fontWeight: FontWeight.w700);
   }
 
-  TextStyle fontWeight400() => withFontWeight(FontWeight.w400);
+  TextStyle withMinHeight() {
+    return copyWith(height: 1);
+  }
 }

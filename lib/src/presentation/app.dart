@@ -10,6 +10,7 @@ import 'package:benchmark/src/app/core/theme/theme_data/theme.data.dart';
 import 'package:benchmark/src/presentation/bloc/auth/auth_cubit.dart';
 import 'package:benchmark/src/presentation/bloc/settings/settings_cubit.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -24,6 +25,10 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return _buildApp(context);
+  }
+
+  Widget _buildApp(BuildContext context) {
     return MaterialApp.router(
       title: CommonConstants.appTitle,
       debugShowCheckedModeBanner: kDebugMode,
@@ -31,7 +36,8 @@ class App extends StatelessWidget {
       supportedLocales: context.supportedLocales,
       locale: context.locale,
       theme: AppTheme.light,
-      scrollBehavior: const MaterialScrollBehavior().copyWith(
+      scrollBehavior: const CupertinoScrollBehavior().copyWith(
+        physics: const BouncingScrollPhysics(),
         dragDevices: {
           PointerDeviceKind.mouse,
           PointerDeviceKind.touch,

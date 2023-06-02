@@ -9,7 +9,12 @@ import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 class DemographicsChart extends StatefulWidget {
-  const DemographicsChart({super.key});
+  const DemographicsChart({
+    super.key,
+    this.height,
+  });
+
+  final double? height;
 
   @override
   State<DemographicsChart> createState() => _DemographicsChartState();
@@ -25,7 +30,10 @@ class _DemographicsChartState extends State<DemographicsChart> {
 
   @override
   Widget build(BuildContext context) {
-    return _buildChart();
+    return SizedBox(
+      height: widget.height,
+      child: _buildChart(),
+    );
   }
 
   SfCartesianChart _buildChart() {

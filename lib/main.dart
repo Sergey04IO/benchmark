@@ -1,11 +1,15 @@
+// ignore_for_file: avoid_redundant_argument_values
+
 import 'package:benchmark/src/app/config/di/injector.dart';
 import 'package:benchmark/src/app/config/firebase/firebase_options.dart';
+import 'package:benchmark/src/app/core/constants/common.dart';
 import 'package:benchmark/src/app/core/constants/locales/app_locales.dart';
 import 'package:benchmark/src/app/core/generated/translations/codegen_loader.g.dart';
 import 'package:benchmark/src/domain/services/deeplinks_service.dart';
 import 'package:benchmark/src/presentation/app.dart';
 import 'package:benchmark/src/presentation/bloc/auth/auth_cubit.dart';
 import 'package:benchmark/src/presentation/bloc/settings/settings_cubit.dart';
+import 'package:device_preview/device_preview.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
@@ -30,9 +34,19 @@ void main() async {
       path: 'assets/translations',
       fallbackLocale: AppLocales.enLocale,
       assetLoader: const CodegenLoader(),
-      child: App(),
+      child: _buildApp(),
     ),
   );
+}
+
+Widget _buildApp() {
+  if (CommonConstants.useDevicePreview) {
+    return DevicePreview(
+      enabled: !kReleaseMode,
+      builder: (context) => App(),
+    );
+  }
+  return App();
 }
 
 Future<void> _initData() async {

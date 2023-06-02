@@ -7,23 +7,42 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class DemographicsCard extends StatefulWidget {
-  const DemographicsCard({super.key});
+  const DemographicsCard({
+    super.key,
+    this.height = 270,
+    this.width,
+  });
+
+  final double height;
+  final double? width;
 
   @override
   State<DemographicsCard> createState() => _DemographicsCardState();
 }
 
 class _DemographicsCardState extends State<DemographicsCard> {
+  final double notGraphContentSize = 90;
   late double cardWidth;
+  late double graphHeight;
+
+  @override
+  void initState() {
+    super.initState();
+    graphHeight = widget.height - notGraphContentSize;
+  }
+
   @override
   Widget build(BuildContext context) {
-    cardWidth = MediaQuery.of(context).size.width / 2;
-    return CommandCenterCard(
-      minWidth: 300,
-      width: cardWidth,
-      title: LocaleKeys.commandCenter_demographics.tr(args: ['Facebook']),
-      child: _buildContent(),
-    );
+    return LayoutBuilder(builder: (context, constraints) {
+      cardWidth = widget.width ?? constraints.maxWidth;
+      return CommandCenterCard(
+        minWidth: 300,
+        width: cardWidth,
+        height: widget.height,
+        title: LocaleKeys.commandCenter_demographics.tr(args: ['Facebook']),
+        child: _buildContent(),
+      );
+    });
   }
 
   Widget _buildContent() {
@@ -33,10 +52,12 @@ class _DemographicsCardState extends State<DemographicsCard> {
   Widget _buildChart() {
     return Column(
       children: [
-        const SizedBox(height: 10),
+        const SizedBox(height: 5),
         _buildLegend(),
-        const DemographicsChart(),
-        const SizedBox(height: 10),
+        DemographicsChart(
+          height: graphHeight,
+        ),
+        const SizedBox(height: 5),
       ],
     );
   }

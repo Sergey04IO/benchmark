@@ -8,14 +8,19 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class CallDurationCard extends StatelessWidget {
-  const CallDurationCard({super.key});
+  const CallDurationCard({
+    super.key,
+    this.width,
+  });
+
+  final double? width;
 
   @override
   Widget build(BuildContext context) {
     return CommandCenterCard(
       title: LocaleKeys.commandCenter_callDurationHeader.tr(args: ['CallRail']),
       minWidth: 250,
-      width: MediaQuery.of(context).size.width / 3,
+      width: width,
       child: _buildContent(context),
     );
   }

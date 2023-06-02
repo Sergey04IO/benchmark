@@ -1,14 +1,8 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:benchmark/src/presentation/pages/home/subpages/command_center/widgets/cards/demographics_card.dart';
-// import 'package:benchmark/src/presentation/pages/home/subpages/command_center/widgets/cards/cac_card.dart';
-// import 'package:benchmark/src/presentation/pages/home/subpages/command_center/widgets/cards/leads_card.dart';
-// import 'package:benchmark/src/presentation/pages/home/subpages/command_center/widgets/cards/veiws_per_user_card.dart';
-// import 'package:benchmark/src/presentation/pages/home/subpages/command_center/widgets/cards/traffic_card.dart';
-// import 'package:benchmark/src/presentation/pages/home/subpages/command_center/widgets/cards/call_duration_card.dart';
-// import 'package:benchmark/src/presentation/pages/home/subpages/command_center/widgets/cards/followers_card.dart';
-// import 'package:benchmark/src/presentation/pages/home/subpages/command_center/widgets/cards/map_card.dart';
-// import 'package:benchmark/src/presentation/pages/home/subpages/command_center/widgets/cards/multi_chart_card.dart';
-// import 'package:benchmark/src/presentation/pages/home/subpages/command_center/widgets/cards/video_stats_card.dart';
+import 'package:benchmark/src/presentation/pages/home/subpages/command_center/widgets/layouts/desktop_layout.dart';
+import 'package:benchmark/src/presentation/pages/home/subpages/command_center/widgets/layouts/mobile_layout.dart';
+import 'package:benchmark/src/presentation/pages/home/subpages/command_center/widgets/layouts/tablet_layout.dart';
+import 'package:benchmark/src/presentation/widgets/scrolling/app_scrollbar.dart';
 import 'package:flutter/material.dart';
 
 @RoutePage()
@@ -21,25 +15,22 @@ class CommandCenterPage extends StatefulWidget {
 
 class _CommandCenterPageState extends State<CommandCenterPage> {
   bool useAnimations = false;
+  late double width;
+
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: SingleChildScrollView(
-        child: Container(
-          // child: MapCard(),
-          // child: MultiChartCard(
-          //   useAnimations: useAnimations,
-          // ),
-          // child: FollowersCard(),
-          // child: VideoStatsCard(),
-          // child: CallDurationCard(),
-          // child: TrafficCard(),
-          // child: const CacCard(),
-          // child: const LeadsCard(),
-          // child: const ViewsPerUserCard(),
-          child: const DemographicsCard(),
-        ),
-      ),
+    width = MediaQuery.of(context).size.width;
+    return AppScrollbar(
+      child: _buildContent(),
     );
+  }
+
+  Widget _buildContent() {
+    if (width > 1200) {
+      return const CommandCenterDesktopLayout();
+    } else if (width <= 1200 && width >= 750) {
+      return const CommandCenterTabletLayout();
+    }
+    return const CommandCenterMobileLayout();
   }
 }

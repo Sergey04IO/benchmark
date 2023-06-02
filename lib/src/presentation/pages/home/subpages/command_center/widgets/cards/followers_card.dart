@@ -9,13 +9,21 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class FollowersCard extends StatelessWidget {
-  const FollowersCard({super.key});
+  const FollowersCard({
+    super.key,
+    this.height = 265,
+    this.width,
+  });
+
+  final double height;
+  final double? width;
 
   @override
   Widget build(BuildContext context) {
     return CommandCenterCard(
       minWidth: 250,
-      width: MediaQuery.of(context).size.width / 3,
+      height: height,
+      width: width,
       title: LocaleKeys.commandCenter_followersHeader.tr(),
       child: _buildContent(context),
     );

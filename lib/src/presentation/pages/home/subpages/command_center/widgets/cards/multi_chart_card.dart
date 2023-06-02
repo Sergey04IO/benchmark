@@ -15,9 +15,13 @@ class MultiChartCard extends StatefulWidget {
   const MultiChartCard({
     super.key,
     this.useAnimations = true,
+    this.height = 300,
+    this.width,
   });
 
   final bool useAnimations;
+  final double height;
+  final double? width;
 
   @override
   State<MultiChartCard> createState() => _MultiChartCardState();
@@ -62,8 +66,8 @@ class _MultiChartCardState extends State<MultiChartCard>
     return CommandCenterCard(
       title: LocaleKeys.commandCenter_multiChartHeader
           .tr(args: ['Pingdom & Google']),
-      width: MediaQuery.of(context).size.width / 3,
-      height: MediaQuery.of(context).size.width / 4,
+      height: widget.height,
+      width: widget.width,
       minWidth: 350,
       minHeight: 200,
       child: Expanded(
@@ -80,6 +84,7 @@ class _MultiChartCardState extends State<MultiChartCard>
                 useAnimations: widget.useAnimations,
               ),
             ),
+            const SizedBox(height: 10),
             _buildFooter(),
           ],
         ),
@@ -139,8 +144,8 @@ class _MultiChartCardState extends State<MultiChartCard>
   Widget _buildIcon(String path) {
     return Image.asset(
       path,
-      width: 30,
-      height: 30,
+      width: 25,
+      height: 25,
     );
   }
 
@@ -148,7 +153,7 @@ class _MultiChartCardState extends State<MultiChartCard>
     return Wrap(
       runAlignment: WrapAlignment.end,
       crossAxisAlignment: WrapCrossAlignment.end,
-      runSpacing: 10,
+      runSpacing: 5,
       children: [
         _buildLegendItem(
           text: LocaleKeys.commandCenter_multiChartPageLoadTime

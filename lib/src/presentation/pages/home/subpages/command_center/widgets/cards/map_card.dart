@@ -7,7 +7,14 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class MapCard extends StatefulWidget {
-  const MapCard({super.key});
+  const MapCard({
+    super.key,
+    this.height = 313,
+    this.width,
+  });
+
+  final double height;
+  final double? width;
 
   @override
   State<MapCard> createState() => _MapCardState();
@@ -23,15 +30,15 @@ class _MapCardState extends State<MapCard> {
       ),
       child: CommandCenterCard(
         title: LocaleKeys.commandCenter_mapCardHeader.tr(),
-        width: MediaQuery.of(context).size.width / 3,
-        height: MediaQuery.of(context).size.width / 4,
+        height: widget.height,
+        width: widget.width,
         child: Expanded(
           child: Column(
             children: [
               const Expanded(
                 child: MapChart(),
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 5),
               _buildFooter(),
             ],
           ),

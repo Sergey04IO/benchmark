@@ -6,4 +6,5 @@ class CommonConstants {
   static const appTitle = 'Benchmark Demo';
 
   static const isUsedSSO = false;
+  static const useDevicePreview = false;
 }

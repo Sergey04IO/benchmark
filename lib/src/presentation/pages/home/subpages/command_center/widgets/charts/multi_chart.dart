@@ -98,6 +98,9 @@ class _MultiChartState extends State<MultiChart> {
 
   DateTimeAxis _getAxisX() {
     return DateTimeAxis(
+      title: AxisTitle(text: '', textStyle: const TextStyle(fontSize: 0)),
+      labelStyle: const TextStyle(fontSize: 0),
+      edgeLabelPlacement: EdgeLabelPlacement.none,
       majorGridLines: const MajorGridLines(width: 0),
       interval: 1,
       axisLabelFormatter: (axisLabelRenderArgs) => ChartAxisLabel('', null),
@@ -110,8 +113,6 @@ class _MultiChartState extends State<MultiChart> {
     );
   }
 
-  /// Returns the list of chart series which need to
-  /// render on the multiple axes chart.
   List<ChartSeries<MultiChartItemModel, DateTime>>
       _getMultipleAxisLineSeries() {
     return <ChartSeries<MultiChartItemModel, DateTime>>[

@@ -14,6 +14,7 @@ import 'package:benchmark/src/presentation/widgets/cards/benchmark_card.dart';
 import 'package:benchmark/src/presentation/widgets/cards/index_card.dart';
 import 'package:benchmark/src/presentation/widgets/cards/sectors_overview_card.dart';
 import 'package:benchmark/src/presentation/widgets/indicators/common_loading_indicator.dart';
+import 'package:benchmark/src/presentation/widgets/scrolling/app_scrollbar.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -80,7 +81,7 @@ class _AnalyticsPageState extends State<AnalyticsPage> {
       builder: (context, state) {
         return state.maybeWhen(
           loading: _buildLoading,
-          data: _buildContent,
+          data: _buildBody,
           error: _buildError,
           orElse: SizedBox.shrink,
         );
@@ -98,10 +99,6 @@ class _AnalyticsPageState extends State<AnalyticsPage> {
     );
   }
 
-  Widget _buildContent(AnalyticsUIModel model) {
-    return _buildBody(model);
-  }
-
   Widget _appBarTitle(AnalyticsUIModel model) {
     return RadioButtons(
       values: model.dates,
@@ -113,8 +110,7 @@ class _AnalyticsPageState extends State<AnalyticsPage> {
 
   Widget _buildBody(AnalyticsUIModel uiModel) {
     final width = MediaQuery.of(context).size.width;
-    return SingleChildScrollView(
-      physics: const BouncingScrollPhysics(),
+    return AppScrollbar(
       child: Padding(
         padding: EdgeInsets.symmetric(
           vertical: 20,

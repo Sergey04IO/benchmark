@@ -9,14 +9,21 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class VideoStatsCard extends StatelessWidget {
-  const VideoStatsCard({super.key});
+  const VideoStatsCard({
+    super.key,
+    this.height = 180,
+    this.width,
+  });
+
+  final double height;
+  final double? width;
 
   @override
   Widget build(BuildContext context) {
     return CommandCenterCard(
       minWidth: 400,
-      width: MediaQuery.of(context).size.width / 3,
-      height: 200,
+      height: height,
+      width: width,
       title: LocaleKeys.commandCenter_videoStats.tr(args: ['Wistia']),
       child: _buildContent(context),
     );
@@ -24,46 +31,43 @@ class VideoStatsCard extends StatelessWidget {
 
   Widget _buildContent(BuildContext context) {
     return Expanded(
-      child: Padding(
-        padding: const EdgeInsets.only(bottom: 10),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Expanded(
-              child: _buildImageContainer(
-                context,
-                imagePath: Assets.images.metricManagement.path,
-                subtitle: LocaleKeys.commandCenter_videoStatsImageSubtitle.tr(),
-              ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Expanded(
+            child: _buildImageContainer(
+              context,
+              imagePath: Assets.images.metricManagement.path,
+              subtitle: LocaleKeys.commandCenter_videoStatsImageSubtitle.tr(),
             ),
-            _buildDivider(),
-            Expanded(
-              child: _buildValueContainer(
-                context,
-                amount: 563,
-                subtitle: LocaleKeys.commandCenter_playCount.tr(),
-              ),
+          ),
+          _buildDivider(),
+          Expanded(
+            child: _buildValueContainer(
+              context,
+              amount: 563,
+              subtitle: LocaleKeys.commandCenter_playCount.tr(),
             ),
-            _buildDivider(),
-            Expanded(
-              child: _buildValueContainer(
-                context,
-                amount: 75,
-                valueTrailing: '%',
-                subtitle: LocaleKeys.commandCenter_engagement.tr(),
-              ),
+          ),
+          _buildDivider(),
+          Expanded(
+            child: _buildValueContainer(
+              context,
+              amount: 75,
+              valueTrailing: '%',
+              subtitle: LocaleKeys.commandCenter_engagement.tr(),
             ),
-            _buildDivider(),
-            Expanded(
-              child: _buildValueContainer(
-                context,
-                amount: 49,
-                valueTrailing: '%',
-                subtitle: LocaleKeys.commandCenter_playRate.tr(),
-              ),
+          ),
+          _buildDivider(),
+          Expanded(
+            child: _buildValueContainer(
+              context,
+              amount: 49,
+              valueTrailing: '%',
+              subtitle: LocaleKeys.commandCenter_playRate.tr(),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
@@ -99,7 +103,7 @@ class VideoStatsCard extends StatelessWidget {
     String? imagePath,
   }) {
     return Padding(
-      padding: const EdgeInsets.only(left: 10, right: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -141,7 +145,8 @@ class VideoStatsCard extends StatelessWidget {
           ?.bodySmallTextStyle
           ?.withOpacity(0.75),
       textAlign: TextAlign.center,
-      maxLines: 4,
+      overflow: TextOverflow.ellipsis,
+      maxLines: 3,
     );
   }
 
@@ -151,6 +156,7 @@ class VideoStatsCard extends StatelessWidget {
     return Image.asset(
       imagePath ?? '',
       width: double.infinity,
+      height: height / 3,
     );
   }
 
