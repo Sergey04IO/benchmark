@@ -1,12 +1,13 @@
 import 'dart:math';
 
+import 'package:benchmark/src/app/core/constants/common.dart';
 import 'package:benchmark/src/app/core/extensions/text_style_extension.dart';
 import 'package:benchmark/src/app/core/generated/assets/assets.gen.dart';
 import 'package:benchmark/src/app/core/generated/translations/locale_keys.g.dart';
 import 'package:benchmark/src/app/core/theme/colors/app_colors.dart';
 import 'package:benchmark/src/app/core/theme/custom_theme/text/command_center_text_theme.dart';
 import 'package:benchmark/src/app/core/utils/format_util.dart';
-import 'package:benchmark/src/data/helper/data/command_center/cac_data.dart';
+import 'package:benchmark/src/data/helper/models/command_center/cac/cac_help_model.dart';
 import 'package:benchmark/src/presentation/pages/home/subpages/command_center/widgets/containers/divider_gradient_container.dart';
 import 'package:benchmark/src/presentation/widgets/cards/generic/command_center_card.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -16,32 +17,58 @@ class CacCard extends StatefulWidget {
   const CacCard({
     super.key,
     this.width,
+    this.model,
   });
 
   final double? width;
+
+  final CacHelpModel? model;
 
   @override
   State<CacCard> createState() => _CacCardState();
 }
 
-class _CacCardState extends State<CacCard> {
-  late double cardWidth;
-  late double sectionPadding;
+class _CacCardState extends State<CacCard> with SingleTickerProviderStateMixin {
+  late double _cardWidth;
+  late double _sectionPadding;
 
-  final data = CacData.data;
+  late final AnimationController _controller;
+  late final CurvedAnimation _animation;
+
+  late final Tween<double> _valueTween;
+  late final Tween<double> _prevValueTween;
+  late final Tween<double> _diffTween;
+
+  late final Animation<double> _valueAnimation;
+  late final Animation<double> _prevValueAnimation;
+  late final Animation<double> _diffAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+    _init();
+    _controller.forward();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _animation.dispose();
+    _controller.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    final durationPartTitle =
-        LocaleKeys.commandCenter_lastDays.tr(args: ['${data.duration}']);
+    final durationPartTitle = LocaleKeys.commandCenter_lastDays
+        .tr(args: ['${widget.model?.duration}']);
     final title = LocaleKeys.commandCenter_cacCardTitle
         .tr(args: ['Quickbooks & Saleforce:', durationPartTitle]);
     return LayoutBuilder(builder: (context, constraints) {
-      cardWidth = widget.width ?? constraints.maxWidth;
-      sectionPadding = cardWidth / 30;
-      sectionPadding = sectionPadding + sectionPadding / 2;
+      _cardWidth = widget.width ?? constraints.maxWidth;
+      _sectionPadding = _cardWidth / 30;
+      _sectionPadding = _sectionPadding + _sectionPadding / 2;
       return CommandCenterCard(
-        width: cardWidth,
+        width: _cardWidth,
         minWidth: 300,
         title: title,
         child: _buildContent(),
@@ -50,6 +77,15 @@ class _CacCardState extends State<CacCard> {
   }
 
   Widget _buildContent() {
+    return AnimatedBuilder(
+      animation: _animation,
+      builder: (context, child) {
+        return _buildBody();
+      },
+    );
+  }
+
+  Widget _buildBody() {
     return Column(
       children: [
         _buildIconsRow(),
@@ -87,13 +123,13 @@ class _CacCardState extends State<CacCard> {
   }
 
   Widget _buildMainSection() {
-    final value = FormatUtil.int.format(data.value ?? 0);
+    final value = FormatUtil.int.format(_valueAnimation.value);
     return Column(
       mainAxisAlignment: MainAxisAlignment.end,
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
         Padding(
-          padding: EdgeInsets.only(right: sectionPadding),
+          padding: EdgeInsets.only(right: _sectionPadding),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
@@ -121,40 +157,9 @@ class _CacCardState extends State<CacCard> {
     );
   }
 
-  // Widget _buildMainSection() {
-  //   final value = FormatUtil.int.format(data.value ?? 0);
-  //   return Row(
-  //     mainAxisAlignment: MainAxisAlignment.end,
-  //     crossAxisAlignment: CrossAxisAlignment.end,
-  //     children: [
-  //       Padding(
-  //         padding: EdgeInsets.only(right: sectionPadding),
-  //         child: Column(
-  //           crossAxisAlignment: CrossAxisAlignment.end,
-  //           children: [
-  //             Text(
-  //               '\$$value',
-  //               style: CommandCenterTextTheme.of(context)
-  //                   ?.headerGiganticTextStyle
-  //                   ?.withOpacity(0.75),
-  //             ),
-  //             Text(
-  //               LocaleKeys.commandCenter_cacValue.tr(),
-  //               style: CommandCenterTextTheme.of(context)
-  //                   ?.bodySmallTextStyle
-  //                   ?.withBoldFontWeight()
-  //                   .withOpacity(0.75),
-  //             ),
-  //           ],
-  //         ),
-  //       ),
-  //     ],
-  //   );
-  // }
-
   Widget _buildSecondarySection() {
-    final percent = FormatUtil.doublePrecTwo.format(data.getPercent());
-    final columnLeftPadding = sectionPadding - sectionPadding / 3;
+    final percent = FormatUtil.doublePrecTwo.format(_diffAnimation.value);
+    final columnLeftPadding = _sectionPadding - _sectionPadding / 3;
     return Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -183,20 +188,18 @@ class _CacCardState extends State<CacCard> {
         ),
         const SizedBox(height: 3),
         Padding(
-          padding: EdgeInsets.only(left: sectionPadding),
-          child: _buildPrevValue(value: data.prevValue),
+          padding: EdgeInsets.only(left: _sectionPadding),
+          child: _buildPrevValue(),
         )
       ],
     );
   }
 
-  Widget _buildPrevValue({
-    num? value,
-  }) {
+  Widget _buildPrevValue() {
     final prevTr = LocaleKeys.commandCenter_prev.tr();
-    final daysTr =
-        LocaleKeys.commandCenter_somedays.tr(args: ['${data.duration}']);
-    final formattedValue = FormatUtil.int.format(data.prevValue ?? 0);
+    final daysTr = LocaleKeys.commandCenter_somedays
+        .tr(args: ['${widget.model?.duration}']);
+    final formattedValue = FormatUtil.int.format(_prevValueAnimation.value);
     final text = 'vs \$$formattedValue $prevTr $daysTr';
     return Text(
       text,
@@ -237,5 +240,40 @@ class _CacCardState extends State<CacCard> {
       width: 20,
       height: 20,
     );
+  }
+
+  void _init() {
+    _controller = AnimationController(
+      vsync: this,
+      duration: CommonConstants.primaryAnimDuration,
+    );
+    _animation = CurvedAnimation(
+      parent: _controller,
+      curve: Curves.decelerate,
+    );
+    _valueTween = Tween(
+      begin: 0.0,
+      end: _getValue(widget.model?.value),
+    );
+    _prevValueTween = Tween(
+      begin: 0.0,
+      end: _getValue(widget.model?.prevValue),
+    );
+    _diffTween = Tween(
+      begin: 0.0,
+      end: _getValue(widget.model?.getPercent()),
+    );
+    _valueAnimation = _valueTween.animate(_animation);
+    _prevValueAnimation = _prevValueTween.animate(_animation);
+    _diffAnimation = _diffTween.animate(_animation);
+  }
+
+  double _getValue(num? value) {
+    final result = value?.toDouble() ?? 0.0;
+    return result;
+  }
+
+  void _update() {
+    // TODO: implement
   }
 }

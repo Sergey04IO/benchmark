@@ -2,7 +2,7 @@ import 'package:benchmark/src/data/helper/models/command_center/traffic/traffic_
 
 class TrafficHelpData {
   static TrafficHelpModel data = const TrafficHelpModel(
-    advertising: TrafficDataHelpModel(
+    advertising: TrafficItemHelpModel(
       value: 16839,
       prevValue: 15069,
       chartValues: [
@@ -31,10 +31,10 @@ class TrafficHelpData {
         5,
         9,
         1,
-        1
+        1,
       ],
     ),
-    session: TrafficDataHelpModel(
+    session: TrafficItemHelpModel(
       value: 280430,
       prevValue: 216645,
       chartValues: [
@@ -62,7 +62,7 @@ class TrafficHelpData {
         4,
         1,
         2,
-        3
+        3,
       ],
     ),
   );

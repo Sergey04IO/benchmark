@@ -1,14 +1,14 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'area_ui_model.freezed.dart';
+part 'area_help_model.freezed.dart';
 
 @freezed
-class AreaUIModel with _$AreaUIModel {
-  const factory AreaUIModel({
+class AreaHelpModel with _$AreaHelpModel {
+  const factory AreaHelpModel({
     String? title,
     String? unit,
     double? value,
     double? maxValue,
     @Default([]) List<double> points,
-  }) = _AreaUIModel;
+  }) = _AreaHelpModel;
 }

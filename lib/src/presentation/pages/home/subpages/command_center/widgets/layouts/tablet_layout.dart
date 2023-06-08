@@ -1,3 +1,13 @@
+import 'package:benchmark/src/data/helper/data/command_center/cac_data.dart';
+import 'package:benchmark/src/data/helper/data/command_center/call_duration_data.dart';
+import 'package:benchmark/src/data/helper/data/command_center/demographics_data.dart';
+import 'package:benchmark/src/data/helper/data/command_center/followers_data.dart';
+import 'package:benchmark/src/data/helper/data/command_center/leads_data.dart';
+import 'package:benchmark/src/data/helper/data/command_center/map_data.dart';
+import 'package:benchmark/src/data/helper/data/command_center/multi_chart_data.dart';
+import 'package:benchmark/src/data/helper/data/command_center/traffic_data.dart';
+import 'package:benchmark/src/data/helper/data/command_center/video_stats_data.dart';
+import 'package:benchmark/src/data/helper/data/command_center/views_per_user_data.dart';
 import 'package:benchmark/src/presentation/pages/home/subpages/command_center/widgets/cards/cac_card.dart';
 import 'package:benchmark/src/presentation/pages/home/subpages/command_center/widgets/cards/call_duration_card.dart';
 import 'package:benchmark/src/presentation/pages/home/subpages/command_center/widgets/cards/demographics_card.dart';
@@ -13,7 +23,7 @@ import 'package:flutter/material.dart';
 class CommandCenterTabletLayout extends StatefulWidget {
   const CommandCenterTabletLayout({
     super.key,
-    this.useAnimations = false,
+    this.useAnimations = true,
   });
 
   final bool useAnimations;
@@ -74,7 +84,9 @@ class _CommandCenterTabletLayoutState extends State<CommandCenterTabletLayout> {
             ],
           ),
           SizedBox(height: _padding),
-          const DemographicsCard(),
+          DemographicsCard(
+            model: DemographicsHelpData.data,
+          ),
         ],
       ),
     );
@@ -86,19 +98,23 @@ class _CommandCenterTabletLayoutState extends State<CommandCenterTabletLayout> {
       children: [
         FollowersCard(
           height: _followersCardHeight,
+          model: FollowersHelpData.data,
         ),
         SizedBox(height: _padding),
         VideoStatsCard(
           height: _videoStatsHeight,
+          model: VideoStatsHelpData.data,
         ),
         SizedBox(height: _padding),
         MultiChartCard(
           useAnimations: widget.useAnimations,
           height: _multiCardHeight,
+          model: MultiChartHelpData.data,
         ),
         SizedBox(height: _padding),
         MapCard(
           height: _mapCardHeight,
+          model: MapHelpData.data,
         ),
       ],
     );
@@ -107,18 +123,29 @@ class _CommandCenterTabletLayoutState extends State<CommandCenterTabletLayout> {
   Widget _buildSecondColumn(BuildContext context) {
     return Column(
       children: [
-        TrafficCard(key: _trafficCardKey),
+        TrafficCard(
+          key: _trafficCardKey,
+          model: TrafficHelpData.data,
+        ),
         SizedBox(height: _padding),
-        CacCard(key: _cacCardKey),
+        CacCard(
+          key: _cacCardKey,
+          model: CacHelpData.data,
+        ),
         SizedBox(height: _padding),
         LeadsCard(
           height: _leedsCardHeight,
+          model: LeadsHelpData.data,
         ),
         SizedBox(height: _padding),
-        CallDurationCard(key: _callDurationCardKey),
+        CallDurationCard(
+          key: _callDurationCardKey,
+          model: CallDurationHelpData.data,
+        ),
         SizedBox(height: _padding),
         ViewsPerUserCard(
           height: _viewsPerUserCardHeight,
+          model: ViewsPerUserHelpData.data,
         ),
       ],
     );

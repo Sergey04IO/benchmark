@@ -8,7 +8,8 @@ part 'call_duration_help_model.freezed.dart';
 class CallDurationHelpModel with _$CallDurationHelpModel {
   const factory CallDurationHelpModel({
     @Default([]) List<num> chartValues,
-    String? callTime,
+    // in seconds
+    int? callTime,
     int? numberOfCalls,
   }) = _CallDurationHelpModel;
 

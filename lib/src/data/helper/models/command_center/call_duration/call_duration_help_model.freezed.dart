@@ -16,8 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$CallDurationHelpModel {
-  List<num> get chartValues => throw _privateConstructorUsedError;
-  String? get callTime => throw _privateConstructorUsedError;
+  List<num> get chartValues => throw _privateConstructorUsedError; // in seconds
+  int? get callTime => throw _privateConstructorUsedError;
   int? get numberOfCalls => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -31,7 +31,7 @@ abstract class $CallDurationHelpModelCopyWith<$Res> {
           $Res Function(CallDurationHelpModel) then) =
       _$CallDurationHelpModelCopyWithImpl<$Res, CallDurationHelpModel>;
   @useResult
-  $Res call({List<num> chartValues, String? callTime, int? numberOfCalls});
+  $Res call({List<num> chartValues, int? callTime, int? numberOfCalls});
 }
 
 /// @nodoc
@@ -60,7 +60,7 @@ class _$CallDurationHelpModelCopyWithImpl<$Res,
       callTime: freezed == callTime
           ? _value.callTime
           : callTime // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       numberOfCalls: freezed == numberOfCalls
           ? _value.numberOfCalls
           : numberOfCalls // ignore: cast_nullable_to_non_nullable
@@ -77,7 +77,7 @@ abstract class _$$_CallDurationHelpModelCopyWith<$Res>
       __$$_CallDurationHelpModelCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<num> chartValues, String? callTime, int? numberOfCalls});
+  $Res call({List<num> chartValues, int? callTime, int? numberOfCalls});
 }
 
 /// @nodoc
@@ -103,7 +103,7 @@ class __$$_CallDurationHelpModelCopyWithImpl<$Res>
       callTime: freezed == callTime
           ? _value.callTime
           : callTime // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       numberOfCalls: freezed == numberOfCalls
           ? _value.numberOfCalls
           : numberOfCalls // ignore: cast_nullable_to_non_nullable
@@ -131,8 +131,9 @@ class _$_CallDurationHelpModel extends _CallDurationHelpModel {
     return EqualUnmodifiableListView(_chartValues);
   }
 
+// in seconds
   @override
-  final String? callTime;
+  final int? callTime;
   @override
   final int? numberOfCalls;
 
@@ -172,14 +173,14 @@ class _$_CallDurationHelpModel extends _CallDurationHelpModel {
 abstract class _CallDurationHelpModel extends CallDurationHelpModel {
   const factory _CallDurationHelpModel(
       {final List<num> chartValues,
-      final String? callTime,
+      final int? callTime,
       final int? numberOfCalls}) = _$_CallDurationHelpModel;
   const _CallDurationHelpModel._() : super._();
 
   @override
   List<num> get chartValues;
-  @override
-  String? get callTime;
+  @override // in seconds
+  int? get callTime;
   @override
   int? get numberOfCalls;
   @override

@@ -1,9 +1,9 @@
-import 'package:benchmark/src/presentation/models/ui_models/area/area_ui_model.dart';
+import 'package:benchmark/src/data/helper/models/analytics/area/area_help_model.dart';
 
-class AreaData {
-  static Map<String, List<AreaUIModel>> models = {
+class AreaHelpData {
+  static Map<String, List<AreaHelpModel>> models = {
     'NOV-2022': const [
-      AreaUIModel(
+      AreaHelpModel(
         title: 'C/I all Data',
         unit: '%',
         value: 1.4,
@@ -16,7 +16,7 @@ class AreaData {
           1.4,
         ],
       ),
-      AreaUIModel(
+      AreaHelpModel(
         title: 'Debt Margin',
         unit: 'EUR',
         value: 1897,
@@ -29,7 +29,7 @@ class AreaData {
           1897,
         ],
       ),
-      AreaUIModel(
+      AreaHelpModel(
         title: 'Risk Weight Ratio',
         unit: '%',
         value: 9.7,
@@ -44,7 +44,7 @@ class AreaData {
       ),
     ],
     'DEC-2022': const [
-      AreaUIModel(
+      AreaHelpModel(
         title: 'C/I all Data',
         unit: '%',
         value: 3.5,
@@ -56,7 +56,7 @@ class AreaData {
           3.4,
         ],
       ),
-      AreaUIModel(
+      AreaHelpModel(
         title: 'Debt Margin',
         unit: 'EUR',
         value: 4000,
@@ -68,7 +68,7 @@ class AreaData {
           2500,
         ],
       ),
-      AreaUIModel(
+      AreaHelpModel(
         title: 'Risk Weight Ratio',
         unit: '%',
         value: 24,
@@ -82,7 +82,7 @@ class AreaData {
       ),
     ],
     'JAN-2023': const [
-      AreaUIModel(
+      AreaHelpModel(
         title: 'C/I all Data',
         unit: '%',
         value: 1.6,
@@ -94,7 +94,7 @@ class AreaData {
           1.6,
         ],
       ),
-      AreaUIModel(
+      AreaHelpModel(
         title: 'Debt Margin',
         unit: 'EUR',
         value: 10000,
@@ -106,7 +106,7 @@ class AreaData {
           4231,
         ],
       ),
-      AreaUIModel(
+      AreaHelpModel(
         title: 'Risk Weight Ratio',
         unit: '%',
         value: 19,
@@ -120,7 +120,7 @@ class AreaData {
       ),
     ],
     'FEB-2023': const [
-      AreaUIModel(
+      AreaHelpModel(
         title: 'C/I all Data',
         unit: '%',
         value: 0.9,
@@ -132,7 +132,7 @@ class AreaData {
           0.8,
         ],
       ),
-      AreaUIModel(
+      AreaHelpModel(
         title: 'Debt Margin',
         unit: 'EUR',
         value: 3200,
@@ -144,7 +144,7 @@ class AreaData {
           2500,
         ],
       ),
-      AreaUIModel(
+      AreaHelpModel(
         title: 'Risk Weight Ratio',
         unit: '%',
         value: 25,

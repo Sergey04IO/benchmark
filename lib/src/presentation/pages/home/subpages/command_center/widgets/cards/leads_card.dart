@@ -1,10 +1,10 @@
+import 'package:benchmark/src/app/core/constants/common.dart';
 import 'package:benchmark/src/app/core/extensions/text_style_extension.dart';
 import 'package:benchmark/src/app/core/generated/translations/locale_keys.g.dart';
 import 'package:benchmark/src/app/core/theme/colors/app_colors.dart';
 import 'package:benchmark/src/app/core/theme/custom_theme/text/command_center_text_theme.dart';
 import 'package:benchmark/src/app/core/utils/format_util.dart';
 import 'package:benchmark/src/app/core/utils/numbers_util.dart';
-import 'package:benchmark/src/data/helper/data/command_center/leads_help_data.dart';
 import 'package:benchmark/src/data/helper/models/command_center/leads/leads_help_model.dart';
 import 'package:benchmark/src/presentation/helper/widgets_helper.dart';
 import 'package:benchmark/src/presentation/models/helper_models/extremum/extremum.dart';
@@ -17,16 +17,20 @@ class LeadsCard extends StatefulWidget {
     super.key,
     this.height = 164,
     this.width,
+    this.model,
   });
 
   final double height;
   final double? width;
 
+  final LeadsHelpModel? model;
+
   @override
   State<LeadsCard> createState() => _LeadsCardState();
 }
 
-class _LeadsCardState extends State<LeadsCard> {
+class _LeadsCardState extends State<LeadsCard>
+    with SingleTickerProviderStateMixin {
   TextStyle? _secondaryValueTextStyle;
   late Size _maxValueSize;
   late Size _minValueSize;
@@ -37,19 +41,45 @@ class _LeadsCardState extends State<LeadsCard> {
   final double _mainIndicatorWidth = 6;
   late double _extraLineHeight;
 
-  late LeadsHelpModel _data;
   final _formatter = FormatUtil.int;
+
+  late final AnimationController _controller;
+  late final CurvedAnimation _animation;
+
+  late final Tween<double> _valueTween;
+  late final Tween<double> _prevValueTween;
+  late final Tween<double> _valuePosTween;
+  late final Tween<double> _prevValuePosTween;
+
+  late final Animation<double> _valueAnimation;
+  late final Animation<double> _prevValueAnimation;
+  late final Animation<double> _valuePosAnimation;
+  late final Animation<double> _prevValuePosAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+    _init();
+  }
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     _assignDependencies();
+    Future.delayed(const Duration(seconds: 1)).then((value) {
+      _controller.forward();
+    });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _animation.dispose();
+    _controller.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    _cardWidth = MediaQuery.of(context).size.width / 3;
-    _contentWidth = _cardWidth - 32;
     return LayoutBuilder(builder: (contex, constraints) {
       _cardWidth = widget.width ?? constraints.maxWidth;
       _contentWidth = _cardWidth - 32;
@@ -63,8 +93,19 @@ class _LeadsCardState extends State<LeadsCard> {
   }
 
   Widget _buildContent() {
-    final mainIndicatorPosition = _getValuePosition(value: _data.value);
-    final prevValuePosition = _getValuePosition(value: _data.prevValue);
+    return AnimatedBuilder(
+      animation: _animation,
+      builder: (context, child) {
+        return _buildBody();
+      },
+    );
+  }
+
+  Widget _buildBody() {
+    // final mainIndicatorPosition = _getValuePosition(value: widget.model?.value);
+    // final prevValuePosition = _getValuePosition(value: widget.model?.prevValue);
+    final mainIndicatorPosition = _valuePosAnimation.value;
+    final prevValuePosition = _prevValuePosAnimation.value;
     return Padding(
       padding: const EdgeInsets.only(bottom: 25),
       child: Column(
@@ -81,7 +122,6 @@ class _LeadsCardState extends State<LeadsCard> {
                 prevValuePosition: prevValuePosition,
               ),
               _buildPreviousValue(
-                value: _data.prevValue,
                 indicatorPosition: prevValuePosition,
               ),
             ],
@@ -94,7 +134,8 @@ class _LeadsCardState extends State<LeadsCard> {
   Widget _buildMainValue(
     double indicatorPosition,
   ) {
-    final value = _formatter.format(_data.value ?? 0);
+    // final value = _formatter.format(widget.model?.value ?? 0);
+    final value = _formatter.format(_valueAnimation.value);
     final style = CommandCenterTextTheme.of(context)
         ?.headerGiganticTextStyle
         ?.copyWith(height: 1.2)
@@ -141,7 +182,7 @@ class _LeadsCardState extends State<LeadsCard> {
           right: 0,
           child: _buildSerif(
             color: AppColors.grey050,
-            value: _data.maxValue,
+            value: widget.model?.maxValue,
             alignment: Alignment.centerRight,
           ),
         ),
@@ -254,10 +295,9 @@ class _LeadsCardState extends State<LeadsCard> {
   }
 
   Widget _buildPreviousValue({
-    num? value,
     required double indicatorPosition,
   }) {
-    final formatted = _formatter.format(value ?? 0);
+    final formatted = _formatter.format(_prevValueAnimation.value);
     final lastMonthTr = LocaleKeys.commandCenter_lastMonth.tr();
     final text = '$formatted ($lastMonthTr)';
     final testSize = _getTextSize(
@@ -290,7 +330,7 @@ class _LeadsCardState extends State<LeadsCard> {
   double _getValuePosition({
     num? value,
   }) {
-    final max = _data.maxValue;
+    final max = widget.model?.maxValue;
     final result = NumbersUtil.convertValueByRange(
       value: value,
       oldRange: Extremum(max: max ?? 0),
@@ -347,19 +387,63 @@ class _LeadsCardState extends State<LeadsCard> {
     return bottom;
   }
 
+  void _init() {
+    _controller = AnimationController(
+      vsync: this,
+      duration: CommonConstants.primaryAnimDuration,
+    );
+    _animation = CurvedAnimation(
+      parent: _controller,
+      curve: Curves.decelerate,
+    );
+    _valueTween = Tween(
+      begin: 0.0,
+      end: _getAnimValue(widget.model?.value),
+    );
+    _prevValueTween = Tween(
+      begin: 0.0,
+      end: _getAnimValue(widget.model?.prevValue),
+    );
+    _valuePosTween = Tween(
+      begin: 0.0,
+      end: 0.0,
+    );
+    _prevValuePosTween = Tween(
+      begin: 0.0,
+      end: 0.0,
+    );
+    _valueAnimation = _valueTween.animate(_animation);
+    _prevValueAnimation = _prevValueTween.animate(_animation);
+    _valuePosAnimation = _valuePosTween.animate(_animation);
+    _prevValuePosAnimation = _prevValuePosTween.animate(_animation);
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      _valuePosTween.end = _getValuePosition(value: widget.model?.value);
+      _prevValuePosTween.end =
+          _getValuePosition(value: widget.model?.prevValue);
+    });
+  }
+
+  void _update() {
+    // TODO: implement
+  }
+
   void _assignDependencies() {
     _extraLineHeight = _sliderHeight + 5;
-    _data = LeadsHelpData.data;
     _secondaryValueTextStyle = CommandCenterTextTheme.of(context)
         ?.bodySmallTextStyle
         ?.withOpacity(0.5);
     _maxValueSize = _getTextSize(
-      _formatter.format(_data.maxValue ?? 0),
+      _formatter.format(widget.model?.maxValue ?? 0),
       style: _secondaryValueTextStyle,
     );
     _minValueSize = _getTextSize(
       _formatter.format(0),
       style: _secondaryValueTextStyle,
     );
+  }
+
+  double _getAnimValue(num? value) {
+    final result = value?.toDouble() ?? 0.0;
+    return result;
   }
 }

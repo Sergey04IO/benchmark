@@ -39,6 +39,7 @@
         "maleMale": "Male",
         "unspecified": "Unspecified",
         "people": "People",
-        "ageRange": "Age Range"
+        "ageRange": "Age Range",
+        "accounts": "accounts"
     }
 }

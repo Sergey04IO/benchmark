@@ -1,8 +1,7 @@
+import 'package:benchmark/src/app/core/constants/common.dart';
 import 'package:benchmark/src/app/core/extensions/text_style_extension.dart';
 import 'package:benchmark/src/app/core/generated/translations/locale_keys.g.dart';
-import 'package:benchmark/src/app/core/theme/colors/app_colors.dart';
 import 'package:benchmark/src/app/core/theme/custom_theme/text/command_center_text_theme.dart';
-import 'package:benchmark/src/data/helper/data/command_center/demographics_help_data.dart';
 import 'package:benchmark/src/data/helper/models/command_center/demographics/demographics_help_model.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -12,19 +11,28 @@ class DemographicsChart extends StatefulWidget {
   const DemographicsChart({
     super.key,
     this.height,
+    required this.model,
   });
 
   final double? height;
+  final DemographicsHelpModel model;
 
   @override
   State<DemographicsChart> createState() => _DemographicsChartState();
 }
 
 class _DemographicsChartState extends State<DemographicsChart> {
-  List<DemographicsHelpModel>? chartData;
+  late DemographicsHelpModel _chartData;
+
+  double get _animDuration =>
+      CommonConstants.primaryAnimDuration.inMilliseconds.toDouble();
+
+  double get _animDelay =>
+      CommonConstants.commandCenterAnimDelay.inMilliseconds.toDouble();
+
   @override
   void initState() {
-    chartData = DemographicsHelpData.data;
+    _chartData = widget.model;
     super.initState();
   }
 
@@ -81,36 +89,25 @@ class _DemographicsChartState extends State<DemographicsChart> {
     );
   }
 
-  List<ColumnSeries<DemographicsHelpModel, String>> _getSeries() {
-    return <ColumnSeries<DemographicsHelpModel, String>>[
-      ColumnSeries<DemographicsHelpModel, String>(
-        dataSource: chartData!,
-        color: AppColors.blueFF7,
-        name: LocaleKeys.commandCenter_maleMale.tr(),
-        xValueMapper: (sales, _) => sales.category,
-        yValueMapper: (sales, _) => sales.male,
-        width: 0.9,
-        spacing: 0.12,
-      ),
-      ColumnSeries<DemographicsHelpModel, String>(
-        dataSource: chartData!,
-        color: AppColors.blue0F3,
-        xValueMapper: (sales, _) => sales.category,
-        yValueMapper: (sales, _) => sales.female,
-        name: LocaleKeys.commandCenter_Female.tr(),
-        width: 0.9,
-        spacing: 0.12,
-      ),
-      ColumnSeries<DemographicsHelpModel, String>(
-        dataSource: chartData!,
-        color: AppColors.blue2BB,
-        xValueMapper: (sales, _) => sales.category,
-        yValueMapper: (sales, _) => sales.unspecified,
-        name: LocaleKeys.commandCenter_unspecified.tr(),
-        width: 0.9,
-        spacing: 0.12,
-      ),
-    ];
+  List<ColumnSeries<DemographicsItemHelpModel, String>> _getSeries() {
+    final data = _chartData.clusters.map(_getLineSeries).toList();
+    return data;
+  }
+
+  ColumnSeries<DemographicsItemHelpModel, String> _getLineSeries(
+    DemographicsClusterHelpModel cluster,
+  ) {
+    return ColumnSeries<DemographicsItemHelpModel, String>(
+      dataSource: cluster.items,
+      name: cluster.name,
+      color: cluster.color,
+      xValueMapper: (sales, _) => sales.category,
+      yValueMapper: (sales, _) => sales.value,
+      width: 0.9,
+      spacing: 0.12,
+      animationDuration: _animDuration,
+      animationDelay: _animDelay,
+    );
   }
 
   ChartAxisLabel _getAxisLabel(

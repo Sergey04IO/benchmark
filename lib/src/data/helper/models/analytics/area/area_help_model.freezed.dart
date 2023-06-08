@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'area_ui_model.dart';
+part of 'area_help_model.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$AreaUIModel {
+mixin _$AreaHelpModel {
   String? get title => throw _privateConstructorUsedError;
   String? get unit => throw _privateConstructorUsedError;
   double? get value => throw _privateConstructorUsedError;
@@ -23,15 +23,15 @@ mixin _$AreaUIModel {
   List<double> get points => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $AreaUIModelCopyWith<AreaUIModel> get copyWith =>
+  $AreaHelpModelCopyWith<AreaHelpModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $AreaUIModelCopyWith<$Res> {
-  factory $AreaUIModelCopyWith(
-          AreaUIModel value, $Res Function(AreaUIModel) then) =
-      _$AreaUIModelCopyWithImpl<$Res, AreaUIModel>;
+abstract class $AreaHelpModelCopyWith<$Res> {
+  factory $AreaHelpModelCopyWith(
+          AreaHelpModel value, $Res Function(AreaHelpModel) then) =
+      _$AreaHelpModelCopyWithImpl<$Res, AreaHelpModel>;
   @useResult
   $Res call(
       {String? title,
@@ -42,9 +42,9 @@ abstract class $AreaUIModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$AreaUIModelCopyWithImpl<$Res, $Val extends AreaUIModel>
-    implements $AreaUIModelCopyWith<$Res> {
-  _$AreaUIModelCopyWithImpl(this._value, this._then);
+class _$AreaHelpModelCopyWithImpl<$Res, $Val extends AreaHelpModel>
+    implements $AreaHelpModelCopyWith<$Res> {
+  _$AreaHelpModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -86,11 +86,11 @@ class _$AreaUIModelCopyWithImpl<$Res, $Val extends AreaUIModel>
 }
 
 /// @nodoc
-abstract class _$$_AreaUIModelCopyWith<$Res>
-    implements $AreaUIModelCopyWith<$Res> {
-  factory _$$_AreaUIModelCopyWith(
-          _$_AreaUIModel value, $Res Function(_$_AreaUIModel) then) =
-      __$$_AreaUIModelCopyWithImpl<$Res>;
+abstract class _$$_AreaHelpModelCopyWith<$Res>
+    implements $AreaHelpModelCopyWith<$Res> {
+  factory _$$_AreaHelpModelCopyWith(
+          _$_AreaHelpModel value, $Res Function(_$_AreaHelpModel) then) =
+      __$$_AreaHelpModelCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -102,11 +102,11 @@ abstract class _$$_AreaUIModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_AreaUIModelCopyWithImpl<$Res>
-    extends _$AreaUIModelCopyWithImpl<$Res, _$_AreaUIModel>
-    implements _$$_AreaUIModelCopyWith<$Res> {
-  __$$_AreaUIModelCopyWithImpl(
-      _$_AreaUIModel _value, $Res Function(_$_AreaUIModel) _then)
+class __$$_AreaHelpModelCopyWithImpl<$Res>
+    extends _$AreaHelpModelCopyWithImpl<$Res, _$_AreaHelpModel>
+    implements _$$_AreaHelpModelCopyWith<$Res> {
+  __$$_AreaHelpModelCopyWithImpl(
+      _$_AreaHelpModel _value, $Res Function(_$_AreaHelpModel) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -118,7 +118,7 @@ class __$$_AreaUIModelCopyWithImpl<$Res>
     Object? maxValue = freezed,
     Object? points = null,
   }) {
-    return _then(_$_AreaUIModel(
+    return _then(_$_AreaHelpModel(
       title: freezed == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -145,8 +145,8 @@ class __$$_AreaUIModelCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AreaUIModel implements _AreaUIModel {
-  const _$_AreaUIModel(
+class _$_AreaHelpModel implements _AreaHelpModel {
+  const _$_AreaHelpModel(
       {this.title,
       this.unit,
       this.value,
@@ -173,14 +173,14 @@ class _$_AreaUIModel implements _AreaUIModel {
 
   @override
   String toString() {
-    return 'AreaUIModel(title: $title, unit: $unit, value: $value, maxValue: $maxValue, points: $points)';
+    return 'AreaHelpModel(title: $title, unit: $unit, value: $value, maxValue: $maxValue, points: $points)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AreaUIModel &&
+            other is _$_AreaHelpModel &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.unit, unit) || other.unit == unit) &&
             (identical(other.value, value) || other.value == value) &&
@@ -196,17 +196,17 @@ class _$_AreaUIModel implements _AreaUIModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AreaUIModelCopyWith<_$_AreaUIModel> get copyWith =>
-      __$$_AreaUIModelCopyWithImpl<_$_AreaUIModel>(this, _$identity);
+  _$$_AreaHelpModelCopyWith<_$_AreaHelpModel> get copyWith =>
+      __$$_AreaHelpModelCopyWithImpl<_$_AreaHelpModel>(this, _$identity);
 }
 
-abstract class _AreaUIModel implements AreaUIModel {
-  const factory _AreaUIModel(
+abstract class _AreaHelpModel implements AreaHelpModel {
+  const factory _AreaHelpModel(
       {final String? title,
       final String? unit,
       final double? value,
       final double? maxValue,
-      final List<double> points}) = _$_AreaUIModel;
+      final List<double> points}) = _$_AreaHelpModel;
 
   @override
   String? get title;
@@ -220,6 +220,6 @@ abstract class _AreaUIModel implements AreaUIModel {
   List<double> get points;
   @override
   @JsonKey(ignore: true)
-  _$$_AreaUIModelCopyWith<_$_AreaUIModel> get copyWith =>
+  _$$_AreaHelpModelCopyWith<_$_AreaHelpModel> get copyWith =>
       throw _privateConstructorUsedError;
 }

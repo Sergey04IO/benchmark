@@ -1,35 +1,87 @@
+import 'package:benchmark/src/app/core/constants/common.dart';
 import 'package:benchmark/src/app/core/extensions/text_style_extension.dart';
 import 'package:benchmark/src/app/core/generated/assets/assets.gen.dart';
 import 'package:benchmark/src/app/core/generated/translations/locale_keys.g.dart';
 import 'package:benchmark/src/app/core/theme/custom_theme/text/command_center_text_theme.dart';
 import 'package:benchmark/src/app/core/utils/format_util.dart';
+import 'package:benchmark/src/data/helper/models/command_center/followers/followers_help_model.dart';
 import 'package:benchmark/src/presentation/pages/home/subpages/command_center/widgets/containers/divider_gradient_container.dart';
 import 'package:benchmark/src/presentation/widgets/cards/generic/command_center_card.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-class FollowersCard extends StatelessWidget {
+class FollowersCard extends StatefulWidget {
   const FollowersCard({
     super.key,
     this.height = 265,
     this.width,
+    this.model,
   });
 
   final double height;
   final double? width;
+  final FollowersHelpModel? model;
+
+  @override
+  State<FollowersCard> createState() => _FollowersCardState();
+}
+
+class _FollowersCardState extends State<FollowersCard>
+    with SingleTickerProviderStateMixin {
+  final NumberFormat _numberFormat = FormatUtil.int;
+
+  late AnimationController _controller;
+  late CurvedAnimation _animation;
+
+  late Tween<double> _facebookTween;
+  late Tween<double> _youtubeTween;
+  late Tween<double> _instagramTween;
+  late Tween<double> _googlePlusTween;
+  late Tween<double> _twitterTween;
+  late Tween<double> _linkedInTween;
+
+  late Animation<double> _facebookAnimation;
+  late Animation<double> _youtubeAnimation;
+  late Animation<double> _instagramAnimation;
+  late Animation<double> _googlePlusAnimation;
+  late Animation<double> _twitterAnimation;
+  late Animation<double> _linkedInAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+    _init();
+    _controller.forward();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _animation.dispose();
+    _controller.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return CommandCenterCard(
       minWidth: 250,
-      height: height,
-      width: width,
+      height: widget.height,
+      width: widget.width,
       title: LocaleKeys.commandCenter_followersHeader.tr(),
       child: _buildContent(context),
     );
   }
 
   Widget _buildContent(BuildContext context) {
+    return AnimatedBuilder(
+      animation: _animation,
+      builder: (context, child) {
+        return _buildBody();
+      },
+    );
+  }
+
+  Widget _buildBody() {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -49,19 +101,19 @@ class FollowersCard extends StatelessWidget {
         _buildMediaContainer(
           context,
           iconPath: Assets.icons.facebookLogo.path,
-          amount: 26472,
+          amount: _facebookAnimation.value,
           subtitle: LocaleKeys.commandCenter_likes.tr(),
         ),
         _buildMediaContainer(
           context,
           iconPath: Assets.icons.youtubeLogo.path,
-          amount: 13911,
+          amount: _youtubeAnimation.value,
           subtitle: LocaleKeys.commandCenter_subscribers.tr(),
         ),
         _buildMediaContainer(
           context,
           iconPath: Assets.icons.instagramLogo.path,
-          amount: 6524,
+          amount: _instagramAnimation.value,
           subtitle: LocaleKeys.commandCenter_followers.tr(),
         ),
       ],
@@ -75,19 +127,19 @@ class FollowersCard extends StatelessWidget {
         _buildMediaContainer(
           context,
           iconPath: Assets.icons.googlePlusLogo.path,
-          amount: 5093,
+          amount: _googlePlusAnimation.value,
           subtitle: LocaleKeys.commandCenter_circledBy.tr(),
         ),
         _buildMediaContainer(
           context,
           iconPath: Assets.icons.twitterLogo.path,
-          amount: 45322,
+          amount: _twitterAnimation.value,
           subtitle: LocaleKeys.commandCenter_followers.tr(),
         ),
         _buildMediaContainer(
           context,
           iconPath: Assets.icons.linkedinLogo.path,
-          amount: 1765,
+          amount: _linkedInAnimation.value,
           subtitle: LocaleKeys.commandCenter_followers.tr(),
         ),
       ],
@@ -97,7 +149,7 @@ class FollowersCard extends StatelessWidget {
   Widget _buildMediaContainer(
     BuildContext context, {
     String? iconPath,
-    int? amount,
+    double? amount,
     String? subtitle,
   }) {
     return Column(
@@ -129,10 +181,9 @@ class FollowersCard extends StatelessWidget {
 
   Widget _buildAmount(
     BuildContext context, {
-    int? amount,
+    double? amount,
   }) {
-    final formatter = FormatUtil.int;
-    final value = formatter.format(amount ?? 0);
+    final value = _getFormattedValue(amount);
     return Text(
       value,
       style: CommandCenterTextTheme.of(context)
@@ -154,5 +205,60 @@ class FollowersCard extends StatelessWidget {
                 0.75,
               ),
     );
+  }
+
+  void _init() {
+    _controller = AnimationController(
+      vsync: this,
+      duration: CommonConstants.primaryAnimDuration,
+    );
+    _animation = CurvedAnimation(
+      parent: _controller,
+      curve: Curves.decelerate,
+    );
+    _facebookTween = Tween(
+      begin: 0,
+      end: _getValue(widget.model?.facebook),
+    );
+    _youtubeTween = Tween(
+      begin: 0,
+      end: _getValue(widget.model?.youtube),
+    );
+    _instagramTween = Tween(
+      begin: 0,
+      end: _getValue(widget.model?.instagram),
+    );
+    _googlePlusTween = Tween(
+      begin: 0,
+      end: _getValue(widget.model?.googlePlus),
+    );
+    _twitterTween = Tween(
+      begin: 0,
+      end: _getValue(widget.model?.twitter),
+    );
+    _linkedInTween = Tween(
+      begin: 0,
+      end: _getValue(widget.model?.linkedIn),
+    );
+    _facebookAnimation = _facebookTween.animate(_animation);
+    _youtubeAnimation = _youtubeTween.animate(_animation);
+    _instagramAnimation = _instagramTween.animate(_animation);
+    _googlePlusAnimation = _googlePlusTween.animate(_animation);
+    _twitterAnimation = _twitterTween.animate(_animation);
+    _linkedInAnimation = _linkedInTween.animate(_animation);
+  }
+
+  void _update() {
+    // TODO: implement
+  }
+
+  String _getFormattedValue(double? amount) {
+    final value = _numberFormat.format(amount ?? 0);
+    return value;
+  }
+
+  double _getValue(int? value) {
+    final double result = value?.toDouble() ?? 0.0;
+    return result;
   }
 }

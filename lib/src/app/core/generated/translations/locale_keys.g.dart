@@ -41,6 +41,7 @@ abstract class  LocaleKeys {
   static const commandCenter_unspecified = 'commandCenter.unspecified';
   static const commandCenter_people = 'commandCenter.people';
   static const commandCenter_ageRange = 'commandCenter.ageRange';
+  static const commandCenter_accounts = 'commandCenter.accounts';
   static const commandCenter = 'commandCenter';
 
 }

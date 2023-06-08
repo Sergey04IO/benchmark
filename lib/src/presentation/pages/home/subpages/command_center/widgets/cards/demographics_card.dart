@@ -1,8 +1,9 @@
 import 'package:benchmark/src/app/core/generated/translations/locale_keys.g.dart';
-import 'package:benchmark/src/app/core/theme/colors/app_colors.dart';
 import 'package:benchmark/src/app/core/theme/custom_theme/text/command_center_text_theme.dart';
+import 'package:benchmark/src/data/helper/models/command_center/demographics/demographics_help_model.dart';
 import 'package:benchmark/src/presentation/pages/home/subpages/command_center/widgets/charts/demographics_chart.dart';
 import 'package:benchmark/src/presentation/widgets/cards/generic/command_center_card.dart';
+import 'package:collection/collection.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
@@ -11,10 +12,13 @@ class DemographicsCard extends StatefulWidget {
     super.key,
     this.height = 270,
     this.width,
+    this.model,
   });
 
   final double height;
   final double? width;
+
+  final DemographicsHelpModel? model;
 
   @override
   State<DemographicsCard> createState() => _DemographicsCardState();
@@ -50,12 +54,14 @@ class _DemographicsCardState extends State<DemographicsCard> {
   }
 
   Widget _buildChart() {
+    if (widget.model == null) return const SizedBox.shrink();
     return Column(
       children: [
         const SizedBox(height: 5),
         _buildLegend(),
         DemographicsChart(
           height: graphHeight,
+          model: widget.model!,
         ),
         const SizedBox(height: 5),
       ],
@@ -67,22 +73,7 @@ class _DemographicsCardState extends State<DemographicsCard> {
       padding: EdgeInsets.only(right: cardWidth / 20),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          _buildLegendItem(
-            text: LocaleKeys.commandCenter_maleMale.tr(),
-            color: AppColors.blueFF7,
-          ),
-          const SizedBox(width: 20),
-          _buildLegendItem(
-            text: LocaleKeys.commandCenter_Female.tr(),
-            color: AppColors.blue0F3,
-          ),
-          const SizedBox(width: 20),
-          _buildLegendItem(
-            text: LocaleKeys.commandCenter_unspecified.tr(),
-            color: AppColors.blue2BB,
-          ),
-        ],
+        children: _mapModelsToLegendItems(),
       ),
     );
   }
@@ -106,5 +97,21 @@ class _DemographicsCardState extends State<DemographicsCard> {
         ),
       ],
     );
+  }
+
+  List<Widget> _mapModelsToLegendItems() {
+    final List<Widget> list = [];
+    final clusters = widget.model?.clusters;
+    if (clusters == null || clusters.isEmpty) {
+      return [];
+    }
+    clusters.mapIndexed((index, cluster) {
+      final widget = _buildLegendItem(text: cluster.name, color: cluster.color);
+      list.add(widget);
+      if (index != clusters.length - 1) {
+        list.add(const SizedBox(width: 20));
+      }
+    }).toList();
+    return list;
   }
 }

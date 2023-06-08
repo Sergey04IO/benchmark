@@ -16,8 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$TrafficHelpModel {
-  TrafficDataHelpModel? get advertising => throw _privateConstructorUsedError;
-  TrafficDataHelpModel? get session => throw _privateConstructorUsedError;
+  TrafficItemHelpModel? get advertising => throw _privateConstructorUsedError;
+  TrafficItemHelpModel? get session => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TrafficHelpModelCopyWith<TrafficHelpModel> get copyWith =>
@@ -30,10 +30,10 @@ abstract class $TrafficHelpModelCopyWith<$Res> {
           TrafficHelpModel value, $Res Function(TrafficHelpModel) then) =
       _$TrafficHelpModelCopyWithImpl<$Res, TrafficHelpModel>;
   @useResult
-  $Res call({TrafficDataHelpModel? advertising, TrafficDataHelpModel? session});
+  $Res call({TrafficItemHelpModel? advertising, TrafficItemHelpModel? session});
 
-  $TrafficDataHelpModelCopyWith<$Res>? get advertising;
-  $TrafficDataHelpModelCopyWith<$Res>? get session;
+  $TrafficItemHelpModelCopyWith<$Res>? get advertising;
+  $TrafficItemHelpModelCopyWith<$Res>? get session;
 }
 
 /// @nodoc
@@ -56,34 +56,34 @@ class _$TrafficHelpModelCopyWithImpl<$Res, $Val extends TrafficHelpModel>
       advertising: freezed == advertising
           ? _value.advertising
           : advertising // ignore: cast_nullable_to_non_nullable
-              as TrafficDataHelpModel?,
+              as TrafficItemHelpModel?,
       session: freezed == session
           ? _value.session
           : session // ignore: cast_nullable_to_non_nullable
-              as TrafficDataHelpModel?,
+              as TrafficItemHelpModel?,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $TrafficDataHelpModelCopyWith<$Res>? get advertising {
+  $TrafficItemHelpModelCopyWith<$Res>? get advertising {
     if (_value.advertising == null) {
       return null;
     }
 
-    return $TrafficDataHelpModelCopyWith<$Res>(_value.advertising!, (value) {
+    return $TrafficItemHelpModelCopyWith<$Res>(_value.advertising!, (value) {
       return _then(_value.copyWith(advertising: value) as $Val);
     });
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $TrafficDataHelpModelCopyWith<$Res>? get session {
+  $TrafficItemHelpModelCopyWith<$Res>? get session {
     if (_value.session == null) {
       return null;
     }
 
-    return $TrafficDataHelpModelCopyWith<$Res>(_value.session!, (value) {
+    return $TrafficItemHelpModelCopyWith<$Res>(_value.session!, (value) {
       return _then(_value.copyWith(session: value) as $Val);
     });
   }
@@ -97,12 +97,12 @@ abstract class _$$_TrafficHelpModelCopyWith<$Res>
       __$$_TrafficHelpModelCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({TrafficDataHelpModel? advertising, TrafficDataHelpModel? session});
+  $Res call({TrafficItemHelpModel? advertising, TrafficItemHelpModel? session});
 
   @override
-  $TrafficDataHelpModelCopyWith<$Res>? get advertising;
+  $TrafficItemHelpModelCopyWith<$Res>? get advertising;
   @override
-  $TrafficDataHelpModelCopyWith<$Res>? get session;
+  $TrafficItemHelpModelCopyWith<$Res>? get session;
 }
 
 /// @nodoc
@@ -123,11 +123,11 @@ class __$$_TrafficHelpModelCopyWithImpl<$Res>
       advertising: freezed == advertising
           ? _value.advertising
           : advertising // ignore: cast_nullable_to_non_nullable
-              as TrafficDataHelpModel?,
+              as TrafficItemHelpModel?,
       session: freezed == session
           ? _value.session
           : session // ignore: cast_nullable_to_non_nullable
-              as TrafficDataHelpModel?,
+              as TrafficItemHelpModel?,
     ));
   }
 }
@@ -138,9 +138,9 @@ class _$_TrafficHelpModel implements _TrafficHelpModel {
   const _$_TrafficHelpModel({this.advertising, this.session});
 
   @override
-  final TrafficDataHelpModel? advertising;
+  final TrafficItemHelpModel? advertising;
   @override
-  final TrafficDataHelpModel? session;
+  final TrafficItemHelpModel? session;
 
   @override
   String toString() {
@@ -169,13 +169,13 @@ class _$_TrafficHelpModel implements _TrafficHelpModel {
 
 abstract class _TrafficHelpModel implements TrafficHelpModel {
   const factory _TrafficHelpModel(
-      {final TrafficDataHelpModel? advertising,
-      final TrafficDataHelpModel? session}) = _$_TrafficHelpModel;
+      {final TrafficItemHelpModel? advertising,
+      final TrafficItemHelpModel? session}) = _$_TrafficHelpModel;
 
   @override
-  TrafficDataHelpModel? get advertising;
+  TrafficItemHelpModel? get advertising;
   @override
-  TrafficDataHelpModel? get session;
+  TrafficItemHelpModel? get session;
   @override
   @JsonKey(ignore: true)
   _$$_TrafficHelpModelCopyWith<_$_TrafficHelpModel> get copyWith =>
@@ -183,30 +183,30 @@ abstract class _TrafficHelpModel implements TrafficHelpModel {
 }
 
 /// @nodoc
-mixin _$TrafficDataHelpModel {
+mixin _$TrafficItemHelpModel {
   num? get value => throw _privateConstructorUsedError;
   num? get prevValue => throw _privateConstructorUsedError;
   List<num> get chartValues => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $TrafficDataHelpModelCopyWith<TrafficDataHelpModel> get copyWith =>
+  $TrafficItemHelpModelCopyWith<TrafficItemHelpModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $TrafficDataHelpModelCopyWith<$Res> {
-  factory $TrafficDataHelpModelCopyWith(TrafficDataHelpModel value,
-          $Res Function(TrafficDataHelpModel) then) =
-      _$TrafficDataHelpModelCopyWithImpl<$Res, TrafficDataHelpModel>;
+abstract class $TrafficItemHelpModelCopyWith<$Res> {
+  factory $TrafficItemHelpModelCopyWith(TrafficItemHelpModel value,
+          $Res Function(TrafficItemHelpModel) then) =
+      _$TrafficItemHelpModelCopyWithImpl<$Res, TrafficItemHelpModel>;
   @useResult
   $Res call({num? value, num? prevValue, List<num> chartValues});
 }
 
 /// @nodoc
-class _$TrafficDataHelpModelCopyWithImpl<$Res,
-        $Val extends TrafficDataHelpModel>
-    implements $TrafficDataHelpModelCopyWith<$Res> {
-  _$TrafficDataHelpModelCopyWithImpl(this._value, this._then);
+class _$TrafficItemHelpModelCopyWithImpl<$Res,
+        $Val extends TrafficItemHelpModel>
+    implements $TrafficItemHelpModelCopyWith<$Res> {
+  _$TrafficItemHelpModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -238,22 +238,22 @@ class _$TrafficDataHelpModelCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_TrafficDataHelpModelCopyWith<$Res>
-    implements $TrafficDataHelpModelCopyWith<$Res> {
-  factory _$$_TrafficDataHelpModelCopyWith(_$_TrafficDataHelpModel value,
-          $Res Function(_$_TrafficDataHelpModel) then) =
-      __$$_TrafficDataHelpModelCopyWithImpl<$Res>;
+abstract class _$$_TrafficItemHelpModelCopyWith<$Res>
+    implements $TrafficItemHelpModelCopyWith<$Res> {
+  factory _$$_TrafficItemHelpModelCopyWith(_$_TrafficItemHelpModel value,
+          $Res Function(_$_TrafficItemHelpModel) then) =
+      __$$_TrafficItemHelpModelCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({num? value, num? prevValue, List<num> chartValues});
 }
 
 /// @nodoc
-class __$$_TrafficDataHelpModelCopyWithImpl<$Res>
-    extends _$TrafficDataHelpModelCopyWithImpl<$Res, _$_TrafficDataHelpModel>
-    implements _$$_TrafficDataHelpModelCopyWith<$Res> {
-  __$$_TrafficDataHelpModelCopyWithImpl(_$_TrafficDataHelpModel _value,
-      $Res Function(_$_TrafficDataHelpModel) _then)
+class __$$_TrafficItemHelpModelCopyWithImpl<$Res>
+    extends _$TrafficItemHelpModelCopyWithImpl<$Res, _$_TrafficItemHelpModel>
+    implements _$$_TrafficItemHelpModelCopyWith<$Res> {
+  __$$_TrafficItemHelpModelCopyWithImpl(_$_TrafficItemHelpModel _value,
+      $Res Function(_$_TrafficItemHelpModel) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -263,7 +263,7 @@ class __$$_TrafficDataHelpModelCopyWithImpl<$Res>
     Object? prevValue = freezed,
     Object? chartValues = null,
   }) {
-    return _then(_$_TrafficDataHelpModel(
+    return _then(_$_TrafficItemHelpModel(
       value: freezed == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
@@ -282,8 +282,8 @@ class __$$_TrafficDataHelpModelCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_TrafficDataHelpModel extends _TrafficDataHelpModel {
-  const _$_TrafficDataHelpModel(
+class _$_TrafficItemHelpModel extends _TrafficItemHelpModel {
+  const _$_TrafficItemHelpModel(
       {this.value, this.prevValue, final List<num> chartValues = const []})
       : _chartValues = chartValues,
         super._();
@@ -303,14 +303,14 @@ class _$_TrafficDataHelpModel extends _TrafficDataHelpModel {
 
   @override
   String toString() {
-    return 'TrafficDataHelpModel(value: $value, prevValue: $prevValue, chartValues: $chartValues)';
+    return 'TrafficItemHelpModel(value: $value, prevValue: $prevValue, chartValues: $chartValues)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TrafficDataHelpModel &&
+            other is _$_TrafficItemHelpModel &&
             (identical(other.value, value) || other.value == value) &&
             (identical(other.prevValue, prevValue) ||
                 other.prevValue == prevValue) &&
@@ -325,17 +325,17 @@ class _$_TrafficDataHelpModel extends _TrafficDataHelpModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TrafficDataHelpModelCopyWith<_$_TrafficDataHelpModel> get copyWith =>
-      __$$_TrafficDataHelpModelCopyWithImpl<_$_TrafficDataHelpModel>(
+  _$$_TrafficItemHelpModelCopyWith<_$_TrafficItemHelpModel> get copyWith =>
+      __$$_TrafficItemHelpModelCopyWithImpl<_$_TrafficItemHelpModel>(
           this, _$identity);
 }
 
-abstract class _TrafficDataHelpModel extends TrafficDataHelpModel {
-  const factory _TrafficDataHelpModel(
+abstract class _TrafficItemHelpModel extends TrafficItemHelpModel {
+  const factory _TrafficItemHelpModel(
       {final num? value,
       final num? prevValue,
-      final List<num> chartValues}) = _$_TrafficDataHelpModel;
-  const _TrafficDataHelpModel._() : super._();
+      final List<num> chartValues}) = _$_TrafficItemHelpModel;
+  const _TrafficItemHelpModel._() : super._();
 
   @override
   num? get value;
@@ -345,6 +345,6 @@ abstract class _TrafficDataHelpModel extends TrafficDataHelpModel {
   List<num> get chartValues;
   @override
   @JsonKey(ignore: true)
-  _$$_TrafficDataHelpModelCopyWith<_$_TrafficDataHelpModel> get copyWith =>
+  _$$_TrafficItemHelpModelCopyWith<_$_TrafficItemHelpModel> get copyWith =>
       throw _privateConstructorUsedError;
 }

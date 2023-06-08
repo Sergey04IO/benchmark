@@ -1,42 +1,88 @@
+import 'package:benchmark/src/app/core/constants/common.dart';
 import 'package:benchmark/src/app/core/extensions/text_style_extension.dart';
 import 'package:benchmark/src/app/core/generated/assets/assets.gen.dart';
 import 'package:benchmark/src/app/core/generated/translations/locale_keys.g.dart';
 import 'package:benchmark/src/app/core/theme/custom_theme/text/command_center_text_theme.dart';
 import 'package:benchmark/src/app/core/utils/format_util.dart';
+import 'package:benchmark/src/data/helper/models/command_center/video_stats/video_stats_help_model.dart';
 import 'package:benchmark/src/presentation/pages/home/subpages/command_center/widgets/containers/divider_gradient_container.dart';
 import 'package:benchmark/src/presentation/widgets/cards/generic/command_center_card.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-class VideoStatsCard extends StatelessWidget {
+class VideoStatsCard extends StatefulWidget {
   const VideoStatsCard({
     super.key,
     this.height = 180,
     this.width,
+    this.model,
   });
 
   final double height;
   final double? width;
 
+  final VideoStatsHelpModel? model;
+
+  @override
+  State<VideoStatsCard> createState() => _VideoStatsCardState();
+}
+
+class _VideoStatsCardState extends State<VideoStatsCard>
+    with SingleTickerProviderStateMixin {
+  final NumberFormat _numberFormat = FormatUtil.int;
+
+  late AnimationController _controller;
+  late CurvedAnimation _animation;
+
+  late Tween<double> _playCountTween;
+  late Tween<double> _engagementTween;
+  late Tween<double> _playRateTween;
+
+  late Animation<double> _playCountAnimation;
+  late Animation<double> _engagementAnimation;
+  late Animation<double> _playRateAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+    _init();
+    _controller.forward();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _animation.dispose();
+    _controller.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return CommandCenterCard(
       minWidth: 400,
-      height: height,
-      width: width,
+      height: widget.height,
+      width: widget.width,
       title: LocaleKeys.commandCenter_videoStats.tr(args: ['Wistia']),
-      child: _buildContent(context),
+      child: _buildContent(),
     );
   }
 
-  Widget _buildContent(BuildContext context) {
+  Widget _buildContent() {
+    return AnimatedBuilder(
+      animation: _animation,
+      builder: (context, child) {
+        return _buildBody();
+      },
+    );
+  }
+
+  Widget _buildBody() {
     return Expanded(
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
           Expanded(
             child: _buildImageContainer(
-              context,
               imagePath: Assets.images.metricManagement.path,
               subtitle: LocaleKeys.commandCenter_videoStatsImageSubtitle.tr(),
             ),
@@ -44,16 +90,14 @@ class VideoStatsCard extends StatelessWidget {
           _buildDivider(),
           Expanded(
             child: _buildValueContainer(
-              context,
-              amount: 563,
+              amount: _playCountAnimation.value,
               subtitle: LocaleKeys.commandCenter_playCount.tr(),
             ),
           ),
           _buildDivider(),
           Expanded(
             child: _buildValueContainer(
-              context,
-              amount: 75,
+              amount: _engagementAnimation.value,
               valueTrailing: '%',
               subtitle: LocaleKeys.commandCenter_engagement.tr(),
             ),
@@ -61,8 +105,7 @@ class VideoStatsCard extends StatelessWidget {
           _buildDivider(),
           Expanded(
             child: _buildValueContainer(
-              context,
-              amount: 49,
+              amount: _playRateAnimation.value,
               valueTrailing: '%',
               subtitle: LocaleKeys.commandCenter_playRate.tr(),
             ),
@@ -72,9 +115,8 @@ class VideoStatsCard extends StatelessWidget {
     );
   }
 
-  Widget _buildValueContainer(
-    BuildContext context, {
-    int? amount,
+  Widget _buildValueContainer({
+    double? amount,
     String? subtitle,
     String? valueTrailing,
   }) {
@@ -84,12 +126,10 @@ class VideoStatsCard extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           _buildAmount(
-            context,
             amount: amount,
             trailing: valueTrailing,
           ),
           _buildSubtitle(
-            context,
             text: subtitle,
           ),
         ],
@@ -97,8 +137,7 @@ class VideoStatsCard extends StatelessWidget {
     );
   }
 
-  Widget _buildImageContainer(
-    BuildContext context, {
+  Widget _buildImageContainer({
     String? subtitle,
     String? imagePath,
   }) {
@@ -110,7 +149,6 @@ class VideoStatsCard extends StatelessWidget {
           _buildImage(imagePath),
           const SizedBox(height: 5),
           _buildSubtitle(
-            context,
             text: subtitle,
           ),
         ],
@@ -118,13 +156,11 @@ class VideoStatsCard extends StatelessWidget {
     );
   }
 
-  Widget _buildAmount(
-    BuildContext context, {
-    int? amount,
+  Widget _buildAmount({
+    double? amount,
     String? trailing,
   }) {
-    final formatter = FormatUtil.int;
-    final value = formatter.format(amount ?? 0);
+    final value = _getFormattedValue(amount);
     final result = trailing != null ? '$value$trailing' : value;
     return Text(
       result,
@@ -135,8 +171,7 @@ class VideoStatsCard extends StatelessWidget {
     );
   }
 
-  Widget _buildSubtitle(
-    BuildContext context, {
+  Widget _buildSubtitle({
     String? text,
   }) {
     return Text(
@@ -156,7 +191,7 @@ class VideoStatsCard extends StatelessWidget {
     return Image.asset(
       imagePath ?? '',
       width: double.infinity,
-      height: height / 3,
+      height: widget.height / 3,
     );
   }
 
@@ -165,5 +200,45 @@ class VideoStatsCard extends StatelessWidget {
       orientation: Axis.vertical,
       gradientStops: 10,
     );
+  }
+
+  void _init() {
+    _controller = AnimationController(
+      vsync: this,
+      duration: CommonConstants.primaryAnimDuration,
+    );
+    _animation = CurvedAnimation(
+      parent: _controller,
+      curve: Curves.decelerate,
+    );
+    _playCountTween = Tween(
+      begin: 0,
+      end: _getValue(widget.model?.playCount),
+    );
+    _engagementTween = Tween(
+      begin: 0,
+      end: _getValue(widget.model?.engagement),
+    );
+    _playRateTween = Tween(
+      begin: 0,
+      end: _getValue(widget.model?.playRate),
+    );
+    _playCountAnimation = _playCountTween.animate(_animation);
+    _engagementAnimation = _engagementTween.animate(_animation);
+    _playRateAnimation = _playRateTween.animate(_animation);
+  }
+
+  void _update() {
+    // TODO: implement
+  }
+
+  double _getValue(num? value) {
+    final result = value?.toDouble() ?? 0.0;
+    return result;
+  }
+
+  String _getFormattedValue(num? amount) {
+    final value = _numberFormat.format(amount ?? 0);
+    return value;
   }
 }

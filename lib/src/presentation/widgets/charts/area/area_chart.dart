@@ -21,13 +21,13 @@ class AreaChart extends StatefulWidget {
 }
 
 class _AreaChartState extends State<AreaChart> {
-  bool isInitial = true;
+  bool _isInitial = true;
 
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      isInitial = false;
+      _isInitial = false;
       setState(() {});
     });
   }
@@ -54,14 +54,7 @@ class _AreaChartState extends State<AreaChart> {
         lineTouchData: LineTouchData(enabled: false),
         lineBarsData: [
           LineChartBarData(
-            spots: [
-              if (isInitial)
-                ..._initialValues()
-              else
-                ...widget.values.mapIndexed((index, value) {
-                  return FlSpot(index.toDouble(), value.toDouble());
-                }),
-            ],
+            spots: _getSpots(),
             color:
                 widget.isCommandCenter ? AppColors.blue0F3 : Colors.transparent,
             barWidth: widget.isCommandCenter ? 2 : null,
@@ -75,6 +68,27 @@ class _AreaChartState extends State<AreaChart> {
         ],
       ),
     );
+  }
+
+  List<FlSpot> _getSpots() {
+    if (widget.values.isEmpty) {
+      return _emptyValues();
+    }
+    if (_isInitial) {
+      return _initialValues();
+    } else {
+      return widget.values.mapIndexed((index, value) {
+        return FlSpot(index.toDouble(), value.toDouble());
+      }).toList();
+    }
+  }
+
+  List<FlSpot> _emptyValues() {
+    final initial = List.generate(
+      10,
+      (index) => FlSpot(index.toDouble(), 0),
+    );
+    return initial;
   }
 
   List<FlSpot> _initialValues() {
@@ -112,7 +126,7 @@ class _AreaChartState extends State<AreaChart> {
 
   FlDotData _commandCenterDot() {
     return FlDotData(
-      show: true,
+      show: !_isInitial,
       checkToShowDot: (spot, barData) {
         return barData.mostRightSpot == spot;
       },

@@ -5,6 +5,7 @@ import 'package:benchmark/src/app/core/generated/translations/locale_keys.g.dart
 import 'package:benchmark/src/app/core/theme/colors/app_colors.dart';
 import 'package:benchmark/src/app/core/theme/custom_theme/text/command_center_text_theme.dart';
 import 'package:benchmark/src/presentation/bloc/command_center/command_center_cubit.dart';
+import 'package:benchmark/src/data/helper/models/command_center/multi_chart/multi_chart_help_model.dart';
 import 'package:benchmark/src/presentation/pages/home/subpages/command_center/widgets/animations/slide_fade_animatable.dart';
 import 'package:benchmark/src/presentation/pages/home/subpages/command_center/widgets/charts/multi_chart.dart';
 import 'package:benchmark/src/presentation/widgets/cards/generic/command_center_card.dart';
@@ -17,11 +18,14 @@ class MultiChartCard extends StatefulWidget {
     this.useAnimations = true,
     this.height = 300,
     this.width,
+    this.model,
   });
 
   final bool useAnimations;
   final double height;
   final double? width;
+
+  final MultiChartHelpModel? model;
 
   @override
   State<MultiChartCard> createState() => _MultiChartCardState();
@@ -82,6 +86,7 @@ class _MultiChartCardState extends State<MultiChartCard>
             Expanded(
               child: MultiChart(
                 useAnimations: widget.useAnimations,
+                model: widget.model,
               ),
             ),
             const SizedBox(height: 10),
@@ -210,7 +215,7 @@ class _MultiChartCardState extends State<MultiChartCard>
   }
 
   Widget _buildFooter() {
-    final range = _cubit.getMultiChartCardAxisDates();
+    final range = _cubit.getMultiChartCardAxisDates(locale: context.locale);
 
     final theme = CommandCenterTextTheme.of(context);
     final dateStyle = theme?.bodySmallTextStyle?.withOpacity(0.75);

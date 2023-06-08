@@ -26,6 +26,7 @@ class _CommandCenterPageState extends State<CommandCenterPage> {
   }
 
   Widget _buildContent() {
+    // return _buildSingleWidget();
     if (width > 1200) {
       return const CommandCenterDesktopLayout();
     } else if (width <= 1200 && width >= 750) {
@@ -33,4 +34,13 @@ class _CommandCenterPageState extends State<CommandCenterPage> {
     }
     return const CommandCenterMobileLayout();
   }
+
+  // Widget _buildSingleWidget() {
+  // return Center(
+  //   child: DemographicsCard(
+  //     width: MediaQuery.of(context).size.width / 3,
+  //     model: DemographicsHelpData.data,
+  //   ),
+  // );
+  // }
 }

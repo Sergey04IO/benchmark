@@ -1,6 +1,7 @@
 import 'package:benchmark/src/app/core/extensions/text_style_extension.dart';
 import 'package:benchmark/src/app/core/generated/translations/locale_keys.g.dart';
 import 'package:benchmark/src/app/core/theme/custom_theme/text/command_center_text_theme.dart';
+import 'package:benchmark/src/data/helper/models/command_center/map/map_help_model.dart';
 import 'package:benchmark/src/presentation/pages/home/subpages/command_center/widgets/charts/map_chart.dart';
 import 'package:benchmark/src/presentation/widgets/cards/generic/command_center_card.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -11,10 +12,13 @@ class MapCard extends StatefulWidget {
     super.key,
     this.height = 313,
     this.width,
+    this.model,
   });
 
   final double height;
   final double? width;
+
+  final MapHelpModel? model;
 
   @override
   State<MapCard> createState() => _MapCardState();
@@ -35,8 +39,10 @@ class _MapCardState extends State<MapCard> {
         child: Expanded(
           child: Column(
             children: [
-              const Expanded(
-                child: MapChart(),
+              Expanded(
+                child: MapChart(
+                  models: widget.model?.items ?? [],
+                ),
               ),
               const SizedBox(height: 5),
               _buildFooter(),

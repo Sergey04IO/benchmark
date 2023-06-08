@@ -1,55 +1,55 @@
-import 'package:benchmark/src/presentation/models/ui_models/tornado/tornado_ui_model.dart';
+import 'package:benchmark/src/data/helper/models/analytics/tornado/tornado_help_model.dart';
 
-class BenchmarkData {
-  static Map<String, List<TornadoUIModel>> models = {
+class BenchmarkHelpData {
+  static Map<String, List<TornadoHelpModel>> models = {
     'NOV-2022': const [
-      TornadoUIModel(
+      TornadoHelpModel(
         name: 'NPE',
         currentValue: 58.0,
         comparableValue: 49.0,
         unit: '%',
         maxWidth: 58.0 / 60,
       ),
-      TornadoUIModel(
+      TornadoHelpModel(
         name: 'Cost Income Ratio',
         currentValue: 3500000,
         comparableValue: 2789886,
         maxWidth: 3500000 / 3800000,
       ),
-      TornadoUIModel(
+      TornadoHelpModel(
         name: 'NPE',
         currentValue: 0.7,
         comparableValue: 2.1,
         unit: '%',
         maxWidth: 2.1 / 3.5,
       ),
-      TornadoUIModel(
+      TornadoHelpModel(
         name: 'DM',
         currentValue: 5,
         comparableValue: 3,
         maxWidth: 5 / 8,
       ),
-      TornadoUIModel(
+      TornadoHelpModel(
         name: 'CoR',
         currentValue: 15000,
         comparableValue: 20000,
         maxWidth: 20000 / 20000,
       ),
-      TornadoUIModel(
+      TornadoHelpModel(
         name: 'ROE',
         currentValue: 18.8,
         comparableValue: 20,
         unit: '%',
         maxWidth: 20 / 31,
       ),
-      TornadoUIModel(
+      TornadoHelpModel(
         name: 'RAROE',
         currentValue: 13,
         comparableValue: 22,
         unit: '%',
         maxWidth: 22 / 25,
       ),
-      TornadoUIModel(
+      TornadoHelpModel(
         name: 'Risk Weight',
         currentValue: 7,
         comparableValue: 6,
@@ -57,53 +57,53 @@ class BenchmarkData {
       ),
     ],
     'DEC-2022': const [
-      TornadoUIModel(
+      TornadoHelpModel(
         name: 'NPE',
         currentValue: 16.0,
         comparableValue: 21.0,
         unit: '%',
         maxWidth: 21.0 / 35,
       ),
-      TornadoUIModel(
+      TornadoHelpModel(
         name: 'Cost Income Ratio',
         currentValue: 2000000,
         comparableValue: 1222222,
         maxWidth: 2000000 / 2400000,
       ),
-      TornadoUIModel(
+      TornadoHelpModel(
         name: 'NPE',
         currentValue: 1.1,
         comparableValue: 1.4,
         unit: '%',
         maxWidth: 1.4 / 1.4,
       ),
-      TornadoUIModel(
+      TornadoHelpModel(
         name: 'DM',
         currentValue: 2,
         comparableValue: 4,
         maxWidth: 4 / 4,
       ),
-      TornadoUIModel(
+      TornadoHelpModel(
         name: 'CoR',
         currentValue: 30000,
         comparableValue: 20000,
         maxWidth: 30000 / 32000,
       ),
-      TornadoUIModel(
+      TornadoHelpModel(
         name: 'ROE',
         currentValue: 10.3,
         comparableValue: 12,
         unit: '%',
         maxWidth: 12 / 13,
       ),
-      TornadoUIModel(
+      TornadoHelpModel(
         name: 'RAROE',
         currentValue: 10,
         comparableValue: 20,
         unit: '%',
         maxWidth: 20 / 30,
       ),
-      TornadoUIModel(
+      TornadoHelpModel(
         name: 'Risk Weight',
         currentValue: 4,
         comparableValue: 4,
@@ -111,53 +111,53 @@ class BenchmarkData {
       ),
     ],
     'JAN-2023': const [
-      TornadoUIModel(
+      TornadoHelpModel(
         name: 'NPE',
         currentValue: 8.0,
         comparableValue: 16.0,
         unit: '%',
         maxWidth: 16 / 20,
       ),
-      TornadoUIModel(
+      TornadoHelpModel(
         name: 'Cost Income Ratio',
         currentValue: 18000000,
         comparableValue: 2200000,
         maxWidth: 18000000 / 21000000,
       ),
-      TornadoUIModel(
+      TornadoHelpModel(
         name: 'NPE',
         currentValue: 0.9,
         comparableValue: 2.1,
         unit: '%',
         maxWidth: 2.1 / 3,
       ),
-      TornadoUIModel(
+      TornadoHelpModel(
         name: 'DM',
         currentValue: 7,
         comparableValue: 9,
         maxWidth: 9 / 10,
       ),
-      TornadoUIModel(
+      TornadoHelpModel(
         name: 'CoR',
         currentValue: 18000,
         comparableValue: 12000,
         maxWidth: 18000 / 27000,
       ),
-      TornadoUIModel(
+      TornadoHelpModel(
         name: 'ROE',
         currentValue: 6.9,
         comparableValue: 10.4,
         unit: '%',
         maxWidth: 10.4 / 13,
       ),
-      TornadoUIModel(
+      TornadoHelpModel(
         name: 'RAROE',
         currentValue: 15,
         comparableValue: 10,
         unit: '%',
         maxWidth: 15 / 25,
       ),
-      TornadoUIModel(
+      TornadoHelpModel(
         name: 'Risk Weight',
         currentValue: 8,
         comparableValue: 4,
@@ -165,53 +165,53 @@ class BenchmarkData {
       ),
     ],
     'FEB-2023': const [
-      TornadoUIModel(
+      TornadoHelpModel(
         name: 'NPE',
         currentValue: 7.0,
         comparableValue: 12.0,
         unit: '%',
         maxWidth: 12 / 18,
       ),
-      TornadoUIModel(
+      TornadoHelpModel(
         name: 'Cost Income Ratio',
         currentValue: 1111111,
         comparableValue: 3549999,
         maxWidth: 3549999 / 5000000,
       ),
-      TornadoUIModel(
+      TornadoHelpModel(
         name: 'NPE',
         currentValue: 2.5,
         comparableValue: 1.1,
         unit: '%',
         maxWidth: 2.5 / 2.7,
       ),
-      TornadoUIModel(
+      TornadoHelpModel(
         name: 'DM',
         currentValue: 8,
         comparableValue: 1,
         maxWidth: 8 / 10,
       ),
-      TornadoUIModel(
+      TornadoHelpModel(
         name: 'CoR',
         currentValue: 10000,
         comparableValue: 90000,
         maxWidth: 90000 / 90000,
       ),
-      TornadoUIModel(
+      TornadoHelpModel(
         name: 'ROE',
         currentValue: 17.3,
         comparableValue: 13.9,
         unit: '%',
         maxWidth: 17.3 / 21,
       ),
-      TornadoUIModel(
+      TornadoHelpModel(
         name: 'RAROE',
         currentValue: 18,
         comparableValue: 16,
         unit: '%',
         maxWidth: 18 / 25,
       ),
-      TornadoUIModel(
+      TornadoHelpModel(
         name: 'Risk Weight',
         currentValue: 8,
         comparableValue: 8,

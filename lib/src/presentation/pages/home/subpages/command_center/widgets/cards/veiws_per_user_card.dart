@@ -1,6 +1,6 @@
 import 'package:benchmark/src/app/core/generated/translations/locale_keys.g.dart';
-import 'package:benchmark/src/app/core/theme/colors/app_colors.dart';
 import 'package:benchmark/src/app/core/theme/custom_theme/text/command_center_text_theme.dart';
+import 'package:benchmark/src/data/helper/models/command_center/views_per_user/views_per_user_help_model.dart';
 import 'package:benchmark/src/presentation/pages/home/subpages/command_center/widgets/charts/views_per_user_chart.dart';
 import 'package:benchmark/src/presentation/widgets/cards/generic/command_center_card.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -11,10 +11,13 @@ class ViewsPerUserCard extends StatefulWidget {
     super.key,
     this.height = 270,
     this.width,
+    this.model,
   });
 
   final double height;
   final double? width;
+
+  final ViewsPerUserHelpModel? model;
 
   @override
   State<ViewsPerUserCard> createState() => _ViewsPerUserCardState();
@@ -49,13 +52,18 @@ class _ViewsPerUserCardState extends State<ViewsPerUserCard> {
   }
 
   Widget _buildContent() {
+    if (widget.model == null) return const SizedBox.shrink();
     return Expanded(
       child: Column(
         children: [
           const SizedBox(height: 5),
           _buildLegend(),
           const SizedBox(height: 20),
-          const Expanded(child: ViewsPerUserChart()),
+          Expanded(
+            child: ViewsPerUserChart(
+              model: widget.model!,
+            ),
+          ),
         ],
       ),
     );
@@ -68,39 +76,24 @@ class _ViewsPerUserCardState extends State<ViewsPerUserCard> {
         runSpacing: 10,
         spacing: 20,
         alignment: WrapAlignment.spaceEvenly,
-        children: [
-          _buildAmazingText(),
-          _buildGoodText(),
-          _buildClipstoreText(),
-        ],
+        children: _getLegendData(),
       ),
     );
   }
 
-  Widget _buildAmazingText() {
-    return Text(
-      'amazingclips.com',
-      style: CommandCenterTextTheme.of(context)
-          ?.bodySmallTextStyle
-          ?.copyWith(color: AppColors.blue0F3),
-    );
+  List<Widget> _getLegendData() {
+    final items = widget.model?.clusters
+        .map((item) => _buildLegendItem(item.name, item.color))
+        .toList();
+    return items ?? [];
   }
 
-  Widget _buildGoodText() {
+  Widget _buildLegendItem(String? text, Color? color) {
     return Text(
-      'goodclips.com',
+      text ?? '',
       style: CommandCenterTextTheme.of(context)
           ?.bodySmallTextStyle
-          ?.copyWith(color: AppColors.green528),
-    );
-  }
-
-  Widget _buildClipstoreText() {
-    return Text(
-      'clipstore.com',
-      style: CommandCenterTextTheme.of(context)
-          ?.bodySmallTextStyle
-          ?.copyWith(color: AppColors.orangeE2A),
+          ?.copyWith(color: color),
     );
   }
 }

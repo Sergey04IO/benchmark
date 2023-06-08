@@ -1,8 +1,7 @@
+import 'package:benchmark/src/app/core/constants/common.dart';
 import 'package:benchmark/src/app/core/extensions/number_extensions.dart';
 import 'package:benchmark/src/app/core/extensions/text_style_extension.dart';
-import 'package:benchmark/src/app/core/theme/colors/app_colors.dart';
 import 'package:benchmark/src/app/core/theme/custom_theme/text/command_center_text_theme.dart';
-import 'package:benchmark/src/data/helper/data/command_center/views_per_user_help_data.dart';
 import 'package:benchmark/src/data/helper/models/command_center/views_per_user/views_per_user_help_model.dart';
 import 'package:collection/collection.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -10,20 +9,31 @@ import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 class ViewsPerUserChart extends StatefulWidget {
-  const ViewsPerUserChart({super.key});
+  const ViewsPerUserChart({
+    super.key,
+    required this.model,
+  });
+
+  final ViewsPerUserHelpModel model;
 
   @override
   State<ViewsPerUserChart> createState() => _ViewsPerUserChartState();
 }
 
 class _ViewsPerUserChartState extends State<ViewsPerUserChart> {
-  late List<ViewsPerUserHelpModel> chartData;
-  late double maxYValue;
+  late ViewsPerUserHelpModel _chartData;
+  late double _maxYValue;
+
+  double get _animDuration =>
+      CommonConstants.primaryAnimDuration.inMilliseconds.toDouble();
+
+  double get _animDelay =>
+      CommonConstants.commandCenterAnimDelay.inMilliseconds.toDouble();
 
   @override
   void initState() {
-    chartData = ViewsPerUserHelpData.data;
-    maxYValue = _getMaxValue();
+    _chartData = widget.model;
+    _maxYValue = _getMaxValue();
     super.initState();
   }
 
@@ -59,57 +69,46 @@ class _ViewsPerUserChartState extends State<ViewsPerUserChart> {
         majorGridLines: MajorGridLines(color: lineColor),
         labelStyle: style,
         interval: 10,
-        maximum: maxYValue,
+        maximum: _maxYValue,
       ),
       series: _getSeries(),
       tooltipBehavior: TooltipBehavior(enable: true),
     );
   }
 
-  List<LineSeries<ViewsPerUserHelpModel, DateTime>> _getSeries() {
-    return <LineSeries<ViewsPerUserHelpModel, DateTime>>[
-      LineSeries<ViewsPerUserHelpModel, DateTime>(
-        dataSource: chartData,
-        xValueMapper: (sales, _) => sales.date as DateTime,
-        yValueMapper: (sales, _) => sales.amazingClips,
-        width: 2,
-        name: 'amazingclips.com',
-        color: AppColors.blue0F3,
-      ),
-      LineSeries<ViewsPerUserHelpModel, DateTime>(
-        dataSource: chartData,
-        width: 2,
-        xValueMapper: (sales, _) => sales.date as DateTime,
-        yValueMapper: (sales, _) => sales.goodClips,
-        name: 'goodclips.com',
-        color: AppColors.green528,
-      ),
-      LineSeries<ViewsPerUserHelpModel, DateTime>(
-        dataSource: chartData,
-        width: 2,
-        xValueMapper: (sales, _) => sales.date as DateTime,
-        yValueMapper: (sales, _) => sales.clipstore,
-        name: 'clipstore.com',
-        color: AppColors.orangeE2A,
-      )
-    ];
+  List<LineSeries<ViewsPerUserItemModel, DateTime>> _getSeries() {
+    final data = _chartData.clusters.map(_getLineSeries).toList();
+    return data;
+  }
+
+  LineSeries<ViewsPerUserItemModel, DateTime> _getLineSeries(
+    ViewsPerUserClusterModel cluster,
+  ) {
+    return LineSeries<ViewsPerUserItemModel, DateTime>(
+      dataSource: cluster.items,
+      width: 2,
+      xValueMapper: (sales, index) => _getDate(cluster.items.length, index),
+      yValueMapper: (sales, _) => sales.value,
+      name: cluster.name,
+      color: cluster.color,
+      animationDuration: _animDuration,
+      animationDelay: _animDelay,
+    );
+  }
+
+  DateTime _getDate(int length, int index) {
+    final day = length - index;
+    final now = DateTime.now();
+    final date = now.subtract(Duration(days: day));
+    return DateTime(date.year, date.month, date.day);
   }
 
   double _getMaxValue() {
     final List<double> values = [];
-    final amazingClipsMax = chartData
-        .reduce((curr, next) =>
-            curr.amazingClips! > next.amazingClips! ? curr : next)
-        .amazingClips;
-    final goodClipsMax = chartData
-        .reduce((curr, next) => curr.goodClips! > next.goodClips! ? curr : next)
-        .amazingClips;
-    final clipstoreMax = chartData
-        .reduce((curr, next) => curr.clipstore! > next.clipstore! ? curr : next)
-        .amazingClips;
-    if (amazingClipsMax != null) values.add(amazingClipsMax);
-    if (goodClipsMax != null) values.add(goodClipsMax);
-    if (clipstoreMax != null) values.add(clipstoreMax);
+    for (final item in _chartData.clusters) {
+      final max = item.getMaxValue();
+      values.add(max);
+    }
     final max = values.maxOrNull;
     final rounded = max?.roundTo();
     return rounded ?? 10;
@@ -119,12 +118,18 @@ class _ViewsPerUserChartState extends State<ViewsPerUserChart> {
     AxisLabelRenderDetails axisLabelRenderArgs, {
     TextStyle? labelStyle,
   }) {
+    final now = DateTime.now();
+    final today = DateTime(now.year, now.month, now.day);
+    final date = DateTime.fromMillisecondsSinceEpoch(
+      axisLabelRenderArgs.value.toInt(),
+    );
+    final diffInDays = today.difference(date).inDays;
     String label = '';
     final digits = axisLabelRenderArgs.text.replaceAll(RegExp('[^0-9]'), '');
     final letters =
         axisLabelRenderArgs.text.replaceAll(RegExp('[^A-Za-z]'), '');
     final number = int.tryParse(digits);
-    if (number != null && number % 5 == 1) {
+    if (number != null && diffInDays % 5 == 0) {
       label = '$letters $digits';
     }
     return ChartAxisLabel(label, labelStyle);

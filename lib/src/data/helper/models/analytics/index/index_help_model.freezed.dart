@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'index_ui_model.dart';
+part of 'index_help_model.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,28 +15,28 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$IndexUIModel {
+mixin _$IndexHelpModel {
   String? get title => throw _privateConstructorUsedError;
   List<num> get barValues => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $IndexUIModelCopyWith<IndexUIModel> get copyWith =>
+  $IndexHelpModelCopyWith<IndexHelpModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $IndexUIModelCopyWith<$Res> {
-  factory $IndexUIModelCopyWith(
-          IndexUIModel value, $Res Function(IndexUIModel) then) =
-      _$IndexUIModelCopyWithImpl<$Res, IndexUIModel>;
+abstract class $IndexHelpModelCopyWith<$Res> {
+  factory $IndexHelpModelCopyWith(
+          IndexHelpModel value, $Res Function(IndexHelpModel) then) =
+      _$IndexHelpModelCopyWithImpl<$Res, IndexHelpModel>;
   @useResult
   $Res call({String? title, List<num> barValues});
 }
 
 /// @nodoc
-class _$IndexUIModelCopyWithImpl<$Res, $Val extends IndexUIModel>
-    implements $IndexUIModelCopyWith<$Res> {
-  _$IndexUIModelCopyWithImpl(this._value, this._then);
+class _$IndexHelpModelCopyWithImpl<$Res, $Val extends IndexHelpModel>
+    implements $IndexHelpModelCopyWith<$Res> {
+  _$IndexHelpModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -63,22 +63,22 @@ class _$IndexUIModelCopyWithImpl<$Res, $Val extends IndexUIModel>
 }
 
 /// @nodoc
-abstract class _$$_IndexUIModelCopyWith<$Res>
-    implements $IndexUIModelCopyWith<$Res> {
-  factory _$$_IndexUIModelCopyWith(
-          _$_IndexUIModel value, $Res Function(_$_IndexUIModel) then) =
-      __$$_IndexUIModelCopyWithImpl<$Res>;
+abstract class _$$_IndexHelpModelCopyWith<$Res>
+    implements $IndexHelpModelCopyWith<$Res> {
+  factory _$$_IndexHelpModelCopyWith(
+          _$_IndexHelpModel value, $Res Function(_$_IndexHelpModel) then) =
+      __$$_IndexHelpModelCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String? title, List<num> barValues});
 }
 
 /// @nodoc
-class __$$_IndexUIModelCopyWithImpl<$Res>
-    extends _$IndexUIModelCopyWithImpl<$Res, _$_IndexUIModel>
-    implements _$$_IndexUIModelCopyWith<$Res> {
-  __$$_IndexUIModelCopyWithImpl(
-      _$_IndexUIModel _value, $Res Function(_$_IndexUIModel) _then)
+class __$$_IndexHelpModelCopyWithImpl<$Res>
+    extends _$IndexHelpModelCopyWithImpl<$Res, _$_IndexHelpModel>
+    implements _$$_IndexHelpModelCopyWith<$Res> {
+  __$$_IndexHelpModelCopyWithImpl(
+      _$_IndexHelpModel _value, $Res Function(_$_IndexHelpModel) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -87,7 +87,7 @@ class __$$_IndexUIModelCopyWithImpl<$Res>
     Object? title = freezed,
     Object? barValues = null,
   }) {
-    return _then(_$_IndexUIModel(
+    return _then(_$_IndexHelpModel(
       title: freezed == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -102,8 +102,8 @@ class __$$_IndexUIModelCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_IndexUIModel implements _IndexUIModel {
-  const _$_IndexUIModel({this.title, final List<num> barValues = const []})
+class _$_IndexHelpModel implements _IndexHelpModel {
+  const _$_IndexHelpModel({this.title, final List<num> barValues = const []})
       : _barValues = barValues;
 
   @override
@@ -119,14 +119,14 @@ class _$_IndexUIModel implements _IndexUIModel {
 
   @override
   String toString() {
-    return 'IndexUIModel(title: $title, barValues: $barValues)';
+    return 'IndexHelpModel(title: $title, barValues: $barValues)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_IndexUIModel &&
+            other is _$_IndexHelpModel &&
             (identical(other.title, title) || other.title == title) &&
             const DeepCollectionEquality()
                 .equals(other._barValues, _barValues));
@@ -139,13 +139,13 @@ class _$_IndexUIModel implements _IndexUIModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_IndexUIModelCopyWith<_$_IndexUIModel> get copyWith =>
-      __$$_IndexUIModelCopyWithImpl<_$_IndexUIModel>(this, _$identity);
+  _$$_IndexHelpModelCopyWith<_$_IndexHelpModel> get copyWith =>
+      __$$_IndexHelpModelCopyWithImpl<_$_IndexHelpModel>(this, _$identity);
 }
 
-abstract class _IndexUIModel implements IndexUIModel {
-  const factory _IndexUIModel(
-      {final String? title, final List<num> barValues}) = _$_IndexUIModel;
+abstract class _IndexHelpModel implements IndexHelpModel {
+  const factory _IndexHelpModel(
+      {final String? title, final List<num> barValues}) = _$_IndexHelpModel;
 
   @override
   String? get title;
@@ -153,6 +153,6 @@ abstract class _IndexUIModel implements IndexUIModel {
   List<num> get barValues;
   @override
   @JsonKey(ignore: true)
-  _$$_IndexUIModelCopyWith<_$_IndexUIModel> get copyWith =>
+  _$$_IndexHelpModelCopyWith<_$_IndexHelpModel> get copyWith =>
       throw _privateConstructorUsedError;
 }

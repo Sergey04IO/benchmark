@@ -55,7 +55,8 @@ class CodegenLoader extends AssetLoader{
     "maleMale": "Male",
     "unspecified": "Unspecified",
     "people": "People",
-    "ageRange": "Age Range"
+    "ageRange": "Age Range",
+    "accounts": "accounts"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": en};

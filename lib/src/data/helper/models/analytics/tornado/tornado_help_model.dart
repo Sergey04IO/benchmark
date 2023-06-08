@@ -1,14 +1,14 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'tornado_ui_model.freezed.dart';
+part 'tornado_help_model.freezed.dart';
 
 @freezed
-class TornadoUIModel with _$TornadoUIModel {
-  const factory TornadoUIModel({
+class TornadoHelpModel with _$TornadoHelpModel {
+  const factory TornadoHelpModel({
     String? name,
     double? currentValue,
     double? comparableValue,
     double? maxWidth,
     String? unit,
-  }) = _TornadoUIModel;
+  }) = _TornadoHelpModel;
 }

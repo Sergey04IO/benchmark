@@ -1,40 +1,51 @@
 import 'package:benchmark/src/app/core/generated/assets/assets.gen.dart';
+import 'package:benchmark/src/app/core/generated/translations/locale_keys.g.dart';
 import 'package:benchmark/src/app/core/utils/format_util.dart';
-import 'package:benchmark/src/data/helper/data/command_center/map_data.dart';
+import 'package:benchmark/src/data/helper/models/command_center/map/map_help_model.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_core/theme.dart';
 import 'package:syncfusion_flutter_maps/maps.dart';
 
 class MapChart extends StatefulWidget {
-  const MapChart({super.key});
+  const MapChart({
+    super.key,
+    this.models = const [],
+  });
+
+  final List<MapItemModel> models;
 
   @override
   State<MapChart> createState() => _MapChartState();
 }
 
 class _MapChartState extends State<MapChart> {
-  late MapShapeSource _mapShapeSource;
+  MapShapeSource? _mapShapeSource;
   final NumberFormat _numberFormat = FormatUtil.int;
+  late List<MapItemModel> _chartData;
 
   @override
   void initState() {
     super.initState();
-    _mapShapeSource = MapShapeSource.asset(
-      Assets.files.worldMap,
-      shapeDataField: 'name',
-      shapeColorMappers: _getShapeColorMappers(),
-      dataCount: MapData.worldAccountsNumbers.length,
-      primaryValueMapper: (index) =>
-          MapData.worldAccountsNumbers[index].countryName,
-      shapeColorValueMapper: (index) =>
-          MapData.worldAccountsNumbers[index].accounts,
-    );
+    _chartData = widget.models;
+    if (_chartData.isNotEmpty) {
+      _mapShapeSource = MapShapeSource.asset(
+        Assets.files.worldMap,
+        shapeDataField: 'name',
+        shapeColorMappers: _getShapeColorMappers(),
+        dataCount: _chartData.length,
+        primaryValueMapper: (index) => _chartData[index].countryName,
+        shapeColorValueMapper: (index) => _chartData[index].accounts,
+      );
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    return _buildMap();
+    if (widget.models.isNotEmpty) {
+      return _buildMap();
+    }
+    return const SizedBox.shrink();
   }
 
   Widget _buildMap() {
@@ -45,26 +56,28 @@ class _MapChartState extends State<MapChart> {
       child: SfMaps(
         layers: [
           MapShapeLayer(
-            source: _mapShapeSource,
+            source: _mapShapeSource!,
             color: Colors.blue[200],
-            shapeTooltipBuilder: (context, index) {
-              return Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  MapData.worldAccountsNumbers[index].countryName +
-                      ' : ' +
-                      _numberFormat.format(
-                          MapData.worldAccountsNumbers[index].accounts) +
-                      ' accounts.',
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodySmall!
-                      .copyWith(color: Theme.of(context).colorScheme.surface),
-                ),
-              );
-            },
+            shapeTooltipBuilder: _buildTooltip,
+            controller: MapShapeLayerController(),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _buildTooltip(BuildContext context, int index) {
+    final country = _chartData[index].countryName;
+    final accounts = _numberFormat.format(_chartData[index].accounts);
+    final accountsWord = LocaleKeys.commandCenter_accounts.tr();
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Text(
+        '$country : $accounts $accountsWord.',
+        style: Theme.of(context)
+            .textTheme
+            .bodySmall
+            ?.copyWith(color: Theme.of(context).colorScheme.surface),
       ),
     );
   }

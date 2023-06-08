@@ -1,13 +1,14 @@
 import 'dart:math';
 
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
+import 'package:benchmark/src/app/core/constants/common.dart';
+import 'package:benchmark/src/app/core/enums/traffic_section_type.dart';
 import 'package:benchmark/src/app/core/extensions/text_style_extension.dart';
 import 'package:benchmark/src/app/core/generated/assets/assets.gen.dart';
 import 'package:benchmark/src/app/core/generated/translations/locale_keys.g.dart';
 import 'package:benchmark/src/app/core/theme/colors/app_colors.dart';
 import 'package:benchmark/src/app/core/theme/custom_theme/text/command_center_text_theme.dart';
 import 'package:benchmark/src/app/core/utils/format_util.dart';
-import 'package:benchmark/src/data/helper/data/command_center/traffic_help_data.dart';
 import 'package:benchmark/src/data/helper/models/command_center/traffic/traffic_help_model.dart';
 import 'package:benchmark/src/presentation/pages/home/subpages/command_center/widgets/containers/divider_gradient_container.dart';
 import 'package:benchmark/src/presentation/widgets/cards/generic/command_center_card.dart';
@@ -19,17 +20,52 @@ class TrafficCard extends StatefulWidget {
   const TrafficCard({
     super.key,
     this.width,
+    this.model,
   });
 
   final double? width;
+
+  final TrafficHelpModel? model;
 
   @override
   State<TrafficCard> createState() => _TrafficCardState();
 }
 
-class _TrafficCardState extends State<TrafficCard> {
-  final numberFormat = FormatUtil.int;
-  final doubleFormat = FormatUtil.doublePrecTwo;
+class _TrafficCardState extends State<TrafficCard>
+    with SingleTickerProviderStateMixin {
+  final _numberFormat = FormatUtil.int;
+  final _doubleFormat = FormatUtil.doublePrecTwo;
+
+  late final AnimationController _controller;
+  late final CurvedAnimation _animation;
+
+  late final Tween<double> _advertasingValueTween;
+  late final Tween<double> _advertasingPrevValueTween;
+  late final Tween<double> _advertasingDiffTween;
+  late final Tween<double> _sessionValueTween;
+  late final Tween<double> _sessionPrevValueTween;
+  late final Tween<double> _sessionDiffTween;
+
+  late final Animation<double> _advertasingValueAnimation;
+  late final Animation<double> _advertasingPrevValueAnimation;
+  late final Animation<double> _advertasingDiffAnimation;
+  late final Animation<double> _sessionValueAnimation;
+  late final Animation<double> _sessionPrevValueAnimation;
+  late final Animation<double> _sessionDiffAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+    _init();
+    _controller.forward();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _animation.dispose();
+    _controller.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,11 +79,20 @@ class _TrafficCardState extends State<TrafficCard> {
   }
 
   Widget _buildContent() {
-    final data = TrafficHelpData.data;
+    return AnimatedBuilder(
+      animation: _animation,
+      builder: (context, child) {
+        return _buildBody();
+      },
+    );
+  }
+
+  Widget _buildBody() {
     return Column(
       children: [
         _buildSection(
-          data: data.advertising,
+          section: TrafficSectionType.session,
+          model: widget.model?.advertising,
           usePrefix: true,
           iconPath: Assets.icons.quickbooksLogo.path,
           title: LocaleKeys.commandCenter_advertisingAndPromotion.tr(),
@@ -57,7 +102,8 @@ class _TrafficCardState extends State<TrafficCard> {
         const DividerGradientContainer(),
         const SizedBox(height: 15),
         _buildSection(
-          data: data.session,
+          section: TrafficSectionType.session,
+          model: widget.model?.session,
           iconPath: Assets.icons.googleAnalyticsLogo.path,
           title: LocaleKeys.commandCenter_sessionTraffic.tr(),
           percentIconColor: AppColors.primaryColor,
@@ -67,13 +113,14 @@ class _TrafficCardState extends State<TrafficCard> {
   }
 
   Widget _buildSection({
-    TrafficDataHelpModel? data,
+    required TrafficSectionType section,
+    TrafficItemHelpModel? model,
     bool usePrefix = false,
     required String iconPath,
     required String title,
     Color? percentIconColor,
   }) {
-    final value = numberFormat.format(data?.value ?? 0);
+    final value = _numberFormat.format(_getSectionValue(section));
     return Column(
       children: [
         _buildSectionFirstRow(
@@ -83,7 +130,8 @@ class _TrafficCardState extends State<TrafficCard> {
         ),
         const SizedBox(height: 10),
         _buildSectionSecondRow(
-          data: data,
+          section: section,
+          model: model,
           percentIconColor: percentIconColor,
           usePrefix: usePrefix,
         ),
@@ -141,7 +189,8 @@ class _TrafficCardState extends State<TrafficCard> {
   }
 
   Widget _buildSectionSecondRow({
-    TrafficDataHelpModel? data,
+    required TrafficSectionType section,
+    TrafficItemHelpModel? model,
     bool usePrefix = false,
     Color? percentIconColor,
   }) {
@@ -150,12 +199,12 @@ class _TrafficCardState extends State<TrafficCard> {
       children: [
         Expanded(
           flex: 2,
-          child: _buildGraph(data),
+          child: _buildGraph(model),
         ),
         const SizedBox(width: 10),
         Expanded(
           child: _buildSecondRowTrailing(
-            data: data,
+            section: section,
             usePrefix: usePrefix,
             iconColor: percentIconColor,
           ),
@@ -164,7 +213,7 @@ class _TrafficCardState extends State<TrafficCard> {
     );
   }
 
-  Widget _buildGraph(TrafficDataHelpModel? data) {
+  Widget _buildGraph(TrafficItemHelpModel? data) {
     return SizedBox(
       height: 50,
       child: AreaChart(
@@ -176,12 +225,12 @@ class _TrafficCardState extends State<TrafficCard> {
   }
 
   Widget _buildSecondRowTrailing({
-    TrafficDataHelpModel? data,
+    required TrafficSectionType section,
     bool usePrefix = false,
     Color? iconColor,
   }) {
-    final persent = doubleFormat.format(data?.getPercent());
-    final prev = numberFormat.format(data?.prevValue ?? 0);
+    final persent = _doubleFormat.format(_getSectionDiffValue(section));
+    final prev = _numberFormat.format(_getSectionPrevValue(section));
     final prevValue = usePrefix ? '\$$prev' : prev;
     final prevTr = LocaleKeys.commandCenter_prev.tr();
     final prevResult = 'vs $prevValue ($prevTr)';
@@ -240,5 +289,77 @@ class _TrafficCardState extends State<TrafficCard> {
       textAlign: TextAlign.end,
       overflow: TextOverflow.ellipsis,
     );
+  }
+
+  void _init() {
+    _controller = AnimationController(
+      vsync: this,
+      duration: CommonConstants.primaryAnimDuration,
+    );
+    _animation = CurvedAnimation(
+      parent: _controller,
+      curve: Curves.decelerate,
+    );
+    _advertasingValueTween = Tween(
+      begin: 0,
+      end: _getValue(widget.model?.advertising?.value),
+    );
+    _advertasingPrevValueTween = Tween(
+      begin: 0,
+      end: _getValue(widget.model?.advertising?.prevValue),
+    );
+    _advertasingDiffTween = Tween(
+      begin: 0,
+      end: _getValue(widget.model?.advertising?.getPercent()),
+    );
+    _sessionValueTween = Tween(
+      begin: 0,
+      end: _getValue(widget.model?.session?.value),
+    );
+    _sessionPrevValueTween = Tween(
+      begin: 0,
+      end: _getValue(widget.model?.session?.prevValue),
+    );
+    _sessionDiffTween = Tween(
+      begin: 0,
+      end: _getValue(widget.model?.session?.getPercent()),
+    );
+    _advertasingValueAnimation = _advertasingValueTween.animate(_animation);
+    _advertasingPrevValueAnimation =
+        _advertasingPrevValueTween.animate(_animation);
+    _advertasingDiffAnimation = _advertasingDiffTween.animate(_animation);
+    _sessionValueAnimation = _sessionValueTween.animate(_animation);
+    _sessionPrevValueAnimation = _sessionPrevValueTween.animate(_animation);
+    _sessionDiffAnimation = _sessionDiffTween.animate(_animation);
+  }
+
+  void _update() {
+    // TODO: implement
+  }
+
+  double _getValue(num? value) {
+    final result = value?.toDouble() ?? 0.0;
+    return result;
+  }
+
+  double _getSectionValue(TrafficSectionType section) {
+    final result = section.isAdvertising
+        ? _advertasingValueAnimation.value
+        : _sessionValueAnimation.value;
+    return result;
+  }
+
+  double _getSectionPrevValue(TrafficSectionType section) {
+    final result = section.isAdvertising
+        ? _advertasingPrevValueAnimation.value
+        : _sessionPrevValueAnimation.value;
+    return result;
+  }
+
+  double _getSectionDiffValue(TrafficSectionType section) {
+    final result = section.isAdvertising
+        ? _advertasingDiffAnimation.value
+        : _sessionDiffAnimation.value;
+    return result;
   }
 }

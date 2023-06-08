@@ -1,9 +1,10 @@
+import 'package:benchmark/src/app/core/constants/common.dart';
+import 'package:benchmark/src/app/core/extensions/number_extensions.dart';
 import 'package:benchmark/src/app/core/extensions/text_style_extension.dart';
 import 'package:benchmark/src/app/core/generated/translations/locale_keys.g.dart';
 import 'package:benchmark/src/app/core/theme/colors/app_colors.dart';
 import 'package:benchmark/src/app/core/theme/custom_theme/text/command_center_text_theme.dart';
-import 'package:benchmark/src/data/helper/data/command_center/multi_chart_data.dart';
-import 'package:benchmark/src/presentation/models/helper_models/command_center/multi_chart_item/multi_chart_item_model.dart';
+import 'package:benchmark/src/data/helper/models/command_center/multi_chart/multi_chart_help_model.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
@@ -12,20 +13,30 @@ class MultiChart extends StatefulWidget {
   const MultiChart({
     super.key,
     this.useAnimations = true,
+    this.model,
   });
 
   final bool useAnimations;
+  final MultiChartHelpModel? model;
 
   @override
   State<MultiChart> createState() => _MultiChartState();
 }
 
 class _MultiChartState extends State<MultiChart> {
-  List<MultiChartItemModel>? _chartData;
+  late List<MultiChartItemModel> _chartData;
+
+  double get _columnAnimDelay =>
+      CommonConstants.commandCenterAnimDelay.inMilliseconds.toDouble();
+
+  double get _animDuration =>
+      CommonConstants.primaryAnimDuration.inMilliseconds.toDouble();
+
+  double get _lineAnimDelay => _animDuration;
 
   @override
   void initState() {
-    _chartData = MultiChartData.models;
+    _chartData = widget.model?.items ?? [];
     super.initState();
   }
 
@@ -40,8 +51,8 @@ class _MultiChartState extends State<MultiChart> {
         _getAxisY(
           axisTitle: LocaleKeys.commandCenter_multiChartYOppositeTitle.tr(),
           labelEnding: 'ms',
-          max: 1500,
-          interval: 500,
+          // max: 1500,
+          // interval: 500,
           isOpposedPosition: true,
           axisName: 'yAxis',
         ),
@@ -50,14 +61,13 @@ class _MultiChartState extends State<MultiChart> {
       primaryYAxis: _getAxisY(
         axisTitle: LocaleKeys.commandCenter_multiChartYTitle.tr(),
         labelEnding: 's',
-        max: 50,
-        interval: 25,
+        max: _getYAxisMaxValue(),
+        interval: _getYAxisInterval(),
       ),
       series: _getMultipleAxisLineSeries(),
       tooltipBehavior: TooltipBehavior(enable: true),
       plotAreaBorderWidth: 0,
       margin: const EdgeInsets.fromLTRB(10, 10, 10, 0),
-      // enableAxisAnimation: true,
     );
   }
 
@@ -117,7 +127,7 @@ class _MultiChartState extends State<MultiChart> {
       _getMultipleAxisLineSeries() {
     return <ChartSeries<MultiChartItemModel, DateTime>>[
       ColumnSeries<MultiChartItemModel, DateTime>(
-        dataSource: _chartData!,
+        dataSource: _chartData,
         xValueMapper: (sales, _) => sales.x as DateTime,
         yValueMapper: (sales, _) => sales.barY,
         name: LocaleKeys.commandCenter_multiChartPageLoadTime.tr(
@@ -125,11 +135,11 @@ class _MultiChartState extends State<MultiChart> {
         ),
         color: AppColors.blue2BB,
         borderWidth: 0,
-        animationDuration: widget.useAnimations ? 2000 : null,
-        animationDelay: widget.useAnimations ? 1500 : null,
+        animationDuration: widget.useAnimations ? _animDuration : null,
+        animationDelay: widget.useAnimations ? _columnAnimDelay : null,
       ),
       LineSeries<MultiChartItemModel, DateTime>(
-        dataSource: _chartData!,
+        dataSource: _chartData,
         yAxisName: 'yAxis',
         xValueMapper: (sales, _) => sales.x as DateTime,
         yValueMapper: (sales, _) => sales.lineY1,
@@ -137,11 +147,11 @@ class _MultiChartState extends State<MultiChart> {
           args: ['[Pingdom]'],
         ),
         color: AppColors.redC4C,
-        animationDuration: widget.useAnimations ? 3000 : null,
-        animationDelay: widget.useAnimations ? 3000 : null,
+        animationDuration: widget.useAnimations ? _animDuration : null,
+        animationDelay: widget.useAnimations ? _lineAnimDelay : null,
       ),
       LineSeries<MultiChartItemModel, DateTime>(
-        dataSource: _chartData!,
+        dataSource: _chartData,
         yAxisName: 'yAxis',
         xValueMapper: (sales, _) => sales.x as DateTime,
         yValueMapper: (sales, _) => sales.lineY2,
@@ -149,11 +159,11 @@ class _MultiChartState extends State<MultiChart> {
           args: ['[GA]'],
         ),
         color: AppColors.green528,
-        animationDuration: widget.useAnimations ? 3000 : null,
-        animationDelay: widget.useAnimations ? 3000 : null,
+        animationDuration: widget.useAnimations ? _animDuration : null,
+        animationDelay: widget.useAnimations ? _lineAnimDelay : null,
       ),
       LineSeries<MultiChartItemModel, DateTime>(
-        dataSource: _chartData!,
+        dataSource: _chartData,
         yAxisName: 'yAxis',
         xValueMapper: (sales, _) => sales.x as DateTime,
         yValueMapper: (sales, _) => sales.lineY3,
@@ -161,9 +171,21 @@ class _MultiChartState extends State<MultiChart> {
           args: ['[GA]'],
         ),
         color: AppColors.orangeE2A,
-        animationDuration: widget.useAnimations ? 3000 : null,
-        animationDelay: widget.useAnimations ? 3000 : null,
+        animationDuration: widget.useAnimations ? _animDuration : null,
+        animationDelay: widget.useAnimations ? _lineAnimDelay : null,
       )
     ];
+  }
+
+  double? _getYAxisMaxValue() {
+    final max = widget.model?.getMaxValue();
+    final result = max?.roundTo();
+    return result;
+  }
+
+  double? _getYAxisInterval() {
+    final max = _getYAxisMaxValue();
+    final result = (max ?? 0) / 2;
+    return result;
   }
 }
