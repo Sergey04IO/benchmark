@@ -50,6 +50,14 @@ class _VideoStatsCardState extends State<VideoStatsCard>
   }
 
   @override
+  void didUpdateWidget(covariant VideoStatsCard oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.model != widget.model) {
+      _update();
+    }
+  }
+
+  @override
   void dispose() {
     _animation.dispose();
     _controller.dispose();
@@ -229,7 +237,26 @@ class _VideoStatsCardState extends State<VideoStatsCard>
   }
 
   void _update() {
-    // TODO: implement
+    _playCountTween.begin = _isAnimating(_playCountAnimation)
+        ? _playCountAnimation.value
+        : _playCountTween.end;
+    _engagementTween.begin = _isAnimating(_engagementAnimation)
+        ? _engagementAnimation.value
+        : _engagementTween.end;
+    _playRateTween.begin = _isAnimating(_playRateAnimation)
+        ? _playRateAnimation.value
+        : _playRateTween.end;
+
+    _controller.reset();
+    _playCountTween.end = _getValue(widget.model?.playCount);
+    _engagementTween.end = _getValue(widget.model?.engagement);
+    _playRateTween.end = _getValue(widget.model?.playRate);
+
+    _controller.forward();
+  }
+
+  bool _isAnimating(Animation<double>? animation) {
+    return animation?.status == AnimationStatus.forward;
   }
 
   double _getValue(num? value) {

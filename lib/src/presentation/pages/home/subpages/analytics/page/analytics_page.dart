@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:benchmark/src/app/config/di/injector.dart';
+import 'package:benchmark/src/app/core/enums/home_page.dart';
 import 'package:benchmark/src/domain/entities/area/area_entity.dart';
 import 'package:benchmark/src/domain/entities/sector_index/sector_index_entity.dart';
 import 'package:benchmark/src/presentation/bloc/analytics/analytics_cubit.dart';
@@ -101,6 +102,7 @@ class _AnalyticsPageState extends State<AnalyticsPage> {
 
   Widget _appBarTitle(AnalyticsUIModel model) {
     return RadioButtons(
+      key: const ValueKey(HomePageType.analytics),
       values: model.dates,
       onSelected: (value) {
         _cubit.onSelectedDate(value);

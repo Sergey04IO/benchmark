@@ -7,10 +7,14 @@ class RadioButtons extends StatefulWidget {
     super.key,
     this.values = const [],
     this.onSelected,
+    this.selectedColor = AppColors.primaryColor,
+    this.unselectedTextColor = AppColors.grey948,
   });
 
   final List<String> values;
   final Function(String value)? onSelected;
+  final Color selectedColor;
+  final Color unselectedTextColor;
 
   @override
   State<RadioButtons> createState() => _RadioButtonsState();
@@ -53,7 +57,7 @@ class _RadioButtonsState extends State<RadioButtons> {
           padding: const EdgeInsets.all(8.0),
           decoration: BoxDecoration(
             color: selectedIndex == index
-                ? AppColors.primaryColor.withOpacity(0.2)
+                ? widget.selectedColor.withOpacity(0.2)
                 : null,
             borderRadius: BorderRadius.circular(8),
           ),
@@ -73,8 +77,9 @@ class _RadioButtonsState extends State<RadioButtons> {
     return Text(
       text,
       style: TextStyle(
-        color:
-            selectedIndex == index ? AppColors.primaryColor : AppColors.grey948,
+        color: selectedIndex == index
+            ? widget.selectedColor
+            : widget.unselectedTextColor,
         fontSize: 16,
       ),
     );

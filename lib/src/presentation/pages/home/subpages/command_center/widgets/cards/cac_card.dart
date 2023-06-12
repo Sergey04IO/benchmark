@@ -51,6 +51,14 @@ class _CacCardState extends State<CacCard> with SingleTickerProviderStateMixin {
   }
 
   @override
+  void didUpdateWidget(covariant CacCard oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.model != widget.model) {
+      _update();
+    }
+  }
+
+  @override
   void dispose() {
     _animation.dispose();
     _controller.dispose();
@@ -274,6 +282,23 @@ class _CacCardState extends State<CacCard> with SingleTickerProviderStateMixin {
   }
 
   void _update() {
-    // TODO: implement
+    _valueTween.begin =
+        _isAnimating(_valueAnimation) ? _valueAnimation.value : _valueTween.end;
+    _prevValueTween.begin = _isAnimating(_prevValueAnimation)
+        ? _prevValueAnimation.value
+        : _prevValueTween.end;
+    _diffTween.begin =
+        _isAnimating(_diffAnimation) ? _diffAnimation.value : _diffTween.end;
+
+    _controller.reset();
+    _valueTween.end = _getValue(widget.model?.value);
+    _prevValueTween.end = _getValue(widget.model?.prevValue);
+    _diffTween.end = _getValue(widget.model?.getPercent());
+
+    _controller.forward();
+  }
+
+  bool _isAnimating(Animation<double>? animation) {
+    return animation?.status == AnimationStatus.forward;
   }
 }

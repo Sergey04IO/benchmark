@@ -20,6 +20,7 @@ mixin _$HomeUIModel {
   Color? get backgroundColor => throw _privateConstructorUsedError;
   Color? get iconColor => throw _privateConstructorUsedError;
   Color? get appBarColor => throw _privateConstructorUsedError;
+  HomePageType get page => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $HomeUIModelCopyWith<HomeUIModel> get copyWith =>
@@ -36,7 +37,8 @@ abstract class $HomeUIModelCopyWith<$Res> {
       {Widget? appBarTitle,
       Color? backgroundColor,
       Color? iconColor,
-      Color? appBarColor});
+      Color? appBarColor,
+      HomePageType page});
 }
 
 /// @nodoc
@@ -56,6 +58,7 @@ class _$HomeUIModelCopyWithImpl<$Res, $Val extends HomeUIModel>
     Object? backgroundColor = freezed,
     Object? iconColor = freezed,
     Object? appBarColor = freezed,
+    Object? page = null,
   }) {
     return _then(_value.copyWith(
       appBarTitle: freezed == appBarTitle
@@ -74,6 +77,10 @@ class _$HomeUIModelCopyWithImpl<$Res, $Val extends HomeUIModel>
           ? _value.appBarColor
           : appBarColor // ignore: cast_nullable_to_non_nullable
               as Color?,
+      page: null == page
+          ? _value.page
+          : page // ignore: cast_nullable_to_non_nullable
+              as HomePageType,
     ) as $Val);
   }
 }
@@ -90,7 +97,8 @@ abstract class _$$_HomeUIModelCopyWith<$Res>
       {Widget? appBarTitle,
       Color? backgroundColor,
       Color? iconColor,
-      Color? appBarColor});
+      Color? appBarColor,
+      HomePageType page});
 }
 
 /// @nodoc
@@ -108,6 +116,7 @@ class __$$_HomeUIModelCopyWithImpl<$Res>
     Object? backgroundColor = freezed,
     Object? iconColor = freezed,
     Object? appBarColor = freezed,
+    Object? page = null,
   }) {
     return _then(_$_HomeUIModel(
       appBarTitle: freezed == appBarTitle
@@ -126,6 +135,10 @@ class __$$_HomeUIModelCopyWithImpl<$Res>
           ? _value.appBarColor
           : appBarColor // ignore: cast_nullable_to_non_nullable
               as Color?,
+      page: null == page
+          ? _value.page
+          : page // ignore: cast_nullable_to_non_nullable
+              as HomePageType,
     ));
   }
 }
@@ -137,7 +150,8 @@ class _$_HomeUIModel implements _HomeUIModel {
       {this.appBarTitle,
       this.backgroundColor,
       this.iconColor,
-      this.appBarColor});
+      this.appBarColor,
+      required this.page});
 
   @override
   final Widget? appBarTitle;
@@ -147,10 +161,12 @@ class _$_HomeUIModel implements _HomeUIModel {
   final Color? iconColor;
   @override
   final Color? appBarColor;
+  @override
+  final HomePageType page;
 
   @override
   String toString() {
-    return 'HomeUIModel(appBarTitle: $appBarTitle, backgroundColor: $backgroundColor, iconColor: $iconColor, appBarColor: $appBarColor)';
+    return 'HomeUIModel(appBarTitle: $appBarTitle, backgroundColor: $backgroundColor, iconColor: $iconColor, appBarColor: $appBarColor, page: $page)';
   }
 
   @override
@@ -165,12 +181,13 @@ class _$_HomeUIModel implements _HomeUIModel {
             (identical(other.iconColor, iconColor) ||
                 other.iconColor == iconColor) &&
             (identical(other.appBarColor, appBarColor) ||
-                other.appBarColor == appBarColor));
+                other.appBarColor == appBarColor) &&
+            (identical(other.page, page) || other.page == page));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, appBarTitle, backgroundColor, iconColor, appBarColor);
+      runtimeType, appBarTitle, backgroundColor, iconColor, appBarColor, page);
 
   @JsonKey(ignore: true)
   @override
@@ -184,7 +201,8 @@ abstract class _HomeUIModel implements HomeUIModel {
       {final Widget? appBarTitle,
       final Color? backgroundColor,
       final Color? iconColor,
-      final Color? appBarColor}) = _$_HomeUIModel;
+      final Color? appBarColor,
+      required final HomePageType page}) = _$_HomeUIModel;
 
   @override
   Widget? get appBarTitle;
@@ -194,6 +212,8 @@ abstract class _HomeUIModel implements HomeUIModel {
   Color? get iconColor;
   @override
   Color? get appBarColor;
+  @override
+  HomePageType get page;
   @override
   @JsonKey(ignore: true)
   _$$_HomeUIModelCopyWith<_$_HomeUIModel> get copyWith =>

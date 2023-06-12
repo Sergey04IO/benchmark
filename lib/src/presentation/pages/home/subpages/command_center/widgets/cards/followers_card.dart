@@ -55,6 +55,14 @@ class _FollowersCardState extends State<FollowersCard>
   }
 
   @override
+  void didUpdateWidget(covariant FollowersCard oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.model != widget.model) {
+      _update();
+    }
+  }
+
+  @override
   void dispose() {
     _animation.dispose();
     _controller.dispose();
@@ -96,25 +104,30 @@ class _FollowersCardState extends State<FollowersCard>
 
   Widget _buildFirstRow(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        _buildMediaContainer(
-          context,
-          iconPath: Assets.icons.facebookLogo.path,
-          amount: _facebookAnimation.value,
-          subtitle: LocaleKeys.commandCenter_likes.tr(),
+        Expanded(
+          child: _buildMediaContainer(
+            context,
+            iconPath: Assets.icons.facebookLogo.path,
+            amount: _facebookAnimation.value,
+            subtitle: LocaleKeys.commandCenter_likes.tr(),
+          ),
         ),
-        _buildMediaContainer(
-          context,
-          iconPath: Assets.icons.youtubeLogo.path,
-          amount: _youtubeAnimation.value,
-          subtitle: LocaleKeys.commandCenter_subscribers.tr(),
+        Expanded(
+          child: _buildMediaContainer(
+            context,
+            iconPath: Assets.icons.youtubeLogo.path,
+            amount: _youtubeAnimation.value,
+            subtitle: LocaleKeys.commandCenter_subscribers.tr(),
+          ),
         ),
-        _buildMediaContainer(
-          context,
-          iconPath: Assets.icons.instagramLogo.path,
-          amount: _instagramAnimation.value,
-          subtitle: LocaleKeys.commandCenter_followers.tr(),
+        Expanded(
+          child: _buildMediaContainer(
+            context,
+            iconPath: Assets.icons.instagramLogo.path,
+            amount: _instagramAnimation.value,
+            subtitle: LocaleKeys.commandCenter_followers.tr(),
+          ),
         ),
       ],
     );
@@ -122,25 +135,30 @@ class _FollowersCardState extends State<FollowersCard>
 
   Widget _buildSecondRow(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        _buildMediaContainer(
-          context,
-          iconPath: Assets.icons.googlePlusLogo.path,
-          amount: _googlePlusAnimation.value,
-          subtitle: LocaleKeys.commandCenter_circledBy.tr(),
+        Expanded(
+          child: _buildMediaContainer(
+            context,
+            iconPath: Assets.icons.googlePlusLogo.path,
+            amount: _googlePlusAnimation.value,
+            subtitle: LocaleKeys.commandCenter_circledBy.tr(),
+          ),
         ),
-        _buildMediaContainer(
-          context,
-          iconPath: Assets.icons.twitterLogo.path,
-          amount: _twitterAnimation.value,
-          subtitle: LocaleKeys.commandCenter_followers.tr(),
+        Expanded(
+          child: _buildMediaContainer(
+            context,
+            iconPath: Assets.icons.twitterLogo.path,
+            amount: _twitterAnimation.value,
+            subtitle: LocaleKeys.commandCenter_followers.tr(),
+          ),
         ),
-        _buildMediaContainer(
-          context,
-          iconPath: Assets.icons.linkedinLogo.path,
-          amount: _linkedInAnimation.value,
-          subtitle: LocaleKeys.commandCenter_followers.tr(),
+        Expanded(
+          child: _buildMediaContainer(
+            context,
+            iconPath: Assets.icons.linkedinLogo.path,
+            amount: _linkedInAnimation.value,
+            subtitle: LocaleKeys.commandCenter_followers.tr(),
+          ),
         ),
       ],
     );
@@ -249,7 +267,36 @@ class _FollowersCardState extends State<FollowersCard>
   }
 
   void _update() {
-    // TODO: implement
+    _facebookTween.begin = _isAnimating(_facebookAnimation)
+        ? _facebookAnimation.value
+        : _facebookTween.end;
+    _youtubeTween.begin = _isAnimating(_youtubeAnimation)
+        ? _youtubeAnimation.value
+        : _youtubeTween.end;
+    _instagramTween.begin = _isAnimating(_instagramAnimation)
+        ? _instagramAnimation.value
+        : _instagramTween.end;
+    _googlePlusTween.begin = _isAnimating(_googlePlusAnimation)
+        ? _googlePlusAnimation.value
+        : _googlePlusTween.end;
+    _twitterTween.begin = _isAnimating(_twitterAnimation)
+        ? _twitterAnimation.value
+        : _twitterTween.end;
+    _linkedInTween.begin = _isAnimating(_linkedInAnimation)
+        ? _linkedInAnimation.value
+        : _linkedInTween.end;
+    _controller.reset();
+    _facebookTween.end = _getValue(widget.model?.facebook);
+    _youtubeTween.end = _getValue(widget.model?.youtube);
+    _instagramTween.end = _getValue(widget.model?.instagram);
+    _googlePlusTween.end = _getValue(widget.model?.googlePlus);
+    _twitterTween.end = _getValue(widget.model?.twitter);
+    _linkedInTween.end = _getValue(widget.model?.linkedIn);
+    _controller.forward();
+  }
+
+  bool _isAnimating(Animation<double>? animation) {
+    return animation?.status == AnimationStatus.forward;
   }
 
   String _getFormattedValue(double? amount) {

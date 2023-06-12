@@ -31,10 +31,21 @@ class _MultiChartState extends State<MultiChart> {
 
   double get _lineAnimDelay => _animDuration * 0.7;
 
+  bool useAnimDelay = true;
+
   @override
   void initState() {
     _chartData = widget.model?.items ?? [];
     super.initState();
+  }
+
+  @override
+  void didUpdateWidget(covariant MultiChart oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.model != widget.model) {
+      useAnimDelay = false;
+      _chartData = widget.model?.items ?? [];
+    }
   }
 
   @override
@@ -65,6 +76,7 @@ class _MultiChartState extends State<MultiChart> {
       tooltipBehavior: TooltipBehavior(enable: true),
       plotAreaBorderWidth: 0,
       margin: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+      enableAxisAnimation: true,
     );
   }
 
@@ -144,7 +156,8 @@ class _MultiChartState extends State<MultiChart> {
         ),
         color: AppColors.redC4C,
         animationDuration: widget.useAnimations ? _animDuration : null,
-        animationDelay: widget.useAnimations ? _lineAnimDelay : null,
+        animationDelay:
+            widget.useAnimations && useAnimDelay ? _lineAnimDelay : null,
       ),
       LineSeries<MultiChartItemModel, DateTime>(
         dataSource: _chartData,
@@ -156,7 +169,8 @@ class _MultiChartState extends State<MultiChart> {
         ),
         color: AppColors.green528,
         animationDuration: widget.useAnimations ? _animDuration : null,
-        animationDelay: widget.useAnimations ? _lineAnimDelay : null,
+        animationDelay:
+            widget.useAnimations && useAnimDelay ? _lineAnimDelay : null,
       ),
       LineSeries<MultiChartItemModel, DateTime>(
         dataSource: _chartData,
@@ -168,7 +182,8 @@ class _MultiChartState extends State<MultiChart> {
         ),
         color: AppColors.orangeE2A,
         animationDuration: widget.useAnimations ? _animDuration : null,
-        animationDelay: widget.useAnimations ? _lineAnimDelay : null,
+        animationDelay:
+            widget.useAnimations && useAnimDelay ? _lineAnimDelay : null,
       )
     ];
   }

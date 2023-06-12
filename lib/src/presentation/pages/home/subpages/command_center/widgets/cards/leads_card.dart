@@ -70,6 +70,14 @@ class _LeadsCardState extends State<LeadsCard>
   }
 
   @override
+  void didUpdateWidget(covariant LeadsCard oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.model != widget.model) {
+      _update();
+    }
+  }
+
+  @override
   void dispose() {
     _animation.dispose();
     _controller.dispose();
@@ -422,7 +430,24 @@ class _LeadsCardState extends State<LeadsCard>
   }
 
   void _update() {
-    // TODO: implement
+    _valueTween.begin =
+        _isAnimating(_valueAnimation) ? _valueAnimation.value : _valueTween.end;
+    _prevValueTween.begin = _isAnimating(_prevValueAnimation)
+        ? _prevValueAnimation.value
+        : _prevValueTween.end;
+    _valuePosTween.begin = _isAnimating(_valuePosAnimation)
+        ? _valuePosAnimation.value
+        : _valuePosTween.end;
+    _prevValuePosTween.begin = _isAnimating(_prevValuePosAnimation)
+        ? _prevValuePosAnimation.value
+        : _prevValuePosTween.end;
+    _controller.reset();
+
+    _valueTween.end = _getAnimValue(widget.model?.value);
+    _prevValueTween.end = _getAnimValue(widget.model?.prevValue);
+    _valuePosTween.end = _getValuePosition(value: widget.model?.value);
+    _prevValuePosTween.end = _getValuePosition(value: widget.model?.prevValue);
+    _controller.forward();
   }
 
   void _assignDependencies() {
@@ -438,6 +463,10 @@ class _LeadsCardState extends State<LeadsCard>
       _formatter.format(0),
       style: _secondaryValueTextStyle,
     );
+  }
+
+  bool _isAnimating(Animation<double>? animation) {
+    return animation?.status == AnimationStatus.forward;
   }
 
   double _getAnimValue(num? value) {

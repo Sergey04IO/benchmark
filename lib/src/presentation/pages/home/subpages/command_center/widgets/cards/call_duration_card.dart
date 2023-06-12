@@ -43,6 +43,14 @@ class _CallDurationCardState extends State<CallDurationCard>
   }
 
   @override
+  void didUpdateWidget(covariant CallDurationCard oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.model != widget.model) {
+      _update();
+    }
+  }
+
+  @override
   void dispose() {
     _animation.dispose();
     _controller.dispose();
@@ -168,7 +176,18 @@ class _CallDurationCardState extends State<CallDurationCard>
   }
 
   void _update() {
-    // TODO: implement
+    _callDurationTween.begin = _isAnimating(_callDurationAnimation)
+        ? _callDurationAnimation.value
+        : _callDurationTween.end;
+
+    _controller.reset();
+    _callDurationTween.end = _getValue(widget.model?.callTime);
+
+    _controller.forward();
+  }
+
+  bool _isAnimating(Animation<double>? animation) {
+    return animation?.status == AnimationStatus.forward;
   }
 
   double _getValue(num? value) {

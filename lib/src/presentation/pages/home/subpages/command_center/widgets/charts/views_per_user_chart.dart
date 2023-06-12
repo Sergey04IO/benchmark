@@ -35,6 +35,14 @@ class _ViewsPerUserChartState extends State<ViewsPerUserChart> {
   }
 
   @override
+  void didUpdateWidget(covariant ViewsPerUserChart oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.model != widget.model) {
+      _init();
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return _buildChart();
   }
@@ -70,6 +78,7 @@ class _ViewsPerUserChartState extends State<ViewsPerUserChart> {
       ),
       series: _getSeries(),
       tooltipBehavior: TooltipBehavior(enable: true),
+      enableAxisAnimation: true,
     );
   }
 
@@ -129,5 +138,10 @@ class _ViewsPerUserChartState extends State<ViewsPerUserChart> {
       label = '$letters $digits';
     }
     return ChartAxisLabel(label, labelStyle);
+  }
+
+  void _init() {
+    _chartData = widget.model;
+    _maxYValue = _getMaxValue();
   }
 }

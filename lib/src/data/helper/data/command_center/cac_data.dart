@@ -10,12 +10,12 @@ class CacHelpData {
     ),
     Sample.sample2: const CacHelpModel(
       value: 8762,
-      prevValue: 2381,
+      prevValue: 6529,
       duration: 30,
     ),
     Sample.sample3: const CacHelpModel(
       value: 36789,
-      prevValue: 13776,
+      prevValue: 25877,
       duration: 30,
     ),
   };

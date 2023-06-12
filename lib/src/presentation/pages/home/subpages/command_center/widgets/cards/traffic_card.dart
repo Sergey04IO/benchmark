@@ -61,6 +61,14 @@ class _TrafficCardState extends State<TrafficCard>
   }
 
   @override
+  void didUpdateWidget(covariant TrafficCard oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.model != widget.model) {
+      _update();
+    }
+  }
+
+  @override
   void dispose() {
     _animation.dispose();
     _controller.dispose();
@@ -334,7 +342,40 @@ class _TrafficCardState extends State<TrafficCard>
   }
 
   void _update() {
-    // TODO: implement
+    _advertasingValueTween.begin = _isAnimating(_advertasingValueAnimation)
+        ? _advertasingValueAnimation.value
+        : _advertasingValueTween.end;
+    _advertasingPrevValueTween.begin =
+        _isAnimating(_advertasingPrevValueAnimation)
+            ? _advertasingPrevValueAnimation.value
+            : _advertasingPrevValueTween.end;
+    _advertasingDiffTween.begin = _isAnimating(_advertasingDiffAnimation)
+        ? _advertasingDiffAnimation.value
+        : _advertasingDiffTween.end;
+    _sessionValueTween.begin = _isAnimating(_sessionValueAnimation)
+        ? _sessionValueAnimation.value
+        : _sessionValueTween.end;
+    _sessionPrevValueTween.begin = _isAnimating(_sessionPrevValueAnimation)
+        ? _sessionPrevValueAnimation.value
+        : _sessionPrevValueTween.end;
+    _sessionDiffTween.begin = _isAnimating(_sessionDiffAnimation)
+        ? _sessionDiffAnimation.value
+        : _sessionDiffTween.end;
+    _controller.reset();
+
+    _advertasingValueTween.end = _getValue(widget.model?.advertising?.value);
+    _advertasingPrevValueTween.end =
+        _getValue(widget.model?.advertising?.prevValue);
+    _advertasingDiffTween.end =
+        _getValue(widget.model?.advertising?.getPercent());
+    _sessionValueTween.end = _getValue(widget.model?.session?.value);
+    _sessionPrevValueTween.end = _getValue(widget.model?.session?.prevValue);
+    _sessionDiffTween.end = _getValue(widget.model?.session?.getPercent());
+    _controller.forward();
+  }
+
+  bool _isAnimating(Animation<double>? animation) {
+    return animation?.status == AnimationStatus.forward;
   }
 
   double _getValue(num? value) {

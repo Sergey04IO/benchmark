@@ -41,7 +41,7 @@ class _MapCardState extends State<MapCard> {
             children: [
               Expanded(
                 child: MapChart(
-                  models: widget.model?.items ?? [],
+                  model: widget.model,
                 ),
               ),
               const SizedBox(height: 5),

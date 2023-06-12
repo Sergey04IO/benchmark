@@ -2,6 +2,7 @@ import 'package:benchmark/src/app/core/generated/assets/assets.gen.dart';
 import 'package:benchmark/src/app/core/generated/translations/locale_keys.g.dart';
 import 'package:benchmark/src/app/core/utils/format_util.dart';
 import 'package:benchmark/src/data/helper/models/command_center/map/map_help_model.dart';
+import 'package:benchmark/src/presentation/widgets/indicators/scale_dots_loading_indicator.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_core/theme.dart';
@@ -10,10 +11,10 @@ import 'package:syncfusion_flutter_maps/maps.dart';
 class MapChart extends StatefulWidget {
   const MapChart({
     super.key,
-    this.models = const [],
+    this.model,
   });
 
-  final List<MapItemModel> models;
+  final MapHelpModel? model;
 
   @override
   State<MapChart> createState() => _MapChartState();
@@ -27,7 +28,7 @@ class _MapChartState extends State<MapChart> {
   @override
   void initState() {
     super.initState();
-    _chartData = widget.models;
+    _chartData = widget.model?.items ?? [];
     if (_chartData.isNotEmpty) {
       _mapShapeSource = MapShapeSource.asset(
         Assets.files.worldMap,
@@ -41,8 +42,17 @@ class _MapChartState extends State<MapChart> {
   }
 
   @override
+  void didUpdateWidget(covariant MapChart oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.model != widget.model) {
+      _chartData = widget.model?.items ?? [];
+      _init();
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
-    if (widget.models.isNotEmpty) {
+    if (_chartData.isNotEmpty) {
       return _buildMap();
     }
     return const SizedBox.shrink();
@@ -59,6 +69,7 @@ class _MapChartState extends State<MapChart> {
             source: _mapShapeSource!,
             color: Colors.blue[200],
             shapeTooltipBuilder: _buildTooltip,
+            loadingBuilder: (context) => const ScaleDotsLoadingIndicator(),
           ),
         ],
       ),
@@ -126,5 +137,18 @@ class _MapChartState extends State<MapChart> {
         text: '50k',
       ),
     ];
+  }
+
+  void _init() {
+    if (_chartData.isNotEmpty) {
+      _mapShapeSource = MapShapeSource.asset(
+        Assets.files.worldMap,
+        shapeDataField: 'name',
+        shapeColorMappers: _getShapeColorMappers(),
+        dataCount: _chartData.length,
+        primaryValueMapper: (index) => _chartData[index].countryName,
+        shapeColorValueMapper: (index) => _chartData[index].accounts,
+      );
+    }
   }
 }

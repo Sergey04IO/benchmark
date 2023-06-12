@@ -34,6 +34,14 @@ class _DemographicsChartState extends State<DemographicsChart> {
   }
 
   @override
+  void didUpdateWidget(covariant DemographicsChart oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.model != widget.model) {
+      _chartData = widget.model;
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: widget.height,
@@ -83,6 +91,7 @@ class _DemographicsChartState extends State<DemographicsChart> {
         enable: true,
         format: '$people: point.y',
       ),
+      enableAxisAnimation: true,
     );
   }
 
