@@ -27,9 +27,6 @@ class HomeTabsObserver extends AutoRouterObserver with RouterObserverMixin {
   void didInitTabRoute(TabPageRoute route, TabPageRoute? previousRoute) {
     _setPageTitle(route);
     _setHomeTheme(route: route);
-    if (route.name != AnalyticsRoute.name) {
-      _settingsCubit.initAnalyticsSource();
-    }
     super.didInitTabRoute(route, previousRoute);
   }
 

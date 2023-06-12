@@ -8,6 +8,7 @@ import 'package:benchmark/src/data/helper/data/command_center/multi_chart_data.d
 import 'package:benchmark/src/data/helper/data/command_center/traffic_data.dart';
 import 'package:benchmark/src/data/helper/data/command_center/video_stats_data.dart';
 import 'package:benchmark/src/data/helper/data/command_center/views_per_user_data.dart';
+import 'package:benchmark/src/data/helper/model_helper/samples.dart';
 import 'package:benchmark/src/presentation/pages/home/subpages/command_center/widgets/cards/cac_card.dart';
 import 'package:benchmark/src/presentation/pages/home/subpages/command_center/widgets/cards/call_duration_card.dart';
 import 'package:benchmark/src/presentation/pages/home/subpages/command_center/widgets/cards/demographics_card.dart';
@@ -23,10 +24,12 @@ import 'package:flutter/material.dart';
 class CommandCenterDesktopLayout extends StatefulWidget {
   const CommandCenterDesktopLayout({
     super.key,
+    required this.sample,
     this.useAnimations = true,
   });
 
   final bool useAnimations;
+  final Sample sample;
 
   @override
   State<CommandCenterDesktopLayout> createState() =>
@@ -91,22 +94,22 @@ class _CommandCenterDesktopLayoutState
       children: [
         FollowersCard(
           height: _followersCardHeight,
-          model: FollowersHelpData.data,
+          model: FollowersHelpData.data[widget.sample],
         ),
         SizedBox(height: _padding),
         VideoStatsCard(
           height: _videoStatsHeight,
-          model: VideoStatsHelpData.data,
+          model: VideoStatsHelpData.data[widget.sample],
         ),
         SizedBox(height: _padding),
         CallDurationCard(
           key: _callDurationCardKey,
-          model: CallDurationHelpData.data,
+          model: CallDurationHelpData.data[widget.sample],
         ),
         SizedBox(height: _padding),
         ViewsPerUserCard(
           height: _viewsPerUserCardHeight,
-          model: ViewsPerUserHelpData.data,
+          model: ViewsPerUserHelpData.data[widget.sample],
         ),
       ],
     );
@@ -132,7 +135,7 @@ class _CommandCenterDesktopLayoutState
         SizedBox(height: _padding),
         DemographicsCard(
           height: _demographicsCardHeight,
-          model: DemographicsHelpData.data,
+          model: DemographicsHelpData.data[widget.sample],
         ),
       ],
     );
@@ -144,12 +147,12 @@ class _CommandCenterDesktopLayoutState
         MultiChartCard(
           useAnimations: widget.useAnimations,
           height: _multiCardHeight,
-          model: MultiChartHelpData.data,
+          model: MultiChartHelpData.data[widget.sample],
         ),
         SizedBox(height: _padding),
         MapCard(
           height: _mapCardHeight,
-          model: MapHelpData.data,
+          model: MapHelpData.data[widget.sample],
         ),
       ],
     );
@@ -161,17 +164,17 @@ class _CommandCenterDesktopLayoutState
       children: [
         TrafficCard(
           key: _trafficCardKey,
-          model: TrafficHelpData.data,
+          model: TrafficHelpData.data[widget.sample],
         ),
         SizedBox(height: _padding),
         CacCard(
           key: _cacCardKey,
-          model: CacHelpData.data,
+          model: CacHelpData.data[widget.sample],
         ),
         SizedBox(height: _padding),
         LeadsCard(
           height: _leedsCardHeight,
-          model: LeadsHelpData.data,
+          model: LeadsHelpData.data[widget.sample],
         ),
       ],
     );

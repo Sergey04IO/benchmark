@@ -4,9 +4,8 @@ import 'package:benchmark/src/app/core/generated/assets/assets.gen.dart';
 import 'package:benchmark/src/app/core/generated/translations/locale_keys.g.dart';
 import 'package:benchmark/src/app/core/theme/colors/app_colors.dart';
 import 'package:benchmark/src/app/core/theme/custom_theme/text/command_center_text_theme.dart';
-import 'package:benchmark/src/presentation/bloc/command_center/command_center_cubit.dart';
 import 'package:benchmark/src/data/helper/models/command_center/multi_chart/multi_chart_help_model.dart';
-import 'package:benchmark/src/presentation/pages/home/subpages/command_center/widgets/animations/slide_fade_animatable.dart';
+import 'package:benchmark/src/presentation/bloc/command_center/command_center_cubit.dart';
 import 'package:benchmark/src/presentation/pages/home/subpages/command_center/widgets/charts/multi_chart.dart';
 import 'package:benchmark/src/presentation/widgets/cards/generic/command_center_card.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -35,35 +34,29 @@ class _MultiChartCardState extends State<MultiChartCard>
     with SingleTickerProviderStateMixin {
   final CommandCenterCubit _cubit = getIt<CommandCenterCubit>();
 
-  late AnimationController _animationController;
-  late CurvedAnimation _animation;
+  // late AnimationController _controller;
+  // late CurvedAnimation _animation;
 
-  @override
-  void initState() {
-    super.initState();
-    _animationController = AnimationController(
-      duration: const Duration(milliseconds: 1500),
-      vsync: this,
-    );
-    _animation = CurvedAnimation(
-      parent: _animationController,
-      curve: Curves.bounceOut,
-    );
-    Future.delayed(
-      const Duration(milliseconds: 1000),
-    ).then((value) {
-      if (widget.useAnimations) {
-        _animationController.forward();
-      }
-    });
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   _controller = AnimationController(
+  //     duration: const Duration(milliseconds: 1500),
+  //     vsync: this,
+  //   );
+  //   _animation = CurvedAnimation(
+  //     parent: _controller,
+  //     curve: Curves.bounceOut,
+  //   );
+  //   _controller.forward();
+  // }
 
-  @override
-  void dispose() {
-    _animationController.dispose();
-    _animation.dispose();
-    super.dispose();
-  }
+  // @override
+  // void dispose() {
+  //   _controller.dispose();
+  //   _animation.dispose();
+  //   super.dispose();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -77,11 +70,12 @@ class _MultiChartCardState extends State<MultiChartCard>
       child: Expanded(
         child: Column(
           children: [
-            SlideFadeAnimatable(
-              listenable: _animation,
-              useAnimation: widget.useAnimations,
-              child: _buildSubtitleAndLegend(),
-            ),
+            // SlideFadeAnimatable(
+            //   listenable: _animation,
+            //   useAnimation: widget.useAnimations,
+            //   child: _buildSubtitleAndLegend(),
+            // ),
+            _buildSubtitleAndLegend(),
             const SizedBox(height: 10),
             Expanded(
               child: MultiChart(

@@ -62,9 +62,9 @@ class _TrafficCardState extends State<TrafficCard>
 
   @override
   void dispose() {
-    super.dispose();
     _animation.dispose();
     _controller.dispose();
+    super.dispose();
   }
 
   @override

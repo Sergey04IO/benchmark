@@ -56,9 +56,9 @@ class _FollowersCardState extends State<FollowersCard>
 
   @override
   void dispose() {
-    super.dispose();
     _animation.dispose();
     _controller.dispose();
+    super.dispose();
   }
 
   @override

@@ -26,13 +26,10 @@ class MultiChart extends StatefulWidget {
 class _MultiChartState extends State<MultiChart> {
   late List<MultiChartItemModel> _chartData;
 
-  double get _columnAnimDelay =>
-      CommonConstants.commandCenterAnimDelay.inMilliseconds.toDouble();
-
   double get _animDuration =>
       CommonConstants.primaryAnimDuration.inMilliseconds.toDouble();
 
-  double get _lineAnimDelay => _animDuration;
+  double get _lineAnimDelay => _animDuration * 0.7;
 
   @override
   void initState() {
@@ -136,7 +133,6 @@ class _MultiChartState extends State<MultiChart> {
         color: AppColors.blue2BB,
         borderWidth: 0,
         animationDuration: widget.useAnimations ? _animDuration : null,
-        animationDelay: widget.useAnimations ? _columnAnimDelay : null,
       ),
       LineSeries<MultiChartItemModel, DateTime>(
         dataSource: _chartData,

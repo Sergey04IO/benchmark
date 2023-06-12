@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:benchmark/src/data/helper/model_helper/samples.dart';
 import 'package:benchmark/src/presentation/pages/home/subpages/command_center/widgets/layouts/desktop_layout.dart';
 import 'package:benchmark/src/presentation/pages/home/subpages/command_center/widgets/layouts/mobile_layout.dart';
 import 'package:benchmark/src/presentation/pages/home/subpages/command_center/widgets/layouts/tablet_layout.dart';
@@ -6,41 +7,25 @@ import 'package:benchmark/src/presentation/widgets/scrolling/app_scrollbar.dart'
 import 'package:flutter/material.dart';
 
 @RoutePage()
-class CommandCenterPage extends StatefulWidget {
+class CommandCenterPage extends StatelessWidget {
   const CommandCenterPage({super.key});
 
-  @override
-  State<CommandCenterPage> createState() => _CommandCenterPageState();
-}
-
-class _CommandCenterPageState extends State<CommandCenterPage> {
-  bool useAnimations = false;
-  late double width;
+  final sample = Sample.sample1;
 
   @override
   Widget build(BuildContext context) {
-    width = MediaQuery.of(context).size.width;
+    final width = MediaQuery.of(context).size.width;
     return AppScrollbar(
-      child: _buildContent(),
+      child: _buildContent(width),
     );
   }
 
-  Widget _buildContent() {
-    // return _buildSingleWidget();
+  Widget _buildContent(double width) {
     if (width > 1200) {
-      return const CommandCenterDesktopLayout();
+      return CommandCenterDesktopLayout(sample: sample);
     } else if (width <= 1200 && width >= 750) {
-      return const CommandCenterTabletLayout();
+      return CommandCenterTabletLayout(sample: sample);
     }
-    return const CommandCenterMobileLayout();
+    return CommandCenterMobileLayout(sample: sample);
   }
-
-  // Widget _buildSingleWidget() {
-  // return Center(
-  //   child: DemographicsCard(
-  //     width: MediaQuery.of(context).size.width / 3,
-  //     model: DemographicsHelpData.data,
-  //   ),
-  // );
-  // }
 }

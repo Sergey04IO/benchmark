@@ -4,7 +4,9 @@ import 'package:benchmark/src/app/config/di/injector.dart';
 import 'package:benchmark/src/app/config/firebase/firebase_options.dart';
 import 'package:benchmark/src/app/core/constants/common.dart';
 import 'package:benchmark/src/app/core/constants/locales/app_locales.dart';
+import 'package:benchmark/src/app/core/enums/config_data_source.dart';
 import 'package:benchmark/src/app/core/generated/translations/codegen_loader.g.dart';
+import 'package:benchmark/src/domain/repositories/analytics_repository.dart';
 import 'package:benchmark/src/domain/services/deeplinks_service.dart';
 import 'package:benchmark/src/presentation/app.dart';
 import 'package:benchmark/src/presentation/bloc/auth/auth_cubit.dart';
@@ -51,6 +53,7 @@ Widget _buildApp() {
 
 Future<void> _initData() async {
   /// _firebaseRemoteConfigInit should be called before other functions!
+  await getIt<AnalyticsRepository>().init(ConfigDataSource.gsheets);
   await _firebaseRemoteConfigInit();
   final isUsedSSO = getIt<SettingsCubit>().isUsedSSO();
   await _initDeeplinks(isUsedSSO: isUsedSSO);

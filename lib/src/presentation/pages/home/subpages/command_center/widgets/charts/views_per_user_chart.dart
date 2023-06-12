@@ -27,9 +27,6 @@ class _ViewsPerUserChartState extends State<ViewsPerUserChart> {
   double get _animDuration =>
       CommonConstants.primaryAnimDuration.inMilliseconds.toDouble();
 
-  double get _animDelay =>
-      CommonConstants.commandCenterAnimDelay.inMilliseconds.toDouble();
-
   @override
   void initState() {
     _chartData = widget.model;
@@ -92,7 +89,6 @@ class _ViewsPerUserChartState extends State<ViewsPerUserChart> {
       name: cluster.name,
       color: cluster.color,
       animationDuration: _animDuration,
-      animationDelay: _animDelay,
     );
   }
 

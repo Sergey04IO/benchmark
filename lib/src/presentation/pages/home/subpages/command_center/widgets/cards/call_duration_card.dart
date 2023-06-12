@@ -44,9 +44,9 @@ class _CallDurationCardState extends State<CallDurationCard>
 
   @override
   void dispose() {
-    super.dispose();
     _animation.dispose();
     _controller.dispose();
+    super.dispose();
   }
 
   @override

@@ -59,7 +59,6 @@ class _MapChartState extends State<MapChart> {
             source: _mapShapeSource!,
             color: Colors.blue[200],
             shapeTooltipBuilder: _buildTooltip,
-            controller: MapShapeLayerController(),
           ),
         ],
       ),

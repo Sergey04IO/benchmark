@@ -15,9 +15,10 @@ part 'analytics_state.dart';
 
 @injectable
 class AnalyticsCubit extends BaseCubit<AnalyticsState> {
-  AnalyticsCubit(this._homeRepository) : super(const AnalyticsState.initial());
+  AnalyticsCubit(this._analyticsRepository)
+      : super(const AnalyticsState.initial());
 
-  final AnalyticsRepository _homeRepository;
+  final AnalyticsRepository _analyticsRepository;
 
   Map<String, List<TornadoEntity>>? _tornadoData;
   Map<String, List<AreaEntity>>? _areasData;
@@ -52,14 +53,15 @@ class AnalyticsCubit extends BaseCubit<AnalyticsState> {
 
   Future<void> _init({Excel? excelFile}) async {
     if (excelFile != null) {
-      await _homeRepository.init(ConfigDataSource.excel, excelFile: excelFile);
+      await _analyticsRepository.init(ConfigDataSource.excel,
+          excelFile: excelFile);
     } else {
-      await _homeRepository.init(ConfigDataSource.gsheets);
+      await _analyticsRepository.init(ConfigDataSource.gsheets);
     }
   }
 
   Future<Map<String, List<TornadoEntity>>?> _getTornadoData() async {
-    final dataOrFailure = await _homeRepository.getTornadoData();
+    final dataOrFailure = await _analyticsRepository.getTornadoData();
     final result = dataOrFailure.fold(
       (failure) => null,
       (data) => data,
@@ -68,7 +70,7 @@ class AnalyticsCubit extends BaseCubit<AnalyticsState> {
   }
 
   Future<Map<String, List<AreaEntity>>?> _getAreasData() async {
-    final dataOrFailure = await _homeRepository.getAreasData();
+    final dataOrFailure = await _analyticsRepository.getAreasData();
     final result = dataOrFailure.fold(
       (failure) => null,
       (data) => data,
@@ -77,7 +79,7 @@ class AnalyticsCubit extends BaseCubit<AnalyticsState> {
   }
 
   Future<Map<String, SectorOverviewCluster>?> _getSectorsOverviewData() async {
-    final dataOrFailure = await _homeRepository.getSectorsOverviewData();
+    final dataOrFailure = await _analyticsRepository.getSectorsOverviewData();
     final result = dataOrFailure.fold(
       (failure) => null,
       (data) => data,
@@ -86,7 +88,7 @@ class AnalyticsCubit extends BaseCubit<AnalyticsState> {
   }
 
   Future<Map<String, List<SectorIndexEntity>>?> _getSectorsIndexData() async {
-    final dataOrFailure = await _homeRepository.getSectorsIndexData();
+    final dataOrFailure = await _analyticsRepository.getSectorsIndexData();
     final result = dataOrFailure.fold(
       (failure) => null,
       (data) => data,

@@ -52,9 +52,9 @@ class _CacCardState extends State<CacCard> with SingleTickerProviderStateMixin {
 
   @override
   void dispose() {
-    super.dispose();
     _animation.dispose();
     _controller.dispose();
+    super.dispose();
   }
 
   @override

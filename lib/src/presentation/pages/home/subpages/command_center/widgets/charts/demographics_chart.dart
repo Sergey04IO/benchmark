@@ -27,9 +27,6 @@ class _DemographicsChartState extends State<DemographicsChart> {
   double get _animDuration =>
       CommonConstants.primaryAnimDuration.inMilliseconds.toDouble();
 
-  double get _animDelay =>
-      CommonConstants.commandCenterAnimDelay.inMilliseconds.toDouble();
-
   @override
   void initState() {
     _chartData = widget.model;
@@ -106,7 +103,6 @@ class _DemographicsChartState extends State<DemographicsChart> {
       width: 0.9,
       spacing: 0.12,
       animationDuration: _animDuration,
-      animationDelay: _animDelay,
     );
   }
 

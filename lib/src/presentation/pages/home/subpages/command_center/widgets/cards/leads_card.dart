@@ -66,16 +66,14 @@ class _LeadsCardState extends State<LeadsCard>
   void didChangeDependencies() {
     super.didChangeDependencies();
     _assignDependencies();
-    Future.delayed(const Duration(seconds: 1)).then((value) {
-      _controller.forward();
-    });
+    _controller.forward();
   }
 
   @override
   void dispose() {
-    super.dispose();
     _animation.dispose();
     _controller.dispose();
+    super.dispose();
   }
 
   @override
