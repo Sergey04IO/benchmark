@@ -1,7 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:benchmark/src/app/config/di/injector.dart';
 import 'package:benchmark/src/app/config/navigation/app_router/app_router.dart';
-import 'package:benchmark/src/app/config/navigation/observers/home_tabs_observer.dart';
 import 'package:benchmark/src/presentation/bloc/home/home_cubit.dart';
 import 'package:benchmark/src/presentation/models/ui_models/home/home_ui_model/home_ui_model.dart';
 import 'package:benchmark/src/presentation/widgets/scaffold/common_scaffold.dart';
@@ -17,9 +16,6 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AutoTabsRouter(
-      navigatorObservers: () => [
-        HomeTabsObserver(context),
-      ],
       routes: const [
         AnalyticsRoute(),
         CommandCenterRoute(),

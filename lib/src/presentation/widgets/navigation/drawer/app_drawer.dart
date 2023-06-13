@@ -1,22 +1,33 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:benchmark/src/app/config/di/injector.dart';
+import 'package:benchmark/src/app/config/navigation/app_router/app_router.dart';
 import 'package:benchmark/src/app/config/navigation/routes_data/routes_paths.dart';
 import 'package:benchmark/src/app/core/enums/config_data_source.dart';
 import 'package:benchmark/src/app/core/generated/assets/assets.gen.dart';
+import 'package:benchmark/src/app/core/mixins/page_title_mixin.dart';
+import 'package:benchmark/src/presentation/bloc/home/home_cubit.dart';
 import 'package:benchmark/src/presentation/bloc/settings/settings_cubit.dart';
 import 'package:benchmark/src/presentation/models/helper_models/config_file/config_excel_file_model.dart';
 import 'package:benchmark/src/presentation/widgets/dialogs/config_dialog.dart';
 import 'package:benchmark/src/presentation/widgets/navigation/drawer/drawer_item.dart';
 import 'package:flutter/material.dart';
 
-class AppDrawer extends StatelessWidget {
-  AppDrawer({
+class AppDrawer extends StatefulWidget {
+  const AppDrawer({
     super.key,
   });
 
+  @override
+  State<AppDrawer> createState() => _AppDrawerState();
+}
+
+class _AppDrawerState extends State<AppDrawer> with PageTitleMixin {
   final SettingsCubit _settingsCubit = getIt<SettingsCubit>();
 
+  final HomeCubit _homeCubit = getIt<HomeCubit>();
+
   final int analyticsPageIndex = 0;
+
   final int commandCenterPageIndex = 1;
 
   @override
@@ -69,10 +80,15 @@ class AppDrawer extends StatelessWidget {
   }
 
   void _openAnalytics(BuildContext context) {
+    _homeCubit.setAnalyticsTheme(context);
+    _settingsCubit.getDataSource();
+    setPageTitle(routeName: AnalyticsRoute.name);
     _openPage(context, index: 0);
   }
 
   void _openCommandCenter(BuildContext context) {
+    _homeCubit.setCommandCenterTheme(context);
+    setPageTitle(routeName: CommandCenterRoute.name);
     _openPage(context, index: 1);
   }
 
