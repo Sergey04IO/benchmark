@@ -7,7 +7,7 @@ enum Sample {
 
 class CommandCenterSamples {
   static final Map<Sample, String> samples = {
-    Sample.sample1: 'Apr',
+    Sample.sample1: 'April',
     Sample.sample2: 'May',
     Sample.sample3: 'June',
     Sample.sample4: 'July',
