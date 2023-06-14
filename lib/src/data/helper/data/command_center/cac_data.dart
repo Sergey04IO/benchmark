@@ -18,5 +18,10 @@ class CacHelpData {
       prevValue: 25877,
       duration: 30,
     ),
+    Sample.sample4: const CacHelpModel(
+      value: 67928,
+      prevValue: 50091,
+      duration: 30,
+    ),
   };
 }

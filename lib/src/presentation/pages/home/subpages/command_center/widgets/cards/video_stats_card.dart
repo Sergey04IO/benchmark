@@ -70,7 +70,7 @@ class _VideoStatsCardState extends State<VideoStatsCard>
       minWidth: 400,
       height: widget.height,
       width: widget.width,
-      title: LocaleKeys.commandCenter_videoStats.tr(args: ['Wistia']),
+      title: LocaleKeys.commandCenter_videoStats.tr(),
       child: _buildContent(),
     );
   }
@@ -107,7 +107,7 @@ class _VideoStatsCardState extends State<VideoStatsCard>
             child: _buildValueContainer(
               amount: _engagementAnimation.value,
               valueTrailing: '%',
-              subtitle: LocaleKeys.commandCenter_engagement.tr(),
+              subtitle: LocaleKeys.commandCenter_engage.tr(),
             ),
           ),
           _buildDivider(),
@@ -213,7 +213,7 @@ class _VideoStatsCardState extends State<VideoStatsCard>
   void _init() {
     _controller = AnimationController(
       vsync: this,
-      duration: CommonConstants.primaryAnimDuration,
+      duration: CommonConstants.numbersAnimDuration,
     );
     _animation = CurvedAnimation(
       parent: _controller,

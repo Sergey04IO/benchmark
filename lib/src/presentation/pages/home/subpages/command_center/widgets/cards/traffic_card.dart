@@ -80,8 +80,7 @@ class _TrafficCardState extends State<TrafficCard>
     return CommandCenterCard(
       minWidth: 246,
       width: widget.width,
-      title: LocaleKeys.commandCenter_trafficHeader
-          .tr(args: ['QuickBooks & Google Analytics:']),
+      title: LocaleKeys.commandCenter_trafficHeader.tr(),
       child: _buildContent(),
     );
   }
@@ -99,7 +98,7 @@ class _TrafficCardState extends State<TrafficCard>
     return Column(
       children: [
         _buildSection(
-          section: TrafficSectionType.session,
+          section: TrafficSectionType.advertising,
           model: widget.model?.advertising,
           usePrefix: true,
           iconPath: Assets.icons.quickbooksLogo.path,
@@ -302,7 +301,7 @@ class _TrafficCardState extends State<TrafficCard>
   void _init() {
     _controller = AnimationController(
       vsync: this,
-      duration: CommonConstants.primaryAnimDuration,
+      duration: CommonConstants.numbersAnimDuration,
     );
     _animation = CurvedAnimation(
       parent: _controller,

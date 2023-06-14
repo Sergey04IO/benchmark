@@ -27,5 +27,13 @@ class FollowersHelpData {
       twitter: 87300,
       linkedIn: 12150,
     ),
+    Sample.sample4: const FollowersHelpModel(
+      facebook: 58700,
+      youtube: 35800,
+      instagram: 124000,
+      googlePlus: 18750,
+      twitter: 56738,
+      linkedIn: 12430,
+    ),
   };
 }

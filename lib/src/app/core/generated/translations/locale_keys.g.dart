@@ -19,7 +19,7 @@ abstract class  LocaleKeys {
   static const commandCenter_videoStats = 'commandCenter.videoStats';
   static const commandCenter_videoStatsImageSubtitle = 'commandCenter.videoStatsImageSubtitle';
   static const commandCenter_playCount = 'commandCenter.playCount';
-  static const commandCenter_engagement = 'commandCenter.engagement';
+  static const commandCenter_engage = 'commandCenter.engage';
   static const commandCenter_playRate = 'commandCenter.playRate';
   static const commandCenter_callDurationHeader = 'commandCenter.callDurationHeader';
   static const commandCenter_companyName = 'commandCenter.companyName';
@@ -30,7 +30,7 @@ abstract class  LocaleKeys {
   static const commandCenter_prev = 'commandCenter.prev';
   static const commandCenter_cacCardTitle = 'commandCenter.cacCardTitle';
   static const commandCenter_lastDays = 'commandCenter.lastDays';
-  static const commandCenter_cacValue = 'commandCenter.cacValue';
+  static const commandCenter_value = 'commandCenter.value';
   static const commandCenter_somedays = 'commandCenter.somedays';
   static const commandCenter_leadsThisMonth = 'commandCenter.leadsThisMonth';
   static const commandCenter_lastMonth = 'commandCenter.lastMonth';

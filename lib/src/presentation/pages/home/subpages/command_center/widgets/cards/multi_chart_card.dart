@@ -61,8 +61,7 @@ class _MultiChartCardState extends State<MultiChartCard>
   @override
   Widget build(BuildContext context) {
     return CommandCenterCard(
-      title: LocaleKeys.commandCenter_multiChartHeader
-          .tr(args: ['Pingdom & Google']),
+      title: LocaleKeys.commandCenter_multiChartHeader.tr(),
       height: widget.height,
       width: widget.width,
       minWidth: 350,

@@ -43,7 +43,7 @@ class _DemographicsCardState extends State<DemographicsCard> {
         minWidth: 300,
         width: cardWidth,
         height: widget.height,
-        title: LocaleKeys.commandCenter_demographics.tr(args: ['Facebook']),
+        title: LocaleKeys.commandCenter_demographics.tr(),
         child: _buildContent(),
       );
     });

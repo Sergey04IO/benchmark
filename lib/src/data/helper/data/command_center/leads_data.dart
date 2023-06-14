@@ -18,5 +18,10 @@ class LeadsHelpData {
       prevValue: 6300,
       maxValue: 46900,
     ),
+    Sample.sample4: const LeadsHelpModel(
+      value: 20000,
+      prevValue: 30000,
+      maxValue: 35600,
+    ),
   };
 }

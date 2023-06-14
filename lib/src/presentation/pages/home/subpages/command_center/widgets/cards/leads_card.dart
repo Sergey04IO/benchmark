@@ -396,7 +396,7 @@ class _LeadsCardState extends State<LeadsCard>
   void _init() {
     _controller = AnimationController(
       vsync: this,
-      duration: CommonConstants.primaryAnimDuration,
+      duration: CommonConstants.numbersAnimDuration,
     );
     _animation = CurvedAnimation(
       parent: _controller,

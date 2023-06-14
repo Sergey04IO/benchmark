@@ -18,5 +18,10 @@ class VideoStatsHelpData {
       engagement: 53,
       playRate: 37,
     ),
+    Sample.sample4: const VideoStatsHelpModel(
+      playCount: 8340,
+      engagement: 88,
+      playRate: 74,
+    ),
   };
 }

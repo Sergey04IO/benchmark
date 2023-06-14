@@ -69,8 +69,8 @@ class _CacCardState extends State<CacCard> with SingleTickerProviderStateMixin {
   Widget build(BuildContext context) {
     final durationPartTitle = LocaleKeys.commandCenter_lastDays
         .tr(args: ['${widget.model?.duration}']);
-    final title = LocaleKeys.commandCenter_cacCardTitle
-        .tr(args: ['Quickbooks & Saleforce:', durationPartTitle]);
+    final title =
+        LocaleKeys.commandCenter_cacCardTitle.tr(args: [durationPartTitle]);
     return LayoutBuilder(builder: (context, constraints) {
       _cardWidth = widget.width ?? constraints.maxWidth;
       _sectionPadding = _cardWidth / 30;
@@ -150,7 +150,7 @@ class _CacCardState extends State<CacCard> with SingleTickerProviderStateMixin {
                 overflow: TextOverflow.ellipsis,
               ),
               Text(
-                LocaleKeys.commandCenter_cacValue.tr(),
+                LocaleKeys.commandCenter_value.tr(),
                 style: CommandCenterTextTheme.of(context)
                     ?.bodySmallTextStyle
                     ?.withBoldFontWeight()
@@ -253,7 +253,7 @@ class _CacCardState extends State<CacCard> with SingleTickerProviderStateMixin {
   void _init() {
     _controller = AnimationController(
       vsync: this,
-      duration: CommonConstants.primaryAnimDuration,
+      duration: CommonConstants.numbersAnimDuration,
     );
     _animation = CurvedAnimation(
       parent: _controller,

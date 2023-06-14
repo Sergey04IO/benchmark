@@ -228,7 +228,7 @@ class _FollowersCardState extends State<FollowersCard>
   void _init() {
     _controller = AnimationController(
       vsync: this,
-      duration: CommonConstants.primaryAnimDuration,
+      duration: CommonConstants.numbersAnimDuration,
     );
     _animation = CurvedAnimation(
       parent: _controller,

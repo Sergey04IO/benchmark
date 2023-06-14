@@ -60,7 +60,7 @@ class _CallDurationCardState extends State<CallDurationCard>
   @override
   Widget build(BuildContext context) {
     return CommandCenterCard(
-      title: LocaleKeys.commandCenter_callDurationHeader.tr(args: ['CallRail']),
+      title: LocaleKeys.commandCenter_callDurationHeader.tr(),
       minWidth: 250,
       width: widget.width,
       child: _buildContent(),
@@ -162,7 +162,7 @@ class _CallDurationCardState extends State<CallDurationCard>
   void _init() {
     _controller = AnimationController(
       vsync: this,
-      duration: CommonConstants.primaryAnimDuration,
+      duration: CommonConstants.numbersAnimDuration,
     );
     _animation = CurvedAnimation(
       parent: _controller,

@@ -324,5 +324,111 @@ class DemographicsHelpData {
         ),
       ],
     ),
+    Sample.sample4: DemographicsHelpModel(
+      clusters: [
+        DemographicsClusterHelpModel(
+          name: LocaleKeys.commandCenter_maleMale.tr(),
+          color: AppColors.blueFF7,
+          items: const [
+            DemographicsItemHelpModel(
+              category: '13-17',
+              value: 12540,
+            ),
+            DemographicsItemHelpModel(
+              category: '18-24',
+              value: 25420,
+            ),
+            DemographicsItemHelpModel(
+              category: '25-34',
+              value: 20990,
+            ),
+            DemographicsItemHelpModel(
+              category: '35-44',
+              value: 13900,
+            ),
+            DemographicsItemHelpModel(
+              category: '45-54',
+              value: 8300,
+            ),
+            DemographicsItemHelpModel(
+              category: '55-64',
+              value: 14800,
+            ),
+            DemographicsItemHelpModel(
+              category: '65+',
+              value: 5500,
+            ),
+          ],
+        ),
+        DemographicsClusterHelpModel(
+          name: LocaleKeys.commandCenter_Female.tr(),
+          color: AppColors.blue0F3,
+          items: const [
+            DemographicsItemHelpModel(
+              category: '13-17',
+              value: 27000,
+            ),
+            DemographicsItemHelpModel(
+              category: '18-24',
+              value: 35000,
+            ),
+            DemographicsItemHelpModel(
+              category: '25-34',
+              value: 24500,
+            ),
+            DemographicsItemHelpModel(
+              category: '35-44',
+              value: 18950,
+            ),
+            DemographicsItemHelpModel(
+              category: '45-54',
+              value: 13700,
+            ),
+            DemographicsItemHelpModel(
+              category: '55-64',
+              value: 10000,
+            ),
+            DemographicsItemHelpModel(
+              category: '65+',
+              value: 6000,
+            ),
+          ],
+        ),
+        DemographicsClusterHelpModel(
+          name: LocaleKeys.commandCenter_unspecified.tr(),
+          color: AppColors.blue2BB,
+          items: const [
+            DemographicsItemHelpModel(
+              category: '13-17',
+              value: 8720,
+            ),
+            DemographicsItemHelpModel(
+              category: '18-24',
+              value: 6000,
+            ),
+            DemographicsItemHelpModel(
+              category: '25-34',
+              value: 13400,
+            ),
+            DemographicsItemHelpModel(
+              category: '35-44',
+              value: 7000,
+            ),
+            DemographicsItemHelpModel(
+              category: '45-54',
+              value: 4500,
+            ),
+            DemographicsItemHelpModel(
+              category: '55-64',
+              value: 2500,
+            ),
+            DemographicsItemHelpModel(
+              category: '65+',
+              value: 1000,
+            ),
+          ],
+        ),
+      ],
+    ),
   };
 }

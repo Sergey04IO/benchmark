@@ -18,5 +18,10 @@ class CallDurationHelpData {
       numberOfCalls: 68,
       chartValues: [3, 5, 8, 7, 5, 7, 3, 8, 5, 6, 0, 3, 7, 5, 7],
     ),
+    Sample.sample4: const CallDurationHelpModel(
+      callTime: 1789,
+      numberOfCalls: 49,
+      chartValues: [12, 3, 10, 15, 3, 10, 7, 9, 3, 5, 1, 8, 14, 2, 4],
+    ),
   };
 }

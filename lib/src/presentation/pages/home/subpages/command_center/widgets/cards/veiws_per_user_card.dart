@@ -33,7 +33,7 @@ class _ViewsPerUserCardState extends State<ViewsPerUserCard> {
     final durationPartTitle =
         LocaleKeys.commandCenter_lastDays.tr(args: ['30']);
     title = LocaleKeys.commandCenter_viewsPerUserCardTitle
-        .tr(args: ['Alexa', durationPartTitle]);
+        .tr(args: [durationPartTitle]);
   }
 
   @override
