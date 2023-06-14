@@ -239,8 +239,8 @@ class _TrafficCardState extends State<TrafficCard>
     final persent = _doubleFormat.format(_getSectionDiffValue(section));
     final prev = _numberFormat.format(_getSectionPrevValue(section));
     final prevValue = usePrefix ? '\$$prev' : prev;
-    final prevTr = LocaleKeys.commandCenter_prev.tr();
-    final prevResult = 'vs $prevValue ($prevTr)';
+    // final prevTr = LocaleKeys.commandCenter_prev.tr();
+    // final prevResult = 'vs $prevValue ($prevTr)';
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       mainAxisAlignment: MainAxisAlignment.end,
@@ -251,7 +251,7 @@ class _TrafficCardState extends State<TrafficCard>
         ),
         const SizedBox(height: 5),
         _buildPrevValue(
-          text: prevResult,
+          text: prevValue,
         ),
       ],
     );

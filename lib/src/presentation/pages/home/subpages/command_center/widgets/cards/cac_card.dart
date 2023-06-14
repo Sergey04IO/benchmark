@@ -204,11 +204,12 @@ class _CacCardState extends State<CacCard> with SingleTickerProviderStateMixin {
   }
 
   Widget _buildPrevValue() {
-    final prevTr = LocaleKeys.commandCenter_prev.tr();
-    final daysTr = LocaleKeys.commandCenter_somedays
-        .tr(args: ['${widget.model?.duration}']);
+    // final prevTr = LocaleKeys.commandCenter_prev.tr();
+    // final daysTr = LocaleKeys.commandCenter_somedays
+    // .tr(args: ['${widget.model?.duration}']);
     final formattedValue = FormatUtil.int.format(_prevValueAnimation.value);
-    final text = 'vs \$$formattedValue $prevTr $daysTr';
+    // final text = 'vs \$$formattedValue $prevTr $daysTr';
+    final text = '\$$formattedValue';
     return Text(
       text,
       maxLines: 2,
