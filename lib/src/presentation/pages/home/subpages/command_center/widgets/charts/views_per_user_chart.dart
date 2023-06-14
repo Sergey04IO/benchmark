@@ -60,6 +60,7 @@ class _ViewsPerUserChartState extends State<ViewsPerUserChart> {
         interval: 1,
         edgeLabelPlacement: EdgeLabelPlacement.shift,
         labelIntersectAction: AxisLabelIntersectAction.none,
+        labelAlignment: LabelAlignment.center,
         axisLabelFormatter: (details) => _getAxisLabel(
           details,
           labelStyle: style,
@@ -132,7 +133,7 @@ class _ViewsPerUserChartState extends State<ViewsPerUserChart> {
     String label = '';
     final digits = axisLabelRenderArgs.text.replaceAll(RegExp('[^0-9]'), '');
     final letters =
-        axisLabelRenderArgs.text.replaceAll(RegExp('[^A-Za-z]'), '');
+        axisLabelRenderArgs.text.replaceAll(RegExp('[^A-Za-zА-Яа-я]'), '');
     final number = int.tryParse(digits);
     if (number != null && diffInDays % 5 == 0) {
       label = '$letters $digits';
