@@ -43,7 +43,7 @@ class CodegenLoader extends AssetLoader{
     "advertisingAndPromotion": "Advertising & Promotion",
     "sessionTraffic": "Session Traffic",
     "prev": "prev.",
-    "cacCardTitle": "New Clients: (Last {} Days)",
+    "cacCardTitle": "New Clients (Last {} Days)",
     "lastDays": "Last {} Days",
     "value": "Value",
     "somedays": "{} days",

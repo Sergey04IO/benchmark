@@ -67,10 +67,8 @@ class _CacCardState extends State<CacCard> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    final durationPartTitle = LocaleKeys.commandCenter_lastDays
+    final title = LocaleKeys.commandCenter_cacCardTitle
         .tr(args: ['${widget.model?.duration}']);
-    final title =
-        LocaleKeys.commandCenter_cacCardTitle.tr(args: [durationPartTitle]);
     return LayoutBuilder(builder: (context, constraints) {
       _cardWidth = widget.width ?? constraints.maxWidth;
       _sectionPadding = _cardWidth / 30;
