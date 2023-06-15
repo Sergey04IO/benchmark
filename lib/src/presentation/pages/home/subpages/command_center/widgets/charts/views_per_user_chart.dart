@@ -56,7 +56,7 @@ class _ViewsPerUserChartState extends State<ViewsPerUserChart> {
       plotAreaBorderWidth: 0,
       primaryXAxis: DateTimeAxis(
         majorGridLines: const MajorGridLines(width: 0),
-        dateFormat: DateFormat.MMMd(),
+        dateFormat: DateFormat.MMMd(context.locale.languageCode),
         interval: 1,
         edgeLabelPlacement: EdgeLabelPlacement.shift,
         labelIntersectAction: AxisLabelIntersectAction.none,
@@ -133,7 +133,7 @@ class _ViewsPerUserChartState extends State<ViewsPerUserChart> {
     String label = '';
     final digits = axisLabelRenderArgs.text.replaceAll(RegExp('[^0-9]'), '');
     final letters =
-        axisLabelRenderArgs.text.replaceAll(RegExp('[^A-Za-zА-Яа-я]'), '');
+        axisLabelRenderArgs.text.replaceAll(RegExp('[^A-Za-z]'), '');
     final number = int.tryParse(digits);
     if (number != null && diffInDays % 5 == 0) {
       label = '$letters $digits';
