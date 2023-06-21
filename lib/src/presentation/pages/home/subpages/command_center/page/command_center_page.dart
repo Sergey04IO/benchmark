@@ -57,11 +57,31 @@ class _CommandCenterPageState extends State<CommandCenterPage> {
   Widget build(BuildContext context) {
     width = MediaQuery.of(context).size.width;
     return AppScrollbar(
-      child: _buildConsumer(),
+      child: _buildHome(),
     );
   }
 
-  Widget _buildConsumer() {
+  Widget _buildHome() {
+    return BlocBuilder<HomeCubit, HomeState>(
+      bloc: _homeCubit,
+      buildWhen: (previous, current) {
+        return current is CommonState;
+      },
+      builder: (context, state) {
+        return state.maybeWhen(
+          commonState: (model) {
+            if (model.page.isCommandCenter) {
+              return _buildCommandCenter();
+            }
+            return const SizedBox.shrink();
+          },
+          orElse: SizedBox.shrink,
+        );
+      },
+    );
+  }
+
+  Widget _buildCommandCenter() {
     return BlocConsumer<CommandCenterCubit, CommandCenterState>(
       bloc: _cubit,
       listener: (context, state) {},

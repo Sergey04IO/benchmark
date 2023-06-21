@@ -62,10 +62,30 @@ class _AnalyticsPageState extends State<AnalyticsPage> {
 
   @override
   Widget build(BuildContext context) {
-    return _buildConsumer();
+    return _buildHome();
   }
 
-  Widget _buildConsumer() {
+  Widget _buildHome() {
+    return BlocBuilder<HomeCubit, HomeState>(
+      bloc: _homeCubit,
+      buildWhen: (previous, current) {
+        return current is CommonState;
+      },
+      builder: (context, state) {
+        return state.maybeWhen(
+          commonState: (model) {
+            if (model.page.isAnalytics) {
+              return _buildAnalytics();
+            }
+            return const SizedBox.shrink();
+          },
+          orElse: SizedBox.shrink,
+        );
+      },
+    );
+  }
+
+  Widget _buildAnalytics() {
     return BlocConsumer<AnalyticsCubit, AnalyticsState>(
       bloc: _cubit,
       listener: (context, state) {
