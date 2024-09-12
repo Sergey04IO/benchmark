@@ -12,7 +12,7 @@ part of 'home_ui_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$HomeUIModel {
@@ -86,11 +86,11 @@ class _$HomeUIModelCopyWithImpl<$Res, $Val extends HomeUIModel>
 }
 
 /// @nodoc
-abstract class _$$_HomeUIModelCopyWith<$Res>
+abstract class _$$HomeUIModelImplCopyWith<$Res>
     implements $HomeUIModelCopyWith<$Res> {
-  factory _$$_HomeUIModelCopyWith(
-          _$_HomeUIModel value, $Res Function(_$_HomeUIModel) then) =
-      __$$_HomeUIModelCopyWithImpl<$Res>;
+  factory _$$HomeUIModelImplCopyWith(
+          _$HomeUIModelImpl value, $Res Function(_$HomeUIModelImpl) then) =
+      __$$HomeUIModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -102,11 +102,11 @@ abstract class _$$_HomeUIModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_HomeUIModelCopyWithImpl<$Res>
-    extends _$HomeUIModelCopyWithImpl<$Res, _$_HomeUIModel>
-    implements _$$_HomeUIModelCopyWith<$Res> {
-  __$$_HomeUIModelCopyWithImpl(
-      _$_HomeUIModel _value, $Res Function(_$_HomeUIModel) _then)
+class __$$HomeUIModelImplCopyWithImpl<$Res>
+    extends _$HomeUIModelCopyWithImpl<$Res, _$HomeUIModelImpl>
+    implements _$$HomeUIModelImplCopyWith<$Res> {
+  __$$HomeUIModelImplCopyWithImpl(
+      _$HomeUIModelImpl _value, $Res Function(_$HomeUIModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -118,7 +118,7 @@ class __$$_HomeUIModelCopyWithImpl<$Res>
     Object? appBarColor = freezed,
     Object? page = null,
   }) {
-    return _then(_$_HomeUIModel(
+    return _then(_$HomeUIModelImpl(
       appBarTitle: freezed == appBarTitle
           ? _value.appBarTitle
           : appBarTitle // ignore: cast_nullable_to_non_nullable
@@ -145,8 +145,8 @@ class __$$_HomeUIModelCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_HomeUIModel implements _HomeUIModel {
-  const _$_HomeUIModel(
+class _$HomeUIModelImpl implements _HomeUIModel {
+  const _$HomeUIModelImpl(
       {this.appBarTitle,
       this.backgroundColor,
       this.iconColor,
@@ -170,10 +170,10 @@ class _$_HomeUIModel implements _HomeUIModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_HomeUIModel &&
+            other is _$HomeUIModelImpl &&
             (identical(other.appBarTitle, appBarTitle) ||
                 other.appBarTitle == appBarTitle) &&
             (identical(other.backgroundColor, backgroundColor) ||
@@ -192,8 +192,8 @@ class _$_HomeUIModel implements _HomeUIModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_HomeUIModelCopyWith<_$_HomeUIModel> get copyWith =>
-      __$$_HomeUIModelCopyWithImpl<_$_HomeUIModel>(this, _$identity);
+  _$$HomeUIModelImplCopyWith<_$HomeUIModelImpl> get copyWith =>
+      __$$HomeUIModelImplCopyWithImpl<_$HomeUIModelImpl>(this, _$identity);
 }
 
 abstract class _HomeUIModel implements HomeUIModel {
@@ -202,7 +202,7 @@ abstract class _HomeUIModel implements HomeUIModel {
       final Color? backgroundColor,
       final Color? iconColor,
       final Color? appBarColor,
-      required final HomePageType page}) = _$_HomeUIModel;
+      required final HomePageType page}) = _$HomeUIModelImpl;
 
   @override
   Widget? get appBarTitle;
@@ -216,6 +216,6 @@ abstract class _HomeUIModel implements HomeUIModel {
   HomePageType get page;
   @override
   @JsonKey(ignore: true)
-  _$$_HomeUIModelCopyWith<_$_HomeUIModel> get copyWith =>
+  _$$HomeUIModelImplCopyWith<_$HomeUIModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

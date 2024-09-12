@@ -15,16 +15,27 @@ abstract class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
-    CommandCenterRoute.name: (routeData) {
+    AccessDeniedRoute.name: (routeData) {
+      final args = routeData.argsAs<AccessDeniedRouteArgs>(
+          orElse: () => const AccessDeniedRouteArgs());
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const CommandCenterPage(),
+        child: AccessDeniedPage(
+          key: args.key,
+          title: args.title,
+        ),
       );
     },
     AnalyticsRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const AnalyticsPage(),
+      );
+    },
+    CommandCenterRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const CommandCenterPage(),
       );
     },
     HomeRoute.name: (routeData) {
@@ -41,32 +52,45 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const SplashPage(),
       );
     },
-    AccessDeniedRoute.name: (routeData) {
-      final args = routeData.argsAs<AccessDeniedRouteArgs>(
-          orElse: () => const AccessDeniedRouteArgs());
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: AccessDeniedPage(
-          key: args.key,
-          title: args.title,
-        ),
-      );
-    },
   };
 }
 
 /// generated route for
-/// [CommandCenterPage]
-class CommandCenterRoute extends PageRouteInfo<void> {
-  const CommandCenterRoute({List<PageRouteInfo>? children})
-      : super(
-          CommandCenterRoute.name,
+/// [AccessDeniedPage]
+class AccessDeniedRoute extends PageRouteInfo<AccessDeniedRouteArgs> {
+  AccessDeniedRoute({
+    Key? key,
+    String? title,
+    List<PageRouteInfo>? children,
+  }) : super(
+          AccessDeniedRoute.name,
+          args: AccessDeniedRouteArgs(
+            key: key,
+            title: title,
+          ),
           initialChildren: children,
         );
 
-  static const String name = 'CommandCenterRoute';
+  static const String name = 'AccessDeniedRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<AccessDeniedRouteArgs> page =
+      PageInfo<AccessDeniedRouteArgs>(name);
+}
+
+class AccessDeniedRouteArgs {
+  const AccessDeniedRouteArgs({
+    this.key,
+    this.title,
+  });
+
+  final Key? key;
+
+  final String? title;
+
+  @override
+  String toString() {
+    return 'AccessDeniedRouteArgs{key: $key, title: $title}';
+  }
 }
 
 /// generated route for
@@ -79,6 +103,20 @@ class AnalyticsRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'AnalyticsRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [CommandCenterPage]
+class CommandCenterRoute extends PageRouteInfo<void> {
+  const CommandCenterRoute({List<PageRouteInfo>? children})
+      : super(
+          CommandCenterRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'CommandCenterRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
@@ -123,42 +161,4 @@ class SplashRoute extends PageRouteInfo<void> {
   static const String name = 'SplashRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
-}
-
-/// generated route for
-/// [AccessDeniedPage]
-class AccessDeniedRoute extends PageRouteInfo<AccessDeniedRouteArgs> {
-  AccessDeniedRoute({
-    Key? key,
-    String? title,
-    List<PageRouteInfo>? children,
-  }) : super(
-          AccessDeniedRoute.name,
-          args: AccessDeniedRouteArgs(
-            key: key,
-            title: title,
-          ),
-          initialChildren: children,
-        );
-
-  static const String name = 'AccessDeniedRoute';
-
-  static const PageInfo<AccessDeniedRouteArgs> page =
-      PageInfo<AccessDeniedRouteArgs>(name);
-}
-
-class AccessDeniedRouteArgs {
-  const AccessDeniedRouteArgs({
-    this.key,
-    this.title,
-  });
-
-  final Key? key;
-
-  final String? title;
-
-  @override
-  String toString() {
-    return 'AccessDeniedRouteArgs{key: $key, title: $title}';
-  }
 }

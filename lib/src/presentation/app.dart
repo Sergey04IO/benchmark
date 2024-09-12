@@ -6,8 +6,10 @@ import 'package:benchmark/src/app/config/navigation/app_router/app_router.dart';
 import 'package:benchmark/src/app/config/navigation/observers/main_router_observer.dart';
 import 'package:benchmark/src/app/config/navigation/routes_data/routes_paths.dart';
 import 'package:benchmark/src/app/core/constants/common.dart';
+import 'package:benchmark/src/app/core/mixins/page_title_mixin.dart';
 import 'package:benchmark/src/app/core/theme/theme_data/theme.data.dart';
 import 'package:benchmark/src/presentation/bloc/auth/auth_cubit.dart';
+import 'package:benchmark/src/presentation/bloc/home/home_cubit.dart';
 import 'package:benchmark/src/presentation/bloc/settings/settings_cubit.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
@@ -15,7 +17,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-class App extends StatelessWidget {
+class App extends StatelessWidget with PageTitleMixin {
   App({super.key});
 
   final _appRouter = AppRouter();
@@ -51,15 +53,18 @@ class App extends StatelessWidget {
         neglectWhen: (location) {
           return location == RoutesPaths.splashRoutePath;
         },
-        deepLinkBuilder: _handeDeeplinkBuilder,
+        deepLinkBuilder: (link) => _handeDeeplinkBuilder(link, context),
       ),
     );
   }
 
-  Future<DeepLink> _handeDeeplinkBuilder(PlatformDeepLink deepLink) async {
+  Future<DeepLink> _handeDeeplinkBuilder(
+    PlatformDeepLink deepLink,
+    BuildContext context,
+  ) async {
     final isUsedSSO = _settingsCubit.isUsedSSO();
     if (!isUsedSSO) {
-      final link = _getInitialPage(deepLink);
+      final link = _getInitialPage(deepLink, context);
       return link;
     }
 
@@ -75,12 +80,31 @@ class App extends StatelessWidget {
       );
     }
 
-    final link = _getInitialPage(deepLink);
+    final link = _getInitialPage(deepLink, context);
     return link;
   }
 
-  DeepLink _getInitialPage(PlatformDeepLink deepLink) {
+  DeepLink _getInitialPage(
+    PlatformDeepLink deepLink,
+    BuildContext context,
+  ) {
+    final HomeCubit homeCubit = getIt<HomeCubit>();
     final initialPage = _settingsCubit.getInitialPage();
+
+    if (deepLink.path.contains(RoutesPaths.analyticsRoutePath)) {
+      homeCubit.setAnalyticsTheme(context);
+      setPageTitle(routeName: AnalyticsRoute.name);
+      return const DeepLink(
+        [AnalyticsRoute()],
+      );
+    } else if (deepLink.path.contains(RoutesPaths.commandCenterPath)) {
+      homeCubit.setCommandCenterTheme(context);
+      setPageTitle(routeName: CommandCenterRoute.name);
+      return const DeepLink(
+        [CommandCenterRoute()],
+      );
+    }
+
     if (initialPage.isDashboard) {
       return const DeepLink(
         [CommandCenterRoute()],

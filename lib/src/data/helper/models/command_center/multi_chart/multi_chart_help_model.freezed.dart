@@ -12,7 +12,7 @@ part of 'multi_chart_help_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$MultiChartHelpModel {
@@ -57,22 +57,22 @@ class _$MultiChartHelpModelCopyWithImpl<$Res, $Val extends MultiChartHelpModel>
 }
 
 /// @nodoc
-abstract class _$$_MultiChartHelpModelCopyWith<$Res>
+abstract class _$$MultiChartHelpModelImplCopyWith<$Res>
     implements $MultiChartHelpModelCopyWith<$Res> {
-  factory _$$_MultiChartHelpModelCopyWith(_$_MultiChartHelpModel value,
-          $Res Function(_$_MultiChartHelpModel) then) =
-      __$$_MultiChartHelpModelCopyWithImpl<$Res>;
+  factory _$$MultiChartHelpModelImplCopyWith(_$MultiChartHelpModelImpl value,
+          $Res Function(_$MultiChartHelpModelImpl) then) =
+      __$$MultiChartHelpModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({List<MultiChartItemModel> items});
 }
 
 /// @nodoc
-class __$$_MultiChartHelpModelCopyWithImpl<$Res>
-    extends _$MultiChartHelpModelCopyWithImpl<$Res, _$_MultiChartHelpModel>
-    implements _$$_MultiChartHelpModelCopyWith<$Res> {
-  __$$_MultiChartHelpModelCopyWithImpl(_$_MultiChartHelpModel _value,
-      $Res Function(_$_MultiChartHelpModel) _then)
+class __$$MultiChartHelpModelImplCopyWithImpl<$Res>
+    extends _$MultiChartHelpModelCopyWithImpl<$Res, _$MultiChartHelpModelImpl>
+    implements _$$MultiChartHelpModelImplCopyWith<$Res> {
+  __$$MultiChartHelpModelImplCopyWithImpl(_$MultiChartHelpModelImpl _value,
+      $Res Function(_$MultiChartHelpModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -80,7 +80,7 @@ class __$$_MultiChartHelpModelCopyWithImpl<$Res>
   $Res call({
     Object? items = null,
   }) {
-    return _then(_$_MultiChartHelpModel(
+    return _then(_$MultiChartHelpModelImpl(
       items: null == items
           ? _value._items
           : items // ignore: cast_nullable_to_non_nullable
@@ -91,8 +91,8 @@ class __$$_MultiChartHelpModelCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_MultiChartHelpModel extends _MultiChartHelpModel {
-  const _$_MultiChartHelpModel(
+class _$MultiChartHelpModelImpl extends _MultiChartHelpModel {
+  const _$MultiChartHelpModelImpl(
       {final List<MultiChartItemModel> items = const []})
       : _items = items,
         super._();
@@ -112,10 +112,10 @@ class _$_MultiChartHelpModel extends _MultiChartHelpModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MultiChartHelpModel &&
+            other is _$MultiChartHelpModelImpl &&
             const DeepCollectionEquality().equals(other._items, _items));
   }
 
@@ -126,21 +126,21 @@ class _$_MultiChartHelpModel extends _MultiChartHelpModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MultiChartHelpModelCopyWith<_$_MultiChartHelpModel> get copyWith =>
-      __$$_MultiChartHelpModelCopyWithImpl<_$_MultiChartHelpModel>(
+  _$$MultiChartHelpModelImplCopyWith<_$MultiChartHelpModelImpl> get copyWith =>
+      __$$MultiChartHelpModelImplCopyWithImpl<_$MultiChartHelpModelImpl>(
           this, _$identity);
 }
 
 abstract class _MultiChartHelpModel extends MultiChartHelpModel {
   const factory _MultiChartHelpModel({final List<MultiChartItemModel> items}) =
-      _$_MultiChartHelpModel;
+      _$MultiChartHelpModelImpl;
   const _MultiChartHelpModel._() : super._();
 
   @override
   List<MultiChartItemModel> get items;
   @override
   @JsonKey(ignore: true)
-  _$$_MultiChartHelpModelCopyWith<_$_MultiChartHelpModel> get copyWith =>
+  _$$MultiChartHelpModelImplCopyWith<_$MultiChartHelpModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -212,11 +212,11 @@ class _$MultiChartItemModelCopyWithImpl<$Res, $Val extends MultiChartItemModel>
 }
 
 /// @nodoc
-abstract class _$$_MultiChartItemModelCopyWith<$Res>
+abstract class _$$MultiChartItemModelImplCopyWith<$Res>
     implements $MultiChartItemModelCopyWith<$Res> {
-  factory _$$_MultiChartItemModelCopyWith(_$_MultiChartItemModel value,
-          $Res Function(_$_MultiChartItemModel) then) =
-      __$$_MultiChartItemModelCopyWithImpl<$Res>;
+  factory _$$MultiChartItemModelImplCopyWith(_$MultiChartItemModelImpl value,
+          $Res Function(_$MultiChartItemModelImpl) then) =
+      __$$MultiChartItemModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -224,11 +224,11 @@ abstract class _$$_MultiChartItemModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_MultiChartItemModelCopyWithImpl<$Res>
-    extends _$MultiChartItemModelCopyWithImpl<$Res, _$_MultiChartItemModel>
-    implements _$$_MultiChartItemModelCopyWith<$Res> {
-  __$$_MultiChartItemModelCopyWithImpl(_$_MultiChartItemModel _value,
-      $Res Function(_$_MultiChartItemModel) _then)
+class __$$MultiChartItemModelImplCopyWithImpl<$Res>
+    extends _$MultiChartItemModelCopyWithImpl<$Res, _$MultiChartItemModelImpl>
+    implements _$$MultiChartItemModelImplCopyWith<$Res> {
+  __$$MultiChartItemModelImplCopyWithImpl(_$MultiChartItemModelImpl _value,
+      $Res Function(_$MultiChartItemModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -240,7 +240,7 @@ class __$$_MultiChartItemModelCopyWithImpl<$Res>
     Object? lineY2 = null,
     Object? lineY3 = null,
   }) {
-    return _then(_$_MultiChartItemModel(
+    return _then(_$MultiChartItemModelImpl(
       x: freezed == x
           ? _value.x
           : x // ignore: cast_nullable_to_non_nullable
@@ -267,8 +267,8 @@ class __$$_MultiChartItemModelCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_MultiChartItemModel implements _MultiChartItemModel {
-  const _$_MultiChartItemModel(
+class _$MultiChartItemModelImpl implements _MultiChartItemModel {
+  const _$MultiChartItemModelImpl(
       {this.x,
       this.barY = 0.0,
       this.lineY1 = 0.0,
@@ -296,10 +296,10 @@ class _$_MultiChartItemModel implements _MultiChartItemModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MultiChartItemModel &&
+            other is _$MultiChartItemModelImpl &&
             (identical(other.x, x) || other.x == x) &&
             (identical(other.barY, barY) || other.barY == barY) &&
             (identical(other.lineY1, lineY1) || other.lineY1 == lineY1) &&
@@ -313,8 +313,8 @@ class _$_MultiChartItemModel implements _MultiChartItemModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MultiChartItemModelCopyWith<_$_MultiChartItemModel> get copyWith =>
-      __$$_MultiChartItemModelCopyWithImpl<_$_MultiChartItemModel>(
+  _$$MultiChartItemModelImplCopyWith<_$MultiChartItemModelImpl> get copyWith =>
+      __$$MultiChartItemModelImplCopyWithImpl<_$MultiChartItemModelImpl>(
           this, _$identity);
 }
 
@@ -324,7 +324,7 @@ abstract class _MultiChartItemModel implements MultiChartItemModel {
       final double barY,
       final double lineY1,
       final double lineY2,
-      final double lineY3}) = _$_MultiChartItemModel;
+      final double lineY3}) = _$MultiChartItemModelImpl;
 
   @override
   DateTime? get x;
@@ -338,6 +338,6 @@ abstract class _MultiChartItemModel implements MultiChartItemModel {
   double get lineY3;
   @override
   @JsonKey(ignore: true)
-  _$$_MultiChartItemModelCopyWith<_$_MultiChartItemModel> get copyWith =>
+  _$$MultiChartItemModelImplCopyWith<_$MultiChartItemModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

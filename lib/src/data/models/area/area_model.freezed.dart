@@ -12,7 +12,7 @@ part of 'area_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 AreaModel _$AreaModelFromJson(Map<String, dynamic> json) {
   return _AreaModel.fromJson(json);
@@ -98,10 +98,11 @@ class _$AreaModelCopyWithImpl<$Res, $Val extends AreaModel>
 }
 
 /// @nodoc
-abstract class _$$_AreaModelCopyWith<$Res> implements $AreaModelCopyWith<$Res> {
-  factory _$$_AreaModelCopyWith(
-          _$_AreaModel value, $Res Function(_$_AreaModel) then) =
-      __$$_AreaModelCopyWithImpl<$Res>;
+abstract class _$$AreaModelImplCopyWith<$Res>
+    implements $AreaModelCopyWith<$Res> {
+  factory _$$AreaModelImplCopyWith(
+          _$AreaModelImpl value, $Res Function(_$AreaModelImpl) then) =
+      __$$AreaModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -114,11 +115,11 @@ abstract class _$$_AreaModelCopyWith<$Res> implements $AreaModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_AreaModelCopyWithImpl<$Res>
-    extends _$AreaModelCopyWithImpl<$Res, _$_AreaModel>
-    implements _$$_AreaModelCopyWith<$Res> {
-  __$$_AreaModelCopyWithImpl(
-      _$_AreaModel _value, $Res Function(_$_AreaModel) _then)
+class __$$AreaModelImplCopyWithImpl<$Res>
+    extends _$AreaModelCopyWithImpl<$Res, _$AreaModelImpl>
+    implements _$$AreaModelImplCopyWith<$Res> {
+  __$$AreaModelImplCopyWithImpl(
+      _$AreaModelImpl _value, $Res Function(_$AreaModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -131,7 +132,7 @@ class __$$_AreaModelCopyWithImpl<$Res>
     Object? difference = freezed,
     Object? ytdValue = freezed,
   }) {
-    return _then(_$_AreaModel(
+    return _then(_$AreaModelImpl(
       date: freezed == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
@@ -162,8 +163,8 @@ class __$$_AreaModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_AreaModel extends _AreaModel {
-  const _$_AreaModel(
+class _$AreaModelImpl extends _AreaModel {
+  const _$AreaModelImpl(
       {this.date,
       this.title,
       this.values,
@@ -172,8 +173,8 @@ class _$_AreaModel extends _AreaModel {
       @JsonKey(name: 'year to date') this.ytdValue})
       : super._();
 
-  factory _$_AreaModel.fromJson(Map<String, dynamic> json) =>
-      _$$_AreaModelFromJson(json);
+  factory _$AreaModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AreaModelImplFromJson(json);
 
   @override
   final String? date;
@@ -195,10 +196,10 @@ class _$_AreaModel extends _AreaModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AreaModel &&
+            other is _$AreaModelImpl &&
             (identical(other.date, date) || other.date == date) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.values, values) || other.values == values) &&
@@ -217,12 +218,12 @@ class _$_AreaModel extends _AreaModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AreaModelCopyWith<_$_AreaModel> get copyWith =>
-      __$$_AreaModelCopyWithImpl<_$_AreaModel>(this, _$identity);
+  _$$AreaModelImplCopyWith<_$AreaModelImpl> get copyWith =>
+      __$$AreaModelImplCopyWithImpl<_$AreaModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AreaModelToJson(
+    return _$$AreaModelImplToJson(
       this,
     );
   }
@@ -235,11 +236,11 @@ abstract class _AreaModel extends AreaModel {
       final String? values,
       final String? unit,
       final String? difference,
-      @JsonKey(name: 'year to date') final String? ytdValue}) = _$_AreaModel;
+      @JsonKey(name: 'year to date') final String? ytdValue}) = _$AreaModelImpl;
   const _AreaModel._() : super._();
 
   factory _AreaModel.fromJson(Map<String, dynamic> json) =
-      _$_AreaModel.fromJson;
+      _$AreaModelImpl.fromJson;
 
   @override
   String? get date;
@@ -256,6 +257,6 @@ abstract class _AreaModel extends AreaModel {
   String? get ytdValue;
   @override
   @JsonKey(ignore: true)
-  _$$_AreaModelCopyWith<_$_AreaModel> get copyWith =>
+  _$$AreaModelImplCopyWith<_$AreaModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

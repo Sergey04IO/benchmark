@@ -12,7 +12,7 @@ part of 'traffic_help_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$TrafficHelpModel {
@@ -90,11 +90,11 @@ class _$TrafficHelpModelCopyWithImpl<$Res, $Val extends TrafficHelpModel>
 }
 
 /// @nodoc
-abstract class _$$_TrafficHelpModelCopyWith<$Res>
+abstract class _$$TrafficHelpModelImplCopyWith<$Res>
     implements $TrafficHelpModelCopyWith<$Res> {
-  factory _$$_TrafficHelpModelCopyWith(
-          _$_TrafficHelpModel value, $Res Function(_$_TrafficHelpModel) then) =
-      __$$_TrafficHelpModelCopyWithImpl<$Res>;
+  factory _$$TrafficHelpModelImplCopyWith(_$TrafficHelpModelImpl value,
+          $Res Function(_$TrafficHelpModelImpl) then) =
+      __$$TrafficHelpModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({TrafficItemHelpModel? advertising, TrafficItemHelpModel? session});
@@ -106,11 +106,11 @@ abstract class _$$_TrafficHelpModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_TrafficHelpModelCopyWithImpl<$Res>
-    extends _$TrafficHelpModelCopyWithImpl<$Res, _$_TrafficHelpModel>
-    implements _$$_TrafficHelpModelCopyWith<$Res> {
-  __$$_TrafficHelpModelCopyWithImpl(
-      _$_TrafficHelpModel _value, $Res Function(_$_TrafficHelpModel) _then)
+class __$$TrafficHelpModelImplCopyWithImpl<$Res>
+    extends _$TrafficHelpModelCopyWithImpl<$Res, _$TrafficHelpModelImpl>
+    implements _$$TrafficHelpModelImplCopyWith<$Res> {
+  __$$TrafficHelpModelImplCopyWithImpl(_$TrafficHelpModelImpl _value,
+      $Res Function(_$TrafficHelpModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -119,7 +119,7 @@ class __$$_TrafficHelpModelCopyWithImpl<$Res>
     Object? advertising = freezed,
     Object? session = freezed,
   }) {
-    return _then(_$_TrafficHelpModel(
+    return _then(_$TrafficHelpModelImpl(
       advertising: freezed == advertising
           ? _value.advertising
           : advertising // ignore: cast_nullable_to_non_nullable
@@ -134,8 +134,8 @@ class __$$_TrafficHelpModelCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_TrafficHelpModel implements _TrafficHelpModel {
-  const _$_TrafficHelpModel({this.advertising, this.session});
+class _$TrafficHelpModelImpl implements _TrafficHelpModel {
+  const _$TrafficHelpModelImpl({this.advertising, this.session});
 
   @override
   final TrafficItemHelpModel? advertising;
@@ -148,10 +148,10 @@ class _$_TrafficHelpModel implements _TrafficHelpModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TrafficHelpModel &&
+            other is _$TrafficHelpModelImpl &&
             (identical(other.advertising, advertising) ||
                 other.advertising == advertising) &&
             (identical(other.session, session) || other.session == session));
@@ -163,14 +163,15 @@ class _$_TrafficHelpModel implements _TrafficHelpModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TrafficHelpModelCopyWith<_$_TrafficHelpModel> get copyWith =>
-      __$$_TrafficHelpModelCopyWithImpl<_$_TrafficHelpModel>(this, _$identity);
+  _$$TrafficHelpModelImplCopyWith<_$TrafficHelpModelImpl> get copyWith =>
+      __$$TrafficHelpModelImplCopyWithImpl<_$TrafficHelpModelImpl>(
+          this, _$identity);
 }
 
 abstract class _TrafficHelpModel implements TrafficHelpModel {
   const factory _TrafficHelpModel(
       {final TrafficItemHelpModel? advertising,
-      final TrafficItemHelpModel? session}) = _$_TrafficHelpModel;
+      final TrafficItemHelpModel? session}) = _$TrafficHelpModelImpl;
 
   @override
   TrafficItemHelpModel? get advertising;
@@ -178,7 +179,7 @@ abstract class _TrafficHelpModel implements TrafficHelpModel {
   TrafficItemHelpModel? get session;
   @override
   @JsonKey(ignore: true)
-  _$$_TrafficHelpModelCopyWith<_$_TrafficHelpModel> get copyWith =>
+  _$$TrafficHelpModelImplCopyWith<_$TrafficHelpModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -238,22 +239,22 @@ class _$TrafficItemHelpModelCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_TrafficItemHelpModelCopyWith<$Res>
+abstract class _$$TrafficItemHelpModelImplCopyWith<$Res>
     implements $TrafficItemHelpModelCopyWith<$Res> {
-  factory _$$_TrafficItemHelpModelCopyWith(_$_TrafficItemHelpModel value,
-          $Res Function(_$_TrafficItemHelpModel) then) =
-      __$$_TrafficItemHelpModelCopyWithImpl<$Res>;
+  factory _$$TrafficItemHelpModelImplCopyWith(_$TrafficItemHelpModelImpl value,
+          $Res Function(_$TrafficItemHelpModelImpl) then) =
+      __$$TrafficItemHelpModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({num? value, num? prevValue, List<num> chartValues});
 }
 
 /// @nodoc
-class __$$_TrafficItemHelpModelCopyWithImpl<$Res>
-    extends _$TrafficItemHelpModelCopyWithImpl<$Res, _$_TrafficItemHelpModel>
-    implements _$$_TrafficItemHelpModelCopyWith<$Res> {
-  __$$_TrafficItemHelpModelCopyWithImpl(_$_TrafficItemHelpModel _value,
-      $Res Function(_$_TrafficItemHelpModel) _then)
+class __$$TrafficItemHelpModelImplCopyWithImpl<$Res>
+    extends _$TrafficItemHelpModelCopyWithImpl<$Res, _$TrafficItemHelpModelImpl>
+    implements _$$TrafficItemHelpModelImplCopyWith<$Res> {
+  __$$TrafficItemHelpModelImplCopyWithImpl(_$TrafficItemHelpModelImpl _value,
+      $Res Function(_$TrafficItemHelpModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -263,7 +264,7 @@ class __$$_TrafficItemHelpModelCopyWithImpl<$Res>
     Object? prevValue = freezed,
     Object? chartValues = null,
   }) {
-    return _then(_$_TrafficItemHelpModel(
+    return _then(_$TrafficItemHelpModelImpl(
       value: freezed == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
@@ -282,8 +283,8 @@ class __$$_TrafficItemHelpModelCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_TrafficItemHelpModel extends _TrafficItemHelpModel {
-  const _$_TrafficItemHelpModel(
+class _$TrafficItemHelpModelImpl extends _TrafficItemHelpModel {
+  const _$TrafficItemHelpModelImpl(
       {this.value, this.prevValue, final List<num> chartValues = const []})
       : _chartValues = chartValues,
         super._();
@@ -307,10 +308,10 @@ class _$_TrafficItemHelpModel extends _TrafficItemHelpModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TrafficItemHelpModel &&
+            other is _$TrafficItemHelpModelImpl &&
             (identical(other.value, value) || other.value == value) &&
             (identical(other.prevValue, prevValue) ||
                 other.prevValue == prevValue) &&
@@ -325,16 +326,17 @@ class _$_TrafficItemHelpModel extends _TrafficItemHelpModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TrafficItemHelpModelCopyWith<_$_TrafficItemHelpModel> get copyWith =>
-      __$$_TrafficItemHelpModelCopyWithImpl<_$_TrafficItemHelpModel>(
-          this, _$identity);
+  _$$TrafficItemHelpModelImplCopyWith<_$TrafficItemHelpModelImpl>
+      get copyWith =>
+          __$$TrafficItemHelpModelImplCopyWithImpl<_$TrafficItemHelpModelImpl>(
+              this, _$identity);
 }
 
 abstract class _TrafficItemHelpModel extends TrafficItemHelpModel {
   const factory _TrafficItemHelpModel(
       {final num? value,
       final num? prevValue,
-      final List<num> chartValues}) = _$_TrafficItemHelpModel;
+      final List<num> chartValues}) = _$TrafficItemHelpModelImpl;
   const _TrafficItemHelpModel._() : super._();
 
   @override
@@ -345,6 +347,6 @@ abstract class _TrafficItemHelpModel extends TrafficItemHelpModel {
   List<num> get chartValues;
   @override
   @JsonKey(ignore: true)
-  _$$_TrafficItemHelpModelCopyWith<_$_TrafficItemHelpModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$TrafficItemHelpModelImplCopyWith<_$TrafficItemHelpModelImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

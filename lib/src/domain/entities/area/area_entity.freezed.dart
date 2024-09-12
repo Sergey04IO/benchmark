@@ -12,7 +12,7 @@ part of 'area_entity.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$AreaEntity {
@@ -86,11 +86,11 @@ class _$AreaEntityCopyWithImpl<$Res, $Val extends AreaEntity>
 }
 
 /// @nodoc
-abstract class _$$_AreaEntityCopyWith<$Res>
+abstract class _$$AreaEntityImplCopyWith<$Res>
     implements $AreaEntityCopyWith<$Res> {
-  factory _$$_AreaEntityCopyWith(
-          _$_AreaEntity value, $Res Function(_$_AreaEntity) then) =
-      __$$_AreaEntityCopyWithImpl<$Res>;
+  factory _$$AreaEntityImplCopyWith(
+          _$AreaEntityImpl value, $Res Function(_$AreaEntityImpl) then) =
+      __$$AreaEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -102,11 +102,11 @@ abstract class _$$_AreaEntityCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_AreaEntityCopyWithImpl<$Res>
-    extends _$AreaEntityCopyWithImpl<$Res, _$_AreaEntity>
-    implements _$$_AreaEntityCopyWith<$Res> {
-  __$$_AreaEntityCopyWithImpl(
-      _$_AreaEntity _value, $Res Function(_$_AreaEntity) _then)
+class __$$AreaEntityImplCopyWithImpl<$Res>
+    extends _$AreaEntityCopyWithImpl<$Res, _$AreaEntityImpl>
+    implements _$$AreaEntityImplCopyWith<$Res> {
+  __$$AreaEntityImplCopyWithImpl(
+      _$AreaEntityImpl _value, $Res Function(_$AreaEntityImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -118,7 +118,7 @@ class __$$_AreaEntityCopyWithImpl<$Res>
     Object? difference = freezed,
     Object? ytdValue = freezed,
   }) {
-    return _then(_$_AreaEntity(
+    return _then(_$AreaEntityImpl(
       title: freezed == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -145,8 +145,8 @@ class __$$_AreaEntityCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AreaEntity implements _AreaEntity {
-  const _$_AreaEntity(
+class _$AreaEntityImpl implements _AreaEntity {
+  const _$AreaEntityImpl(
       {this.title,
       final List<num> values = const [],
       this.unit,
@@ -178,10 +178,10 @@ class _$_AreaEntity implements _AreaEntity {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AreaEntity &&
+            other is _$AreaEntityImpl &&
             (identical(other.title, title) || other.title == title) &&
             const DeepCollectionEquality().equals(other._values, _values) &&
             (identical(other.unit, unit) || other.unit == unit) &&
@@ -198,8 +198,8 @@ class _$_AreaEntity implements _AreaEntity {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AreaEntityCopyWith<_$_AreaEntity> get copyWith =>
-      __$$_AreaEntityCopyWithImpl<_$_AreaEntity>(this, _$identity);
+  _$$AreaEntityImplCopyWith<_$AreaEntityImpl> get copyWith =>
+      __$$AreaEntityImplCopyWithImpl<_$AreaEntityImpl>(this, _$identity);
 }
 
 abstract class _AreaEntity implements AreaEntity {
@@ -208,7 +208,7 @@ abstract class _AreaEntity implements AreaEntity {
       final List<num> values,
       final String? unit,
       final num? difference,
-      final num? ytdValue}) = _$_AreaEntity;
+      final num? ytdValue}) = _$AreaEntityImpl;
 
   @override
   String? get title;
@@ -222,6 +222,6 @@ abstract class _AreaEntity implements AreaEntity {
   num? get ytdValue;
   @override
   @JsonKey(ignore: true)
-  _$$_AreaEntityCopyWith<_$_AreaEntity> get copyWith =>
+  _$$AreaEntityImplCopyWith<_$AreaEntityImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

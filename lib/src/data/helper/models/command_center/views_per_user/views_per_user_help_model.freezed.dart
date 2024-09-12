@@ -12,7 +12,7 @@ part of 'views_per_user_help_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$ViewsPerUserHelpModel {
@@ -59,22 +59,24 @@ class _$ViewsPerUserHelpModelCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_ViewsPerUserHelpModelCopyWith<$Res>
+abstract class _$$ViewsPerUserHelpModelImplCopyWith<$Res>
     implements $ViewsPerUserHelpModelCopyWith<$Res> {
-  factory _$$_ViewsPerUserHelpModelCopyWith(_$_ViewsPerUserHelpModel value,
-          $Res Function(_$_ViewsPerUserHelpModel) then) =
-      __$$_ViewsPerUserHelpModelCopyWithImpl<$Res>;
+  factory _$$ViewsPerUserHelpModelImplCopyWith(
+          _$ViewsPerUserHelpModelImpl value,
+          $Res Function(_$ViewsPerUserHelpModelImpl) then) =
+      __$$ViewsPerUserHelpModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({List<ViewsPerUserClusterModel> clusters});
 }
 
 /// @nodoc
-class __$$_ViewsPerUserHelpModelCopyWithImpl<$Res>
-    extends _$ViewsPerUserHelpModelCopyWithImpl<$Res, _$_ViewsPerUserHelpModel>
-    implements _$$_ViewsPerUserHelpModelCopyWith<$Res> {
-  __$$_ViewsPerUserHelpModelCopyWithImpl(_$_ViewsPerUserHelpModel _value,
-      $Res Function(_$_ViewsPerUserHelpModel) _then)
+class __$$ViewsPerUserHelpModelImplCopyWithImpl<$Res>
+    extends _$ViewsPerUserHelpModelCopyWithImpl<$Res,
+        _$ViewsPerUserHelpModelImpl>
+    implements _$$ViewsPerUserHelpModelImplCopyWith<$Res> {
+  __$$ViewsPerUserHelpModelImplCopyWithImpl(_$ViewsPerUserHelpModelImpl _value,
+      $Res Function(_$ViewsPerUserHelpModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -82,7 +84,7 @@ class __$$_ViewsPerUserHelpModelCopyWithImpl<$Res>
   $Res call({
     Object? clusters = null,
   }) {
-    return _then(_$_ViewsPerUserHelpModel(
+    return _then(_$ViewsPerUserHelpModelImpl(
       clusters: null == clusters
           ? _value._clusters
           : clusters // ignore: cast_nullable_to_non_nullable
@@ -93,8 +95,8 @@ class __$$_ViewsPerUserHelpModelCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ViewsPerUserHelpModel implements _ViewsPerUserHelpModel {
-  const _$_ViewsPerUserHelpModel(
+class _$ViewsPerUserHelpModelImpl implements _ViewsPerUserHelpModel {
+  const _$ViewsPerUserHelpModelImpl(
       {final List<ViewsPerUserClusterModel> clusters = const []})
       : _clusters = clusters;
 
@@ -113,10 +115,10 @@ class _$_ViewsPerUserHelpModel implements _ViewsPerUserHelpModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ViewsPerUserHelpModel &&
+            other is _$ViewsPerUserHelpModelImpl &&
             const DeepCollectionEquality().equals(other._clusters, _clusters));
   }
 
@@ -127,22 +129,22 @@ class _$_ViewsPerUserHelpModel implements _ViewsPerUserHelpModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ViewsPerUserHelpModelCopyWith<_$_ViewsPerUserHelpModel> get copyWith =>
-      __$$_ViewsPerUserHelpModelCopyWithImpl<_$_ViewsPerUserHelpModel>(
-          this, _$identity);
+  _$$ViewsPerUserHelpModelImplCopyWith<_$ViewsPerUserHelpModelImpl>
+      get copyWith => __$$ViewsPerUserHelpModelImplCopyWithImpl<
+          _$ViewsPerUserHelpModelImpl>(this, _$identity);
 }
 
 abstract class _ViewsPerUserHelpModel implements ViewsPerUserHelpModel {
   const factory _ViewsPerUserHelpModel(
           {final List<ViewsPerUserClusterModel> clusters}) =
-      _$_ViewsPerUserHelpModel;
+      _$ViewsPerUserHelpModelImpl;
 
   @override
   List<ViewsPerUserClusterModel> get clusters;
   @override
   @JsonKey(ignore: true)
-  _$$_ViewsPerUserHelpModelCopyWith<_$_ViewsPerUserHelpModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$ViewsPerUserHelpModelImplCopyWith<_$ViewsPerUserHelpModelImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -201,24 +203,25 @@ class _$ViewsPerUserClusterModelCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_ViewsPerUserClusterModelCopyWith<$Res>
+abstract class _$$ViewsPerUserClusterModelImplCopyWith<$Res>
     implements $ViewsPerUserClusterModelCopyWith<$Res> {
-  factory _$$_ViewsPerUserClusterModelCopyWith(
-          _$_ViewsPerUserClusterModel value,
-          $Res Function(_$_ViewsPerUserClusterModel) then) =
-      __$$_ViewsPerUserClusterModelCopyWithImpl<$Res>;
+  factory _$$ViewsPerUserClusterModelImplCopyWith(
+          _$ViewsPerUserClusterModelImpl value,
+          $Res Function(_$ViewsPerUserClusterModelImpl) then) =
+      __$$ViewsPerUserClusterModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String? name, Color? color, List<ViewsPerUserItemModel> items});
 }
 
 /// @nodoc
-class __$$_ViewsPerUserClusterModelCopyWithImpl<$Res>
+class __$$ViewsPerUserClusterModelImplCopyWithImpl<$Res>
     extends _$ViewsPerUserClusterModelCopyWithImpl<$Res,
-        _$_ViewsPerUserClusterModel>
-    implements _$$_ViewsPerUserClusterModelCopyWith<$Res> {
-  __$$_ViewsPerUserClusterModelCopyWithImpl(_$_ViewsPerUserClusterModel _value,
-      $Res Function(_$_ViewsPerUserClusterModel) _then)
+        _$ViewsPerUserClusterModelImpl>
+    implements _$$ViewsPerUserClusterModelImplCopyWith<$Res> {
+  __$$ViewsPerUserClusterModelImplCopyWithImpl(
+      _$ViewsPerUserClusterModelImpl _value,
+      $Res Function(_$ViewsPerUserClusterModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -228,7 +231,7 @@ class __$$_ViewsPerUserClusterModelCopyWithImpl<$Res>
     Object? color = freezed,
     Object? items = null,
   }) {
-    return _then(_$_ViewsPerUserClusterModel(
+    return _then(_$ViewsPerUserClusterModelImpl(
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -247,8 +250,8 @@ class __$$_ViewsPerUserClusterModelCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ViewsPerUserClusterModel extends _ViewsPerUserClusterModel {
-  const _$_ViewsPerUserClusterModel(
+class _$ViewsPerUserClusterModelImpl extends _ViewsPerUserClusterModel {
+  const _$ViewsPerUserClusterModelImpl(
       {this.name,
       this.color,
       final List<ViewsPerUserItemModel> items = const []})
@@ -274,10 +277,10 @@ class _$_ViewsPerUserClusterModel extends _ViewsPerUserClusterModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ViewsPerUserClusterModel &&
+            other is _$ViewsPerUserClusterModelImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.color, color) || other.color == color) &&
             const DeepCollectionEquality().equals(other._items, _items));
@@ -290,16 +293,17 @@ class _$_ViewsPerUserClusterModel extends _ViewsPerUserClusterModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ViewsPerUserClusterModelCopyWith<_$_ViewsPerUserClusterModel>
-      get copyWith => __$$_ViewsPerUserClusterModelCopyWithImpl<
-          _$_ViewsPerUserClusterModel>(this, _$identity);
+  _$$ViewsPerUserClusterModelImplCopyWith<_$ViewsPerUserClusterModelImpl>
+      get copyWith => __$$ViewsPerUserClusterModelImplCopyWithImpl<
+          _$ViewsPerUserClusterModelImpl>(this, _$identity);
 }
 
 abstract class _ViewsPerUserClusterModel extends ViewsPerUserClusterModel {
   const factory _ViewsPerUserClusterModel(
-      {final String? name,
-      final Color? color,
-      final List<ViewsPerUserItemModel> items}) = _$_ViewsPerUserClusterModel;
+          {final String? name,
+          final Color? color,
+          final List<ViewsPerUserItemModel> items}) =
+      _$ViewsPerUserClusterModelImpl;
   const _ViewsPerUserClusterModel._() : super._();
 
   @override
@@ -310,7 +314,7 @@ abstract class _ViewsPerUserClusterModel extends ViewsPerUserClusterModel {
   List<ViewsPerUserItemModel> get items;
   @override
   @JsonKey(ignore: true)
-  _$$_ViewsPerUserClusterModelCopyWith<_$_ViewsPerUserClusterModel>
+  _$$ViewsPerUserClusterModelImplCopyWith<_$ViewsPerUserClusterModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -358,22 +362,24 @@ class _$ViewsPerUserItemModelCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_ViewsPerUserItemModelCopyWith<$Res>
+abstract class _$$ViewsPerUserItemModelImplCopyWith<$Res>
     implements $ViewsPerUserItemModelCopyWith<$Res> {
-  factory _$$_ViewsPerUserItemModelCopyWith(_$_ViewsPerUserItemModel value,
-          $Res Function(_$_ViewsPerUserItemModel) then) =
-      __$$_ViewsPerUserItemModelCopyWithImpl<$Res>;
+  factory _$$ViewsPerUserItemModelImplCopyWith(
+          _$ViewsPerUserItemModelImpl value,
+          $Res Function(_$ViewsPerUserItemModelImpl) then) =
+      __$$ViewsPerUserItemModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({double? value});
 }
 
 /// @nodoc
-class __$$_ViewsPerUserItemModelCopyWithImpl<$Res>
-    extends _$ViewsPerUserItemModelCopyWithImpl<$Res, _$_ViewsPerUserItemModel>
-    implements _$$_ViewsPerUserItemModelCopyWith<$Res> {
-  __$$_ViewsPerUserItemModelCopyWithImpl(_$_ViewsPerUserItemModel _value,
-      $Res Function(_$_ViewsPerUserItemModel) _then)
+class __$$ViewsPerUserItemModelImplCopyWithImpl<$Res>
+    extends _$ViewsPerUserItemModelCopyWithImpl<$Res,
+        _$ViewsPerUserItemModelImpl>
+    implements _$$ViewsPerUserItemModelImplCopyWith<$Res> {
+  __$$ViewsPerUserItemModelImplCopyWithImpl(_$ViewsPerUserItemModelImpl _value,
+      $Res Function(_$ViewsPerUserItemModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -381,7 +387,7 @@ class __$$_ViewsPerUserItemModelCopyWithImpl<$Res>
   $Res call({
     Object? value = freezed,
   }) {
-    return _then(_$_ViewsPerUserItemModel(
+    return _then(_$ViewsPerUserItemModelImpl(
       value: freezed == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
@@ -392,8 +398,8 @@ class __$$_ViewsPerUserItemModelCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ViewsPerUserItemModel implements _ViewsPerUserItemModel {
-  const _$_ViewsPerUserItemModel({this.value});
+class _$ViewsPerUserItemModelImpl implements _ViewsPerUserItemModel {
+  const _$ViewsPerUserItemModelImpl({this.value});
 
   @override
   final double? value;
@@ -404,10 +410,10 @@ class _$_ViewsPerUserItemModel implements _ViewsPerUserItemModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ViewsPerUserItemModel &&
+            other is _$ViewsPerUserItemModelImpl &&
             (identical(other.value, value) || other.value == value));
   }
 
@@ -417,19 +423,19 @@ class _$_ViewsPerUserItemModel implements _ViewsPerUserItemModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ViewsPerUserItemModelCopyWith<_$_ViewsPerUserItemModel> get copyWith =>
-      __$$_ViewsPerUserItemModelCopyWithImpl<_$_ViewsPerUserItemModel>(
-          this, _$identity);
+  _$$ViewsPerUserItemModelImplCopyWith<_$ViewsPerUserItemModelImpl>
+      get copyWith => __$$ViewsPerUserItemModelImplCopyWithImpl<
+          _$ViewsPerUserItemModelImpl>(this, _$identity);
 }
 
 abstract class _ViewsPerUserItemModel implements ViewsPerUserItemModel {
   const factory _ViewsPerUserItemModel({final double? value}) =
-      _$_ViewsPerUserItemModel;
+      _$ViewsPerUserItemModelImpl;
 
   @override
   double? get value;
   @override
   @JsonKey(ignore: true)
-  _$$_ViewsPerUserItemModelCopyWith<_$_ViewsPerUserItemModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$ViewsPerUserItemModelImplCopyWith<_$ViewsPerUserItemModelImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

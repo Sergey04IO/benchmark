@@ -6,8 +6,9 @@ part of 'sector_index_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_SectorIndexModel _$$_SectorIndexModelFromJson(Map<String, dynamic> json) =>
-    _$_SectorIndexModel(
+_$SectorIndexModelImpl _$$SectorIndexModelImplFromJson(
+        Map<String, dynamic> json) =>
+    _$SectorIndexModelImpl(
       date: json['date'] as String?,
       title: json['title'] as String?,
       values: json['values'] as String?,
@@ -15,7 +16,8 @@ _$_SectorIndexModel _$$_SectorIndexModelFromJson(Map<String, dynamic> json) =>
       difference: json['difference'] as String?,
     );
 
-Map<String, dynamic> _$$_SectorIndexModelToJson(_$_SectorIndexModel instance) =>
+Map<String, dynamic> _$$SectorIndexModelImplToJson(
+        _$SectorIndexModelImpl instance) =>
     <String, dynamic>{
       'date': instance.date,
       'title': instance.title,

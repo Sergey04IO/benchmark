@@ -110,31 +110,28 @@ class _MultiChartState extends State<MultiChart> {
       majorTickLines: const MajorTickLines(width: 0),
       minorTickLines: const MinorTickLines(width: 0),
       minorGridLines: const MinorGridLines(width: 0),
-      borderWidth: 0,
       axisLine: const AxisLine(width: 0),
     );
   }
 
   DateTimeAxis _getAxisX() {
     return DateTimeAxis(
-      title: AxisTitle(text: '', textStyle: const TextStyle(fontSize: 0)),
+      title: const AxisTitle(text: '', textStyle: TextStyle(fontSize: 0)),
       labelStyle: const TextStyle(fontSize: 0),
-      edgeLabelPlacement: EdgeLabelPlacement.none,
       majorGridLines: const MajorGridLines(width: 0),
       interval: 1,
       axisLabelFormatter: (axisLabelRenderArgs) => ChartAxisLabel('', null),
       majorTickLines: const MajorTickLines(width: 0),
       minorTickLines: const MinorTickLines(width: 0),
       minorGridLines: const MinorGridLines(width: 0),
-      borderWidth: 0,
       axisLine: const AxisLine(width: 0),
       maximumLabelWidth: 0,
     );
   }
 
-  List<ChartSeries<MultiChartItemModel, DateTime>>
+  List<CartesianSeries<MultiChartItemModel, DateTime>>
       _getMultipleAxisLineSeries() {
-    return <ChartSeries<MultiChartItemModel, DateTime>>[
+    return <CartesianSeries<MultiChartItemModel, DateTime>>[
       ColumnSeries<MultiChartItemModel, DateTime>(
         dataSource: _chartData,
         xValueMapper: (sales, _) => sales.x as DateTime,
@@ -144,7 +141,7 @@ class _MultiChartState extends State<MultiChart> {
         ),
         color: AppColors.blue2BB,
         borderWidth: 0,
-        animationDuration: widget.useAnimations ? _animDuration : null,
+        animationDuration: widget.useAnimations ? _animDuration : 0,
       ),
       LineSeries<MultiChartItemModel, DateTime>(
         dataSource: _chartData,
@@ -155,9 +152,9 @@ class _MultiChartState extends State<MultiChart> {
           args: ['[Pingdom]'],
         ),
         color: AppColors.redC4C,
-        animationDuration: widget.useAnimations ? _animDuration : null,
+        animationDuration: widget.useAnimations ? _animDuration : 0,
         animationDelay:
-            widget.useAnimations && useAnimDelay ? _lineAnimDelay : null,
+            widget.useAnimations && useAnimDelay ? _lineAnimDelay : 0,
       ),
       LineSeries<MultiChartItemModel, DateTime>(
         dataSource: _chartData,
@@ -168,9 +165,9 @@ class _MultiChartState extends State<MultiChart> {
           args: ['[GA]'],
         ),
         color: AppColors.green528,
-        animationDuration: widget.useAnimations ? _animDuration : null,
+        animationDuration: widget.useAnimations ? _animDuration : 0,
         animationDelay:
-            widget.useAnimations && useAnimDelay ? _lineAnimDelay : null,
+            widget.useAnimations && useAnimDelay ? _lineAnimDelay : 0,
       ),
       LineSeries<MultiChartItemModel, DateTime>(
         dataSource: _chartData,
@@ -181,9 +178,9 @@ class _MultiChartState extends State<MultiChart> {
           args: ['[GA]'],
         ),
         color: AppColors.orangeE2A,
-        animationDuration: widget.useAnimations ? _animDuration : null,
+        animationDuration: widget.useAnimations ? _animDuration : 0,
         animationDelay:
-            widget.useAnimations && useAnimDelay ? _lineAnimDelay : null,
+            widget.useAnimations && useAnimDelay ? _lineAnimDelay : 0,
       )
     ];
   }

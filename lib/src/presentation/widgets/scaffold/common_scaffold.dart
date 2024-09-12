@@ -1,6 +1,7 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:benchmark/src/app/config/di/injector.dart';
 import 'package:benchmark/src/app/config/navigation/app_router/app_router.dart';
-import 'package:benchmark/src/app/core/enums/initial_page.dart';
+import 'package:benchmark/src/app/config/navigation/routes_data/routes_paths.dart';
 import 'package:benchmark/src/app/core/mixins/page_title_mixin.dart';
 import 'package:benchmark/src/app/core/theme/colors/app_colors.dart';
 import 'package:benchmark/src/presentation/bloc/settings/settings_cubit.dart';
@@ -56,15 +57,12 @@ class _CommonScaffoldState extends State<CommonScaffold> with PageTitleMixin {
   }
 
   void _setInitialPageTitle() {
-    final initialPage = _settingsCubit.getInitialPage();
+    final currentPage = AutoRouter.of(context).currentPath;
     String? routeName;
-    switch (initialPage) {
-      case InitialPage.analytics:
-        routeName = AnalyticsRoute.name;
-      case InitialPage.dashboard:
-        routeName = CommandCenterRoute.name;
-      default:
-        break;
+    if (currentPage.contains(RoutesPaths.analyticsRoutePath)) {
+      routeName = AnalyticsRoute.name;
+    } else if (currentPage.contains(RoutesPaths.commandCenterPath)) {
+      routeName = CommandCenterRoute.name;
     }
     setPageTitle(routeName: routeName);
   }

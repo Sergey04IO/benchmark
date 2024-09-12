@@ -35,8 +35,8 @@ class _AreaChartState extends State<AreaChart> {
   @override
   Widget build(BuildContext context) {
     return LineChart(
-      swapAnimationDuration: CommonConstants.primaryAnimDuration,
-      swapAnimationCurve: Curves.decelerate,
+      duration: CommonConstants.primaryAnimDuration,
+      curve: Curves.decelerate,
       LineChartData(
         clipData: FlClipData(
           right: !widget.isCommandCenter,
@@ -47,17 +47,15 @@ class _AreaChartState extends State<AreaChart> {
         minY: 0,
         maxY: widget.maxExtent,
         borderData: FlBorderData(show: false),
-        gridData: FlGridData(show: false),
-        titlesData: FlTitlesData(
-          show: false,
-        ),
-        lineTouchData: LineTouchData(enabled: false),
+        gridData: const FlGridData(show: false),
+        titlesData: const FlTitlesData(show: false),
+        lineTouchData: const LineTouchData(enabled: false),
         lineBarsData: [
           LineChartBarData(
             spots: _getSpots(),
             color:
                 widget.isCommandCenter ? AppColors.blue0F3 : Colors.transparent,
-            barWidth: widget.isCommandCenter ? 2 : null,
+            barWidth: widget.isCommandCenter ? 2 : 0,
             belowBarData: widget.isCommandCenter
                 ? _commandCenterBelowBarAreaData()
                 : _analyticsBelowBarAreaData(),
@@ -114,7 +112,7 @@ class _AreaChartState extends State<AreaChart> {
   }
 
   FlDotData _analyticsDot() {
-    return FlDotData(show: false);
+    return const FlDotData(show: false);
   }
 
   BarAreaData _commandCenterBelowBarAreaData() {
@@ -134,7 +132,6 @@ class _AreaChartState extends State<AreaChart> {
         return FlDotCirclePainter(
           color: AppColors.blue0F3,
           radius: 4,
-          strokeWidth: 0,
         );
       },
     );

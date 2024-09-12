@@ -12,7 +12,7 @@ part of 'app_settings_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 AppSettingsModel _$AppSettingsModelFromJson(Map<String, dynamic> json) {
   return _AppSettingsModel.fromJson(json);
@@ -87,11 +87,11 @@ class _$AppSettingsModelCopyWithImpl<$Res, $Val extends AppSettingsModel>
 }
 
 /// @nodoc
-abstract class _$$_AppSettingsModelCopyWith<$Res>
+abstract class _$$AppSettingsModelImplCopyWith<$Res>
     implements $AppSettingsModelCopyWith<$Res> {
-  factory _$$_AppSettingsModelCopyWith(
-          _$_AppSettingsModel value, $Res Function(_$_AppSettingsModel) then) =
-      __$$_AppSettingsModelCopyWithImpl<$Res>;
+  factory _$$AppSettingsModelImplCopyWith(_$AppSettingsModelImpl value,
+          $Res Function(_$AppSettingsModelImpl) then) =
+      __$$AppSettingsModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({SettingsEnvironment prod, SettingsEnvironment dev});
@@ -103,11 +103,11 @@ abstract class _$$_AppSettingsModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_AppSettingsModelCopyWithImpl<$Res>
-    extends _$AppSettingsModelCopyWithImpl<$Res, _$_AppSettingsModel>
-    implements _$$_AppSettingsModelCopyWith<$Res> {
-  __$$_AppSettingsModelCopyWithImpl(
-      _$_AppSettingsModel _value, $Res Function(_$_AppSettingsModel) _then)
+class __$$AppSettingsModelImplCopyWithImpl<$Res>
+    extends _$AppSettingsModelCopyWithImpl<$Res, _$AppSettingsModelImpl>
+    implements _$$AppSettingsModelImplCopyWith<$Res> {
+  __$$AppSettingsModelImplCopyWithImpl(_$AppSettingsModelImpl _value,
+      $Res Function(_$AppSettingsModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -116,7 +116,7 @@ class __$$_AppSettingsModelCopyWithImpl<$Res>
     Object? prod = null,
     Object? dev = null,
   }) {
-    return _then(_$_AppSettingsModel(
+    return _then(_$AppSettingsModelImpl(
       prod: null == prod
           ? _value.prod
           : prod // ignore: cast_nullable_to_non_nullable
@@ -131,15 +131,15 @@ class __$$_AppSettingsModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_AppSettingsModel extends _AppSettingsModel
+class _$AppSettingsModelImpl extends _AppSettingsModel
     with DiagnosticableTreeMixin {
-  const _$_AppSettingsModel(
+  const _$AppSettingsModelImpl(
       {this.prod = const SettingsEnvironment(),
       this.dev = const SettingsEnvironment()})
       : super._();
 
-  factory _$_AppSettingsModel.fromJson(Map<String, dynamic> json) =>
-      _$$_AppSettingsModelFromJson(json);
+  factory _$AppSettingsModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AppSettingsModelImplFromJson(json);
 
   @override
   @JsonKey()
@@ -163,10 +163,10 @@ class _$_AppSettingsModel extends _AppSettingsModel
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AppSettingsModel &&
+            other is _$AppSettingsModelImpl &&
             (identical(other.prod, prod) || other.prod == prod) &&
             (identical(other.dev, dev) || other.dev == dev));
   }
@@ -178,12 +178,13 @@ class _$_AppSettingsModel extends _AppSettingsModel
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AppSettingsModelCopyWith<_$_AppSettingsModel> get copyWith =>
-      __$$_AppSettingsModelCopyWithImpl<_$_AppSettingsModel>(this, _$identity);
+  _$$AppSettingsModelImplCopyWith<_$AppSettingsModelImpl> get copyWith =>
+      __$$AppSettingsModelImplCopyWithImpl<_$AppSettingsModelImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AppSettingsModelToJson(
+    return _$$AppSettingsModelImplToJson(
       this,
     );
   }
@@ -192,11 +193,11 @@ class _$_AppSettingsModel extends _AppSettingsModel
 abstract class _AppSettingsModel extends AppSettingsModel {
   const factory _AppSettingsModel(
       {final SettingsEnvironment prod,
-      final SettingsEnvironment dev}) = _$_AppSettingsModel;
+      final SettingsEnvironment dev}) = _$AppSettingsModelImpl;
   const _AppSettingsModel._() : super._();
 
   factory _AppSettingsModel.fromJson(Map<String, dynamic> json) =
-      _$_AppSettingsModel.fromJson;
+      _$AppSettingsModelImpl.fromJson;
 
   @override
   SettingsEnvironment get prod;
@@ -204,7 +205,7 @@ abstract class _AppSettingsModel extends AppSettingsModel {
   SettingsEnvironment get dev;
   @override
   @JsonKey(ignore: true)
-  _$$_AppSettingsModelCopyWith<_$_AppSettingsModel> get copyWith =>
+  _$$AppSettingsModelImplCopyWith<_$AppSettingsModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -262,22 +263,22 @@ class _$SettingsEnvironmentCopyWithImpl<$Res, $Val extends SettingsEnvironment>
 }
 
 /// @nodoc
-abstract class _$$_SettingsEnvironmentCopyWith<$Res>
+abstract class _$$SettingsEnvironmentImplCopyWith<$Res>
     implements $SettingsEnvironmentCopyWith<$Res> {
-  factory _$$_SettingsEnvironmentCopyWith(_$_SettingsEnvironment value,
-          $Res Function(_$_SettingsEnvironment) then) =
-      __$$_SettingsEnvironmentCopyWithImpl<$Res>;
+  factory _$$SettingsEnvironmentImplCopyWith(_$SettingsEnvironmentImpl value,
+          $Res Function(_$SettingsEnvironmentImpl) then) =
+      __$$SettingsEnvironmentImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({bool isUsedSSO, InitialPage initialPage});
 }
 
 /// @nodoc
-class __$$_SettingsEnvironmentCopyWithImpl<$Res>
-    extends _$SettingsEnvironmentCopyWithImpl<$Res, _$_SettingsEnvironment>
-    implements _$$_SettingsEnvironmentCopyWith<$Res> {
-  __$$_SettingsEnvironmentCopyWithImpl(_$_SettingsEnvironment _value,
-      $Res Function(_$_SettingsEnvironment) _then)
+class __$$SettingsEnvironmentImplCopyWithImpl<$Res>
+    extends _$SettingsEnvironmentCopyWithImpl<$Res, _$SettingsEnvironmentImpl>
+    implements _$$SettingsEnvironmentImplCopyWith<$Res> {
+  __$$SettingsEnvironmentImplCopyWithImpl(_$SettingsEnvironmentImpl _value,
+      $Res Function(_$SettingsEnvironmentImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -286,7 +287,7 @@ class __$$_SettingsEnvironmentCopyWithImpl<$Res>
     Object? isUsedSSO = null,
     Object? initialPage = null,
   }) {
-    return _then(_$_SettingsEnvironment(
+    return _then(_$SettingsEnvironmentImpl(
       isUsedSSO: null == isUsedSSO
           ? _value.isUsedSSO
           : isUsedSSO // ignore: cast_nullable_to_non_nullable
@@ -301,14 +302,14 @@ class __$$_SettingsEnvironmentCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_SettingsEnvironment
+class _$SettingsEnvironmentImpl
     with DiagnosticableTreeMixin
     implements _SettingsEnvironment {
-  const _$_SettingsEnvironment(
+  const _$SettingsEnvironmentImpl(
       {this.isUsedSSO = false, this.initialPage = InitialPage.analytics});
 
-  factory _$_SettingsEnvironment.fromJson(Map<String, dynamic> json) =>
-      _$$_SettingsEnvironmentFromJson(json);
+  factory _$SettingsEnvironmentImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SettingsEnvironmentImplFromJson(json);
 
   @override
   @JsonKey()
@@ -332,10 +333,10 @@ class _$_SettingsEnvironment
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SettingsEnvironment &&
+            other is _$SettingsEnvironmentImpl &&
             (identical(other.isUsedSSO, isUsedSSO) ||
                 other.isUsedSSO == isUsedSSO) &&
             (identical(other.initialPage, initialPage) ||
@@ -349,13 +350,13 @@ class _$_SettingsEnvironment
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SettingsEnvironmentCopyWith<_$_SettingsEnvironment> get copyWith =>
-      __$$_SettingsEnvironmentCopyWithImpl<_$_SettingsEnvironment>(
+  _$$SettingsEnvironmentImplCopyWith<_$SettingsEnvironmentImpl> get copyWith =>
+      __$$SettingsEnvironmentImplCopyWithImpl<_$SettingsEnvironmentImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SettingsEnvironmentToJson(
+    return _$$SettingsEnvironmentImplToJson(
       this,
     );
   }
@@ -364,10 +365,10 @@ class _$_SettingsEnvironment
 abstract class _SettingsEnvironment implements SettingsEnvironment {
   const factory _SettingsEnvironment(
       {final bool isUsedSSO,
-      final InitialPage initialPage}) = _$_SettingsEnvironment;
+      final InitialPage initialPage}) = _$SettingsEnvironmentImpl;
 
   factory _SettingsEnvironment.fromJson(Map<String, dynamic> json) =
-      _$_SettingsEnvironment.fromJson;
+      _$SettingsEnvironmentImpl.fromJson;
 
   @override
   bool get isUsedSSO;
@@ -375,6 +376,6 @@ abstract class _SettingsEnvironment implements SettingsEnvironment {
   InitialPage get initialPage;
   @override
   @JsonKey(ignore: true)
-  _$$_SettingsEnvironmentCopyWith<_$_SettingsEnvironment> get copyWith =>
+  _$$SettingsEnvironmentImplCopyWith<_$SettingsEnvironmentImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

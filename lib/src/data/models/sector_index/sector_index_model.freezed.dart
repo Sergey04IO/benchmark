@@ -12,7 +12,7 @@ part of 'sector_index_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 SectorIndexModel _$SectorIndexModelFromJson(Map<String, dynamic> json) {
   return _SectorIndexModel.fromJson(json);
@@ -91,11 +91,11 @@ class _$SectorIndexModelCopyWithImpl<$Res, $Val extends SectorIndexModel>
 }
 
 /// @nodoc
-abstract class _$$_SectorIndexModelCopyWith<$Res>
+abstract class _$$SectorIndexModelImplCopyWith<$Res>
     implements $SectorIndexModelCopyWith<$Res> {
-  factory _$$_SectorIndexModelCopyWith(
-          _$_SectorIndexModel value, $Res Function(_$_SectorIndexModel) then) =
-      __$$_SectorIndexModelCopyWithImpl<$Res>;
+  factory _$$SectorIndexModelImplCopyWith(_$SectorIndexModelImpl value,
+          $Res Function(_$SectorIndexModelImpl) then) =
+      __$$SectorIndexModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -107,11 +107,11 @@ abstract class _$$_SectorIndexModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_SectorIndexModelCopyWithImpl<$Res>
-    extends _$SectorIndexModelCopyWithImpl<$Res, _$_SectorIndexModel>
-    implements _$$_SectorIndexModelCopyWith<$Res> {
-  __$$_SectorIndexModelCopyWithImpl(
-      _$_SectorIndexModel _value, $Res Function(_$_SectorIndexModel) _then)
+class __$$SectorIndexModelImplCopyWithImpl<$Res>
+    extends _$SectorIndexModelCopyWithImpl<$Res, _$SectorIndexModelImpl>
+    implements _$$SectorIndexModelImplCopyWith<$Res> {
+  __$$SectorIndexModelImplCopyWithImpl(_$SectorIndexModelImpl _value,
+      $Res Function(_$SectorIndexModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -123,7 +123,7 @@ class __$$_SectorIndexModelCopyWithImpl<$Res>
     Object? total = freezed,
     Object? difference = freezed,
   }) {
-    return _then(_$_SectorIndexModel(
+    return _then(_$SectorIndexModelImpl(
       date: freezed == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
@@ -150,13 +150,13 @@ class __$$_SectorIndexModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_SectorIndexModel extends _SectorIndexModel {
-  const _$_SectorIndexModel(
+class _$SectorIndexModelImpl extends _SectorIndexModel {
+  const _$SectorIndexModelImpl(
       {this.date, this.title, this.values, this.total, this.difference})
       : super._();
 
-  factory _$_SectorIndexModel.fromJson(Map<String, dynamic> json) =>
-      _$$_SectorIndexModelFromJson(json);
+  factory _$SectorIndexModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SectorIndexModelImplFromJson(json);
 
   @override
   final String? date;
@@ -175,10 +175,10 @@ class _$_SectorIndexModel extends _SectorIndexModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SectorIndexModel &&
+            other is _$SectorIndexModelImpl &&
             (identical(other.date, date) || other.date == date) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.values, values) || other.values == values) &&
@@ -195,12 +195,13 @@ class _$_SectorIndexModel extends _SectorIndexModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SectorIndexModelCopyWith<_$_SectorIndexModel> get copyWith =>
-      __$$_SectorIndexModelCopyWithImpl<_$_SectorIndexModel>(this, _$identity);
+  _$$SectorIndexModelImplCopyWith<_$SectorIndexModelImpl> get copyWith =>
+      __$$SectorIndexModelImplCopyWithImpl<_$SectorIndexModelImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SectorIndexModelToJson(
+    return _$$SectorIndexModelImplToJson(
       this,
     );
   }
@@ -212,11 +213,11 @@ abstract class _SectorIndexModel extends SectorIndexModel {
       final String? title,
       final String? values,
       final String? total,
-      final String? difference}) = _$_SectorIndexModel;
+      final String? difference}) = _$SectorIndexModelImpl;
   const _SectorIndexModel._() : super._();
 
   factory _SectorIndexModel.fromJson(Map<String, dynamic> json) =
-      _$_SectorIndexModel.fromJson;
+      _$SectorIndexModelImpl.fromJson;
 
   @override
   String? get date;
@@ -230,6 +231,6 @@ abstract class _SectorIndexModel extends SectorIndexModel {
   String? get difference;
   @override
   @JsonKey(ignore: true)
-  _$$_SectorIndexModelCopyWith<_$_SectorIndexModel> get copyWith =>
+  _$$SectorIndexModelImplCopyWith<_$SectorIndexModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -12,7 +12,7 @@ part of 'datetime_range.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$RangeModel<T> {
@@ -63,22 +63,22 @@ class _$RangeModelCopyWithImpl<T, $Res, $Val extends RangeModel<T>>
 }
 
 /// @nodoc
-abstract class _$$_RangeModelCopyWith<T, $Res>
+abstract class _$$RangeModelImplCopyWith<T, $Res>
     implements $RangeModelCopyWith<T, $Res> {
-  factory _$$_RangeModelCopyWith(
-          _$_RangeModel<T> value, $Res Function(_$_RangeModel<T>) then) =
-      __$$_RangeModelCopyWithImpl<T, $Res>;
+  factory _$$RangeModelImplCopyWith(
+          _$RangeModelImpl<T> value, $Res Function(_$RangeModelImpl<T>) then) =
+      __$$RangeModelImplCopyWithImpl<T, $Res>;
   @override
   @useResult
   $Res call({T from, T to});
 }
 
 /// @nodoc
-class __$$_RangeModelCopyWithImpl<T, $Res>
-    extends _$RangeModelCopyWithImpl<T, $Res, _$_RangeModel<T>>
-    implements _$$_RangeModelCopyWith<T, $Res> {
-  __$$_RangeModelCopyWithImpl(
-      _$_RangeModel<T> _value, $Res Function(_$_RangeModel<T>) _then)
+class __$$RangeModelImplCopyWithImpl<T, $Res>
+    extends _$RangeModelCopyWithImpl<T, $Res, _$RangeModelImpl<T>>
+    implements _$$RangeModelImplCopyWith<T, $Res> {
+  __$$RangeModelImplCopyWithImpl(
+      _$RangeModelImpl<T> _value, $Res Function(_$RangeModelImpl<T>) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -87,7 +87,7 @@ class __$$_RangeModelCopyWithImpl<T, $Res>
     Object? from = freezed,
     Object? to = freezed,
   }) {
-    return _then(_$_RangeModel<T>(
+    return _then(_$RangeModelImpl<T>(
       from: freezed == from
           ? _value.from
           : from // ignore: cast_nullable_to_non_nullable
@@ -102,8 +102,8 @@ class __$$_RangeModelCopyWithImpl<T, $Res>
 
 /// @nodoc
 
-class _$_RangeModel<T> implements _RangeModel<T> {
-  const _$_RangeModel({required this.from, required this.to});
+class _$RangeModelImpl<T> implements _RangeModel<T> {
+  const _$RangeModelImpl({required this.from, required this.to});
 
   @override
   final T from;
@@ -116,10 +116,10 @@ class _$_RangeModel<T> implements _RangeModel<T> {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_RangeModel<T> &&
+            other is _$RangeModelImpl<T> &&
             const DeepCollectionEquality().equals(other.from, from) &&
             const DeepCollectionEquality().equals(other.to, to));
   }
@@ -133,13 +133,13 @@ class _$_RangeModel<T> implements _RangeModel<T> {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_RangeModelCopyWith<T, _$_RangeModel<T>> get copyWith =>
-      __$$_RangeModelCopyWithImpl<T, _$_RangeModel<T>>(this, _$identity);
+  _$$RangeModelImplCopyWith<T, _$RangeModelImpl<T>> get copyWith =>
+      __$$RangeModelImplCopyWithImpl<T, _$RangeModelImpl<T>>(this, _$identity);
 }
 
 abstract class _RangeModel<T> implements RangeModel<T> {
   const factory _RangeModel({required final T from, required final T to}) =
-      _$_RangeModel<T>;
+      _$RangeModelImpl<T>;
 
   @override
   T get from;
@@ -147,6 +147,6 @@ abstract class _RangeModel<T> implements RangeModel<T> {
   T get to;
   @override
   @JsonKey(ignore: true)
-  _$$_RangeModelCopyWith<T, _$_RangeModel<T>> get copyWith =>
+  _$$RangeModelImplCopyWith<T, _$RangeModelImpl<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }

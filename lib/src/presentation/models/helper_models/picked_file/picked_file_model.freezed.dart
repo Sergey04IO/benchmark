@@ -12,7 +12,7 @@ part of 'picked_file_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$PickedFileModel<T> {
@@ -63,22 +63,22 @@ class _$PickedFileModelCopyWithImpl<T, $Res, $Val extends PickedFileModel<T>>
 }
 
 /// @nodoc
-abstract class _$$_PickedFileModelCopyWith<T, $Res>
+abstract class _$$PickedFileModelImplCopyWith<T, $Res>
     implements $PickedFileModelCopyWith<T, $Res> {
-  factory _$$_PickedFileModelCopyWith(_$_PickedFileModel<T> value,
-          $Res Function(_$_PickedFileModel<T>) then) =
-      __$$_PickedFileModelCopyWithImpl<T, $Res>;
+  factory _$$PickedFileModelImplCopyWith(_$PickedFileModelImpl<T> value,
+          $Res Function(_$PickedFileModelImpl<T>) then) =
+      __$$PickedFileModelImplCopyWithImpl<T, $Res>;
   @override
   @useResult
   $Res call({PlatformFile? pickedFile, T? file});
 }
 
 /// @nodoc
-class __$$_PickedFileModelCopyWithImpl<T, $Res>
-    extends _$PickedFileModelCopyWithImpl<T, $Res, _$_PickedFileModel<T>>
-    implements _$$_PickedFileModelCopyWith<T, $Res> {
-  __$$_PickedFileModelCopyWithImpl(
-      _$_PickedFileModel<T> _value, $Res Function(_$_PickedFileModel<T>) _then)
+class __$$PickedFileModelImplCopyWithImpl<T, $Res>
+    extends _$PickedFileModelCopyWithImpl<T, $Res, _$PickedFileModelImpl<T>>
+    implements _$$PickedFileModelImplCopyWith<T, $Res> {
+  __$$PickedFileModelImplCopyWithImpl(_$PickedFileModelImpl<T> _value,
+      $Res Function(_$PickedFileModelImpl<T>) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -87,7 +87,7 @@ class __$$_PickedFileModelCopyWithImpl<T, $Res>
     Object? pickedFile = freezed,
     Object? file = freezed,
   }) {
-    return _then(_$_PickedFileModel<T>(
+    return _then(_$PickedFileModelImpl<T>(
       pickedFile: freezed == pickedFile
           ? _value.pickedFile
           : pickedFile // ignore: cast_nullable_to_non_nullable
@@ -102,8 +102,8 @@ class __$$_PickedFileModelCopyWithImpl<T, $Res>
 
 /// @nodoc
 
-class _$_PickedFileModel<T> implements _PickedFileModel<T> {
-  const _$_PickedFileModel({this.pickedFile, this.file});
+class _$PickedFileModelImpl<T> implements _PickedFileModel<T> {
+  const _$PickedFileModelImpl({this.pickedFile, this.file});
 
   @override
   final PlatformFile? pickedFile;
@@ -116,10 +116,10 @@ class _$_PickedFileModel<T> implements _PickedFileModel<T> {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PickedFileModel<T> &&
+            other is _$PickedFileModelImpl<T> &&
             (identical(other.pickedFile, pickedFile) ||
                 other.pickedFile == pickedFile) &&
             const DeepCollectionEquality().equals(other.file, file));
@@ -132,14 +132,15 @@ class _$_PickedFileModel<T> implements _PickedFileModel<T> {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PickedFileModelCopyWith<T, _$_PickedFileModel<T>> get copyWith =>
-      __$$_PickedFileModelCopyWithImpl<T, _$_PickedFileModel<T>>(
+  _$$PickedFileModelImplCopyWith<T, _$PickedFileModelImpl<T>> get copyWith =>
+      __$$PickedFileModelImplCopyWithImpl<T, _$PickedFileModelImpl<T>>(
           this, _$identity);
 }
 
 abstract class _PickedFileModel<T> implements PickedFileModel<T> {
   const factory _PickedFileModel(
-      {final PlatformFile? pickedFile, final T? file}) = _$_PickedFileModel<T>;
+      {final PlatformFile? pickedFile,
+      final T? file}) = _$PickedFileModelImpl<T>;
 
   @override
   PlatformFile? get pickedFile;
@@ -147,6 +148,6 @@ abstract class _PickedFileModel<T> implements PickedFileModel<T> {
   T? get file;
   @override
   @JsonKey(ignore: true)
-  _$$_PickedFileModelCopyWith<T, _$_PickedFileModel<T>> get copyWith =>
+  _$$PickedFileModelImplCopyWith<T, _$PickedFileModelImpl<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }

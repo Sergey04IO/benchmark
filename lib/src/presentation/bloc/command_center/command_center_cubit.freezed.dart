@@ -12,7 +12,7 @@ part of 'command_center_cubit.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$CommandCenterState {
@@ -93,24 +93,25 @@ class _$CommandCenterStateCopyWithImpl<$Res, $Val extends CommandCenterState>
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+abstract class _$$InitialImplCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$CommandCenterStateCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$CommandCenterStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  const _$_Initial();
+class _$InitialImpl implements _Initial {
+  const _$InitialImpl();
 
   @override
   String toString() {
@@ -118,9 +119,9 @@ class _$_Initial implements _Initial {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
+        (other.runtimeType == runtimeType && other is _$InitialImpl);
   }
 
   @override
@@ -208,27 +209,29 @@ class _$_Initial implements _Initial {
 }
 
 abstract class _Initial implements CommandCenterState {
-  const factory _Initial() = _$_Initial;
+  const factory _Initial() = _$InitialImpl;
 }
 
 /// @nodoc
-abstract class _$$LoadingCopyWith<$Res> {
-  factory _$$LoadingCopyWith(_$Loading value, $Res Function(_$Loading) then) =
-      __$$LoadingCopyWithImpl<$Res>;
+abstract class _$$LoadingImplCopyWith<$Res> {
+  factory _$$LoadingImplCopyWith(
+          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
+      __$$LoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$LoadingCopyWithImpl<$Res>
-    extends _$CommandCenterStateCopyWithImpl<$Res, _$Loading>
-    implements _$$LoadingCopyWith<$Res> {
-  __$$LoadingCopyWithImpl(_$Loading _value, $Res Function(_$Loading) _then)
+class __$$LoadingImplCopyWithImpl<$Res>
+    extends _$CommandCenterStateCopyWithImpl<$Res, _$LoadingImpl>
+    implements _$$LoadingImplCopyWith<$Res> {
+  __$$LoadingImplCopyWithImpl(
+      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$Loading implements Loading {
-  const _$Loading();
+class _$LoadingImpl implements Loading {
+  const _$LoadingImpl();
 
   @override
   String toString() {
@@ -236,9 +239,9 @@ class _$Loading implements Loading {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$Loading);
+        (other.runtimeType == runtimeType && other is _$LoadingImpl);
   }
 
   @override
@@ -326,22 +329,23 @@ class _$Loading implements Loading {
 }
 
 abstract class Loading implements CommandCenterState {
-  const factory Loading() = _$Loading;
+  const factory Loading() = _$LoadingImpl;
 }
 
 /// @nodoc
-abstract class _$$DataCopyWith<$Res> {
-  factory _$$DataCopyWith(_$Data value, $Res Function(_$Data) then) =
-      __$$DataCopyWithImpl<$Res>;
+abstract class _$$DataImplCopyWith<$Res> {
+  factory _$$DataImplCopyWith(
+          _$DataImpl value, $Res Function(_$DataImpl) then) =
+      __$$DataImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Sample sample});
 }
 
 /// @nodoc
-class __$$DataCopyWithImpl<$Res>
-    extends _$CommandCenterStateCopyWithImpl<$Res, _$Data>
-    implements _$$DataCopyWith<$Res> {
-  __$$DataCopyWithImpl(_$Data _value, $Res Function(_$Data) _then)
+class __$$DataImplCopyWithImpl<$Res>
+    extends _$CommandCenterStateCopyWithImpl<$Res, _$DataImpl>
+    implements _$$DataImplCopyWith<$Res> {
+  __$$DataImplCopyWithImpl(_$DataImpl _value, $Res Function(_$DataImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -349,7 +353,7 @@ class __$$DataCopyWithImpl<$Res>
   $Res call({
     Object? sample = null,
   }) {
-    return _then(_$Data(
+    return _then(_$DataImpl(
       null == sample
           ? _value.sample
           : sample // ignore: cast_nullable_to_non_nullable
@@ -360,8 +364,8 @@ class __$$DataCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$Data implements Data {
-  const _$Data(this.sample);
+class _$DataImpl implements Data {
+  const _$DataImpl(this.sample);
 
   @override
   final Sample sample;
@@ -372,10 +376,10 @@ class _$Data implements Data {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$Data &&
+            other is _$DataImpl &&
             (identical(other.sample, sample) || other.sample == sample));
   }
 
@@ -385,8 +389,8 @@ class _$Data implements Data {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$DataCopyWith<_$Data> get copyWith =>
-      __$$DataCopyWithImpl<_$Data>(this, _$identity);
+  _$$DataImplCopyWith<_$DataImpl> get copyWith =>
+      __$$DataImplCopyWithImpl<_$DataImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -470,26 +474,29 @@ class _$Data implements Data {
 }
 
 abstract class Data implements CommandCenterState {
-  const factory Data(final Sample sample) = _$Data;
+  const factory Data(final Sample sample) = _$DataImpl;
 
   Sample get sample;
   @JsonKey(ignore: true)
-  _$$DataCopyWith<_$Data> get copyWith => throw _privateConstructorUsedError;
+  _$$DataImplCopyWith<_$DataImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_ErrorCopyWith<$Res> {
-  factory _$$_ErrorCopyWith(_$_Error value, $Res Function(_$_Error) then) =
-      __$$_ErrorCopyWithImpl<$Res>;
+abstract class _$$ErrorImplCopyWith<$Res> {
+  factory _$$ErrorImplCopyWith(
+          _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
+      __$$ErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String error});
 }
 
 /// @nodoc
-class __$$_ErrorCopyWithImpl<$Res>
-    extends _$CommandCenterStateCopyWithImpl<$Res, _$_Error>
-    implements _$$_ErrorCopyWith<$Res> {
-  __$$_ErrorCopyWithImpl(_$_Error _value, $Res Function(_$_Error) _then)
+class __$$ErrorImplCopyWithImpl<$Res>
+    extends _$CommandCenterStateCopyWithImpl<$Res, _$ErrorImpl>
+    implements _$$ErrorImplCopyWith<$Res> {
+  __$$ErrorImplCopyWithImpl(
+      _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -497,7 +504,7 @@ class __$$_ErrorCopyWithImpl<$Res>
   $Res call({
     Object? error = null,
   }) {
-    return _then(_$_Error(
+    return _then(_$ErrorImpl(
       null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -508,8 +515,8 @@ class __$$_ErrorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Error implements _Error {
-  const _$_Error(this.error);
+class _$ErrorImpl implements _Error {
+  const _$ErrorImpl(this.error);
 
   @override
   final String error;
@@ -520,10 +527,10 @@ class _$_Error implements _Error {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Error &&
+            other is _$ErrorImpl &&
             (identical(other.error, error) || other.error == error));
   }
 
@@ -533,8 +540,8 @@ class _$_Error implements _Error {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ErrorCopyWith<_$_Error> get copyWith =>
-      __$$_ErrorCopyWithImpl<_$_Error>(this, _$identity);
+  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
+      __$$ErrorImplCopyWithImpl<_$ErrorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -618,34 +625,34 @@ class _$_Error implements _Error {
 }
 
 abstract class _Error implements CommandCenterState {
-  const factory _Error(final String error) = _$_Error;
+  const factory _Error(final String error) = _$ErrorImpl;
 
   String get error;
   @JsonKey(ignore: true)
-  _$$_ErrorCopyWith<_$_Error> get copyWith =>
+  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_ClearStateCopyWith<$Res> {
-  factory _$$_ClearStateCopyWith(
-          _$_ClearState value, $Res Function(_$_ClearState) then) =
-      __$$_ClearStateCopyWithImpl<$Res>;
+abstract class _$$ClearStateImplCopyWith<$Res> {
+  factory _$$ClearStateImplCopyWith(
+          _$ClearStateImpl value, $Res Function(_$ClearStateImpl) then) =
+      __$$ClearStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_ClearStateCopyWithImpl<$Res>
-    extends _$CommandCenterStateCopyWithImpl<$Res, _$_ClearState>
-    implements _$$_ClearStateCopyWith<$Res> {
-  __$$_ClearStateCopyWithImpl(
-      _$_ClearState _value, $Res Function(_$_ClearState) _then)
+class __$$ClearStateImplCopyWithImpl<$Res>
+    extends _$CommandCenterStateCopyWithImpl<$Res, _$ClearStateImpl>
+    implements _$$ClearStateImplCopyWith<$Res> {
+  __$$ClearStateImplCopyWithImpl(
+      _$ClearStateImpl _value, $Res Function(_$ClearStateImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_ClearState implements _ClearState {
-  const _$_ClearState();
+class _$ClearStateImpl implements _ClearState {
+  const _$ClearStateImpl();
 
   @override
   String toString() {
@@ -653,9 +660,9 @@ class _$_ClearState implements _ClearState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_ClearState);
+        (other.runtimeType == runtimeType && other is _$ClearStateImpl);
   }
 
   @override
@@ -743,5 +750,5 @@ class _$_ClearState implements _ClearState {
 }
 
 abstract class _ClearState implements CommandCenterState {
-  const factory _ClearState() = _$_ClearState;
+  const factory _ClearState() = _$ClearStateImpl;
 }

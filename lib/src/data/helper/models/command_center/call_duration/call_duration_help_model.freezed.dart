@@ -12,7 +12,7 @@ part of 'call_duration_help_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$CallDurationHelpModel {
@@ -70,22 +70,24 @@ class _$CallDurationHelpModelCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_CallDurationHelpModelCopyWith<$Res>
+abstract class _$$CallDurationHelpModelImplCopyWith<$Res>
     implements $CallDurationHelpModelCopyWith<$Res> {
-  factory _$$_CallDurationHelpModelCopyWith(_$_CallDurationHelpModel value,
-          $Res Function(_$_CallDurationHelpModel) then) =
-      __$$_CallDurationHelpModelCopyWithImpl<$Res>;
+  factory _$$CallDurationHelpModelImplCopyWith(
+          _$CallDurationHelpModelImpl value,
+          $Res Function(_$CallDurationHelpModelImpl) then) =
+      __$$CallDurationHelpModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({List<num> chartValues, int? callTime, int? numberOfCalls});
 }
 
 /// @nodoc
-class __$$_CallDurationHelpModelCopyWithImpl<$Res>
-    extends _$CallDurationHelpModelCopyWithImpl<$Res, _$_CallDurationHelpModel>
-    implements _$$_CallDurationHelpModelCopyWith<$Res> {
-  __$$_CallDurationHelpModelCopyWithImpl(_$_CallDurationHelpModel _value,
-      $Res Function(_$_CallDurationHelpModel) _then)
+class __$$CallDurationHelpModelImplCopyWithImpl<$Res>
+    extends _$CallDurationHelpModelCopyWithImpl<$Res,
+        _$CallDurationHelpModelImpl>
+    implements _$$CallDurationHelpModelImplCopyWith<$Res> {
+  __$$CallDurationHelpModelImplCopyWithImpl(_$CallDurationHelpModelImpl _value,
+      $Res Function(_$CallDurationHelpModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -95,7 +97,7 @@ class __$$_CallDurationHelpModelCopyWithImpl<$Res>
     Object? callTime = freezed,
     Object? numberOfCalls = freezed,
   }) {
-    return _then(_$_CallDurationHelpModel(
+    return _then(_$CallDurationHelpModelImpl(
       chartValues: null == chartValues
           ? _value._chartValues
           : chartValues // ignore: cast_nullable_to_non_nullable
@@ -114,8 +116,8 @@ class __$$_CallDurationHelpModelCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_CallDurationHelpModel extends _CallDurationHelpModel {
-  const _$_CallDurationHelpModel(
+class _$CallDurationHelpModelImpl extends _CallDurationHelpModel {
+  const _$CallDurationHelpModelImpl(
       {final List<num> chartValues = const [],
       this.callTime,
       this.numberOfCalls})
@@ -143,10 +145,10 @@ class _$_CallDurationHelpModel extends _CallDurationHelpModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CallDurationHelpModel &&
+            other is _$CallDurationHelpModelImpl &&
             const DeepCollectionEquality()
                 .equals(other._chartValues, _chartValues) &&
             (identical(other.callTime, callTime) ||
@@ -165,16 +167,16 @@ class _$_CallDurationHelpModel extends _CallDurationHelpModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CallDurationHelpModelCopyWith<_$_CallDurationHelpModel> get copyWith =>
-      __$$_CallDurationHelpModelCopyWithImpl<_$_CallDurationHelpModel>(
-          this, _$identity);
+  _$$CallDurationHelpModelImplCopyWith<_$CallDurationHelpModelImpl>
+      get copyWith => __$$CallDurationHelpModelImplCopyWithImpl<
+          _$CallDurationHelpModelImpl>(this, _$identity);
 }
 
 abstract class _CallDurationHelpModel extends CallDurationHelpModel {
   const factory _CallDurationHelpModel(
       {final List<num> chartValues,
       final int? callTime,
-      final int? numberOfCalls}) = _$_CallDurationHelpModel;
+      final int? numberOfCalls}) = _$CallDurationHelpModelImpl;
   const _CallDurationHelpModel._() : super._();
 
   @override
@@ -185,6 +187,6 @@ abstract class _CallDurationHelpModel extends CallDurationHelpModel {
   int? get numberOfCalls;
   @override
   @JsonKey(ignore: true)
-  _$$_CallDurationHelpModelCopyWith<_$_CallDurationHelpModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$CallDurationHelpModelImplCopyWith<_$CallDurationHelpModelImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

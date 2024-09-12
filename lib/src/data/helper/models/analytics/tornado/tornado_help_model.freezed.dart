@@ -12,7 +12,7 @@ part of 'tornado_help_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$TornadoHelpModel {
@@ -86,11 +86,11 @@ class _$TornadoHelpModelCopyWithImpl<$Res, $Val extends TornadoHelpModel>
 }
 
 /// @nodoc
-abstract class _$$_TornadoHelpModelCopyWith<$Res>
+abstract class _$$TornadoHelpModelImplCopyWith<$Res>
     implements $TornadoHelpModelCopyWith<$Res> {
-  factory _$$_TornadoHelpModelCopyWith(
-          _$_TornadoHelpModel value, $Res Function(_$_TornadoHelpModel) then) =
-      __$$_TornadoHelpModelCopyWithImpl<$Res>;
+  factory _$$TornadoHelpModelImplCopyWith(_$TornadoHelpModelImpl value,
+          $Res Function(_$TornadoHelpModelImpl) then) =
+      __$$TornadoHelpModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -102,11 +102,11 @@ abstract class _$$_TornadoHelpModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_TornadoHelpModelCopyWithImpl<$Res>
-    extends _$TornadoHelpModelCopyWithImpl<$Res, _$_TornadoHelpModel>
-    implements _$$_TornadoHelpModelCopyWith<$Res> {
-  __$$_TornadoHelpModelCopyWithImpl(
-      _$_TornadoHelpModel _value, $Res Function(_$_TornadoHelpModel) _then)
+class __$$TornadoHelpModelImplCopyWithImpl<$Res>
+    extends _$TornadoHelpModelCopyWithImpl<$Res, _$TornadoHelpModelImpl>
+    implements _$$TornadoHelpModelImplCopyWith<$Res> {
+  __$$TornadoHelpModelImplCopyWithImpl(_$TornadoHelpModelImpl _value,
+      $Res Function(_$TornadoHelpModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -118,7 +118,7 @@ class __$$_TornadoHelpModelCopyWithImpl<$Res>
     Object? maxWidth = freezed,
     Object? unit = freezed,
   }) {
-    return _then(_$_TornadoHelpModel(
+    return _then(_$TornadoHelpModelImpl(
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -145,8 +145,8 @@ class __$$_TornadoHelpModelCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_TornadoHelpModel implements _TornadoHelpModel {
-  const _$_TornadoHelpModel(
+class _$TornadoHelpModelImpl implements _TornadoHelpModel {
+  const _$TornadoHelpModelImpl(
       {this.name,
       this.currentValue,
       this.comparableValue,
@@ -170,10 +170,10 @@ class _$_TornadoHelpModel implements _TornadoHelpModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TornadoHelpModel &&
+            other is _$TornadoHelpModelImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.currentValue, currentValue) ||
                 other.currentValue == currentValue) &&
@@ -191,8 +191,9 @@ class _$_TornadoHelpModel implements _TornadoHelpModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TornadoHelpModelCopyWith<_$_TornadoHelpModel> get copyWith =>
-      __$$_TornadoHelpModelCopyWithImpl<_$_TornadoHelpModel>(this, _$identity);
+  _$$TornadoHelpModelImplCopyWith<_$TornadoHelpModelImpl> get copyWith =>
+      __$$TornadoHelpModelImplCopyWithImpl<_$TornadoHelpModelImpl>(
+          this, _$identity);
 }
 
 abstract class _TornadoHelpModel implements TornadoHelpModel {
@@ -201,7 +202,7 @@ abstract class _TornadoHelpModel implements TornadoHelpModel {
       final double? currentValue,
       final double? comparableValue,
       final double? maxWidth,
-      final String? unit}) = _$_TornadoHelpModel;
+      final String? unit}) = _$TornadoHelpModelImpl;
 
   @override
   String? get name;
@@ -215,6 +216,6 @@ abstract class _TornadoHelpModel implements TornadoHelpModel {
   String? get unit;
   @override
   @JsonKey(ignore: true)
-  _$$_TornadoHelpModelCopyWith<_$_TornadoHelpModel> get copyWith =>
+  _$$TornadoHelpModelImplCopyWith<_$TornadoHelpModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -12,7 +12,7 @@ part of 'analytics_cubit.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$AnalyticsState {
@@ -93,24 +93,25 @@ class _$AnalyticsStateCopyWithImpl<$Res, $Val extends AnalyticsState>
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+abstract class _$$InitialImplCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$AnalyticsStateCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$AnalyticsStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  const _$_Initial();
+class _$InitialImpl implements _Initial {
+  const _$InitialImpl();
 
   @override
   String toString() {
@@ -118,9 +119,9 @@ class _$_Initial implements _Initial {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
+        (other.runtimeType == runtimeType && other is _$InitialImpl);
   }
 
   @override
@@ -208,27 +209,29 @@ class _$_Initial implements _Initial {
 }
 
 abstract class _Initial implements AnalyticsState {
-  const factory _Initial() = _$_Initial;
+  const factory _Initial() = _$InitialImpl;
 }
 
 /// @nodoc
-abstract class _$$LoadingCopyWith<$Res> {
-  factory _$$LoadingCopyWith(_$Loading value, $Res Function(_$Loading) then) =
-      __$$LoadingCopyWithImpl<$Res>;
+abstract class _$$LoadingImplCopyWith<$Res> {
+  factory _$$LoadingImplCopyWith(
+          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
+      __$$LoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$LoadingCopyWithImpl<$Res>
-    extends _$AnalyticsStateCopyWithImpl<$Res, _$Loading>
-    implements _$$LoadingCopyWith<$Res> {
-  __$$LoadingCopyWithImpl(_$Loading _value, $Res Function(_$Loading) _then)
+class __$$LoadingImplCopyWithImpl<$Res>
+    extends _$AnalyticsStateCopyWithImpl<$Res, _$LoadingImpl>
+    implements _$$LoadingImplCopyWith<$Res> {
+  __$$LoadingImplCopyWithImpl(
+      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$Loading implements Loading {
-  const _$Loading();
+class _$LoadingImpl implements Loading {
+  const _$LoadingImpl();
 
   @override
   String toString() {
@@ -236,9 +239,9 @@ class _$Loading implements Loading {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$Loading);
+        (other.runtimeType == runtimeType && other is _$LoadingImpl);
   }
 
   @override
@@ -326,22 +329,24 @@ class _$Loading implements Loading {
 }
 
 abstract class Loading implements AnalyticsState {
-  const factory Loading() = _$Loading;
+  const factory Loading() = _$LoadingImpl;
 }
 
 /// @nodoc
-abstract class _$$ErrorCopyWith<$Res> {
-  factory _$$ErrorCopyWith(_$Error value, $Res Function(_$Error) then) =
-      __$$ErrorCopyWithImpl<$Res>;
+abstract class _$$ErrorImplCopyWith<$Res> {
+  factory _$$ErrorImplCopyWith(
+          _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
+      __$$ErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$ErrorCopyWithImpl<$Res>
-    extends _$AnalyticsStateCopyWithImpl<$Res, _$Error>
-    implements _$$ErrorCopyWith<$Res> {
-  __$$ErrorCopyWithImpl(_$Error _value, $Res Function(_$Error) _then)
+class __$$ErrorImplCopyWithImpl<$Res>
+    extends _$AnalyticsStateCopyWithImpl<$Res, _$ErrorImpl>
+    implements _$$ErrorImplCopyWith<$Res> {
+  __$$ErrorImplCopyWithImpl(
+      _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -349,7 +354,7 @@ class __$$ErrorCopyWithImpl<$Res>
   $Res call({
     Object? message = null,
   }) {
-    return _then(_$Error(
+    return _then(_$ErrorImpl(
       null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -360,8 +365,8 @@ class __$$ErrorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$Error implements Error {
-  const _$Error(this.message);
+class _$ErrorImpl implements Error {
+  const _$ErrorImpl(this.message);
 
   @override
   final String message;
@@ -372,10 +377,10 @@ class _$Error implements Error {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$Error &&
+            other is _$ErrorImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
@@ -385,8 +390,8 @@ class _$Error implements Error {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ErrorCopyWith<_$Error> get copyWith =>
-      __$$ErrorCopyWithImpl<_$Error>(this, _$identity);
+  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
+      __$$ErrorImplCopyWithImpl<_$ErrorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -470,17 +475,19 @@ class _$Error implements Error {
 }
 
 abstract class Error implements AnalyticsState {
-  const factory Error(final String message) = _$Error;
+  const factory Error(final String message) = _$ErrorImpl;
 
   String get message;
   @JsonKey(ignore: true)
-  _$$ErrorCopyWith<_$Error> get copyWith => throw _privateConstructorUsedError;
+  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$DataCopyWith<$Res> {
-  factory _$$DataCopyWith(_$Data value, $Res Function(_$Data) then) =
-      __$$DataCopyWithImpl<$Res>;
+abstract class _$$DataImplCopyWith<$Res> {
+  factory _$$DataImplCopyWith(
+          _$DataImpl value, $Res Function(_$DataImpl) then) =
+      __$$DataImplCopyWithImpl<$Res>;
   @useResult
   $Res call({AnalyticsUIModel model});
 
@@ -488,10 +495,10 @@ abstract class _$$DataCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$DataCopyWithImpl<$Res>
-    extends _$AnalyticsStateCopyWithImpl<$Res, _$Data>
-    implements _$$DataCopyWith<$Res> {
-  __$$DataCopyWithImpl(_$Data _value, $Res Function(_$Data) _then)
+class __$$DataImplCopyWithImpl<$Res>
+    extends _$AnalyticsStateCopyWithImpl<$Res, _$DataImpl>
+    implements _$$DataImplCopyWith<$Res> {
+  __$$DataImplCopyWithImpl(_$DataImpl _value, $Res Function(_$DataImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -499,7 +506,7 @@ class __$$DataCopyWithImpl<$Res>
   $Res call({
     Object? model = null,
   }) {
-    return _then(_$Data(
+    return _then(_$DataImpl(
       null == model
           ? _value.model
           : model // ignore: cast_nullable_to_non_nullable
@@ -518,8 +525,8 @@ class __$$DataCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$Data implements Data {
-  const _$Data(this.model);
+class _$DataImpl implements Data {
+  const _$DataImpl(this.model);
 
   @override
   final AnalyticsUIModel model;
@@ -530,10 +537,10 @@ class _$Data implements Data {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$Data &&
+            other is _$DataImpl &&
             (identical(other.model, model) || other.model == model));
   }
 
@@ -543,8 +550,8 @@ class _$Data implements Data {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$DataCopyWith<_$Data> get copyWith =>
-      __$$DataCopyWithImpl<_$Data>(this, _$identity);
+  _$$DataImplCopyWith<_$DataImpl> get copyWith =>
+      __$$DataImplCopyWithImpl<_$DataImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -628,33 +635,34 @@ class _$Data implements Data {
 }
 
 abstract class Data implements AnalyticsState {
-  const factory Data(final AnalyticsUIModel model) = _$Data;
+  const factory Data(final AnalyticsUIModel model) = _$DataImpl;
 
   AnalyticsUIModel get model;
   @JsonKey(ignore: true)
-  _$$DataCopyWith<_$Data> get copyWith => throw _privateConstructorUsedError;
+  _$$DataImplCopyWith<_$DataImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_ClearStateCopyWith<$Res> {
-  factory _$$_ClearStateCopyWith(
-          _$_ClearState value, $Res Function(_$_ClearState) then) =
-      __$$_ClearStateCopyWithImpl<$Res>;
+abstract class _$$ClearStateImplCopyWith<$Res> {
+  factory _$$ClearStateImplCopyWith(
+          _$ClearStateImpl value, $Res Function(_$ClearStateImpl) then) =
+      __$$ClearStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_ClearStateCopyWithImpl<$Res>
-    extends _$AnalyticsStateCopyWithImpl<$Res, _$_ClearState>
-    implements _$$_ClearStateCopyWith<$Res> {
-  __$$_ClearStateCopyWithImpl(
-      _$_ClearState _value, $Res Function(_$_ClearState) _then)
+class __$$ClearStateImplCopyWithImpl<$Res>
+    extends _$AnalyticsStateCopyWithImpl<$Res, _$ClearStateImpl>
+    implements _$$ClearStateImplCopyWith<$Res> {
+  __$$ClearStateImplCopyWithImpl(
+      _$ClearStateImpl _value, $Res Function(_$ClearStateImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_ClearState implements _ClearState {
-  const _$_ClearState();
+class _$ClearStateImpl implements _ClearState {
+  const _$ClearStateImpl();
 
   @override
   String toString() {
@@ -662,9 +670,9 @@ class _$_ClearState implements _ClearState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_ClearState);
+        (other.runtimeType == runtimeType && other is _$ClearStateImpl);
   }
 
   @override
@@ -752,5 +760,5 @@ class _$_ClearState implements _ClearState {
 }
 
 abstract class _ClearState implements AnalyticsState {
-  const factory _ClearState() = _$_ClearState;
+  const factory _ClearState() = _$ClearStateImpl;
 }

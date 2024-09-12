@@ -12,7 +12,7 @@ part of 'sector_overview_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 SectorOverviewModel _$SectorOverviewModelFromJson(Map<String, dynamic> json) {
   return _SectorOverviewModel.fromJson(json);
@@ -80,22 +80,22 @@ class _$SectorOverviewModelCopyWithImpl<$Res, $Val extends SectorOverviewModel>
 }
 
 /// @nodoc
-abstract class _$$_SectorOverviewModelCopyWith<$Res>
+abstract class _$$SectorOverviewModelImplCopyWith<$Res>
     implements $SectorOverviewModelCopyWith<$Res> {
-  factory _$$_SectorOverviewModelCopyWith(_$_SectorOverviewModel value,
-          $Res Function(_$_SectorOverviewModel) then) =
-      __$$_SectorOverviewModelCopyWithImpl<$Res>;
+  factory _$$SectorOverviewModelImplCopyWith(_$SectorOverviewModelImpl value,
+          $Res Function(_$SectorOverviewModelImpl) then) =
+      __$$SectorOverviewModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String? date, String? title, String? value, String? average});
 }
 
 /// @nodoc
-class __$$_SectorOverviewModelCopyWithImpl<$Res>
-    extends _$SectorOverviewModelCopyWithImpl<$Res, _$_SectorOverviewModel>
-    implements _$$_SectorOverviewModelCopyWith<$Res> {
-  __$$_SectorOverviewModelCopyWithImpl(_$_SectorOverviewModel _value,
-      $Res Function(_$_SectorOverviewModel) _then)
+class __$$SectorOverviewModelImplCopyWithImpl<$Res>
+    extends _$SectorOverviewModelCopyWithImpl<$Res, _$SectorOverviewModelImpl>
+    implements _$$SectorOverviewModelImplCopyWith<$Res> {
+  __$$SectorOverviewModelImplCopyWithImpl(_$SectorOverviewModelImpl _value,
+      $Res Function(_$SectorOverviewModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -106,7 +106,7 @@ class __$$_SectorOverviewModelCopyWithImpl<$Res>
     Object? value = freezed,
     Object? average = freezed,
   }) {
-    return _then(_$_SectorOverviewModel(
+    return _then(_$SectorOverviewModelImpl(
       date: freezed == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
@@ -129,13 +129,13 @@ class __$$_SectorOverviewModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_SectorOverviewModel extends _SectorOverviewModel {
-  const _$_SectorOverviewModel(
+class _$SectorOverviewModelImpl extends _SectorOverviewModel {
+  const _$SectorOverviewModelImpl(
       {this.date, this.title, this.value, this.average})
       : super._();
 
-  factory _$_SectorOverviewModel.fromJson(Map<String, dynamic> json) =>
-      _$$_SectorOverviewModelFromJson(json);
+  factory _$SectorOverviewModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SectorOverviewModelImplFromJson(json);
 
   @override
   final String? date;
@@ -152,10 +152,10 @@ class _$_SectorOverviewModel extends _SectorOverviewModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SectorOverviewModel &&
+            other is _$SectorOverviewModelImpl &&
             (identical(other.date, date) || other.date == date) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.value, value) || other.value == value) &&
@@ -169,13 +169,13 @@ class _$_SectorOverviewModel extends _SectorOverviewModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SectorOverviewModelCopyWith<_$_SectorOverviewModel> get copyWith =>
-      __$$_SectorOverviewModelCopyWithImpl<_$_SectorOverviewModel>(
+  _$$SectorOverviewModelImplCopyWith<_$SectorOverviewModelImpl> get copyWith =>
+      __$$SectorOverviewModelImplCopyWithImpl<_$SectorOverviewModelImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SectorOverviewModelToJson(
+    return _$$SectorOverviewModelImplToJson(
       this,
     );
   }
@@ -186,11 +186,11 @@ abstract class _SectorOverviewModel extends SectorOverviewModel {
       {final String? date,
       final String? title,
       final String? value,
-      final String? average}) = _$_SectorOverviewModel;
+      final String? average}) = _$SectorOverviewModelImpl;
   const _SectorOverviewModel._() : super._();
 
   factory _SectorOverviewModel.fromJson(Map<String, dynamic> json) =
-      _$_SectorOverviewModel.fromJson;
+      _$SectorOverviewModelImpl.fromJson;
 
   @override
   String? get date;
@@ -202,6 +202,6 @@ abstract class _SectorOverviewModel extends SectorOverviewModel {
   String? get average;
   @override
   @JsonKey(ignore: true)
-  _$$_SectorOverviewModelCopyWith<_$_SectorOverviewModel> get copyWith =>
+  _$$SectorOverviewModelImplCopyWith<_$SectorOverviewModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

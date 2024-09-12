@@ -12,7 +12,7 @@ part of 'leads_help_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$LeadsHelpModel {
@@ -69,22 +69,22 @@ class _$LeadsHelpModelCopyWithImpl<$Res, $Val extends LeadsHelpModel>
 }
 
 /// @nodoc
-abstract class _$$_LeadsHelpModelCopyWith<$Res>
+abstract class _$$LeadsHelpModelImplCopyWith<$Res>
     implements $LeadsHelpModelCopyWith<$Res> {
-  factory _$$_LeadsHelpModelCopyWith(
-          _$_LeadsHelpModel value, $Res Function(_$_LeadsHelpModel) then) =
-      __$$_LeadsHelpModelCopyWithImpl<$Res>;
+  factory _$$LeadsHelpModelImplCopyWith(_$LeadsHelpModelImpl value,
+          $Res Function(_$LeadsHelpModelImpl) then) =
+      __$$LeadsHelpModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({num? value, num? prevValue, num? maxValue});
 }
 
 /// @nodoc
-class __$$_LeadsHelpModelCopyWithImpl<$Res>
-    extends _$LeadsHelpModelCopyWithImpl<$Res, _$_LeadsHelpModel>
-    implements _$$_LeadsHelpModelCopyWith<$Res> {
-  __$$_LeadsHelpModelCopyWithImpl(
-      _$_LeadsHelpModel _value, $Res Function(_$_LeadsHelpModel) _then)
+class __$$LeadsHelpModelImplCopyWithImpl<$Res>
+    extends _$LeadsHelpModelCopyWithImpl<$Res, _$LeadsHelpModelImpl>
+    implements _$$LeadsHelpModelImplCopyWith<$Res> {
+  __$$LeadsHelpModelImplCopyWithImpl(
+      _$LeadsHelpModelImpl _value, $Res Function(_$LeadsHelpModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -94,7 +94,7 @@ class __$$_LeadsHelpModelCopyWithImpl<$Res>
     Object? prevValue = freezed,
     Object? maxValue = freezed,
   }) {
-    return _then(_$_LeadsHelpModel(
+    return _then(_$LeadsHelpModelImpl(
       value: freezed == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
@@ -113,8 +113,8 @@ class __$$_LeadsHelpModelCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_LeadsHelpModel implements _LeadsHelpModel {
-  const _$_LeadsHelpModel({this.value, this.prevValue, this.maxValue});
+class _$LeadsHelpModelImpl implements _LeadsHelpModel {
+  const _$LeadsHelpModelImpl({this.value, this.prevValue, this.maxValue});
 
   @override
   final num? value;
@@ -129,10 +129,10 @@ class _$_LeadsHelpModel implements _LeadsHelpModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_LeadsHelpModel &&
+            other is _$LeadsHelpModelImpl &&
             (identical(other.value, value) || other.value == value) &&
             (identical(other.prevValue, prevValue) ||
                 other.prevValue == prevValue) &&
@@ -146,15 +146,16 @@ class _$_LeadsHelpModel implements _LeadsHelpModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LeadsHelpModelCopyWith<_$_LeadsHelpModel> get copyWith =>
-      __$$_LeadsHelpModelCopyWithImpl<_$_LeadsHelpModel>(this, _$identity);
+  _$$LeadsHelpModelImplCopyWith<_$LeadsHelpModelImpl> get copyWith =>
+      __$$LeadsHelpModelImplCopyWithImpl<_$LeadsHelpModelImpl>(
+          this, _$identity);
 }
 
 abstract class _LeadsHelpModel implements LeadsHelpModel {
   const factory _LeadsHelpModel(
       {final num? value,
       final num? prevValue,
-      final num? maxValue}) = _$_LeadsHelpModel;
+      final num? maxValue}) = _$LeadsHelpModelImpl;
 
   @override
   num? get value;
@@ -164,6 +165,6 @@ abstract class _LeadsHelpModel implements LeadsHelpModel {
   num? get maxValue;
   @override
   @JsonKey(ignore: true)
-  _$$_LeadsHelpModelCopyWith<_$_LeadsHelpModel> get copyWith =>
+  _$$LeadsHelpModelImplCopyWith<_$LeadsHelpModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

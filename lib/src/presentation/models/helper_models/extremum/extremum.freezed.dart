@@ -12,7 +12,7 @@ part of 'extremum.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$Extremum {
@@ -62,21 +62,22 @@ class _$ExtremumCopyWithImpl<$Res, $Val extends Extremum>
 }
 
 /// @nodoc
-abstract class _$$_ExtremumCopyWith<$Res> implements $ExtremumCopyWith<$Res> {
-  factory _$$_ExtremumCopyWith(
-          _$_Extremum value, $Res Function(_$_Extremum) then) =
-      __$$_ExtremumCopyWithImpl<$Res>;
+abstract class _$$ExtremumImplCopyWith<$Res>
+    implements $ExtremumCopyWith<$Res> {
+  factory _$$ExtremumImplCopyWith(
+          _$ExtremumImpl value, $Res Function(_$ExtremumImpl) then) =
+      __$$ExtremumImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({num min, num max});
 }
 
 /// @nodoc
-class __$$_ExtremumCopyWithImpl<$Res>
-    extends _$ExtremumCopyWithImpl<$Res, _$_Extremum>
-    implements _$$_ExtremumCopyWith<$Res> {
-  __$$_ExtremumCopyWithImpl(
-      _$_Extremum _value, $Res Function(_$_Extremum) _then)
+class __$$ExtremumImplCopyWithImpl<$Res>
+    extends _$ExtremumCopyWithImpl<$Res, _$ExtremumImpl>
+    implements _$$ExtremumImplCopyWith<$Res> {
+  __$$ExtremumImplCopyWithImpl(
+      _$ExtremumImpl _value, $Res Function(_$ExtremumImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -85,7 +86,7 @@ class __$$_ExtremumCopyWithImpl<$Res>
     Object? min = null,
     Object? max = null,
   }) {
-    return _then(_$_Extremum(
+    return _then(_$ExtremumImpl(
       min: null == min
           ? _value.min
           : min // ignore: cast_nullable_to_non_nullable
@@ -100,8 +101,8 @@ class __$$_ExtremumCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Extremum extends _Extremum {
-  const _$_Extremum({this.min = 0, this.max = 0}) : super._();
+class _$ExtremumImpl extends _Extremum {
+  const _$ExtremumImpl({this.min = 0, this.max = 0}) : super._();
 
   @override
   @JsonKey()
@@ -116,10 +117,10 @@ class _$_Extremum extends _Extremum {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Extremum &&
+            other is _$ExtremumImpl &&
             (identical(other.min, min) || other.min == min) &&
             (identical(other.max, max) || other.max == max));
   }
@@ -130,12 +131,12 @@ class _$_Extremum extends _Extremum {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ExtremumCopyWith<_$_Extremum> get copyWith =>
-      __$$_ExtremumCopyWithImpl<_$_Extremum>(this, _$identity);
+  _$$ExtremumImplCopyWith<_$ExtremumImpl> get copyWith =>
+      __$$ExtremumImplCopyWithImpl<_$ExtremumImpl>(this, _$identity);
 }
 
 abstract class _Extremum extends Extremum {
-  const factory _Extremum({final num min, final num max}) = _$_Extremum;
+  const factory _Extremum({final num min, final num max}) = _$ExtremumImpl;
   const _Extremum._() : super._();
 
   @override
@@ -144,6 +145,6 @@ abstract class _Extremum extends Extremum {
   num get max;
   @override
   @JsonKey(ignore: true)
-  _$$_ExtremumCopyWith<_$_Extremum> get copyWith =>
+  _$$ExtremumImplCopyWith<_$ExtremumImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

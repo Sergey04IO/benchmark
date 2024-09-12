@@ -12,7 +12,7 @@ part of 'home_cubit.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$HomeState {
@@ -80,24 +80,25 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+abstract class _$$InitialImplCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$HomeStateCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$HomeStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  const _$_Initial();
+class _$InitialImpl implements _Initial {
+  const _$InitialImpl();
 
   @override
   String toString() {
@@ -105,9 +106,9 @@ class _$_Initial implements _Initial {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
+        (other.runtimeType == runtimeType && other is _$InitialImpl);
   }
 
   @override
@@ -183,14 +184,14 @@ class _$_Initial implements _Initial {
 }
 
 abstract class _Initial implements HomeState {
-  const factory _Initial() = _$_Initial;
+  const factory _Initial() = _$InitialImpl;
 }
 
 /// @nodoc
-abstract class _$$CommonStateCopyWith<$Res> {
-  factory _$$CommonStateCopyWith(
-          _$CommonState value, $Res Function(_$CommonState) then) =
-      __$$CommonStateCopyWithImpl<$Res>;
+abstract class _$$CommonStateImplCopyWith<$Res> {
+  factory _$$CommonStateImplCopyWith(
+          _$CommonStateImpl value, $Res Function(_$CommonStateImpl) then) =
+      __$$CommonStateImplCopyWithImpl<$Res>;
   @useResult
   $Res call({HomeUIModel model});
 
@@ -198,11 +199,11 @@ abstract class _$$CommonStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$CommonStateCopyWithImpl<$Res>
-    extends _$HomeStateCopyWithImpl<$Res, _$CommonState>
-    implements _$$CommonStateCopyWith<$Res> {
-  __$$CommonStateCopyWithImpl(
-      _$CommonState _value, $Res Function(_$CommonState) _then)
+class __$$CommonStateImplCopyWithImpl<$Res>
+    extends _$HomeStateCopyWithImpl<$Res, _$CommonStateImpl>
+    implements _$$CommonStateImplCopyWith<$Res> {
+  __$$CommonStateImplCopyWithImpl(
+      _$CommonStateImpl _value, $Res Function(_$CommonStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -210,7 +211,7 @@ class __$$CommonStateCopyWithImpl<$Res>
   $Res call({
     Object? model = null,
   }) {
-    return _then(_$CommonState(
+    return _then(_$CommonStateImpl(
       null == model
           ? _value.model
           : model // ignore: cast_nullable_to_non_nullable
@@ -229,8 +230,8 @@ class __$$CommonStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$CommonState implements CommonState {
-  const _$CommonState(this.model);
+class _$CommonStateImpl implements CommonState {
+  const _$CommonStateImpl(this.model);
 
   @override
   final HomeUIModel model;
@@ -241,10 +242,10 @@ class _$CommonState implements CommonState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CommonState &&
+            other is _$CommonStateImpl &&
             (identical(other.model, model) || other.model == model));
   }
 
@@ -254,8 +255,8 @@ class _$CommonState implements CommonState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$CommonStateCopyWith<_$CommonState> get copyWith =>
-      __$$CommonStateCopyWithImpl<_$CommonState>(this, _$identity);
+  _$$CommonStateImplCopyWith<_$CommonStateImpl> get copyWith =>
+      __$$CommonStateImplCopyWithImpl<_$CommonStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -327,34 +328,34 @@ class _$CommonState implements CommonState {
 }
 
 abstract class CommonState implements HomeState {
-  const factory CommonState(final HomeUIModel model) = _$CommonState;
+  const factory CommonState(final HomeUIModel model) = _$CommonStateImpl;
 
   HomeUIModel get model;
   @JsonKey(ignore: true)
-  _$$CommonStateCopyWith<_$CommonState> get copyWith =>
+  _$$CommonStateImplCopyWith<_$CommonStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_ClearStateCopyWith<$Res> {
-  factory _$$_ClearStateCopyWith(
-          _$_ClearState value, $Res Function(_$_ClearState) then) =
-      __$$_ClearStateCopyWithImpl<$Res>;
+abstract class _$$ClearStateImplCopyWith<$Res> {
+  factory _$$ClearStateImplCopyWith(
+          _$ClearStateImpl value, $Res Function(_$ClearStateImpl) then) =
+      __$$ClearStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_ClearStateCopyWithImpl<$Res>
-    extends _$HomeStateCopyWithImpl<$Res, _$_ClearState>
-    implements _$$_ClearStateCopyWith<$Res> {
-  __$$_ClearStateCopyWithImpl(
-      _$_ClearState _value, $Res Function(_$_ClearState) _then)
+class __$$ClearStateImplCopyWithImpl<$Res>
+    extends _$HomeStateCopyWithImpl<$Res, _$ClearStateImpl>
+    implements _$$ClearStateImplCopyWith<$Res> {
+  __$$ClearStateImplCopyWithImpl(
+      _$ClearStateImpl _value, $Res Function(_$ClearStateImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_ClearState implements _ClearState {
-  const _$_ClearState();
+class _$ClearStateImpl implements _ClearState {
+  const _$ClearStateImpl();
 
   @override
   String toString() {
@@ -362,9 +363,9 @@ class _$_ClearState implements _ClearState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_ClearState);
+        (other.runtimeType == runtimeType && other is _$ClearStateImpl);
   }
 
   @override
@@ -440,5 +441,5 @@ class _$_ClearState implements _ClearState {
 }
 
 abstract class _ClearState implements HomeState {
-  const factory _ClearState() = _$_ClearState;
+  const factory _ClearState() = _$ClearStateImpl;
 }

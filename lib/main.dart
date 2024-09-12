@@ -1,5 +1,7 @@
 // ignore_for_file: avoid_redundant_argument_values
 
+import 'dart:async';
+
 import 'package:benchmark/src/app/config/di/injector.dart';
 import 'package:benchmark/src/app/config/firebase/firebase_options.dart';
 import 'package:benchmark/src/app/core/constants/common.dart';
@@ -20,24 +22,29 @@ import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'package:injectable/injectable.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await EasyLocalization.ensureInitialized();
-  await Firebase.initializeApp(
-    name: _getFirebaseAppName(),
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
-  setUrlStrategy(PathUrlStrategy());
-  await configureInjection(Environment.prod);
-  await _initData();
+  runZonedGuarded(
+    () async {
+      WidgetsFlutterBinding.ensureInitialized();
+      await Firebase.initializeApp(
+        // name: _getFirebaseAppName(),
+        options: DefaultFirebaseOptions.currentPlatform,
+      );
+      await EasyLocalization.ensureInitialized();
+      setUrlStrategy(PathUrlStrategy());
+      await configureInjection(Environment.prod);
+      await _initData();
 
-  runApp(
-    EasyLocalization(
-      supportedLocales: AppLocales.appLocales,
-      path: 'assets/translations',
-      fallbackLocale: AppLocales.enLocale,
-      assetLoader: const CodegenLoader(),
-      child: _buildApp(),
-    ),
+      runApp(
+        EasyLocalization(
+          supportedLocales: AppLocales.appLocales,
+          path: 'assets/translations',
+          fallbackLocale: AppLocales.enLocale,
+          assetLoader: const CodegenLoader(),
+          child: _buildApp(),
+        ),
+      );
+    },
+    (error, stack) {},
   );
 }
 

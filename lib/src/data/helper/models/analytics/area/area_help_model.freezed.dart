@@ -12,7 +12,7 @@ part of 'area_help_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$AreaHelpModel {
@@ -86,11 +86,11 @@ class _$AreaHelpModelCopyWithImpl<$Res, $Val extends AreaHelpModel>
 }
 
 /// @nodoc
-abstract class _$$_AreaHelpModelCopyWith<$Res>
+abstract class _$$AreaHelpModelImplCopyWith<$Res>
     implements $AreaHelpModelCopyWith<$Res> {
-  factory _$$_AreaHelpModelCopyWith(
-          _$_AreaHelpModel value, $Res Function(_$_AreaHelpModel) then) =
-      __$$_AreaHelpModelCopyWithImpl<$Res>;
+  factory _$$AreaHelpModelImplCopyWith(
+          _$AreaHelpModelImpl value, $Res Function(_$AreaHelpModelImpl) then) =
+      __$$AreaHelpModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -102,11 +102,11 @@ abstract class _$$_AreaHelpModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_AreaHelpModelCopyWithImpl<$Res>
-    extends _$AreaHelpModelCopyWithImpl<$Res, _$_AreaHelpModel>
-    implements _$$_AreaHelpModelCopyWith<$Res> {
-  __$$_AreaHelpModelCopyWithImpl(
-      _$_AreaHelpModel _value, $Res Function(_$_AreaHelpModel) _then)
+class __$$AreaHelpModelImplCopyWithImpl<$Res>
+    extends _$AreaHelpModelCopyWithImpl<$Res, _$AreaHelpModelImpl>
+    implements _$$AreaHelpModelImplCopyWith<$Res> {
+  __$$AreaHelpModelImplCopyWithImpl(
+      _$AreaHelpModelImpl _value, $Res Function(_$AreaHelpModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -118,7 +118,7 @@ class __$$_AreaHelpModelCopyWithImpl<$Res>
     Object? maxValue = freezed,
     Object? points = null,
   }) {
-    return _then(_$_AreaHelpModel(
+    return _then(_$AreaHelpModelImpl(
       title: freezed == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -145,8 +145,8 @@ class __$$_AreaHelpModelCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AreaHelpModel implements _AreaHelpModel {
-  const _$_AreaHelpModel(
+class _$AreaHelpModelImpl implements _AreaHelpModel {
+  const _$AreaHelpModelImpl(
       {this.title,
       this.unit,
       this.value,
@@ -177,10 +177,10 @@ class _$_AreaHelpModel implements _AreaHelpModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AreaHelpModel &&
+            other is _$AreaHelpModelImpl &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.unit, unit) || other.unit == unit) &&
             (identical(other.value, value) || other.value == value) &&
@@ -196,8 +196,8 @@ class _$_AreaHelpModel implements _AreaHelpModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AreaHelpModelCopyWith<_$_AreaHelpModel> get copyWith =>
-      __$$_AreaHelpModelCopyWithImpl<_$_AreaHelpModel>(this, _$identity);
+  _$$AreaHelpModelImplCopyWith<_$AreaHelpModelImpl> get copyWith =>
+      __$$AreaHelpModelImplCopyWithImpl<_$AreaHelpModelImpl>(this, _$identity);
 }
 
 abstract class _AreaHelpModel implements AreaHelpModel {
@@ -206,7 +206,7 @@ abstract class _AreaHelpModel implements AreaHelpModel {
       final String? unit,
       final double? value,
       final double? maxValue,
-      final List<double> points}) = _$_AreaHelpModel;
+      final List<double> points}) = _$AreaHelpModelImpl;
 
   @override
   String? get title;
@@ -220,6 +220,6 @@ abstract class _AreaHelpModel implements AreaHelpModel {
   List<double> get points;
   @override
   @JsonKey(ignore: true)
-  _$$_AreaHelpModelCopyWith<_$_AreaHelpModel> get copyWith =>
+  _$$AreaHelpModelImplCopyWith<_$AreaHelpModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

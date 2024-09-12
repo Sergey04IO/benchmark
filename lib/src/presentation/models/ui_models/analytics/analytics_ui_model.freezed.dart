@@ -12,7 +12,7 @@ part of 'analytics_ui_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$AnalyticsUIModel {
@@ -97,11 +97,11 @@ class _$AnalyticsUIModelCopyWithImpl<$Res, $Val extends AnalyticsUIModel>
 }
 
 /// @nodoc
-abstract class _$$_AnalyticsUIModelCopyWith<$Res>
+abstract class _$$AnalyticsUIModelImplCopyWith<$Res>
     implements $AnalyticsUIModelCopyWith<$Res> {
-  factory _$$_AnalyticsUIModelCopyWith(
-          _$_AnalyticsUIModel value, $Res Function(_$_AnalyticsUIModel) then) =
-      __$$_AnalyticsUIModelCopyWithImpl<$Res>;
+  factory _$$AnalyticsUIModelImplCopyWith(_$AnalyticsUIModelImpl value,
+          $Res Function(_$AnalyticsUIModelImpl) then) =
+      __$$AnalyticsUIModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -114,11 +114,11 @@ abstract class _$$_AnalyticsUIModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_AnalyticsUIModelCopyWithImpl<$Res>
-    extends _$AnalyticsUIModelCopyWithImpl<$Res, _$_AnalyticsUIModel>
-    implements _$$_AnalyticsUIModelCopyWith<$Res> {
-  __$$_AnalyticsUIModelCopyWithImpl(
-      _$_AnalyticsUIModel _value, $Res Function(_$_AnalyticsUIModel) _then)
+class __$$AnalyticsUIModelImplCopyWithImpl<$Res>
+    extends _$AnalyticsUIModelCopyWithImpl<$Res, _$AnalyticsUIModelImpl>
+    implements _$$AnalyticsUIModelImplCopyWith<$Res> {
+  __$$AnalyticsUIModelImplCopyWithImpl(_$AnalyticsUIModelImpl _value,
+      $Res Function(_$AnalyticsUIModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -131,7 +131,7 @@ class __$$_AnalyticsUIModelCopyWithImpl<$Res>
     Object? selectedDate = freezed,
     Object? dates = null,
   }) {
-    return _then(_$_AnalyticsUIModel(
+    return _then(_$AnalyticsUIModelImpl(
       tornadoData: freezed == tornadoData
           ? _value._tornadoData
           : tornadoData // ignore: cast_nullable_to_non_nullable
@@ -162,8 +162,8 @@ class __$$_AnalyticsUIModelCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AnalyticsUIModel implements _AnalyticsUIModel {
-  const _$_AnalyticsUIModel(
+class _$AnalyticsUIModelImpl implements _AnalyticsUIModel {
+  const _$AnalyticsUIModelImpl(
       {final Map<String, List<TornadoEntity>>? tornadoData,
       final Map<String, List<AreaEntity>>? areasData,
       final Map<String, SectorOverviewCluster>? sectorsOverviewData,
@@ -234,10 +234,10 @@ class _$_AnalyticsUIModel implements _AnalyticsUIModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AnalyticsUIModel &&
+            other is _$AnalyticsUIModelImpl &&
             const DeepCollectionEquality()
                 .equals(other._tornadoData, _tornadoData) &&
             const DeepCollectionEquality()
@@ -264,8 +264,9 @@ class _$_AnalyticsUIModel implements _AnalyticsUIModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AnalyticsUIModelCopyWith<_$_AnalyticsUIModel> get copyWith =>
-      __$$_AnalyticsUIModelCopyWithImpl<_$_AnalyticsUIModel>(this, _$identity);
+  _$$AnalyticsUIModelImplCopyWith<_$AnalyticsUIModelImpl> get copyWith =>
+      __$$AnalyticsUIModelImplCopyWithImpl<_$AnalyticsUIModelImpl>(
+          this, _$identity);
 }
 
 abstract class _AnalyticsUIModel implements AnalyticsUIModel {
@@ -275,7 +276,7 @@ abstract class _AnalyticsUIModel implements AnalyticsUIModel {
       final Map<String, SectorOverviewCluster>? sectorsOverviewData,
       final Map<String, List<SectorIndexEntity>>? sectorsIndexData,
       final String? selectedDate,
-      final List<String> dates}) = _$_AnalyticsUIModel;
+      final List<String> dates}) = _$AnalyticsUIModelImpl;
 
   @override
   Map<String, List<TornadoEntity>>? get tornadoData;
@@ -291,6 +292,6 @@ abstract class _AnalyticsUIModel implements AnalyticsUIModel {
   List<String> get dates;
   @override
   @JsonKey(ignore: true)
-  _$$_AnalyticsUIModelCopyWith<_$_AnalyticsUIModel> get copyWith =>
+  _$$AnalyticsUIModelImplCopyWith<_$AnalyticsUIModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

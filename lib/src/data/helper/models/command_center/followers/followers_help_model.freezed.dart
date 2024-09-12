@@ -12,7 +12,7 @@ part of 'followers_help_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$FollowersHelpModel {
@@ -93,11 +93,11 @@ class _$FollowersHelpModelCopyWithImpl<$Res, $Val extends FollowersHelpModel>
 }
 
 /// @nodoc
-abstract class _$$_FollowersHelpModelCopyWith<$Res>
+abstract class _$$FollowersHelpModelImplCopyWith<$Res>
     implements $FollowersHelpModelCopyWith<$Res> {
-  factory _$$_FollowersHelpModelCopyWith(_$_FollowersHelpModel value,
-          $Res Function(_$_FollowersHelpModel) then) =
-      __$$_FollowersHelpModelCopyWithImpl<$Res>;
+  factory _$$FollowersHelpModelImplCopyWith(_$FollowersHelpModelImpl value,
+          $Res Function(_$FollowersHelpModelImpl) then) =
+      __$$FollowersHelpModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -110,11 +110,11 @@ abstract class _$$_FollowersHelpModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_FollowersHelpModelCopyWithImpl<$Res>
-    extends _$FollowersHelpModelCopyWithImpl<$Res, _$_FollowersHelpModel>
-    implements _$$_FollowersHelpModelCopyWith<$Res> {
-  __$$_FollowersHelpModelCopyWithImpl(
-      _$_FollowersHelpModel _value, $Res Function(_$_FollowersHelpModel) _then)
+class __$$FollowersHelpModelImplCopyWithImpl<$Res>
+    extends _$FollowersHelpModelCopyWithImpl<$Res, _$FollowersHelpModelImpl>
+    implements _$$FollowersHelpModelImplCopyWith<$Res> {
+  __$$FollowersHelpModelImplCopyWithImpl(_$FollowersHelpModelImpl _value,
+      $Res Function(_$FollowersHelpModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -127,7 +127,7 @@ class __$$_FollowersHelpModelCopyWithImpl<$Res>
     Object? twitter = freezed,
     Object? linkedIn = freezed,
   }) {
-    return _then(_$_FollowersHelpModel(
+    return _then(_$FollowersHelpModelImpl(
       facebook: freezed == facebook
           ? _value.facebook
           : facebook // ignore: cast_nullable_to_non_nullable
@@ -158,8 +158,8 @@ class __$$_FollowersHelpModelCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_FollowersHelpModel implements _FollowersHelpModel {
-  const _$_FollowersHelpModel(
+class _$FollowersHelpModelImpl implements _FollowersHelpModel {
+  const _$FollowersHelpModelImpl(
       {this.facebook,
       this.youtube,
       this.instagram,
@@ -186,10 +186,10 @@ class _$_FollowersHelpModel implements _FollowersHelpModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_FollowersHelpModel &&
+            other is _$FollowersHelpModelImpl &&
             (identical(other.facebook, facebook) ||
                 other.facebook == facebook) &&
             (identical(other.youtube, youtube) || other.youtube == youtube) &&
@@ -209,8 +209,8 @@ class _$_FollowersHelpModel implements _FollowersHelpModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_FollowersHelpModelCopyWith<_$_FollowersHelpModel> get copyWith =>
-      __$$_FollowersHelpModelCopyWithImpl<_$_FollowersHelpModel>(
+  _$$FollowersHelpModelImplCopyWith<_$FollowersHelpModelImpl> get copyWith =>
+      __$$FollowersHelpModelImplCopyWithImpl<_$FollowersHelpModelImpl>(
           this, _$identity);
 }
 
@@ -221,7 +221,7 @@ abstract class _FollowersHelpModel implements FollowersHelpModel {
       final int? instagram,
       final int? googlePlus,
       final int? twitter,
-      final int? linkedIn}) = _$_FollowersHelpModel;
+      final int? linkedIn}) = _$FollowersHelpModelImpl;
 
   @override
   int? get facebook;
@@ -237,6 +237,6 @@ abstract class _FollowersHelpModel implements FollowersHelpModel {
   int? get linkedIn;
   @override
   @JsonKey(ignore: true)
-  _$$_FollowersHelpModelCopyWith<_$_FollowersHelpModel> get copyWith =>
+  _$$FollowersHelpModelImplCopyWith<_$FollowersHelpModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

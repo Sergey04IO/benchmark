@@ -12,7 +12,7 @@ part of 'video_stats_help_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$VideoStatsHelpModel {
@@ -69,22 +69,22 @@ class _$VideoStatsHelpModelCopyWithImpl<$Res, $Val extends VideoStatsHelpModel>
 }
 
 /// @nodoc
-abstract class _$$_VideoStatsHelpModelCopyWith<$Res>
+abstract class _$$VideoStatsHelpModelImplCopyWith<$Res>
     implements $VideoStatsHelpModelCopyWith<$Res> {
-  factory _$$_VideoStatsHelpModelCopyWith(_$_VideoStatsHelpModel value,
-          $Res Function(_$_VideoStatsHelpModel) then) =
-      __$$_VideoStatsHelpModelCopyWithImpl<$Res>;
+  factory _$$VideoStatsHelpModelImplCopyWith(_$VideoStatsHelpModelImpl value,
+          $Res Function(_$VideoStatsHelpModelImpl) then) =
+      __$$VideoStatsHelpModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({num? playCount, num? engagement, num? playRate});
 }
 
 /// @nodoc
-class __$$_VideoStatsHelpModelCopyWithImpl<$Res>
-    extends _$VideoStatsHelpModelCopyWithImpl<$Res, _$_VideoStatsHelpModel>
-    implements _$$_VideoStatsHelpModelCopyWith<$Res> {
-  __$$_VideoStatsHelpModelCopyWithImpl(_$_VideoStatsHelpModel _value,
-      $Res Function(_$_VideoStatsHelpModel) _then)
+class __$$VideoStatsHelpModelImplCopyWithImpl<$Res>
+    extends _$VideoStatsHelpModelCopyWithImpl<$Res, _$VideoStatsHelpModelImpl>
+    implements _$$VideoStatsHelpModelImplCopyWith<$Res> {
+  __$$VideoStatsHelpModelImplCopyWithImpl(_$VideoStatsHelpModelImpl _value,
+      $Res Function(_$VideoStatsHelpModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -94,7 +94,7 @@ class __$$_VideoStatsHelpModelCopyWithImpl<$Res>
     Object? engagement = freezed,
     Object? playRate = freezed,
   }) {
-    return _then(_$_VideoStatsHelpModel(
+    return _then(_$VideoStatsHelpModelImpl(
       playCount: freezed == playCount
           ? _value.playCount
           : playCount // ignore: cast_nullable_to_non_nullable
@@ -113,8 +113,8 @@ class __$$_VideoStatsHelpModelCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_VideoStatsHelpModel implements _VideoStatsHelpModel {
-  const _$_VideoStatsHelpModel(
+class _$VideoStatsHelpModelImpl implements _VideoStatsHelpModel {
+  const _$VideoStatsHelpModelImpl(
       {this.playCount, this.engagement, this.playRate});
 
   @override
@@ -130,10 +130,10 @@ class _$_VideoStatsHelpModel implements _VideoStatsHelpModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_VideoStatsHelpModel &&
+            other is _$VideoStatsHelpModelImpl &&
             (identical(other.playCount, playCount) ||
                 other.playCount == playCount) &&
             (identical(other.engagement, engagement) ||
@@ -148,8 +148,8 @@ class _$_VideoStatsHelpModel implements _VideoStatsHelpModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_VideoStatsHelpModelCopyWith<_$_VideoStatsHelpModel> get copyWith =>
-      __$$_VideoStatsHelpModelCopyWithImpl<_$_VideoStatsHelpModel>(
+  _$$VideoStatsHelpModelImplCopyWith<_$VideoStatsHelpModelImpl> get copyWith =>
+      __$$VideoStatsHelpModelImplCopyWithImpl<_$VideoStatsHelpModelImpl>(
           this, _$identity);
 }
 
@@ -157,7 +157,7 @@ abstract class _VideoStatsHelpModel implements VideoStatsHelpModel {
   const factory _VideoStatsHelpModel(
       {final num? playCount,
       final num? engagement,
-      final num? playRate}) = _$_VideoStatsHelpModel;
+      final num? playRate}) = _$VideoStatsHelpModelImpl;
 
   @override
   num? get playCount;
@@ -167,6 +167,6 @@ abstract class _VideoStatsHelpModel implements VideoStatsHelpModel {
   num? get playRate;
   @override
   @JsonKey(ignore: true)
-  _$$_VideoStatsHelpModelCopyWith<_$_VideoStatsHelpModel> get copyWith =>
+  _$$VideoStatsHelpModelImplCopyWith<_$VideoStatsHelpModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

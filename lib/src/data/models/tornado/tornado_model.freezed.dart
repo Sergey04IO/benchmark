@@ -12,7 +12,7 @@ part of 'tornado_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 TornadoModel _$TornadoModelFromJson(Map<String, dynamic> json) {
   return _TornadoModel.fromJson(json);
@@ -93,11 +93,11 @@ class _$TornadoModelCopyWithImpl<$Res, $Val extends TornadoModel>
 }
 
 /// @nodoc
-abstract class _$$_TornadoModelCopyWith<$Res>
+abstract class _$$TornadoModelImplCopyWith<$Res>
     implements $TornadoModelCopyWith<$Res> {
-  factory _$$_TornadoModelCopyWith(
-          _$_TornadoModel value, $Res Function(_$_TornadoModel) then) =
-      __$$_TornadoModelCopyWithImpl<$Res>;
+  factory _$$TornadoModelImplCopyWith(
+          _$TornadoModelImpl value, $Res Function(_$TornadoModelImpl) then) =
+      __$$TornadoModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -109,11 +109,11 @@ abstract class _$$_TornadoModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_TornadoModelCopyWithImpl<$Res>
-    extends _$TornadoModelCopyWithImpl<$Res, _$_TornadoModel>
-    implements _$$_TornadoModelCopyWith<$Res> {
-  __$$_TornadoModelCopyWithImpl(
-      _$_TornadoModel _value, $Res Function(_$_TornadoModel) _then)
+class __$$TornadoModelImplCopyWithImpl<$Res>
+    extends _$TornadoModelCopyWithImpl<$Res, _$TornadoModelImpl>
+    implements _$$TornadoModelImplCopyWith<$Res> {
+  __$$TornadoModelImplCopyWithImpl(
+      _$TornadoModelImpl _value, $Res Function(_$TornadoModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -125,7 +125,7 @@ class __$$_TornadoModelCopyWithImpl<$Res>
     Object? dateValue = freezed,
     Object? benchmarkValue = freezed,
   }) {
-    return _then(_$_TornadoModel(
+    return _then(_$TornadoModelImpl(
       date: freezed == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
@@ -152,8 +152,8 @@ class __$$_TornadoModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_TornadoModel extends _TornadoModel {
-  const _$_TornadoModel(
+class _$TornadoModelImpl extends _TornadoModel {
+  const _$TornadoModelImpl(
       {this.date,
       this.title,
       this.unit,
@@ -161,8 +161,8 @@ class _$_TornadoModel extends _TornadoModel {
       @JsonKey(name: 'benchmark value') this.benchmarkValue})
       : super._();
 
-  factory _$_TornadoModel.fromJson(Map<String, dynamic> json) =>
-      _$$_TornadoModelFromJson(json);
+  factory _$TornadoModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TornadoModelImplFromJson(json);
 
   @override
   final String? date;
@@ -183,10 +183,10 @@ class _$_TornadoModel extends _TornadoModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TornadoModel &&
+            other is _$TornadoModelImpl &&
             (identical(other.date, date) || other.date == date) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.unit, unit) || other.unit == unit) &&
@@ -204,12 +204,12 @@ class _$_TornadoModel extends _TornadoModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TornadoModelCopyWith<_$_TornadoModel> get copyWith =>
-      __$$_TornadoModelCopyWithImpl<_$_TornadoModel>(this, _$identity);
+  _$$TornadoModelImplCopyWith<_$TornadoModelImpl> get copyWith =>
+      __$$TornadoModelImplCopyWithImpl<_$TornadoModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TornadoModelToJson(
+    return _$$TornadoModelImplToJson(
       this,
     );
   }
@@ -222,11 +222,11 @@ abstract class _TornadoModel extends TornadoModel {
           final String? unit,
           @JsonKey(name: 'date value') final String? dateValue,
           @JsonKey(name: 'benchmark value') final String? benchmarkValue}) =
-      _$_TornadoModel;
+      _$TornadoModelImpl;
   const _TornadoModel._() : super._();
 
   factory _TornadoModel.fromJson(Map<String, dynamic> json) =
-      _$_TornadoModel.fromJson;
+      _$TornadoModelImpl.fromJson;
 
   @override
   String? get date;
@@ -242,6 +242,6 @@ abstract class _TornadoModel extends TornadoModel {
   String? get benchmarkValue;
   @override
   @JsonKey(ignore: true)
-  _$$_TornadoModelCopyWith<_$_TornadoModel> get copyWith =>
+  _$$TornadoModelImplCopyWith<_$TornadoModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

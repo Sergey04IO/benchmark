@@ -12,7 +12,7 @@ part of 'sector_index_entity.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$SectorIndexEntity {
@@ -75,22 +75,22 @@ class _$SectorIndexEntityCopyWithImpl<$Res, $Val extends SectorIndexEntity>
 }
 
 /// @nodoc
-abstract class _$$_SectorIndexEntityCopyWith<$Res>
+abstract class _$$SectorIndexEntityImplCopyWith<$Res>
     implements $SectorIndexEntityCopyWith<$Res> {
-  factory _$$_SectorIndexEntityCopyWith(_$_SectorIndexEntity value,
-          $Res Function(_$_SectorIndexEntity) then) =
-      __$$_SectorIndexEntityCopyWithImpl<$Res>;
+  factory _$$SectorIndexEntityImplCopyWith(_$SectorIndexEntityImpl value,
+          $Res Function(_$SectorIndexEntityImpl) then) =
+      __$$SectorIndexEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String? title, List<num> values, num? total, num? difference});
 }
 
 /// @nodoc
-class __$$_SectorIndexEntityCopyWithImpl<$Res>
-    extends _$SectorIndexEntityCopyWithImpl<$Res, _$_SectorIndexEntity>
-    implements _$$_SectorIndexEntityCopyWith<$Res> {
-  __$$_SectorIndexEntityCopyWithImpl(
-      _$_SectorIndexEntity _value, $Res Function(_$_SectorIndexEntity) _then)
+class __$$SectorIndexEntityImplCopyWithImpl<$Res>
+    extends _$SectorIndexEntityCopyWithImpl<$Res, _$SectorIndexEntityImpl>
+    implements _$$SectorIndexEntityImplCopyWith<$Res> {
+  __$$SectorIndexEntityImplCopyWithImpl(_$SectorIndexEntityImpl _value,
+      $Res Function(_$SectorIndexEntityImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -101,7 +101,7 @@ class __$$_SectorIndexEntityCopyWithImpl<$Res>
     Object? total = freezed,
     Object? difference = freezed,
   }) {
-    return _then(_$_SectorIndexEntity(
+    return _then(_$SectorIndexEntityImpl(
       title: freezed == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -124,8 +124,8 @@ class __$$_SectorIndexEntityCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_SectorIndexEntity implements _SectorIndexEntity {
-  const _$_SectorIndexEntity(
+class _$SectorIndexEntityImpl implements _SectorIndexEntity {
+  const _$SectorIndexEntityImpl(
       {this.title,
       final List<num> values = const [],
       this.total,
@@ -154,10 +154,10 @@ class _$_SectorIndexEntity implements _SectorIndexEntity {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SectorIndexEntity &&
+            other is _$SectorIndexEntityImpl &&
             (identical(other.title, title) || other.title == title) &&
             const DeepCollectionEquality().equals(other._values, _values) &&
             (identical(other.total, total) || other.total == total) &&
@@ -172,8 +172,8 @@ class _$_SectorIndexEntity implements _SectorIndexEntity {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SectorIndexEntityCopyWith<_$_SectorIndexEntity> get copyWith =>
-      __$$_SectorIndexEntityCopyWithImpl<_$_SectorIndexEntity>(
+  _$$SectorIndexEntityImplCopyWith<_$SectorIndexEntityImpl> get copyWith =>
+      __$$SectorIndexEntityImplCopyWithImpl<_$SectorIndexEntityImpl>(
           this, _$identity);
 }
 
@@ -182,7 +182,7 @@ abstract class _SectorIndexEntity implements SectorIndexEntity {
       {final String? title,
       final List<num> values,
       final num? total,
-      final num? difference}) = _$_SectorIndexEntity;
+      final num? difference}) = _$SectorIndexEntityImpl;
 
   @override
   String? get title;
@@ -194,6 +194,6 @@ abstract class _SectorIndexEntity implements SectorIndexEntity {
   num? get difference;
   @override
   @JsonKey(ignore: true)
-  _$$_SectorIndexEntityCopyWith<_$_SectorIndexEntity> get copyWith =>
+  _$$SectorIndexEntityImplCopyWith<_$SectorIndexEntityImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

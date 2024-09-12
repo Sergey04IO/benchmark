@@ -12,7 +12,7 @@ part of 'cac_help_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$CacHelpModel {
@@ -69,22 +69,22 @@ class _$CacHelpModelCopyWithImpl<$Res, $Val extends CacHelpModel>
 }
 
 /// @nodoc
-abstract class _$$_CacHelpModelCopyWith<$Res>
+abstract class _$$CacHelpModelImplCopyWith<$Res>
     implements $CacHelpModelCopyWith<$Res> {
-  factory _$$_CacHelpModelCopyWith(
-          _$_CacHelpModel value, $Res Function(_$_CacHelpModel) then) =
-      __$$_CacHelpModelCopyWithImpl<$Res>;
+  factory _$$CacHelpModelImplCopyWith(
+          _$CacHelpModelImpl value, $Res Function(_$CacHelpModelImpl) then) =
+      __$$CacHelpModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({num? value, num? prevValue, int? duration});
 }
 
 /// @nodoc
-class __$$_CacHelpModelCopyWithImpl<$Res>
-    extends _$CacHelpModelCopyWithImpl<$Res, _$_CacHelpModel>
-    implements _$$_CacHelpModelCopyWith<$Res> {
-  __$$_CacHelpModelCopyWithImpl(
-      _$_CacHelpModel _value, $Res Function(_$_CacHelpModel) _then)
+class __$$CacHelpModelImplCopyWithImpl<$Res>
+    extends _$CacHelpModelCopyWithImpl<$Res, _$CacHelpModelImpl>
+    implements _$$CacHelpModelImplCopyWith<$Res> {
+  __$$CacHelpModelImplCopyWithImpl(
+      _$CacHelpModelImpl _value, $Res Function(_$CacHelpModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -94,7 +94,7 @@ class __$$_CacHelpModelCopyWithImpl<$Res>
     Object? prevValue = freezed,
     Object? duration = freezed,
   }) {
-    return _then(_$_CacHelpModel(
+    return _then(_$CacHelpModelImpl(
       value: freezed == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
@@ -113,8 +113,8 @@ class __$$_CacHelpModelCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_CacHelpModel extends _CacHelpModel {
-  const _$_CacHelpModel({this.value, this.prevValue, this.duration})
+class _$CacHelpModelImpl extends _CacHelpModel {
+  const _$CacHelpModelImpl({this.value, this.prevValue, this.duration})
       : super._();
 
   @override
@@ -130,10 +130,10 @@ class _$_CacHelpModel extends _CacHelpModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CacHelpModel &&
+            other is _$CacHelpModelImpl &&
             (identical(other.value, value) || other.value == value) &&
             (identical(other.prevValue, prevValue) ||
                 other.prevValue == prevValue) &&
@@ -147,15 +147,15 @@ class _$_CacHelpModel extends _CacHelpModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CacHelpModelCopyWith<_$_CacHelpModel> get copyWith =>
-      __$$_CacHelpModelCopyWithImpl<_$_CacHelpModel>(this, _$identity);
+  _$$CacHelpModelImplCopyWith<_$CacHelpModelImpl> get copyWith =>
+      __$$CacHelpModelImplCopyWithImpl<_$CacHelpModelImpl>(this, _$identity);
 }
 
 abstract class _CacHelpModel extends CacHelpModel {
   const factory _CacHelpModel(
       {final num? value,
       final num? prevValue,
-      final int? duration}) = _$_CacHelpModel;
+      final int? duration}) = _$CacHelpModelImpl;
   const _CacHelpModel._() : super._();
 
   @override
@@ -166,6 +166,6 @@ abstract class _CacHelpModel extends CacHelpModel {
   int? get duration;
   @override
   @JsonKey(ignore: true)
-  _$$_CacHelpModelCopyWith<_$_CacHelpModel> get copyWith =>
+  _$$CacHelpModelImplCopyWith<_$CacHelpModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

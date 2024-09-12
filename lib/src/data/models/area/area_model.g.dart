@@ -6,7 +6,8 @@ part of 'area_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_AreaModel _$$_AreaModelFromJson(Map<String, dynamic> json) => _$_AreaModel(
+_$AreaModelImpl _$$AreaModelImplFromJson(Map<String, dynamic> json) =>
+    _$AreaModelImpl(
       date: json['date'] as String?,
       title: json['title'] as String?,
       values: json['values'] as String?,
@@ -15,7 +16,7 @@ _$_AreaModel _$$_AreaModelFromJson(Map<String, dynamic> json) => _$_AreaModel(
       ytdValue: json['year to date'] as String?,
     );
 
-Map<String, dynamic> _$$_AreaModelToJson(_$_AreaModel instance) =>
+Map<String, dynamic> _$$AreaModelImplToJson(_$AreaModelImpl instance) =>
     <String, dynamic>{
       'date': instance.date,
       'title': instance.title,

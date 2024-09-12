@@ -12,7 +12,7 @@ part of 'sectors_overview_help_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$SectorsOverviewHelpModel {
@@ -70,24 +70,25 @@ class _$SectorsOverviewHelpModelCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_SectorsOverviewHelpModelCopyWith<$Res>
+abstract class _$$SectorsOverviewHelpModelImplCopyWith<$Res>
     implements $SectorsOverviewHelpModelCopyWith<$Res> {
-  factory _$$_SectorsOverviewHelpModelCopyWith(
-          _$_SectorsOverviewHelpModel value,
-          $Res Function(_$_SectorsOverviewHelpModel) then) =
-      __$$_SectorsOverviewHelpModelCopyWithImpl<$Res>;
+  factory _$$SectorsOverviewHelpModelImplCopyWith(
+          _$SectorsOverviewHelpModelImpl value,
+          $Res Function(_$SectorsOverviewHelpModelImpl) then) =
+      __$$SectorsOverviewHelpModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String? name, Color? color, num? value});
 }
 
 /// @nodoc
-class __$$_SectorsOverviewHelpModelCopyWithImpl<$Res>
+class __$$SectorsOverviewHelpModelImplCopyWithImpl<$Res>
     extends _$SectorsOverviewHelpModelCopyWithImpl<$Res,
-        _$_SectorsOverviewHelpModel>
-    implements _$$_SectorsOverviewHelpModelCopyWith<$Res> {
-  __$$_SectorsOverviewHelpModelCopyWithImpl(_$_SectorsOverviewHelpModel _value,
-      $Res Function(_$_SectorsOverviewHelpModel) _then)
+        _$SectorsOverviewHelpModelImpl>
+    implements _$$SectorsOverviewHelpModelImplCopyWith<$Res> {
+  __$$SectorsOverviewHelpModelImplCopyWithImpl(
+      _$SectorsOverviewHelpModelImpl _value,
+      $Res Function(_$SectorsOverviewHelpModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -97,7 +98,7 @@ class __$$_SectorsOverviewHelpModelCopyWithImpl<$Res>
     Object? color = freezed,
     Object? value = freezed,
   }) {
-    return _then(_$_SectorsOverviewHelpModel(
+    return _then(_$SectorsOverviewHelpModelImpl(
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -116,8 +117,8 @@ class __$$_SectorsOverviewHelpModelCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_SectorsOverviewHelpModel implements _SectorsOverviewHelpModel {
-  const _$_SectorsOverviewHelpModel({this.name, this.color, this.value});
+class _$SectorsOverviewHelpModelImpl implements _SectorsOverviewHelpModel {
+  const _$SectorsOverviewHelpModelImpl({this.name, this.color, this.value});
 
   @override
   final String? name;
@@ -132,10 +133,10 @@ class _$_SectorsOverviewHelpModel implements _SectorsOverviewHelpModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SectorsOverviewHelpModel &&
+            other is _$SectorsOverviewHelpModelImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.color, color) || other.color == color) &&
             (identical(other.value, value) || other.value == value));
@@ -147,16 +148,16 @@ class _$_SectorsOverviewHelpModel implements _SectorsOverviewHelpModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SectorsOverviewHelpModelCopyWith<_$_SectorsOverviewHelpModel>
-      get copyWith => __$$_SectorsOverviewHelpModelCopyWithImpl<
-          _$_SectorsOverviewHelpModel>(this, _$identity);
+  _$$SectorsOverviewHelpModelImplCopyWith<_$SectorsOverviewHelpModelImpl>
+      get copyWith => __$$SectorsOverviewHelpModelImplCopyWithImpl<
+          _$SectorsOverviewHelpModelImpl>(this, _$identity);
 }
 
 abstract class _SectorsOverviewHelpModel implements SectorsOverviewHelpModel {
   const factory _SectorsOverviewHelpModel(
       {final String? name,
       final Color? color,
-      final num? value}) = _$_SectorsOverviewHelpModel;
+      final num? value}) = _$SectorsOverviewHelpModelImpl;
 
   @override
   String? get name;
@@ -166,6 +167,6 @@ abstract class _SectorsOverviewHelpModel implements SectorsOverviewHelpModel {
   num? get value;
   @override
   @JsonKey(ignore: true)
-  _$$_SectorsOverviewHelpModelCopyWith<_$_SectorsOverviewHelpModel>
+  _$$SectorsOverviewHelpModelImplCopyWith<_$SectorsOverviewHelpModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

@@ -9,8 +9,8 @@ import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
-part 'settings_state.dart';
 part 'settings_cubit.freezed.dart';
+part 'settings_state.dart';
 
 @lazySingleton
 class SettingsCubit extends BaseCubit<SettingsState> {

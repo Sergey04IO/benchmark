@@ -6,17 +6,17 @@ part of 'sector_overview_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_SectorOverviewModel _$$_SectorOverviewModelFromJson(
+_$SectorOverviewModelImpl _$$SectorOverviewModelImplFromJson(
         Map<String, dynamic> json) =>
-    _$_SectorOverviewModel(
+    _$SectorOverviewModelImpl(
       date: json['date'] as String?,
       title: json['title'] as String?,
       value: json['value'] as String?,
       average: json['average'] as String?,
     );
 
-Map<String, dynamic> _$$_SectorOverviewModelToJson(
-        _$_SectorOverviewModel instance) =>
+Map<String, dynamic> _$$SectorOverviewModelImplToJson(
+        _$SectorOverviewModelImpl instance) =>
     <String, dynamic>{
       'date': instance.date,
       'title': instance.title,

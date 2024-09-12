@@ -12,7 +12,7 @@ part of 'demographics_help_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$DemographicsHelpModel {
@@ -59,22 +59,24 @@ class _$DemographicsHelpModelCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_DemographicsHelpModelCopyWith<$Res>
+abstract class _$$DemographicsHelpModelImplCopyWith<$Res>
     implements $DemographicsHelpModelCopyWith<$Res> {
-  factory _$$_DemographicsHelpModelCopyWith(_$_DemographicsHelpModel value,
-          $Res Function(_$_DemographicsHelpModel) then) =
-      __$$_DemographicsHelpModelCopyWithImpl<$Res>;
+  factory _$$DemographicsHelpModelImplCopyWith(
+          _$DemographicsHelpModelImpl value,
+          $Res Function(_$DemographicsHelpModelImpl) then) =
+      __$$DemographicsHelpModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({List<DemographicsClusterHelpModel> clusters});
 }
 
 /// @nodoc
-class __$$_DemographicsHelpModelCopyWithImpl<$Res>
-    extends _$DemographicsHelpModelCopyWithImpl<$Res, _$_DemographicsHelpModel>
-    implements _$$_DemographicsHelpModelCopyWith<$Res> {
-  __$$_DemographicsHelpModelCopyWithImpl(_$_DemographicsHelpModel _value,
-      $Res Function(_$_DemographicsHelpModel) _then)
+class __$$DemographicsHelpModelImplCopyWithImpl<$Res>
+    extends _$DemographicsHelpModelCopyWithImpl<$Res,
+        _$DemographicsHelpModelImpl>
+    implements _$$DemographicsHelpModelImplCopyWith<$Res> {
+  __$$DemographicsHelpModelImplCopyWithImpl(_$DemographicsHelpModelImpl _value,
+      $Res Function(_$DemographicsHelpModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -82,7 +84,7 @@ class __$$_DemographicsHelpModelCopyWithImpl<$Res>
   $Res call({
     Object? clusters = null,
   }) {
-    return _then(_$_DemographicsHelpModel(
+    return _then(_$DemographicsHelpModelImpl(
       clusters: null == clusters
           ? _value._clusters
           : clusters // ignore: cast_nullable_to_non_nullable
@@ -93,8 +95,8 @@ class __$$_DemographicsHelpModelCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_DemographicsHelpModel implements _DemographicsHelpModel {
-  const _$_DemographicsHelpModel(
+class _$DemographicsHelpModelImpl implements _DemographicsHelpModel {
+  const _$DemographicsHelpModelImpl(
       {final List<DemographicsClusterHelpModel> clusters = const []})
       : _clusters = clusters;
 
@@ -113,10 +115,10 @@ class _$_DemographicsHelpModel implements _DemographicsHelpModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_DemographicsHelpModel &&
+            other is _$DemographicsHelpModelImpl &&
             const DeepCollectionEquality().equals(other._clusters, _clusters));
   }
 
@@ -127,22 +129,22 @@ class _$_DemographicsHelpModel implements _DemographicsHelpModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DemographicsHelpModelCopyWith<_$_DemographicsHelpModel> get copyWith =>
-      __$$_DemographicsHelpModelCopyWithImpl<_$_DemographicsHelpModel>(
-          this, _$identity);
+  _$$DemographicsHelpModelImplCopyWith<_$DemographicsHelpModelImpl>
+      get copyWith => __$$DemographicsHelpModelImplCopyWithImpl<
+          _$DemographicsHelpModelImpl>(this, _$identity);
 }
 
 abstract class _DemographicsHelpModel implements DemographicsHelpModel {
   const factory _DemographicsHelpModel(
           {final List<DemographicsClusterHelpModel> clusters}) =
-      _$_DemographicsHelpModel;
+      _$DemographicsHelpModelImpl;
 
   @override
   List<DemographicsClusterHelpModel> get clusters;
   @override
   @JsonKey(ignore: true)
-  _$$_DemographicsHelpModelCopyWith<_$_DemographicsHelpModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$DemographicsHelpModelImplCopyWith<_$DemographicsHelpModelImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -205,12 +207,12 @@ class _$DemographicsClusterHelpModelCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_DemographicsClusterHelpModelCopyWith<$Res>
+abstract class _$$DemographicsClusterHelpModelImplCopyWith<$Res>
     implements $DemographicsClusterHelpModelCopyWith<$Res> {
-  factory _$$_DemographicsClusterHelpModelCopyWith(
-          _$_DemographicsClusterHelpModel value,
-          $Res Function(_$_DemographicsClusterHelpModel) then) =
-      __$$_DemographicsClusterHelpModelCopyWithImpl<$Res>;
+  factory _$$DemographicsClusterHelpModelImplCopyWith(
+          _$DemographicsClusterHelpModelImpl value,
+          $Res Function(_$DemographicsClusterHelpModelImpl) then) =
+      __$$DemographicsClusterHelpModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -218,13 +220,13 @@ abstract class _$$_DemographicsClusterHelpModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_DemographicsClusterHelpModelCopyWithImpl<$Res>
+class __$$DemographicsClusterHelpModelImplCopyWithImpl<$Res>
     extends _$DemographicsClusterHelpModelCopyWithImpl<$Res,
-        _$_DemographicsClusterHelpModel>
-    implements _$$_DemographicsClusterHelpModelCopyWith<$Res> {
-  __$$_DemographicsClusterHelpModelCopyWithImpl(
-      _$_DemographicsClusterHelpModel _value,
-      $Res Function(_$_DemographicsClusterHelpModel) _then)
+        _$DemographicsClusterHelpModelImpl>
+    implements _$$DemographicsClusterHelpModelImplCopyWith<$Res> {
+  __$$DemographicsClusterHelpModelImplCopyWithImpl(
+      _$DemographicsClusterHelpModelImpl _value,
+      $Res Function(_$DemographicsClusterHelpModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -234,7 +236,7 @@ class __$$_DemographicsClusterHelpModelCopyWithImpl<$Res>
     Object? color = freezed,
     Object? items = null,
   }) {
-    return _then(_$_DemographicsClusterHelpModel(
+    return _then(_$DemographicsClusterHelpModelImpl(
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -253,8 +255,9 @@ class __$$_DemographicsClusterHelpModelCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_DemographicsClusterHelpModel implements _DemographicsClusterHelpModel {
-  const _$_DemographicsClusterHelpModel(
+class _$DemographicsClusterHelpModelImpl
+    implements _DemographicsClusterHelpModel {
+  const _$DemographicsClusterHelpModelImpl(
       {this.name,
       this.color,
       final List<DemographicsItemHelpModel> items = const []})
@@ -279,10 +282,10 @@ class _$_DemographicsClusterHelpModel implements _DemographicsClusterHelpModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_DemographicsClusterHelpModel &&
+            other is _$DemographicsClusterHelpModelImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.color, color) || other.color == color) &&
             const DeepCollectionEquality().equals(other._items, _items));
@@ -295,9 +298,10 @@ class _$_DemographicsClusterHelpModel implements _DemographicsClusterHelpModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DemographicsClusterHelpModelCopyWith<_$_DemographicsClusterHelpModel>
-      get copyWith => __$$_DemographicsClusterHelpModelCopyWithImpl<
-          _$_DemographicsClusterHelpModel>(this, _$identity);
+  _$$DemographicsClusterHelpModelImplCopyWith<
+          _$DemographicsClusterHelpModelImpl>
+      get copyWith => __$$DemographicsClusterHelpModelImplCopyWithImpl<
+          _$DemographicsClusterHelpModelImpl>(this, _$identity);
 }
 
 abstract class _DemographicsClusterHelpModel
@@ -306,7 +310,7 @@ abstract class _DemographicsClusterHelpModel
           {final String? name,
           final Color? color,
           final List<DemographicsItemHelpModel> items}) =
-      _$_DemographicsClusterHelpModel;
+      _$DemographicsClusterHelpModelImpl;
 
   @override
   String? get name;
@@ -316,7 +320,8 @@ abstract class _DemographicsClusterHelpModel
   List<DemographicsItemHelpModel> get items;
   @override
   @JsonKey(ignore: true)
-  _$$_DemographicsClusterHelpModelCopyWith<_$_DemographicsClusterHelpModel>
+  _$$DemographicsClusterHelpModelImplCopyWith<
+          _$DemographicsClusterHelpModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -370,25 +375,25 @@ class _$DemographicsItemHelpModelCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_DemographicsItemHelpModelCopyWith<$Res>
+abstract class _$$DemographicsItemHelpModelImplCopyWith<$Res>
     implements $DemographicsItemHelpModelCopyWith<$Res> {
-  factory _$$_DemographicsItemHelpModelCopyWith(
-          _$_DemographicsItemHelpModel value,
-          $Res Function(_$_DemographicsItemHelpModel) then) =
-      __$$_DemographicsItemHelpModelCopyWithImpl<$Res>;
+  factory _$$DemographicsItemHelpModelImplCopyWith(
+          _$DemographicsItemHelpModelImpl value,
+          $Res Function(_$DemographicsItemHelpModelImpl) then) =
+      __$$DemographicsItemHelpModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String? category, num? value});
 }
 
 /// @nodoc
-class __$$_DemographicsItemHelpModelCopyWithImpl<$Res>
+class __$$DemographicsItemHelpModelImplCopyWithImpl<$Res>
     extends _$DemographicsItemHelpModelCopyWithImpl<$Res,
-        _$_DemographicsItemHelpModel>
-    implements _$$_DemographicsItemHelpModelCopyWith<$Res> {
-  __$$_DemographicsItemHelpModelCopyWithImpl(
-      _$_DemographicsItemHelpModel _value,
-      $Res Function(_$_DemographicsItemHelpModel) _then)
+        _$DemographicsItemHelpModelImpl>
+    implements _$$DemographicsItemHelpModelImplCopyWith<$Res> {
+  __$$DemographicsItemHelpModelImplCopyWithImpl(
+      _$DemographicsItemHelpModelImpl _value,
+      $Res Function(_$DemographicsItemHelpModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -397,7 +402,7 @@ class __$$_DemographicsItemHelpModelCopyWithImpl<$Res>
     Object? category = freezed,
     Object? value = freezed,
   }) {
-    return _then(_$_DemographicsItemHelpModel(
+    return _then(_$DemographicsItemHelpModelImpl(
       category: freezed == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
@@ -412,8 +417,8 @@ class __$$_DemographicsItemHelpModelCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_DemographicsItemHelpModel implements _DemographicsItemHelpModel {
-  const _$_DemographicsItemHelpModel({this.category, this.value});
+class _$DemographicsItemHelpModelImpl implements _DemographicsItemHelpModel {
+  const _$DemographicsItemHelpModelImpl({this.category, this.value});
 
   @override
   final String? category;
@@ -426,10 +431,10 @@ class _$_DemographicsItemHelpModel implements _DemographicsItemHelpModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_DemographicsItemHelpModel &&
+            other is _$DemographicsItemHelpModelImpl &&
             (identical(other.category, category) ||
                 other.category == category) &&
             (identical(other.value, value) || other.value == value));
@@ -441,15 +446,15 @@ class _$_DemographicsItemHelpModel implements _DemographicsItemHelpModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DemographicsItemHelpModelCopyWith<_$_DemographicsItemHelpModel>
-      get copyWith => __$$_DemographicsItemHelpModelCopyWithImpl<
-          _$_DemographicsItemHelpModel>(this, _$identity);
+  _$$DemographicsItemHelpModelImplCopyWith<_$DemographicsItemHelpModelImpl>
+      get copyWith => __$$DemographicsItemHelpModelImplCopyWithImpl<
+          _$DemographicsItemHelpModelImpl>(this, _$identity);
 }
 
 abstract class _DemographicsItemHelpModel implements DemographicsItemHelpModel {
   const factory _DemographicsItemHelpModel(
       {final String? category,
-      final num? value}) = _$_DemographicsItemHelpModel;
+      final num? value}) = _$DemographicsItemHelpModelImpl;
 
   @override
   String? get category;
@@ -457,6 +462,6 @@ abstract class _DemographicsItemHelpModel implements DemographicsItemHelpModel {
   num? get value;
   @override
   @JsonKey(ignore: true)
-  _$$_DemographicsItemHelpModelCopyWith<_$_DemographicsItemHelpModel>
+  _$$DemographicsItemHelpModelImplCopyWith<_$DemographicsItemHelpModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

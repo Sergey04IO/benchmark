@@ -12,7 +12,7 @@ part of 'settings_cubit.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$SettingsState {
@@ -93,24 +93,25 @@ class _$SettingsStateCopyWithImpl<$Res, $Val extends SettingsState>
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+abstract class _$$InitialImplCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$SettingsStateCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$SettingsStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Initial with DiagnosticableTreeMixin implements _Initial {
-  const _$_Initial();
+class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
+  const _$InitialImpl();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -124,9 +125,9 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
+        (other.runtimeType == runtimeType && other is _$InitialImpl);
   }
 
   @override
@@ -214,29 +215,29 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
 }
 
 abstract class _Initial implements SettingsState {
-  const factory _Initial() = _$_Initial;
+  const factory _Initial() = _$InitialImpl;
 }
 
 /// @nodoc
-abstract class _$$GsheetsDataCopyWith<$Res> {
-  factory _$$GsheetsDataCopyWith(
-          _$GsheetsData value, $Res Function(_$GsheetsData) then) =
-      __$$GsheetsDataCopyWithImpl<$Res>;
+abstract class _$$GsheetsDataImplCopyWith<$Res> {
+  factory _$$GsheetsDataImplCopyWith(
+          _$GsheetsDataImpl value, $Res Function(_$GsheetsDataImpl) then) =
+      __$$GsheetsDataImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$GsheetsDataCopyWithImpl<$Res>
-    extends _$SettingsStateCopyWithImpl<$Res, _$GsheetsData>
-    implements _$$GsheetsDataCopyWith<$Res> {
-  __$$GsheetsDataCopyWithImpl(
-      _$GsheetsData _value, $Res Function(_$GsheetsData) _then)
+class __$$GsheetsDataImplCopyWithImpl<$Res>
+    extends _$SettingsStateCopyWithImpl<$Res, _$GsheetsDataImpl>
+    implements _$$GsheetsDataImplCopyWith<$Res> {
+  __$$GsheetsDataImplCopyWithImpl(
+      _$GsheetsDataImpl _value, $Res Function(_$GsheetsDataImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$GsheetsData with DiagnosticableTreeMixin implements GsheetsData {
-  const _$GsheetsData();
+class _$GsheetsDataImpl with DiagnosticableTreeMixin implements GsheetsData {
+  const _$GsheetsDataImpl();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -250,9 +251,9 @@ class _$GsheetsData with DiagnosticableTreeMixin implements GsheetsData {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$GsheetsData);
+        (other.runtimeType == runtimeType && other is _$GsheetsDataImpl);
   }
 
   @override
@@ -340,24 +341,24 @@ class _$GsheetsData with DiagnosticableTreeMixin implements GsheetsData {
 }
 
 abstract class GsheetsData implements SettingsState {
-  const factory GsheetsData() = _$GsheetsData;
+  const factory GsheetsData() = _$GsheetsDataImpl;
 }
 
 /// @nodoc
-abstract class _$$ExcelDataCopyWith<$Res> {
-  factory _$$ExcelDataCopyWith(
-          _$ExcelData value, $Res Function(_$ExcelData) then) =
-      __$$ExcelDataCopyWithImpl<$Res>;
+abstract class _$$ExcelDataImplCopyWith<$Res> {
+  factory _$$ExcelDataImplCopyWith(
+          _$ExcelDataImpl value, $Res Function(_$ExcelDataImpl) then) =
+      __$$ExcelDataImplCopyWithImpl<$Res>;
   @useResult
   $Res call({ConfigExcelFileModel? file});
 }
 
 /// @nodoc
-class __$$ExcelDataCopyWithImpl<$Res>
-    extends _$SettingsStateCopyWithImpl<$Res, _$ExcelData>
-    implements _$$ExcelDataCopyWith<$Res> {
-  __$$ExcelDataCopyWithImpl(
-      _$ExcelData _value, $Res Function(_$ExcelData) _then)
+class __$$ExcelDataImplCopyWithImpl<$Res>
+    extends _$SettingsStateCopyWithImpl<$Res, _$ExcelDataImpl>
+    implements _$$ExcelDataImplCopyWith<$Res> {
+  __$$ExcelDataImplCopyWithImpl(
+      _$ExcelDataImpl _value, $Res Function(_$ExcelDataImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -365,7 +366,7 @@ class __$$ExcelDataCopyWithImpl<$Res>
   $Res call({
     Object? file = freezed,
   }) {
-    return _then(_$ExcelData(
+    return _then(_$ExcelDataImpl(
       freezed == file
           ? _value.file
           : file // ignore: cast_nullable_to_non_nullable
@@ -376,8 +377,8 @@ class __$$ExcelDataCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ExcelData with DiagnosticableTreeMixin implements ExcelData {
-  const _$ExcelData(this.file);
+class _$ExcelDataImpl with DiagnosticableTreeMixin implements ExcelData {
+  const _$ExcelDataImpl(this.file);
 
   @override
   final ConfigExcelFileModel? file;
@@ -396,10 +397,10 @@ class _$ExcelData with DiagnosticableTreeMixin implements ExcelData {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ExcelData &&
+            other is _$ExcelDataImpl &&
             (identical(other.file, file) || other.file == file));
   }
 
@@ -409,8 +410,8 @@ class _$ExcelData with DiagnosticableTreeMixin implements ExcelData {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ExcelDataCopyWith<_$ExcelData> get copyWith =>
-      __$$ExcelDataCopyWithImpl<_$ExcelData>(this, _$identity);
+  _$$ExcelDataImplCopyWith<_$ExcelDataImpl> get copyWith =>
+      __$$ExcelDataImplCopyWithImpl<_$ExcelDataImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -494,29 +495,29 @@ class _$ExcelData with DiagnosticableTreeMixin implements ExcelData {
 }
 
 abstract class ExcelData implements SettingsState {
-  const factory ExcelData(final ConfigExcelFileModel? file) = _$ExcelData;
+  const factory ExcelData(final ConfigExcelFileModel? file) = _$ExcelDataImpl;
 
   ConfigExcelFileModel? get file;
   @JsonKey(ignore: true)
-  _$$ExcelDataCopyWith<_$ExcelData> get copyWith =>
+  _$$ExcelDataImplCopyWith<_$ExcelDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$SettingsErrorCopyWith<$Res> {
-  factory _$$SettingsErrorCopyWith(
-          _$SettingsError value, $Res Function(_$SettingsError) then) =
-      __$$SettingsErrorCopyWithImpl<$Res>;
+abstract class _$$SettingsErrorImplCopyWith<$Res> {
+  factory _$$SettingsErrorImplCopyWith(
+          _$SettingsErrorImpl value, $Res Function(_$SettingsErrorImpl) then) =
+      __$$SettingsErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$SettingsErrorCopyWithImpl<$Res>
-    extends _$SettingsStateCopyWithImpl<$Res, _$SettingsError>
-    implements _$$SettingsErrorCopyWith<$Res> {
-  __$$SettingsErrorCopyWithImpl(
-      _$SettingsError _value, $Res Function(_$SettingsError) _then)
+class __$$SettingsErrorImplCopyWithImpl<$Res>
+    extends _$SettingsStateCopyWithImpl<$Res, _$SettingsErrorImpl>
+    implements _$$SettingsErrorImplCopyWith<$Res> {
+  __$$SettingsErrorImplCopyWithImpl(
+      _$SettingsErrorImpl _value, $Res Function(_$SettingsErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -524,7 +525,7 @@ class __$$SettingsErrorCopyWithImpl<$Res>
   $Res call({
     Object? message = null,
   }) {
-    return _then(_$SettingsError(
+    return _then(_$SettingsErrorImpl(
       null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -535,8 +536,10 @@ class __$$SettingsErrorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SettingsError with DiagnosticableTreeMixin implements SettingsError {
-  const _$SettingsError(this.message);
+class _$SettingsErrorImpl
+    with DiagnosticableTreeMixin
+    implements SettingsError {
+  const _$SettingsErrorImpl(this.message);
 
   @override
   final String message;
@@ -555,10 +558,10 @@ class _$SettingsError with DiagnosticableTreeMixin implements SettingsError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SettingsError &&
+            other is _$SettingsErrorImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
@@ -568,8 +571,8 @@ class _$SettingsError with DiagnosticableTreeMixin implements SettingsError {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$SettingsErrorCopyWith<_$SettingsError> get copyWith =>
-      __$$SettingsErrorCopyWithImpl<_$SettingsError>(this, _$identity);
+  _$$SettingsErrorImplCopyWith<_$SettingsErrorImpl> get copyWith =>
+      __$$SettingsErrorImplCopyWithImpl<_$SettingsErrorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -653,34 +656,34 @@ class _$SettingsError with DiagnosticableTreeMixin implements SettingsError {
 }
 
 abstract class SettingsError implements SettingsState {
-  const factory SettingsError(final String message) = _$SettingsError;
+  const factory SettingsError(final String message) = _$SettingsErrorImpl;
 
   String get message;
   @JsonKey(ignore: true)
-  _$$SettingsErrorCopyWith<_$SettingsError> get copyWith =>
+  _$$SettingsErrorImplCopyWith<_$SettingsErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_ClearStateCopyWith<$Res> {
-  factory _$$_ClearStateCopyWith(
-          _$_ClearState value, $Res Function(_$_ClearState) then) =
-      __$$_ClearStateCopyWithImpl<$Res>;
+abstract class _$$ClearStateImplCopyWith<$Res> {
+  factory _$$ClearStateImplCopyWith(
+          _$ClearStateImpl value, $Res Function(_$ClearStateImpl) then) =
+      __$$ClearStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_ClearStateCopyWithImpl<$Res>
-    extends _$SettingsStateCopyWithImpl<$Res, _$_ClearState>
-    implements _$$_ClearStateCopyWith<$Res> {
-  __$$_ClearStateCopyWithImpl(
-      _$_ClearState _value, $Res Function(_$_ClearState) _then)
+class __$$ClearStateImplCopyWithImpl<$Res>
+    extends _$SettingsStateCopyWithImpl<$Res, _$ClearStateImpl>
+    implements _$$ClearStateImplCopyWith<$Res> {
+  __$$ClearStateImplCopyWithImpl(
+      _$ClearStateImpl _value, $Res Function(_$ClearStateImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_ClearState with DiagnosticableTreeMixin implements _ClearState {
-  const _$_ClearState();
+class _$ClearStateImpl with DiagnosticableTreeMixin implements _ClearState {
+  const _$ClearStateImpl();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -694,9 +697,9 @@ class _$_ClearState with DiagnosticableTreeMixin implements _ClearState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_ClearState);
+        (other.runtimeType == runtimeType && other is _$ClearStateImpl);
   }
 
   @override
@@ -784,5 +787,5 @@ class _$_ClearState with DiagnosticableTreeMixin implements _ClearState {
 }
 
 abstract class _ClearState implements SettingsState {
-  const factory _ClearState() = _$_ClearState;
+  const factory _ClearState() = _$ClearStateImpl;
 }

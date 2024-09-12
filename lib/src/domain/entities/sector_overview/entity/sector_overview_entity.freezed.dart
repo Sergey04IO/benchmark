@@ -12,7 +12,7 @@ part of 'sector_overview_entity.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$SectorOverviewEntity {
@@ -64,22 +64,22 @@ class _$SectorOverviewEntityCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_SectorOverviewEntityCopyWith<$Res>
+abstract class _$$SectorOverviewEntityImplCopyWith<$Res>
     implements $SectorOverviewEntityCopyWith<$Res> {
-  factory _$$_SectorOverviewEntityCopyWith(_$_SectorOverviewEntity value,
-          $Res Function(_$_SectorOverviewEntity) then) =
-      __$$_SectorOverviewEntityCopyWithImpl<$Res>;
+  factory _$$SectorOverviewEntityImplCopyWith(_$SectorOverviewEntityImpl value,
+          $Res Function(_$SectorOverviewEntityImpl) then) =
+      __$$SectorOverviewEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String? title, num? value});
 }
 
 /// @nodoc
-class __$$_SectorOverviewEntityCopyWithImpl<$Res>
-    extends _$SectorOverviewEntityCopyWithImpl<$Res, _$_SectorOverviewEntity>
-    implements _$$_SectorOverviewEntityCopyWith<$Res> {
-  __$$_SectorOverviewEntityCopyWithImpl(_$_SectorOverviewEntity _value,
-      $Res Function(_$_SectorOverviewEntity) _then)
+class __$$SectorOverviewEntityImplCopyWithImpl<$Res>
+    extends _$SectorOverviewEntityCopyWithImpl<$Res, _$SectorOverviewEntityImpl>
+    implements _$$SectorOverviewEntityImplCopyWith<$Res> {
+  __$$SectorOverviewEntityImplCopyWithImpl(_$SectorOverviewEntityImpl _value,
+      $Res Function(_$SectorOverviewEntityImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -88,7 +88,7 @@ class __$$_SectorOverviewEntityCopyWithImpl<$Res>
     Object? title = freezed,
     Object? value = freezed,
   }) {
-    return _then(_$_SectorOverviewEntity(
+    return _then(_$SectorOverviewEntityImpl(
       title: freezed == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -103,8 +103,8 @@ class __$$_SectorOverviewEntityCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_SectorOverviewEntity implements _SectorOverviewEntity {
-  const _$_SectorOverviewEntity({this.title, this.value});
+class _$SectorOverviewEntityImpl implements _SectorOverviewEntity {
+  const _$SectorOverviewEntityImpl({this.title, this.value});
 
   @override
   final String? title;
@@ -117,10 +117,10 @@ class _$_SectorOverviewEntity implements _SectorOverviewEntity {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SectorOverviewEntity &&
+            other is _$SectorOverviewEntityImpl &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.value, value) || other.value == value));
   }
@@ -131,14 +131,15 @@ class _$_SectorOverviewEntity implements _SectorOverviewEntity {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SectorOverviewEntityCopyWith<_$_SectorOverviewEntity> get copyWith =>
-      __$$_SectorOverviewEntityCopyWithImpl<_$_SectorOverviewEntity>(
-          this, _$identity);
+  _$$SectorOverviewEntityImplCopyWith<_$SectorOverviewEntityImpl>
+      get copyWith =>
+          __$$SectorOverviewEntityImplCopyWithImpl<_$SectorOverviewEntityImpl>(
+              this, _$identity);
 }
 
 abstract class _SectorOverviewEntity implements SectorOverviewEntity {
   const factory _SectorOverviewEntity({final String? title, final num? value}) =
-      _$_SectorOverviewEntity;
+      _$SectorOverviewEntityImpl;
 
   @override
   String? get title;
@@ -146,6 +147,6 @@ abstract class _SectorOverviewEntity implements SectorOverviewEntity {
   num? get value;
   @override
   @JsonKey(ignore: true)
-  _$$_SectorOverviewEntityCopyWith<_$_SectorOverviewEntity> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$SectorOverviewEntityImplCopyWith<_$SectorOverviewEntityImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

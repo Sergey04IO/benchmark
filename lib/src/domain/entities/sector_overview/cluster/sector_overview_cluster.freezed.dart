@@ -12,7 +12,7 @@ part of 'sector_overview_cluster.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$SectorOverviewCluster {
@@ -64,22 +64,24 @@ class _$SectorOverviewClusterCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_SectorOverviewClusterCopyWith<$Res>
+abstract class _$$SectorOverviewClusterImplCopyWith<$Res>
     implements $SectorOverviewClusterCopyWith<$Res> {
-  factory _$$_SectorOverviewClusterCopyWith(_$_SectorOverviewCluster value,
-          $Res Function(_$_SectorOverviewCluster) then) =
-      __$$_SectorOverviewClusterCopyWithImpl<$Res>;
+  factory _$$SectorOverviewClusterImplCopyWith(
+          _$SectorOverviewClusterImpl value,
+          $Res Function(_$SectorOverviewClusterImpl) then) =
+      __$$SectorOverviewClusterImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({List<SectorOverviewEntity> entities, num? averageValue});
 }
 
 /// @nodoc
-class __$$_SectorOverviewClusterCopyWithImpl<$Res>
-    extends _$SectorOverviewClusterCopyWithImpl<$Res, _$_SectorOverviewCluster>
-    implements _$$_SectorOverviewClusterCopyWith<$Res> {
-  __$$_SectorOverviewClusterCopyWithImpl(_$_SectorOverviewCluster _value,
-      $Res Function(_$_SectorOverviewCluster) _then)
+class __$$SectorOverviewClusterImplCopyWithImpl<$Res>
+    extends _$SectorOverviewClusterCopyWithImpl<$Res,
+        _$SectorOverviewClusterImpl>
+    implements _$$SectorOverviewClusterImplCopyWith<$Res> {
+  __$$SectorOverviewClusterImplCopyWithImpl(_$SectorOverviewClusterImpl _value,
+      $Res Function(_$SectorOverviewClusterImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -88,7 +90,7 @@ class __$$_SectorOverviewClusterCopyWithImpl<$Res>
     Object? entities = null,
     Object? averageValue = freezed,
   }) {
-    return _then(_$_SectorOverviewCluster(
+    return _then(_$SectorOverviewClusterImpl(
       entities: null == entities
           ? _value._entities
           : entities // ignore: cast_nullable_to_non_nullable
@@ -103,8 +105,8 @@ class __$$_SectorOverviewClusterCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_SectorOverviewCluster implements _SectorOverviewCluster {
-  const _$_SectorOverviewCluster(
+class _$SectorOverviewClusterImpl implements _SectorOverviewCluster {
+  const _$SectorOverviewClusterImpl(
       {final List<SectorOverviewEntity> entities = const [], this.averageValue})
       : _entities = entities;
 
@@ -126,10 +128,10 @@ class _$_SectorOverviewCluster implements _SectorOverviewCluster {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SectorOverviewCluster &&
+            other is _$SectorOverviewClusterImpl &&
             const DeepCollectionEquality().equals(other._entities, _entities) &&
             (identical(other.averageValue, averageValue) ||
                 other.averageValue == averageValue));
@@ -142,15 +144,15 @@ class _$_SectorOverviewCluster implements _SectorOverviewCluster {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SectorOverviewClusterCopyWith<_$_SectorOverviewCluster> get copyWith =>
-      __$$_SectorOverviewClusterCopyWithImpl<_$_SectorOverviewCluster>(
-          this, _$identity);
+  _$$SectorOverviewClusterImplCopyWith<_$SectorOverviewClusterImpl>
+      get copyWith => __$$SectorOverviewClusterImplCopyWithImpl<
+          _$SectorOverviewClusterImpl>(this, _$identity);
 }
 
 abstract class _SectorOverviewCluster implements SectorOverviewCluster {
   const factory _SectorOverviewCluster(
       {final List<SectorOverviewEntity> entities,
-      final num? averageValue}) = _$_SectorOverviewCluster;
+      final num? averageValue}) = _$SectorOverviewClusterImpl;
 
   @override
   List<SectorOverviewEntity> get entities;
@@ -158,6 +160,6 @@ abstract class _SectorOverviewCluster implements SectorOverviewCluster {
   num? get averageValue;
   @override
   @JsonKey(ignore: true)
-  _$$_SectorOverviewClusterCopyWith<_$_SectorOverviewCluster> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$SectorOverviewClusterImplCopyWith<_$SectorOverviewClusterImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

@@ -12,7 +12,7 @@ part of 'map_help_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$MapHelpModel {
@@ -57,22 +57,22 @@ class _$MapHelpModelCopyWithImpl<$Res, $Val extends MapHelpModel>
 }
 
 /// @nodoc
-abstract class _$$_MapHelpModelCopyWith<$Res>
+abstract class _$$MapHelpModelImplCopyWith<$Res>
     implements $MapHelpModelCopyWith<$Res> {
-  factory _$$_MapHelpModelCopyWith(
-          _$_MapHelpModel value, $Res Function(_$_MapHelpModel) then) =
-      __$$_MapHelpModelCopyWithImpl<$Res>;
+  factory _$$MapHelpModelImplCopyWith(
+          _$MapHelpModelImpl value, $Res Function(_$MapHelpModelImpl) then) =
+      __$$MapHelpModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({List<MapItemModel> items});
 }
 
 /// @nodoc
-class __$$_MapHelpModelCopyWithImpl<$Res>
-    extends _$MapHelpModelCopyWithImpl<$Res, _$_MapHelpModel>
-    implements _$$_MapHelpModelCopyWith<$Res> {
-  __$$_MapHelpModelCopyWithImpl(
-      _$_MapHelpModel _value, $Res Function(_$_MapHelpModel) _then)
+class __$$MapHelpModelImplCopyWithImpl<$Res>
+    extends _$MapHelpModelCopyWithImpl<$Res, _$MapHelpModelImpl>
+    implements _$$MapHelpModelImplCopyWith<$Res> {
+  __$$MapHelpModelImplCopyWithImpl(
+      _$MapHelpModelImpl _value, $Res Function(_$MapHelpModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -80,7 +80,7 @@ class __$$_MapHelpModelCopyWithImpl<$Res>
   $Res call({
     Object? items = null,
   }) {
-    return _then(_$_MapHelpModel(
+    return _then(_$MapHelpModelImpl(
       items: null == items
           ? _value._items
           : items // ignore: cast_nullable_to_non_nullable
@@ -91,8 +91,8 @@ class __$$_MapHelpModelCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_MapHelpModel implements _MapHelpModel {
-  const _$_MapHelpModel({final List<MapItemModel> items = const []})
+class _$MapHelpModelImpl implements _MapHelpModel {
+  const _$MapHelpModelImpl({final List<MapItemModel> items = const []})
       : _items = items;
 
   final List<MapItemModel> _items;
@@ -110,10 +110,10 @@ class _$_MapHelpModel implements _MapHelpModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MapHelpModel &&
+            other is _$MapHelpModelImpl &&
             const DeepCollectionEquality().equals(other._items, _items));
   }
 
@@ -124,19 +124,19 @@ class _$_MapHelpModel implements _MapHelpModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MapHelpModelCopyWith<_$_MapHelpModel> get copyWith =>
-      __$$_MapHelpModelCopyWithImpl<_$_MapHelpModel>(this, _$identity);
+  _$$MapHelpModelImplCopyWith<_$MapHelpModelImpl> get copyWith =>
+      __$$MapHelpModelImplCopyWithImpl<_$MapHelpModelImpl>(this, _$identity);
 }
 
 abstract class _MapHelpModel implements MapHelpModel {
   const factory _MapHelpModel({final List<MapItemModel> items}) =
-      _$_MapHelpModel;
+      _$MapHelpModelImpl;
 
   @override
   List<MapItemModel> get items;
   @override
   @JsonKey(ignore: true)
-  _$$_MapHelpModelCopyWith<_$_MapHelpModel> get copyWith =>
+  _$$MapHelpModelImplCopyWith<_$MapHelpModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -189,22 +189,22 @@ class _$MapItemModelCopyWithImpl<$Res, $Val extends MapItemModel>
 }
 
 /// @nodoc
-abstract class _$$_MapItemModelCopyWith<$Res>
+abstract class _$$MapItemModelImplCopyWith<$Res>
     implements $MapItemModelCopyWith<$Res> {
-  factory _$$_MapItemModelCopyWith(
-          _$_MapItemModel value, $Res Function(_$_MapItemModel) then) =
-      __$$_MapItemModelCopyWithImpl<$Res>;
+  factory _$$MapItemModelImplCopyWith(
+          _$MapItemModelImpl value, $Res Function(_$MapItemModelImpl) then) =
+      __$$MapItemModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String countryName, int accounts});
 }
 
 /// @nodoc
-class __$$_MapItemModelCopyWithImpl<$Res>
-    extends _$MapItemModelCopyWithImpl<$Res, _$_MapItemModel>
-    implements _$$_MapItemModelCopyWith<$Res> {
-  __$$_MapItemModelCopyWithImpl(
-      _$_MapItemModel _value, $Res Function(_$_MapItemModel) _then)
+class __$$MapItemModelImplCopyWithImpl<$Res>
+    extends _$MapItemModelCopyWithImpl<$Res, _$MapItemModelImpl>
+    implements _$$MapItemModelImplCopyWith<$Res> {
+  __$$MapItemModelImplCopyWithImpl(
+      _$MapItemModelImpl _value, $Res Function(_$MapItemModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -213,7 +213,7 @@ class __$$_MapItemModelCopyWithImpl<$Res>
     Object? countryName = null,
     Object? accounts = null,
   }) {
-    return _then(_$_MapItemModel(
+    return _then(_$MapItemModelImpl(
       countryName: null == countryName
           ? _value.countryName
           : countryName // ignore: cast_nullable_to_non_nullable
@@ -228,8 +228,8 @@ class __$$_MapItemModelCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_MapItemModel implements _MapItemModel {
-  const _$_MapItemModel({required this.countryName, this.accounts = 0});
+class _$MapItemModelImpl implements _MapItemModel {
+  const _$MapItemModelImpl({required this.countryName, this.accounts = 0});
 
   @override
   final String countryName;
@@ -243,10 +243,10 @@ class _$_MapItemModel implements _MapItemModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MapItemModel &&
+            other is _$MapItemModelImpl &&
             (identical(other.countryName, countryName) ||
                 other.countryName == countryName) &&
             (identical(other.accounts, accounts) ||
@@ -259,14 +259,14 @@ class _$_MapItemModel implements _MapItemModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MapItemModelCopyWith<_$_MapItemModel> get copyWith =>
-      __$$_MapItemModelCopyWithImpl<_$_MapItemModel>(this, _$identity);
+  _$$MapItemModelImplCopyWith<_$MapItemModelImpl> get copyWith =>
+      __$$MapItemModelImplCopyWithImpl<_$MapItemModelImpl>(this, _$identity);
 }
 
 abstract class _MapItemModel implements MapItemModel {
   const factory _MapItemModel(
       {required final String countryName,
-      final int accounts}) = _$_MapItemModel;
+      final int accounts}) = _$MapItemModelImpl;
 
   @override
   String get countryName;
@@ -274,6 +274,6 @@ abstract class _MapItemModel implements MapItemModel {
   int get accounts;
   @override
   @JsonKey(ignore: true)
-  _$$_MapItemModelCopyWith<_$_MapItemModel> get copyWith =>
+  _$$MapItemModelImplCopyWith<_$MapItemModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

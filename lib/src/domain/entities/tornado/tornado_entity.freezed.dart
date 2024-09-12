@@ -12,7 +12,7 @@ part of 'tornado_entity.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$TornadoEntity {
@@ -75,22 +75,22 @@ class _$TornadoEntityCopyWithImpl<$Res, $Val extends TornadoEntity>
 }
 
 /// @nodoc
-abstract class _$$_TornadoEntityCopyWith<$Res>
+abstract class _$$TornadoEntityImplCopyWith<$Res>
     implements $TornadoEntityCopyWith<$Res> {
-  factory _$$_TornadoEntityCopyWith(
-          _$_TornadoEntity value, $Res Function(_$_TornadoEntity) then) =
-      __$$_TornadoEntityCopyWithImpl<$Res>;
+  factory _$$TornadoEntityImplCopyWith(
+          _$TornadoEntityImpl value, $Res Function(_$TornadoEntityImpl) then) =
+      __$$TornadoEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String? title, String? unit, num? dateValue, num? benchmarkValue});
 }
 
 /// @nodoc
-class __$$_TornadoEntityCopyWithImpl<$Res>
-    extends _$TornadoEntityCopyWithImpl<$Res, _$_TornadoEntity>
-    implements _$$_TornadoEntityCopyWith<$Res> {
-  __$$_TornadoEntityCopyWithImpl(
-      _$_TornadoEntity _value, $Res Function(_$_TornadoEntity) _then)
+class __$$TornadoEntityImplCopyWithImpl<$Res>
+    extends _$TornadoEntityCopyWithImpl<$Res, _$TornadoEntityImpl>
+    implements _$$TornadoEntityImplCopyWith<$Res> {
+  __$$TornadoEntityImplCopyWithImpl(
+      _$TornadoEntityImpl _value, $Res Function(_$TornadoEntityImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -101,7 +101,7 @@ class __$$_TornadoEntityCopyWithImpl<$Res>
     Object? dateValue = freezed,
     Object? benchmarkValue = freezed,
   }) {
-    return _then(_$_TornadoEntity(
+    return _then(_$TornadoEntityImpl(
       title: freezed == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -124,8 +124,8 @@ class __$$_TornadoEntityCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_TornadoEntity implements _TornadoEntity {
-  const _$_TornadoEntity(
+class _$TornadoEntityImpl implements _TornadoEntity {
+  const _$TornadoEntityImpl(
       {this.title, this.unit, this.dateValue, this.benchmarkValue});
 
   @override
@@ -143,10 +143,10 @@ class _$_TornadoEntity implements _TornadoEntity {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TornadoEntity &&
+            other is _$TornadoEntityImpl &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.unit, unit) || other.unit == unit) &&
             (identical(other.dateValue, dateValue) ||
@@ -162,8 +162,8 @@ class _$_TornadoEntity implements _TornadoEntity {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TornadoEntityCopyWith<_$_TornadoEntity> get copyWith =>
-      __$$_TornadoEntityCopyWithImpl<_$_TornadoEntity>(this, _$identity);
+  _$$TornadoEntityImplCopyWith<_$TornadoEntityImpl> get copyWith =>
+      __$$TornadoEntityImplCopyWithImpl<_$TornadoEntityImpl>(this, _$identity);
 }
 
 abstract class _TornadoEntity implements TornadoEntity {
@@ -171,7 +171,7 @@ abstract class _TornadoEntity implements TornadoEntity {
       {final String? title,
       final String? unit,
       final num? dateValue,
-      final num? benchmarkValue}) = _$_TornadoEntity;
+      final num? benchmarkValue}) = _$TornadoEntityImpl;
 
   @override
   String? get title;
@@ -183,6 +183,6 @@ abstract class _TornadoEntity implements TornadoEntity {
   num? get benchmarkValue;
   @override
   @JsonKey(ignore: true)
-  _$$_TornadoEntityCopyWith<_$_TornadoEntity> get copyWith =>
+  _$$TornadoEntityImplCopyWith<_$TornadoEntityImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

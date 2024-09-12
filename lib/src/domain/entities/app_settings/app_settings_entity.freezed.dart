@@ -12,7 +12,7 @@ part of 'app_settings_entity.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$AppSettingsEntity {
@@ -63,22 +63,22 @@ class _$AppSettingsEntityCopyWithImpl<$Res, $Val extends AppSettingsEntity>
 }
 
 /// @nodoc
-abstract class _$$_AppSettingsEntityCopyWith<$Res>
+abstract class _$$AppSettingsEntityImplCopyWith<$Res>
     implements $AppSettingsEntityCopyWith<$Res> {
-  factory _$$_AppSettingsEntityCopyWith(_$_AppSettingsEntity value,
-          $Res Function(_$_AppSettingsEntity) then) =
-      __$$_AppSettingsEntityCopyWithImpl<$Res>;
+  factory _$$AppSettingsEntityImplCopyWith(_$AppSettingsEntityImpl value,
+          $Res Function(_$AppSettingsEntityImpl) then) =
+      __$$AppSettingsEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({bool isUsedSSO, InitialPage initialPage});
 }
 
 /// @nodoc
-class __$$_AppSettingsEntityCopyWithImpl<$Res>
-    extends _$AppSettingsEntityCopyWithImpl<$Res, _$_AppSettingsEntity>
-    implements _$$_AppSettingsEntityCopyWith<$Res> {
-  __$$_AppSettingsEntityCopyWithImpl(
-      _$_AppSettingsEntity _value, $Res Function(_$_AppSettingsEntity) _then)
+class __$$AppSettingsEntityImplCopyWithImpl<$Res>
+    extends _$AppSettingsEntityCopyWithImpl<$Res, _$AppSettingsEntityImpl>
+    implements _$$AppSettingsEntityImplCopyWith<$Res> {
+  __$$AppSettingsEntityImplCopyWithImpl(_$AppSettingsEntityImpl _value,
+      $Res Function(_$AppSettingsEntityImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -87,7 +87,7 @@ class __$$_AppSettingsEntityCopyWithImpl<$Res>
     Object? isUsedSSO = null,
     Object? initialPage = null,
   }) {
-    return _then(_$_AppSettingsEntity(
+    return _then(_$AppSettingsEntityImpl(
       isUsedSSO: null == isUsedSSO
           ? _value.isUsedSSO
           : isUsedSSO // ignore: cast_nullable_to_non_nullable
@@ -102,8 +102,8 @@ class __$$_AppSettingsEntityCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AppSettingsEntity implements _AppSettingsEntity {
-  const _$_AppSettingsEntity(
+class _$AppSettingsEntityImpl implements _AppSettingsEntity {
+  const _$AppSettingsEntityImpl(
       {this.isUsedSSO = false, this.initialPage = InitialPage.analytics});
 
   @override
@@ -119,10 +119,10 @@ class _$_AppSettingsEntity implements _AppSettingsEntity {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AppSettingsEntity &&
+            other is _$AppSettingsEntityImpl &&
             (identical(other.isUsedSSO, isUsedSSO) ||
                 other.isUsedSSO == isUsedSSO) &&
             (identical(other.initialPage, initialPage) ||
@@ -135,15 +135,15 @@ class _$_AppSettingsEntity implements _AppSettingsEntity {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AppSettingsEntityCopyWith<_$_AppSettingsEntity> get copyWith =>
-      __$$_AppSettingsEntityCopyWithImpl<_$_AppSettingsEntity>(
+  _$$AppSettingsEntityImplCopyWith<_$AppSettingsEntityImpl> get copyWith =>
+      __$$AppSettingsEntityImplCopyWithImpl<_$AppSettingsEntityImpl>(
           this, _$identity);
 }
 
 abstract class _AppSettingsEntity implements AppSettingsEntity {
   const factory _AppSettingsEntity(
       {final bool isUsedSSO,
-      final InitialPage initialPage}) = _$_AppSettingsEntity;
+      final InitialPage initialPage}) = _$AppSettingsEntityImpl;
 
   @override
   bool get isUsedSSO;
@@ -151,6 +151,6 @@ abstract class _AppSettingsEntity implements AppSettingsEntity {
   InitialPage get initialPage;
   @override
   @JsonKey(ignore: true)
-  _$$_AppSettingsEntityCopyWith<_$_AppSettingsEntity> get copyWith =>
+  _$$AppSettingsEntityImplCopyWith<_$AppSettingsEntityImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

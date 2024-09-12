@@ -6,8 +6,8 @@ part of 'tornado_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_TornadoModel _$$_TornadoModelFromJson(Map<String, dynamic> json) =>
-    _$_TornadoModel(
+_$TornadoModelImpl _$$TornadoModelImplFromJson(Map<String, dynamic> json) =>
+    _$TornadoModelImpl(
       date: json['date'] as String?,
       title: json['title'] as String?,
       unit: json['unit'] as String?,
@@ -15,7 +15,7 @@ _$_TornadoModel _$$_TornadoModelFromJson(Map<String, dynamic> json) =>
       benchmarkValue: json['benchmark value'] as String?,
     );
 
-Map<String, dynamic> _$$_TornadoModelToJson(_$_TornadoModel instance) =>
+Map<String, dynamic> _$$TornadoModelImplToJson(_$TornadoModelImpl instance) =>
     <String, dynamic>{
       'date': instance.date,
       'title': instance.title,
